@@ -1,0 +1,116 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">تقرير أجازات موظف</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <form [formGroup]="RepForm" (submit)="ViewReport()">
+                  <div class="form-group">
+                    <label for="Account">الموظف</label>
+                    <select formControlName="EmployeeCtl" id="Emp" name="Emp" class="form-control" [(ngModel)]="selectedEmp"
+                      (ngModelChange)="setSelectedEmp($event)" required>
+                      <option *ngFor="let Emp of Empslist" [ngValue]="Emp">{{Emp.EmpName}}</option>
+                    </select>
+                    
+                  </div>
+                  <div *ngIf="isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass] = "error"> 
+                    يجب اختيار موظف. 
+                      </div>
+                  
+                  <div class="form-group">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker1" placeholder="الفترة من" [value]="fromDate.value" [formControl]="fromDate"  >
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="الى" [value]="toDate.value" [formControl]="toDate" >
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+       
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-sm table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>الرصيد</th>                       
+                        <th class="table-success" >{{ OpenVacBal() }}</th>
+                        <th>الاجازات</th>                       
+                        <th class="table-warning" >{{ ActualVacsSum() }}</th>
+                        <th>المتبقى</th>                       
+                        <th class="table-info">{{ RemainderSum() }}</th>
+                      </tr>
+                    </thead>
+                  </table>
+                  <table class="table table-sm table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>                       
+                        <th>تاريخ الطلب</th>
+                        <th>نوع الاجازة</th>
+                        <th>من</th>
+                        <th>الى</th>
+                        <th >عدد الايام</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="VacOrderslist">
+                      <tr *ngFor="let VacOrder of VacOrderslist;let i = index">
+                        <th scope="row">{{i+1}}</th>
+                      
+                        <td>{{ VacOrder.VacOrderDate }}</td>
+                        <td>{{ VacOrder.VacName }}</td>
+                        <td>{{ VacOrder.VacOrdDateFrom }}</td>
+                        <td>{{ VacOrder.VacOrdDateTo }}</td>  
+                         <td  >{{calculateDiff(VacOrder.VacOrdDateFrom,VacOrder.VacOrdDateTo)}} </td>                 
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

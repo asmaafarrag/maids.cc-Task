@@ -1,0 +1,75 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                  <input type="hidden" name="VacOrderId" value="service.formData.VacOrderId">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>تاريخ التصريح</label>
+                        <div class="input-group">
+                          
+                          <input type="date" name="PermitDate" #VacOrderDate="ngModel"
+                            [(ngModel)]="service.formData.PermitDate" useValueAsDate>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="EmpID">الموظف</label>
+                        <select name="EmpId" #EmpId="ngModel" [(ngModel)]="service.formData.EmpId" required
+                           class="form-control form-control-lg input-lg">
+                          <option *ngFor="let Emp of Empslist" [ngValue]="Emp.EmpID">{{Emp.EmpName}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="PermitType">نوع التصريح</label>
+                        <select name="PermitType" #PermitType="ngModel" [(ngModel)]="service.formData.PermitType" required
+                           class="form-control form-control-lg input-lg" >
+                          <option *ngFor="let PermitTypes of PermitTypeslist" [ngValue]="PermitTypes.PermitType" >{{PermitTypes.PermitTypeName}}</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    
+                    <label for="EmpPermitNotes">ملاحظات</label>
+                    <input type="text" name="EmpPermitNotes" #EmpPermitNotes="ngModel" [(ngModel)]="service.formData.EmpPermitNotes"
+                      class="form-control form-control-lg input-lg"  required minlength="10" >
+                      <div *ngIf="EmpPermitNotes.invalid && (EmpPermitNotes.dirty || EmpPermitNotes.touched)" class="alert alert-danger">
+                            <div *ngIf="EmpPermitNotes.errors.required">    يجب كتابه سبب الطلب </div>
+                             <div *ngIf="EmpPermitNotes.errors.minlength"> يجب ان يكون على الاقل عشره احرف</div>
+                            </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid" ><i class="fas fa-database"></i>
+                      Submit</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,87 @@
+<section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title">العملاء</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+
+                                <div class="form-group text-center">  
+                                    <div class="input-group"> 
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getCustomersList()" class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>اسم العميل</th>
+                                                <th>التليفون</th>
+                                                <th>التليفون 2</th>
+                                                <th>الموبايل</th>
+                                                <th>الموبايل 2</th>
+                                                <th>العنوان</th>
+                                                <th><button class="btn btn-outline-success" routerLink="/Customers"><i
+                                                            class="fa fa-plus"></i>
+                                                        اضافة عميل</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="custList">
+                                            <tr *ngFor="let Cust of custList | filter:term | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row">  {{( i + 1 ) }}</th>
+                                                <td (click)="openForEdit(Cust.CustomerID)">{{ Cust.CustomerName }}</td>
+                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.Tele }}</th>
+                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.tele2 }}</th>
+                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.mob1 }}</th>
+                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.mob2 }}</th>
+                                                <td (click)="openForEdit(Cust.CustomerID)">{{ Cust.address }}</td>
+                                                <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
+                                                        (click)="onOrderDelete(null,Cust.CustomerID)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                ...
+
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-7">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                            </div>
+                            <div class="col-md-2">
+                                Result: {{count}}
+                             </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

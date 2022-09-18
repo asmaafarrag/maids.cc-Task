@@ -1,0 +1,60 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+               
+                <input type="text" [(ngModel)]="term" placeholder="بحث" class="form-control" />
+                <div class="table-responsive ">
+                  <table class="table table-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>المشروع</th> 
+                        <th><button class="btn btn-outline-success" routerLink="/CrmProject"><i class="fa fa-plus"></i>
+                          اضافة مشروع</button></th>           
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="CRMProjectsList">
+                      <tr *ngFor="let project of CRMProjectsList |filter:term;let i = index" style="cursor: pointer;">
+                        <th scope="row">{{i+1}}</th>
+                        <td (click)="openForEdit(project.ProjectID)" >{{ project.ProjectName }}</td> 
+                        <td><a class="btn text-danger"  *ngIf="UserType=='ADMIN'"
+                          (click)="onProjectDelete(project.ProjectID)"><i
+                          class="fa fa-trash fa-lg"></i> </a></td>               
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                ...
+                عدد السجلات فى الصفحة:
+                <select (change)="handlePageSizeChange($event)">
+                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                    {{ size }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-7">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                    (pageChange)="handlePageChange($event)"></pagination-controls>
+              </div>
+           
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

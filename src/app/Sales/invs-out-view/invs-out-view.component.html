@@ -1,0 +1,92 @@
+<section id="card-actions">
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title">سندات الصرف</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+
+                                <div class="form-group text-center">  
+                                    <div class="input-group"> 
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getInvsOut()" class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>رقم السند</th>
+                                                <th>تاريخ السند</th>
+                                                <th>حساب المصروف</th>
+
+                                                <th>الخزينة</th>
+
+                                                <th>السعر</th>
+                                               
+                                               
+                                                <th><button class="btn btn-outline-success" routerLink="/InvOut"><i
+                                                            class="fa fa-plus"></i>
+                                                        اضافة سند صرف</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="SalesInvList">
+                                            <tr *ngFor="let Inv of SalesInvList |filter:term | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row">  {{( i + 1 ) }}</th>
+                                                <td (click)="openForEdit(Inv.InvID)">{{ Inv.billno }}</td>
+                                                <td (click)="openForEdit(Inv.InvID)">{{ Inv.InvDate | date:
+                                                    'dd/MM/yyyy'}} </td>
+                                                <th (click)="openForEdit(Inv.InvID)">{{ Inv.AccountName }}</th>
+                                                <td (click)="openForEdit(Inv.InvID)">{{ Inv.TreasuryName }}</td>
+                                                <td (click)="openForEdit(Inv.InvID)">{{ Inv.Val }}</td>
+                                    
+                                                
+                                                <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
+                                                        (click)="onInvOutDelete(i,Inv.InvID)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                ...
+                            
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                    {{ size }}
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-7">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                            </div>
+                            <div class="col-md-2">
+                                Result: {{count}}
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

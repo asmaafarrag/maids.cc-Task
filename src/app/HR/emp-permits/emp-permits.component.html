@@ -1,0 +1,57 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">طلبات التصاريح</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>التاريخ</th>
+                        <th>الموظف</th>
+                        <th>النوع</th>
+                        <th>ملاحظات</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let EmpPerm of EmpPermitslist;let i = index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ EmpPerm.PermitDate }}</td>
+                        <td>{{ EmpPerm.EmpName }}</td>
+                        <td>{{ EmpPerm.PermitTypeName }}</td>
+                        <td>{{ EmpPerm.EmpPermitNotes }}</td>
+                        <td>   
+                          <a class="btn btn-sm btn-info text-white" (click)="AdOrEditSalBandItem(i,EmpPerm.EmpPermitId)"><i class="fa fa-pencil"></i>إعتماد</a>
+                          <a class="btn btn-sm btn-danger text-white ml-1" (click)="RefuseRequest(i,EmpPerm.EmpPermitId)"><i class="fa fa-close"></i>رفض</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <input type="text" [(ngModel)]="term" placeholder="بحث" class="form-control" />
+
+                <div class="table-responsive">
+                  <table class="table table-hover  table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>تاريخ المتابعة</th>
+                        <th>الموظف</th>
+                        <th>وصف ما تم</th>
+                        <th>نتيجة المتابعة</th>
+                        <th>المتابعة القادمة</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="ClientActionslist">
+                      <tr *ngFor="let ClientAction of ClientActionslist |filter:term;let i = index" style="cursor: pointer;">
+                        <th scope="row">{{i+1}}</th>
+                        <td >{{ ClientAction.ActionDate | date: 'dd/MM/yyyy'}} </td>
+                        <td >{{ ClientAction.EmpName }}</td>
+                        <td >{{ ClientAction.ActionComment }}</td>
+                        <td >{{ ClientAction.StageNameAr }}</td>
+                        <td >{{ ClientAction.NewActionDate | date: 'dd/MM/yyyy'}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="form-group">
+                 
+                    <button class="btn btn btn-secondary ml-2 " (click)="returnToClient()" ><i class="fa fa-undo"></i> الرجوع لبيانات العميل</button>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

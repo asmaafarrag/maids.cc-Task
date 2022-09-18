@@ -1,0 +1,52 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">خريطة العقارات</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+
+
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <div >
+                  <div *ngFor="let tool of HousesList | groupBy:'HouseName' | pairs " class="tools-category">
+                    <div class="card-body">
+                      <h6 >{{tool[0]}}</h6>
+                      <div  data-toggle="tooltip" data-placement="top" title="{{val.ContractValue}}" *ngFor="let val of tool[1]"   [ngClass]="getClass(val.HUnitStatus)" class="btn btn ml-1 mt-1" >
+                        {{val.HUnitName}} - {{val.HValue}} ج م
+                        
+                      </div>
+                    </div>
+                
+                </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+</section>
+

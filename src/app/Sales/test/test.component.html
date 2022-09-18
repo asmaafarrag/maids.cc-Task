@@ -1,0 +1,209 @@
+<section id="card-actions">
+    <h3 class="card-title">مرتجع بيع</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form #form="ngForm" autocomplete="off" *ngIf="servSellingRet.formData" (submit)="onSubmit(form)" novalidate>
+                    <!-- <input type="hidden" name="SellingRetId" #SellingRetId="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetId"> -->
+                   
+                    <div class="row">
+  
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingRetNo" #SellingRetNo="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetNo" class="form-control"
+                           placeholder="رقم المرتجع" required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingRetDate" #SellingRetDate="ngModel" [ngModel]="servSellingRet.formData.SellingRetDate | date:'yyyy-MM-dd'" 
+                          (ngModelChange)="servSellingRet.formData.SellingRetDate = $event" class="form-control" placeholder="التاريخ" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date">
+  
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select  name="StoreId" #StoreId="ngModel" [(ngModel)]="servSellingRet.formData.StoreId" class="form-control"
+                          required 
+                          [class.is-invalid]="!isValid && (servSellingRet.formData.StoreId == null || servSellingRet.formData.StoreId == 0)"
+                           [disabled]="servSellingRet.formData.SellingRetId !== -1 ? true : null" >
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let store of storeslist" [ngValue]="store.StoreId">{{store.StoreName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-truck"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="CustomerID" #CustomerID="ngModel" [(ngModel)]="servSellingRet.formData.CustomerID" class="form-control"
+                          required [class.is-invalid]="!isValid && (servSellingRet.formData.CustomerID == null || servSellingRet.formData.CustomerID == 0)" (ngModelChange)="setSelectedCustomer($event)"  
+                          [disabled]="servSellingRet.formData.SellingRetId !== -1 ? true : null">
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let cust of customerslist" [ngValue]="cust.CustomerID">{{cust.CustomerName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+  
+                    </div>
+                    <div class="row">
+  
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="SellingRetType" #SellingRetType="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetType" class="form-control"
+                          required  [class.is-invalid]="!isValid && (servSellingRet.formData.SellingRetType == '' )"
+                          [disabled]="servSellingRet.formData.SellingRetId !== -1 ? true : null">
+                          <option value=''>-- Select --</option>
+
+                          <option value='CASH'>CASH</option>
+                          <option value='CREDIT'>CREDIT</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-credit-card"></i>
+                          </div>
+  
+                        </fieldset>
+  
+                      </div>
+                      <div class="col-md-6">
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="TreasuryId" #TreasuryId="ngModel" [(ngModel)]="servSellingRet.formData.TreasuryId"
+                            class="form-control" required
+                            [class.is-invalid]="!isValid && (servSellingRet.formData.TreasuryId == null || servSellingRet.formData.TreasuryId == 0)"
+                            [disabled]="servSellingRet.formData.SellingRetId !== -1 ? true : null">
+                            <option value='0'>-- Select --</option>
+
+                            <option *ngFor="let treasur of treasurylist" [ngValue]="treasur.TreasuryId">
+                              {{treasur.TreasuryName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-expeditedssl"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingRetNotes" #SellingRetNotes="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetNotes" class="form-control" placeholder="ملاحظات" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="ملاحظات">
+                          <div class="form-control-position">
+                            <i class="fa fa-pencil-square-o"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 mb-2">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-sm table-bordered">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>كود الصنف</th>
+                                <th>اسم الصنف</th>
+                                <th>بلد المنشأ</th>
+                                <th>الكمية</th>
+                                <th>الوحدة</th>
+                                <th>السعر</th>
+                                <th>الاجمالى</th>
+                                <th>
+                                  <a class="btn btn-sm btn-success text-white" (click)="AddOrEditSalInvItems(null,servSellingRet.formData.SellingRetId)"><i class="fa fa-plus"></i>إضافة صنف</a>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let Item of servSellingRet.formData.sellingRetDets;let i=index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{Item.ItemNO}}</td>
+                                <td>{{Item.ItemName}}</td>
+                                <td>{{Item.CompanyName}}</td>
+                                <td>{{Item.Qty}}</td>
+                                <td>{{Item.UnitName}}</td>
+                                <td>{{Item.Price}}</td>
+                                <td>{{Item.tot}}</td>
+                                <td>
+                                  <a class="btn btn-sm btn-info text-white" (click)="AddOrEditSalInvItems(i,servSellingRet.formData.SellingRetId)"><i class="fa fa-pencil"></i>تعديل</a>
+                                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteSalInvItems(Item.SerNo, i)"><i class="fa fa-trash"></i>حذف</a>
+                                </td>
+                              </tr>
+  
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    
+                      <div class="col-md-4">
+                        <label for="Department">عدد الاصناف</label>
+                        <span>{{ItemsCount}}</span>                      
+                      </div>
+                      <div class="col-md-4">
+                        <label for="Department">إجمالى المرتجعات</label>
+                        <p>{{servSellingRet.formData.SellingRetTot}}</p>
+                      </div>
+                      <div class="col-md-4">
+                       
+                      </div>
+  
+                    
+                    </div>
+                    <div class="row">
+                    
+                      <div class="col-md-2">
+                        <label for="Department">نسبة الخصم</label>
+                        <input name="SellingRetDiscRatio" #SellingRetDiscRatio="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetDiscRatio"  placeholder="اجمالى الفاتورة" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="نسبة الخصم"  (keyup)="calcDiscValue()" >%
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Department">قيمة الخصم</label>
+                          <input name="SellingRetDisc" #SellingRetDisc="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetDisc"  placeholder="اجمالى الفاتورة" required
+                          data-toggle="tooltip" data-placement="top"  title data-original-title="خصم الفاتورة" (keyup)="calcDiscRatio()">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="Department">صافى المرتجعات</label>
+                        <input name="SellingRetVal" #SellingRetVal="ngModel" [(ngModel)]="servSellingRet.formData.SellingRetVal" class="form-control" placeholder="اجمالى الفاتورة" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="صافى الفاتورة">
+                      </div>
+  
+                      <div class="col-md-4">
+                        <button class="btn btn-success"  type="submit" [disabled]="(!isEnabled)? true : null"><i class="icon-check2" ></i>
+                          حفظ</button>
+                          <button class="btn btn-warning ml-1 btn-md "  type='button' (click)="generatePdf()" ><i class="fa fa-file"></i>
+                            طباعة </button>
+                          <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/SellingRetsView"  ><i class="fa fa-table"></i> الرجوع لاستعراض الفواتير</button>
+                      </div>
+                    </div>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  </section>

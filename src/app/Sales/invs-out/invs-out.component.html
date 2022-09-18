@@ -1,0 +1,140 @@
+<section id="card-actions">
+    <h3 class="card-title">سند صرف</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 mb-2">
+
+                                <form #form="ngForm" autocomplete="off" *ngIf="InvService.formData"
+                                    (submit)="onSubmit(from)" novalidate>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <label>رقم السند</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="billno" #billno="ngModel"
+                                                    [(ngModel)]="InvService.formData.billno" class="form-control"
+                                                    placeholder="رقم السند" required>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-building"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>التاريخ</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="InvDate" #InvDate="ngModel" 
+                                                   class="form-control"
+                                                   
+                                                    [ngModel]="InvService.formData.InvDate | date:'yyyy-MM-dd'" 
+                                                    (ngModelChange)="InvService.formData.InvDate = $event"
+                                                    placeholder="التاريخ" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="التاريخ"
+                                                    type="date">
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>حساب المصروف</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <select name="accountId" #accountId="ngModel"
+                                                    [(ngModel)]="InvService.formData.accountId" class="form-control"
+                                                    required
+                                                    [class.is-invalid]="!isValid && InvService.formData.accountId == null">
+                                                    <option value='0'>-- Select --</option>
+
+                                                    <option *ngFor="let acc of accountslist" [ngValue]="acc.ACCOUNTID">
+                                                        {{acc.AccountName}}</option>
+                                                </select>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-sign-in"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>الخزينة</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <select name="TreasuryId" #TreasuryId="ngModel"
+                                                    [(ngModel)]="InvService.formData.TreasuryId" class="form-control"
+                                                    required
+                                                    [class.is-invalid]="!isValid && InvService.formData.TreasuryId == null">
+                                                    <option value='0'>-- Select --</option>
+
+                                                    <option *ngFor="let treasur of treasurylist"
+                                                    [ngValue]="treasur.TreasuryId"><span>{{treasur.TreasuryName}}</span> &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bolder;" >{{treasur.CurrBalOfAcc }}LE</span>  </option>
+                                                </select>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-expeditedssl"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>قيمة سند الصرف</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+
+                                                <input name="Val" #Val="ngModel"
+                                                    [(ngModel)]="InvService.formData.Val" placeholder="اقيمة السند"
+                                                    required 
+                                                    [class.is-invalid]="!isValid && (InvService.formData.Val == null || InvService.formData.Val == 0) "
+                                                    data-toggle="tooltip" data-placement="top" title
+                                                    data-original-title="قيمة السند" class="form-control"
+                                                    >
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label>ملاحظات</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="InvNotes" #InvNotes="ngModel"
+                                                    [(ngModel)]="InvService.formData.InvNotes" class="form-control"
+                                                    placeholder="ملاحظات" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="ملاحظات">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                      
+                                     
+
+                                            <div class="col-md-6">
+                                                <button class="btn btn-success" type="submit" [disabled]="((InvService.formData.InvID !== -1  && UserType!='ADMIN') || !isEnabled)? true : null" ><i
+                                                        class="icon-check2"></i>
+                                                    حفظ</button>
+                                                <button class="btn btn-outline-dark ml-2 " type='button'
+                                                    routerLink="/InvOutView"><i class="fa fa-table"></i> الرجوع لاستعراض
+                                                    سندات الصرف</button>
+                                            </div>
+                                        </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

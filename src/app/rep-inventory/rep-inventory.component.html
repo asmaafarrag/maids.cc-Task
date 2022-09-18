@@ -1,0 +1,136 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">تقرير جرد الاصناف بالمخازن </h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+  
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+  
+              </ul>
+            </div>
+          </div>
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form (submit)="Saveform()">
+<!--        
+                    <div class="row">
+                      
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" style="text-align: right">
+                            <input matInput placeholder="الصنف" aria-label="الصنف" [matAutocomplete]="auto"
+                              [formControl]="stateCtrl" dir="ltr">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                              <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                                <span>{{state.ItemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                  style="font-weight: bolder;">{{state.ItemSalePrice}}LE</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                  style="font-weight: bolder;">({{state.AvailableQty}})</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+                     
+                      </div>
+                    </div> -->
+                  
+
+                    <div class="container-fluid text-center">
+                      <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                    </div>
+  
+  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="card">
+            <div class="card-header">
+              <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+              <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                  <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+    
+                  <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+    
+                </ul>
+              </div>
+            </div>
+            <div class="card-body collapse in">
+              <div class="card-block">
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 mb-2">
+                    <h4 class="card-title">{{ItemName}}</h4>
+                    <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" />
+                    <div class="table-responsive text-nowrap">
+                      <table class="table table-sm table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>                       
+                            <th>كود الصنف</th>
+                            <th>اسم الصنف</th>
+                            <th>المخزن الكبير</th>
+                            <th>مخزن شبرا</th>
+                            <th>المحمودي</th>
+                            <th>جورج</th>
+                            <th>جسر السويس</th>
+                            <th>المخزن الصغير</th>
+  
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="SellingDetails">
+                          <tr *ngFor="let Selling of SellingDetails | filter:ItemName ;let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{ Selling.itemid }}</td>
+                            <td>{{ Selling.ItemName }}</td>
+                            <td>{{ Selling.BIG_STORE }}</td>
+                            <td>{{ Selling.SHOBRAWARE_HOUSE }}</td>
+                            <td>{{ Selling.ELMAHMOUDY }}</td>
+                            <td>{{ Selling.GEORGE }}</td>
+                            <td>{{ Selling.GESR_ELSUEZ }}</td>
+                            <td>{{ Selling.SMALL_STORE }}</td>
+                          </tr>
+                        </tbody>
+                          <!-- <thead>
+                           <tr>
+                            <th></th>
+                            <th>الاجمالى</th>
+                            <th></th>
+                            <th>{{ ItemsCount }}</th>
+                            <th></th>
+                            <th>{{ TotalCOSTPrice }}</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>                      
+                          </tr>
+                        </thead>  -->
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+    
+          </div>
+        </div>
+      </div>
+    
+  
+  
+  </section>

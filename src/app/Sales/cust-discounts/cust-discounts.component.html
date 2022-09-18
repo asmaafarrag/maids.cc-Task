@@ -1,0 +1,113 @@
+<section id="card-actions">
+    <h3 class="card-title">اشعار خصم عملاء</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 mb-2">
+
+                                <form #form="ngForm" autocomplete="off" *ngIf="CustDiscountServ.formData"
+                                    (submit)="onSubmit(from)" novalidate>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <label>رقم الاشعار</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="CustDiscountNo" #CustDiscountNo="ngModel"
+                                                    [(ngModel)]="CustDiscountServ.formData.CustDiscountNo" class="form-control"
+                                                    placeholder="رقم الاشعار" required>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-building"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>التاريخ</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="CustDiscountDate" #CustDiscountDate="ngModel"
+                                                [ngModel]="CustDiscountServ.formData.CustDiscountDate | date:'yyyy-MM-dd'" 
+                                                (ngModelChange)="CustDiscountServ.formData.CustDiscountDate = $event" class="form-control"
+                                                    placeholder="التاريخ" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="التاريخ"
+                                                    type="date">
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <label>العميل</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <select name="CustomerID" #CustomerID="ngModel" [(ngModel)]="CustDiscountServ.formData.CustomerID" class="form-control"
+                                                required [class.is-invalid]="!isValid && (CustDiscountServ.formData.CustomerID == null || CustDiscountServ.formData.CustomerID == 0)" (ngModelChange)="setSelectedCustomer($event)"  
+                                                [disabled]="CustDiscountServ.formData.CustDiscountId !== -1 ? true : null">
+                                                <option value='0'>-- Select --</option>
+                                                  <option *ngFor="let cust of customerslist" [ngValue]="cust.CustomerID">{{cust.CustomerName}}</option>
+                                                </select>
+                                                <div class="form-control-position">
+                                                  <i class="icon-user4"></i>
+                                                </div>
+                        
+                                              </fieldset>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label>قيمة الخصم</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+
+                                                <input name="CustDiscountValue" #CustDiscountValue="ngModel" [(ngModel)]="CustDiscountServ.formData.CustDiscountValue"
+                                                    placeholder="قيمة الخصم" required 
+                                                    [class.is-invalid]="!isValid && (CustDiscountServ.formData.CustDiscountValue == null || CustDiscountServ.formData.CustDiscountValue == 0) "
+                                                    data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="قيمة الخصم"
+                                                    class="form-control">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="CustDiscountNotes" #CustDiscountNotes="ngModel"
+                                                    [(ngModel)]="CustDiscountServ.formData.CustDiscountNotes" class="form-control"
+                                                    placeholder="ملاحظات" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="ملاحظات">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                               
+
+                                        <div class="col-md-6">
+                                            <button class="btn btn-success" type="submit" [disabled]="((CustDiscountServ.formData.CustDiscountId !== -1  && UserType!='ADMIN') || !isEnabled)? true : null" ><i class="icon-check2"></i>
+                                                حفظ</button>
+                                            <button class="btn btn-outline-dark ml-2 " type='button'
+                                                routerLink="/CustDiscView"><i class="fa fa-table"></i> الرجوع لاستعراض
+                                                اشعارات الخصم</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

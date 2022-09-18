@@ -1,0 +1,114 @@
+<section id="card-actions">
+    <h3 class="card-title">اشعار خصم عملاء</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 mb-2">
+
+                                <form #form="ngForm" autocomplete="off" *ngIf="SuppDiscountServ.formData"
+                                    (submit)="onSubmit(from)" novalidate>
+                                    <input type="hidden" name="SuppDiscountId" #SuppDiscountId="ngModel" [(ngModel)]="SuppDiscountServ.formData.SuppDiscountId">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <label>رقم الاشعار</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="SuppDiscountNo" #SuppDiscountNo="ngModel"
+                                                    [(ngModel)]="SuppDiscountServ.formData.SuppDiscountNo" class="form-control"
+                                                    placeholder="رقم الاشعار" required>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-building"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>التاريخ</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="SuppDiscountDate" #SuppDiscountDate="ngModel"
+                                                [ngModel]="SuppDiscountServ.formData.SuppDiscountDate | date:'yyyy-MM-dd'" 
+                                                (ngModelChange)="SuppDiscountServ.formData.SuppDiscountDate = $event" class="form-control"
+                                                    placeholder="التاريخ" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="التاريخ"
+                                                    type="date">
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>المورد</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <select name="SupplierId" #SupplierId="ngModel" [(ngModel)]="SuppDiscountServ.formData.SupplierId" class="form-control"
+                                                required [class.is-invalid]="!isValid && (SuppDiscountServ.formData.SupplierId == null || SuppDiscountServ.formData.SupplierId == 0)" 
+                                                [disabled]="SuppDiscountServ.formData.SuppDiscountId !== -1 ? true : null">
+                                                <option value='0'>-- Select --</option>
+                                                <option *ngFor="let Supp of Supplierslist" [ngValue]="Supp.SupplierId">{{Supp.SupplierName}}</option>
+                                                </select>
+                                                <div class="form-control-position">
+                                                  <i class="icon-user4"></i>
+                                                </div>
+                        
+                                              </fieldset>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label>قيمة الخصم</label>
+                                            <fieldset class="form-group position-relative has-icon-left">
+
+                                                <input name="SuppDiscountValue" #SuppDiscountValue="ngModel" [(ngModel)]="SuppDiscountServ.formData.SuppDiscountValue"
+                                                    placeholder="قيمة الخصم" required 
+                                                    [class.is-invalid]="!isValid && (SuppDiscountServ.formData.SuppDiscountValue == null || SuppDiscountServ.formData.SuppDiscountValue == 0) "
+                                                    data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="قيمة الخصم"
+                                                    class="form-control">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input name="SuppDiscountNotes" #SuppDiscountNotes="ngModel"
+                                                    [(ngModel)]="SuppDiscountServ.formData.SuppDiscountNotes" class="form-control"
+                                                    placeholder="ملاحظات" required data-toggle="tooltip"
+                                                    data-placement="top" title data-original-title="ملاحظات">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                   
+
+                                        <div class="col-md-6">
+                                            <button class="btn btn-success" type="submit" [disabled]="((SuppDiscountServ.formData.SuppDiscountId !== -1  && UserType!='ADMIN') || !isEnabled)? true : null" ><i class="icon-check2"></i>
+                                                حفظ</button>
+                                            <button class="btn btn-outline-dark ml-2 " type='button'
+                                                routerLink="/SuppDiscView"><i class="fa fa-table"></i> الرجوع لاستعراض
+                                                اشعارات الخصم</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

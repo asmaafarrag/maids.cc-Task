@@ -1,0 +1,129 @@
+<section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title" >إضافة عملاء من شيت اكسيل</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+
+                                <div class="form-group text-center">  
+                                    <div class="input-group"> 
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+                                <button *ngIf="Loadend === false" class="btn btn-sm btn-success clearfix ">
+                                    <label>
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Import
+                                        <input hidden type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                        (change)="onChange($event)" #inputFile>
+                                     </label>
+                                </button>
+
+                                
+                                <button *ngIf="Loadend === true" class="btn btn-dark clearfix ">
+                                    <label>
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Clear
+                                        <input hidden 
+                                        (click)="Clear()" >
+                                     </label>
+                                </button>
+
+                                <div *ngIf="Loadend === true">
+                                    <button class="btn btn-info " (click)="SendtoAPI()"  ><i class="icon-check2"></i>
+                                        المتابعة</button>
+                  
+                                </div>
+
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table table-sm table-bordered">
+                                      <thead>
+                                        <tr>
+                                         
+
+
+                                            <th>العميل</th>
+                                            <th>الموبايل</th>
+                                            <th>المشروع</th>
+                                            <!-- <th>تاريخ الانشاء</th> -->
+
+                                            <th>المرحلة الحالية</th>
+                                            <th>رقم الجهة</th>
+                                            <th>اخر ملاحظة</th>
+
+                                            <th>مسؤول المبيعات</th>
+                                            <th>التليفون</th>
+                                            <th>العنوان</th>
+
+                                            <th>المدينة</th>
+                                            <th>الأقليم / القرية</th>
+                                            <th>ويب سايت</th>
+
+                                            <th>التواصل الشخصي</th>
+                                            <th>تواصل العمل </th>
+
+                                            <th>هاتف شخصي</th>
+                                            <th>ايميل شخصي</th>
+                                            <th>مجال العمل لدى الشركة / النشاط </th>
+
+                                      
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+              
+                                        <tr *ngFor="let item of dataSheet | async">
+                                          <td *ngFor="let key of keys">
+                                            {{item[key]}}
+                                          </td>
+                                        </tr>
+              
+              
+                                      </tbody>
+                                    </table>
+                                  </div>
+                            </div>
+
+                       <!--      <div class="col-md-3">
+                                ...
+
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                            </div>
+                            <div class="col-md-2">
+                                Result: {{count}}
+                            </div> -->
+                            <!-- <div class="col-md-2" *ngIf="dataSheet">
+                                <button type="button" (click)="fnExport();"
+                                    class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                                    Export to Excel</button>
+                            </div> -->
+
+                          
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

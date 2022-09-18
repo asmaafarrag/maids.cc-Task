@@ -1,0 +1,14 @@
+.routeGreen{
+    background-color: rgb(165, 167, 165);
+    color: white;
+}
+
+.positive {
+    background-color: #c0f2be09;
+    color: rgb(182, 39, 39);
+}
+
+/* .negative {
+    background-color: inherit;
+    color: blue;
+} */

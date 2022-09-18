@@ -1,0 +1,154 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">تقرير المبيعات بالاصناف</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <form (submit)="Saveform()">
+
+                  
+                  <div class="form-group">
+                    <label for="Department">المخزن</label>
+                    <select id="Department" name="Department" class="form-control" [(ngModel)]="selectedstore"
+                      (ngModelChange)="setSelectedStore($event)">
+                      <option *ngFor="let store of storeslist" [ngValue]="store">{{store.StoreName}}</option>
+                    </select>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="Customer">العميل</label>
+                    <select id="Customer" name="Customer" class="form-control" [(ngModel)]="selectedCustomer"
+                      (ngModelChange)="setSelectedCustomer($event)">
+                      <option *ngFor="let cust of customerslist" [ngValue]="cust">{{cust.CustomerName}}</option>
+                    </select>    
+                   
+                  </div>
+
+
+              
+                  
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width" style="text-align: right">
+                      <input matInput placeholder="الصنف" aria-label="الصنف" [matAutocomplete]="auto"
+                        [formControl]="stateCtrl">
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                          <span>{{state.ItemName}}</span>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker1" placeholder="الفترة من" [value]="fromDate.value" [formControl]="fromDate">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="الى" [value]="toDate.value" [formControl]="toDate">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" />
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-sm table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>                       
+                        <th>الصنف</th>
+                        <th>السعر</th>
+                        <th>الكمية</th>
+                        <!-- <th>الوحدة</th> -->
+                        <th>الاجمالى</th>
+                        <th>الفاتورة</th>
+                        <th>التاريخ</th>
+                        <th>العميل</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="SellingDetails">
+                      <tr *ngFor="let SellingDet of SellingDetails | customerEmailFilter:ItemName;let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ SellingDet.ItemName }}</td>
+                        <td>{{ SellingDet.Price }}</td>
+                        <td>{{ SellingDet.Qty }}</td>
+                        <!-- <td>{{ SellingDet.UnitName }}</td> -->
+                        <td>{{ SellingDet.Tot }}</td>
+                        <td>{{ SellingDet.SellingNo }}</td>
+                        <td>{{ SellingDet.SellingDate }}</td>
+                        <td>{{ SellingDet.CustomerName }}</td>
+                      </tr>
+                    </tbody>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>الاجمالى</th>
+                        <th></th>
+                        <th>{{ ItemsCount }}</th>
+                        <th></th>
+                        <th>{{ TotalCOSTPrice }}</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>                      
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

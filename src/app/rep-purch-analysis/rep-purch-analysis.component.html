@@ -1,0 +1,157 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">تقرير تحليل فاتورة شراء </h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+  
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+  
+              </ul>
+            </div>
+          </div>
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form (submit)="Saveform()">
+                  
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width" style="text-align: right">
+                        <input matInput placeholder="رقم فاتورة الشراء " aria-label="رقم فاتورة الشراء" [matAutocomplete]="auto"
+                          [formControl]="stateCtrl" dir="ltr">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state" >
+                          <span style="font-weight: bolder;">{{state.PurchasingID}}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                              style="font-weight: bolder;">({{state.PurchasingName}})</span>
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
+
+
+                    <!-- <div class="form-group">
+                        <label for="Department">المورد</label>
+                        <select id="Department" name="Department" class="form-control form-control-lg input-lg"
+                          [(ngModel)]="selectedstore" (ngModelChange)="setSelectedStore($event)">
+                          <option *ngFor="let store of storeslist" [ngValue]="store.SupplierId">{{store.SupplierName}}</option>
+                        </select>
+                      </div> -->
+  
+                    <!-- <div class="form-group">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker1" placeholder="الفترة من" [value]="fromDate.value" [formControl]="fromDate">
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker2" placeholder="الى" [value]="toDate.value" [formControl]="toDate">
+                          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div> -->
+  
+
+                    <div class="container-fluid text-center">
+                      <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                    </div>
+  
+  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"></h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+  
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+  
+              </ul>
+            </div>
+          </div>
+  
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+                  <!-- <input type="text" [(ngModel)]="SupplierName" placeholder="بحث" class="form-control" /> -->
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-sm table-hover table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>الكود </th>
+                          <th>الصنف</th>
+                          <th>كمية الفاتورة</th>
+                          <!-- <th>الكمية السابقة</th>
+                          <th>الكمية الحالية </th> -->
+                          <th>الكمية المباعة</th>
+                          <th>الكمية المتبقية</th>
+                          <th>السعر بالجنية</th>
+                          <th>السعر بالدولار $</th>
+                          <th>الاجمالى بالجنية</th>
+                          <th>الاجمالي بالدولار $</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="ItemTransferViewList">
+                        <tr *ngFor="let stockitem of ItemTransferViewList ;let i = index">
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{ stockitem.ItemId }}</td>
+                          <td>{{ stockitem.ItemName }}</td>
+                          <td>{{ stockitem.Purchasing_Qty }}</td>
+                          <!-- <td>{{ stockitem.Old_Qty }}</td>
+                          <td>{{ stockitem.Curr_Qty }}</td> -->
+                          <td>{{ stockitem.Selling_Qty }}</td>
+                          <td>{{ stockitem.Rest_Qty }}</td>
+                          <td>{{ stockitem.Price }}</td>
+                          <td>{{ stockitem.DollarPrice }}</td>
+                          <td>{{ stockitem.TotalPrice  }}</td>
+                          <td>{{ stockitem.TotalDollarPrice  }}</td>
+                        </tr>
+                      </tbody>
+                      <thead>
+                        <tr>       
+                         <th>الاجمالى</th>
+                         <th></th>
+                         <th></th>
+                         <th></th>
+                         <th></th>
+                         <th></th>
+                         <th>{{TotalEGYTPrice}}</th>
+                         <th>{{TotalDollarPrice}}</th>   
+                         <th></th>
+                         <th></th>                   
+                       </tr>
+                     </thead> 
+  
+                      
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </section>

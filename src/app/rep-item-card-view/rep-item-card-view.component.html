@@ -1,0 +1,133 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">تقرير حركة صنف</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+  
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+  
+              </ul>
+            </div>
+          </div>
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form (submit)="Saveform()">
+                    <div class="form-group">
+                      <label for="Department">المخزن</label>
+                      <select id="Department" name="Department" class="form-control form-control-lg input-lg"
+                        [(ngModel)]="selectedstore" (ngModelChange)="setSelectedStore($event)">
+                        <option value='0'>All</option>
+                        <option *ngFor="let store of storeslist" [ngValue]="store">{{store.StoreName}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width" style="text-align: right">
+                        <input matInput placeholder="الصنف" aria-label="الصنف" [matAutocomplete]="auto"
+                          [formControl]="stateCtrl" dir="ltr">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                            <span>{{state.ItemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                              style="font-weight: bolder;">{{state.ItemSalePrice}}LE</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                              style="font-weight: bolder;">({{state.AvailableQty}})</span>
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
+  
+                    <div class="form-group">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="الفترة من" [value]="fromDate.value" [formControl]="fromDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker2" placeholder="الى" [value]="toDate.value" [formControl]="toDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="container-fluid text-center">
+                      <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                    </div>
+  
+  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">{{selectedstore.StoreName}}</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+  
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+  
+              </ul>
+            </div>
+          </div>
+  
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+                  <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" />
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-sm table-hover table-bordered" *ngIf="selectedstore">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>نوع الحركة</th>
+                          <th>الكمية</th>
+                          <th>الوحدة</th>
+                          <th>السعر</th>
+                          <th>رقم الحركة</th>
+                          <th>البيان</th>
+                          <th>التاريخ</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="ItemTransferViewList">
+                        <tr *ngFor="let stockitem of ItemTransferViewList | customerEmailFilter:ItemName;let i = index">
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{ stockitem.TRANSTYPE }}</td>
+                          <td>{{ stockitem.Qty }}</td>
+                          <td>{{ stockitem.UnitName }}</td>
+                          <td>{{ stockitem.Price }}</td>
+                          <td>{{ stockitem.BillNo }}</td>
+                          <td>{{ stockitem.BillName }} &nbsp; {{ stockitem.Notes }}</td>
+                          <td>{{ stockitem.BillDATE }}</td>
+                        </tr>
+                      </tbody>
+  
+                      
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </section>

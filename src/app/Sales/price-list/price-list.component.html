@@ -1,0 +1,374 @@
+<section id="card-actions">
+    <h3 class="card-title">عرض الاسعار </h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form #form="ngForm" autocomplete="off" *ngIf="PriceListsServ.formData" (submit)="onSubmit(form)" novalidate>
+                  
+                    <div class="row">
+  
+                      <!-- <div class="col-md-4">
+                        <label>مسلسل </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="PriceListID" #PriceListID="ngModel" [(ngModel)]="PriceListsServ.formData.PriceListID" class="form-control"
+                           placeholder="مسلسل " required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>  -->
+  
+                       <div class="col-md-6">
+                          <label>التاريخ </label>
+                          <div class="form-group">  
+                              <div class="input-group">
+                                  <input _ngcontent-ugo-c140="" name="PriceListDate" placeholder="  لتاريخ " required="" 
+                                  data-toggle="tooltip" data-placement="top" title="" data-original-title="التاريخ " 
+                                  type="date" class="form-control ng-pristine ng-valid ng-touched" 
+                                  ng-reflect-required="" ng-reflect-name="PriceListDate" 
+                                  ng-reflect-model="2021-06-10" #PriceListDate="ngModel" [(ngModel)]="PriceListsServ.formData.PriceListDate" >
+                              </div>
+                          </div>
+                       </div> 
+
+                       <div class="col-md-6">
+                        <label>اسم العميل </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="custnam" #custnam="ngModel" [(ngModel)]="PriceListsServ.formData.custnam" class="form-control"
+                           placeholder="اسم العميل " required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div> 
+  
+                    </div>
+
+
+                   <!--  <div class="row">
+
+                      <div class="col-md-6">
+                        <label>تسعر بالشرائح</label>
+                        <div class="form-group">
+                          <select name="CustSlides" #CustSlides="ngModel" [(ngModel)]="PriceListsServ.formData.CustSlides" required
+                            class="form-control ">
+                            <option *ngFor="let CustSlide of CustSlideslist" [ngValue]="CustSlide.CustSlideId">{{CustSlide.CustSlideName}}</option>
+                          </select>
+                        </div>
+                      </div> 
+
+                    </div>-->
+                  
+           
+                  <div class="row">
+  
+                    <div class="col-md-6">
+                        <label>  العميل</label>
+                        <div class="form-group">
+                          <select name="CustomerId" #CustomerId="ngModel" [(ngModel)]="PriceListsServ.formData.CustomerId" required
+                           class="form-control ">
+                           <option *ngFor="let cust of customerslist"[ngValue]="cust.CustomerID">{{cust.CustomerName}} </select>
+                        </div>
+                    </div>
+  
+                    <div class="col-md-6">
+                        <label> المسئول</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="RespName" #RespName="ngModel" [(ngModel)]="PriceListsServ.formData.RespName" class="form-control"
+                           placeholder="اسم المسئول" required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+                        </fieldset>
+                    </div>
+  
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="PriceListNotes" #PriceListNotes="ngModel" [(ngModel)]="PriceListsServ.formData.PriceListNotes" class="form-control" placeholder="ملاحظات" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="ملاحظات">
+                        <div class="form-control-position">
+                          <i class="fa fa-pencil-square-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+
+
+
+
+
+   <!--               <div class="row">
+
+                    <div class="col-md-6">
+                      <label>رقم التليفون</label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="TelNo" #TelNo="ngModel" [(ngModel)]="PriceListsServ.formData.TelNo" class="form-control"
+                         placeholder="رقم التليفون " required>
+                        <div class="form-control-position">
+                          <i class="fa fa-building"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+ 
+                    <div class="col-md-6">
+                        <label>رقم الفاكس</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="FaxNo" #FaxNo="ngModel" [(ngModel)]="PriceListsServ.formData.FaxNo" class="form-control"
+                          placeholder="رقم الفاكس " required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+                        </fieldset>
+                    </div> 
+
+                  </div>
+  -->
+                   
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 mb-2">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-sm table-bordered">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>كود الصنف</th>
+                                <th>اسم الصنف</th>
+                                <th>الكمية</th>
+                                <th>الوحدة</th>
+                                <th>السعر</th>
+                                <th>الاجمالي</th>
+                                <!-- <th>اخر سعر بيع </th>
+                                <th>سعر التكلفة</th>
+                                <th>النسبة</th>  -->
+                                <th>
+                                  <a class="btn btn-sm btn-success text-white" (click)="AddOrEditSalInvItems(null,PriceListsServ.formData.PriceListID)"><i class="fa fa-plus"></i>إضافة صنف</a>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let Item of PriceListsServ.formData.PriceListDets;let i=index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{Item.itemID}}</td>
+                                <td>{{Item.ItemName}}</td>
+                                <td>{{Item.Qty}}</td>
+                                <td>{{Item.UnitName}}</td>
+                                <td>{{Item.PRICE}}</td>
+                                <td>{{Item.tot}}</td>
+                                <!-- <td>{{Item.SalBandTypeID}}</td>
+                                <th>{{Item.CostPrice}}</th>
+                                <td>{{Item.EmpCurrSalDetValue}}</td> -->
+                        
+                                <td>
+                                  <a class="btn btn-sm btn-info text-white" (click)="AddOrEditSalInvItems(i,PriceListsServ.formData.PriceListID)"><i class="fa fa-pencil"></i>تعديل</a>
+                                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteSalInvItems(Item.PriceListID, i)"><i class="fa fa-trash"></i>حذف</a>
+                                </td>
+                              </tr>
+  
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+
+                      <div class="col-md-3">
+                        <label for="Department">عدد الاصناف</label>
+                        <span>{{ItemsCount}}</span>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="Department">إجمالى العرض</label>
+                        <p>{{PriceListsServ.formData.PriceListVal}}</p>
+                      </div>
+
+                      <div class="col-md-3 mb-2">
+                        <label for="Department">قيمة الخصم</label>
+                        <input name="ListDisc" #ListDisc="ngModel" [(ngModel)]="PriceListsServ.formData.ListDisc"
+                        class="form-control" placeholder=" قيمة الخصم " required data-toggle="tooltip"
+                        data-placement="top" title data-original-title="قيمة الخصم" (keyup)="calcGrandTotal()" > 
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label for="Department">صافي العرض</label>
+                        <p>{{PriceListsServ.formData.Net}}</p>
+                      </div>
+
+                      
+                    
+
+                    </div>
+
+                    <div class="row">
+
+                   
+                      <!-- <div class="col-md-4">
+                        <label for="Department">صافى العرض</label>
+                        <input name="NetAfterDisc" #NetAfterDisc="ngModel" [(ngModel)]="PriceListsServ.formData.NetAfterDisc"
+                          class="form-control" placeholder="صافي العرض" required data-toggle="tooltip"
+                          data-placement="top" title data-original-title="صافى العرض">
+                      </div> -->
+
+                      <!-- <div class="col-md-2">
+                        <label >مدة العرض من </label>
+                        <input name="ListTimeFrom" #ListTimeFrom="ngModel" [(ngModel)]="PriceListsServ.formData.ListTimeFrom"  placeholder="مدة العرض من" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="مدة العرض من" >
+                      </div>
+
+                  
+                      <div class="col-md-2">
+                        <label >مدة العرض إلى</label>
+                        <input name="ListTimeTo" #ListTimeTo="ngModel" [(ngModel)]="PriceListsServ.formData.ListTimeTo"  placeholder="مدة العرض إلى" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="مدة العرض إلى"  >
+                      </div>
+      
+                      <div class="col-md-2">
+                        <label >اسم مقدم العرض</label>
+                        <input name="EmpResp" #EmpResp="ngModel" [(ngModel)]="PriceListsServ.formData.EmpResp" class="form-control" placeholder="اسم مقدم العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="اسم مقدم العرض">
+                      </div> -->
+  
+  
+                    </div>
+
+
+                   <!--   <div class="row">
+  
+                     <div class="col-md-2">
+                        <label for="Department">نسبة الخصم</label>
+                        <input name="SellingDiscRatio" #SellingDiscRatio="ngModel"
+                          [(ngModel)]="PriceListsServ.formData.SellingDiscRatio" placeholder="اجمالى العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="نسبة الخصم"
+                          (keyup)="calcDiscValue()">%
+                      </div> 
+                      <div class="col-md-2">
+                        <label for="Department">قيمة الخصم</label>
+                        <input name="ListDisc" #ListDisc="ngModel" [(ngModel)]="PriceListsServ.formData.ListDisc"
+                          placeholder="قيمة الخصم" required data-toggle="tooltip" data-placement="top" title
+                          data-original-title="خصم العرض" (keyup)="calcDiscRatio()">
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Department">صافى العرض</label>
+                        <input name="NetAfterDisc" #NetAfterDisc="ngModel" [(ngModel)]="PriceListsServ.formData.NetAfterDisc"
+                          class="form-control" placeholder="صافي العرض" required data-toggle="tooltip"
+                          data-placement="top" title data-original-title="صافى العرض">
+                      </div>
+  
+                    </div>-->
+
+
+
+                     <div class="row" style="margin-top: 20px;">
+                     
+                      <div class="col-md-3">
+                        <label >مدة العرض من </label>
+                        <!-- <input name="ListTimeFrom" #ListTimeFrom="ngModel" [(ngModel)]="PriceListsServ.formData.ListTimeFrom"  placeholder="مدة العرض من" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="مدة العرض من" > -->
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input name="ListTimeFrom" #ListTimeFrom="ngModel"
+                            [ngModel]="PriceListsServ.formData.ListTimeFrom | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="PriceListsServ.formData.ListTimeFrom = $event" class="form-control"
+                                placeholder="مدة العرض من" required data-toggle="tooltip"
+                                data-placement="top" title data-original-title="مدة العرض من" type="date">
+                          </fieldset>
+                      </div>
+
+                  
+                      <div class="col-md-3">
+                        <label >مدة العرض إلى</label>
+                        <!-- <input name="ListTimeTo" #ListTimeTo="ngModel" [(ngModel)]="PriceListsServ.formData.ListTimeTo"  placeholder="مدة العرض إلى" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="مدة العرض إلى" > -->
+
+
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input name="ListTimeTo" #ListTimeTo="ngModel"
+                            [ngModel]="PriceListsServ.formData.ListTimeTo | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="PriceListsServ.formData.ListTimeTo = $event" class="form-control"
+                                placeholder="مدة العرض إلى" required data-toggle="tooltip"
+                                data-placement="top" title data-original-title="مدة العرض إلى" type="date">
+                          </fieldset>
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label > شروط العرض</label>
+                        <input name="PayCond" #PayCond="ngModel" [(ngModel)]="PriceListsServ.formData.PayCond" class="form-control" placeholder="شروط العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="شروط العرض">
+                      </div>
+  
+  
+                      <div class="col-md-3">
+                        <label >اسم مقدم العرض</label>
+                        <input name="EmpResp" #EmpResp="ngModel" [(ngModel)]="PriceListsServ.formData.EmpResp" class="form-control" placeholder="اسم مقدم العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="اسم مقدم العرض">
+                      </div>
+
+                      <!-- -- <div class="col-md-2">
+                        <label >اجمالي العرض</label>
+                        <input name="PriceListVal" #PriceListVal="ngModel" [(ngModel)]="PriceListsServ.formData.PriceListVal" class="form-control" placeholder="اجمالي العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="اجمالي العرض">
+                      </div> 
+
+
+                      <div class="col-md-2">
+                        <label >قيمة الخصم</label>
+                          <input name="ListDisc" #ListDisc="ngModel" [(ngModel)]="PriceListsServ.formData.ListDisc"  placeholder="الخصم" required
+                          data-toggle="tooltip" data-placement="top"  title data-original-title="خصم " (keyup)="calcDiscRatio()">
+                      </div>
+
+                      <div class="col-md-2">
+                        <label >صافى العرض</label>
+                        <input name="Net" #Net="ngModel" [(ngModel)]="PriceListsServ.formData.Net" class="form-control" placeholder="صافي العرض" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="صافى العرض">
+                      </div> -->
+
+
+
+               
+                  </div> 
+
+
+                  <div class="row">
+
+                 
+
+
+                  </div>
+               
+               
+                
+  
+                   
+                    <div class="row mt-2">
+                      <div class="col-md-4">
+                        <button class="btn btn-success"  type="submit" ><i class="icon-check2" ></i>
+                          حفظ</button>
+                          <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/priceListView" ><i class="fa fa-table"></i> الرجوع لاستعراض عروض الاسعار</button>
+                      </div>
+                    </div>
+                  
+
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  </section>

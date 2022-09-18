@@ -1,0 +1,44 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                  <input type="hidden" name="ProjectID" [value]="service.formData.ProjectID">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                          <i class="fas fa-user-circle" [class.green-icon]="ProjectName.valid"
+                            [class.red-icon]="ProjectName.invalid && ProjectName.touched"></i>
+                        </div>
+                      </div>
+                      <input name="ProjectName" #ProjectName="ngModel" [(ngModel)]="service.formData.ProjectName"
+                        class="form-control" placeholder="Project Name" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid"><i
+                        class="fa fa-database"></i>
+                      Submit</button>
+                      <button class="btn btn-outline-dark ml-2 btn-lg" routerLink="/CrmProjects" ><i class="fa fa-table"></i> الرجوع لاستعراض المشاريع</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

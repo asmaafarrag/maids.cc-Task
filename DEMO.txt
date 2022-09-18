@@ -1,0 +1,161 @@
+<div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
+  <!-- main menu header-->
+  <div class="main-menu-header">
+    <input type="text" placeholder="Search" class="menu-search form-control round" />
+  </div>
+  <!-- / main menu header-->
+  <!-- main menu content-->
+  <div class="main-menu-content">
+    <ul [hidden]="!userService.isLoggedIn()" id="main-menu-navigation" data-menu="menu-navigation"
+      class="navigation navigation-main">
+
+
+      <li class="active"><a routerLink="/home" (click)="toggleSideNav()"><i class="icon-home3"></i><span
+            data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">الرئيسية</span></a>
+      </li>
+      
+
+      
+
+      <li class="nav-item"><a><i class="icon-whatshot"></i>
+        <span data-i18n="nav.dash.main" class="menu-title">CRM</span></a>
+      <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
+      <ul class="menu-content">
+        <li>
+          <a routerLink="/CrmProjects" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">المشاريع</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">العملاء</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/0" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">مطلوب للمتابعة</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/1" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الجديد والمتابعة</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/2" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الزيارات</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/3" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تحديد موعد</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/4" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الصفقات</a>
+        </li>
+        <li>
+          <a routerLink="/CrmClients/view/5" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الفرص الضائعة</a>
+        </li>
+
+        <li>
+          <a  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">حجز وحدة</a>
+        </li>
+        <li>
+          <a  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تحصيل اقساط</a>
+        </li>
+        <li>
+          <a  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">متابعة السداد</a>
+        </li>
+
+      </ul>
+      </li>
+
+      <li class="nav-item"><a><i class="icon-table2"></i>
+          <span data-i18n="nav.dash.main" class="menu-title">التقارير</span></a>
+        <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
+       
+      </li>
+
+    </ul>
+  </div>
+  <!-- /main menu content-->
+  <!-- main menu footer-->
+  <!-- include includes/menu-footer-->
+  <!-- main menu footer-->
+</div>
+
+<!--
+<header class="header mb-5">
+  <div id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offer mb-3 mb-lg-0"></div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <ul class="menu list-inline mb-0">
+            <li class="list-inline-item" *ngIf = "!userService.isLoggedIn()" ><a routerLink="/repStock">Login</a></li>            
+            <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+            <li class="list-inline-item" *ngIf = "userService.isLoggedIn()"><a href="#" (click)="logOut()">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container"><a href="index.html" class="navbar-brand home"><img src="./assets/Design/img/logo.png" alt="MiniCode logo"
+          class="d-none d-md-inline-block"><img src="./assets/Design/img/logo-small.png" alt="MiniCode logo" class="d-inline-block d-md-none"><span
+          class="sr-only">MiniCode - go to homepage</span></a>
+     
+      <div id="navigation" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto" *ngIf = "userService.isLoggedIn()" >
+          <li class="nav-item"><a routerLink="/home" class="nav-link active">الرئيسية</a></li>
+          <li class="nav-item dropdown menu-large"  ><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200"
+              class="dropdown-toggle nav-link">التقارير</a>
+            <ul class="dropdown-menu megamenu">
+              <li>
+                <div class="row">
+                  <div class="col-md-6 col-lg-3">
+                    <h5>المخازن</h5>
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a routerLink="/repStock" class="nav-link">تقرير مخزون الأصناف</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Accessories</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                    <h5>الحسابات</h5>
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="category.html" class="nav-link">تقرير الشيكات</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">قائمة حسابات إجمالى</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">قائمة الدخل</a></li>                      
+                    </ul>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                    <h5>تقارير مفضلة</h5>
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                    <h5>تقارير المبيعات</h5>
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="category.html" class="nav-link">تقرير المبيعات بالفواتير</a></li>
+                      <li class="nav-item"><a routerLink="/repSellingDet" class="nav-link">تقرير المبيعات بالاصناف</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                    </ul>
+                    <h5>تقارير المشتريات</h5>
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                      <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>        
+        </ul>
+        <div class="navbar-buttons d-flex justify-content-end">
+         
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+</header>
+-->

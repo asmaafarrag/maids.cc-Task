@@ -1,0 +1,102 @@
+<section id="card-actions">
+
+
+    
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title">فواتير البيع</h3>
+                        
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">                                       
+                                        <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="getSaleInvs()" class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+    
+
+                                
+
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>رقم الفاتورة</th>
+                                                <th>تاريخ الفاتورة</th>
+                                                <th>العميل</th>
+
+                                                <th>المخزن</th>
+
+                                                <th>الاجمالى</th>
+                                                <th>الخصم</th>
+                                                <th>الصافى</th>
+                                               
+                                                <th><button class="btn btn-outline-success" routerLink="/SaleInvs"><i
+                                                            class="fa fa-plus"></i>
+                                                        اضافة فاتورة</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="SalesSaleInvList">
+                                            <tr *ngFor="let SaleInv of SalesSaleInvList | filter:term | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row">  {{( i + 1 ) }}</th>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingNo }}</td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{SaleInv.SellingDate | date:
+                                                    'dd/MM/yyyy'}} </td>
+                                                <th (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.CustomerName }}</th>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.StoreName }}</td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingTot }}</td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingDisc }}</td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingVal }}</td>
+                                                
+                                                <td><a class="btn text-danger"  *ngIf="UserType=='ADMIN'"
+                                                        (click)="onOrderDelete(i,SaleInv.SellingId)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                           
+                              <div class="col-md-3">
+                                ...
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                    {{ size }}
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-7">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                              </div>
+                              <div class="col-md-2">
+                                Result: {{count}}
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

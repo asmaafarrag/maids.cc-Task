@@ -1,0 +1,128 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12">
+                <div class="form-group">
+                                    
+                  <div class="input-group">         
+                  
+                      <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="GetData()"   class="form-control" />
+                      <span class="input-group-addon"><a >
+                          <i class="fa fa-search"></i>
+                      </a></span>
+                  </div>
+               </div>
+
+
+                <div class="table-responsive">
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>العميل</th>              
+                        <th>الموبايل</th>
+                        <th>المشروع</th>
+                        <th>المرحلة الحالية</th>
+                        
+                        <th>اخر ملاحظة</th>
+                        <th>تاريخ الانشاء</th>
+                        <th>اخر متابعة</th>
+                        <th>المتابعة المطلوبة</th>
+                        <th>مسؤول المبيعات</th>
+                        <th><button class="btn btn-outline-success" routerLink="/CrmClient"><i class="fa fa-plus"></i>
+                            اضافة عميل</button>
+
+
+                            <button class="btn btn-sm btn-success clearfix" 
+                                                 routerLink="/ImportClients">
+                                <label>
+                                    <span class="glyphicon glyphicon-floppy-disk" ></span>
+                                    Import
+                                    </label>
+                            </button>
+      
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="CRMClientsList">
+                      <tr *ngFor="let Client of CRMClientsList | paginate : {
+                        itemsPerPage: pageSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index " style="cursor: pointer;">
+                        <th scope="row"> {{( i + 1 ) }}</th>
+                        <th (click)="openForEdit(Client.ClientID)">{{ Client.ClientName }}</th>
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.ClientMobile }}</td>
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.ProjectName }}</td>
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.StageNameAr }}</td>
+                       
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.LastComment }}</td>
+                        
+                        <td (click)="openForEdit(Client.ClientID)">{{Client.CreationDate | date: 'dd/MM/yyyy'}} </td>
+                        <td (click)="openForEdit(Client.ClientID)">{{Client.LastActionDate | date: 'dd/MM/yyyy'}} </td>
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.NextActionDate | date: 'dd/MM/yyyy'}}</td>
+                        <td (click)="openForEdit(Client.ClientID)">{{ Client.EmpName }}</td>
+                        <td>
+
+                          <!-- <a href="https://wa.me/+201064199394" target="_blank" style="list-style: none; color: #63bc37;"><i class="fa fa-whatsapp fa-lg"></i></a> -->
+
+                          <a href="https://wa.me/{{ Client.ClientMobile }}" target="_blank" style="list-style: none; color: #4fdc43;"><i class="fa fa-whatsapp fa-lg"></i></a>
+
+                          
+                          <a class="btn text-danger"  *ngIf="UserType=='ADMIN'" 
+                          (click)="onOrderDelete(Client.ClientID)"><i
+                              class="fa fa-trash fa-lg"></i> </a>
+                            
+                            
+       
+                                
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+
+           
+              <div class="col-md-3">
+   
+                عدد السجلات فى الصفحة:
+                <select (change)="handlePageSizeChange($event)">
+                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                    {{ size }}
+                  </option>
+                </select>
+               
+              </div>
+             
+            <div class="col-md-7">
+
+              <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                  (pageChange)="handlePageChange($event)"></pagination-controls>
+           </div>
+
+
+           <div class="col-md-1" >
+            <input #input pattern="[1-9]{3}"  style="width: 60px; margin-top: 8px;" (keyup)="goToPage(input.value)" (blur)= goToPage(input.value) [(ngModel)]="page" >
+
+           </div>
+            
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

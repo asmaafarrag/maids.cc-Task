@@ -1,0 +1,41 @@
+export class Customer {
+    CustomerID: number;
+    CustomerName: string;
+    AccountID: string;
+    Tele:string;
+    tele2: string;
+    mob1:string;
+    mob2:string;
+    fax: string;
+    Email: string;
+    address: string;
+    CustAccount: string;
+    MaxLimit: string;
+    OpenBalDebit: number;
+    OpenBalCredit: number;
+    StoreId:number;
+    StoreName:string;
+    CustStoreDefaultId:number;
+    RegistrationNumber:string;
+    CompanyTypeID:number;
+    CompanyTypeName:string;
+    CompanyTypeNameE:string;
+    EnterpriseId:number;
+    CountryID :number;
+    CountryName:string;
+    CountryNameE:string;
+    GovernateId :number;
+    GovernateName:string;
+    GovernateNameE:string;
+    RegionCityId :number;
+    RegionCityName:string;
+    RegionCityNameE:string;
+    street : string;
+    buildingNumber : string;
+    postalCode: string;
+    floor : string;
+    room : string;
+    landmark :string;
+    additionalInformation :string;     
+       
+}

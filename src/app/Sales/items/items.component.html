@@ -1,0 +1,115 @@
+<section id="card-actions">
+  <h4 class="card-title">الاصناف</h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" *ngIf="servItem.formData" (submit)="onSubmit(from)" novalidate>
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <label>كود الصنف</label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="ItemNO" #ItemNO="ngModel" [(ngModel)]="servItem.formData.ItemNO"
+                          class="form-control" placeholder="كود الصنف" required>
+                        <div class="form-control-position">
+                          <i class="fa fa-barcode"></i>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                    <div class="col-md-8">
+                      <label>اسم الصنف</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="ItemName" #ItemName="ngModel" [(ngModel)]="servItem.formData.ItemName"
+                          class="form-control" placeholder="اسم الصنف" required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && servItem.formData.ItemName == ''"
+                          data-placement="top" title data-original-title="اسم الصنف">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+              
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label> الوحدة</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <select name="UnitId" #UnitId="ngModel" [(ngModel)]="servItem.formData.UnitId"
+                          class="form-control" required
+                          [class.is-invalid]="!isValid && servItem.formData.UnitId == null">
+                          
+                          <option value='0'>-- Select --</option>
+
+                          <option *ngFor="let Unt of Unitslist" [ngValue]="Unt.UNITID">{{Unt.UnitName}}</option>
+                        </select>
+                        <div class="form-control-position">
+                          <i class="fa fa-thermometer-quarter"></i>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                    <div class="col-md-4">
+                      <label>سعر البيع</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="ItemSalePrice" #ItemSalePrice="ngModel"  [class.is-invalid]="!isValid && servItem.formData.ItemSalePrice == null"
+                          [(ngModel)]="servItem.formData.ItemSalePrice" class="form-control" placeholder="سعر البيع"
+                          required data-toggle="tooltip" data-placement="top" title data-original-title="سعر البيع"
+                          type="number">
+                        <div class="form-control-position">
+                          <i class="fa fa-money"></i>
+                        </div>
+                      </fieldset>
+
+                    </div>
+                    <div class="col-md-4">
+                      <label>المجموعة</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <select name="GroupID" #GroupID="ngModel" [(ngModel)]="servItem.formData.GroupID"
+                          class="form-control" required
+                          [class.is-invalid]="!isValid && servItem.formData.GroupID == null">
+                          <option value='0'>-- Select --</option>
+
+                          <option *ngFor="let Grp of Groupslist" [ngValue]="Grp.GroupID">{{Grp.GroupName}}</option>
+                        </select>
+                        <div class="form-control-position">
+                          <i class="fa fa-thermometer-quarter"></i>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                  </div>
+               
+                  <div class="row">
+
+
+                    <div class="col-xl-12 col-lg-12">
+                      <button class="btn btn-success" [disabled]="(!isEnabled) ? true : null" type="submit"><i
+                          class="icon-check2"></i>
+                        حفظ</button>
+                      <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/ItemsView"><i
+                          class="fa fa-table"></i> الرجوع لاستعراض الاصناف</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

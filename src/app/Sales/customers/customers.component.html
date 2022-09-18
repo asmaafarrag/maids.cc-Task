@@ -1,0 +1,147 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+                  <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default">اضافة عميل</span></h4>
+                  </div>
+                  <form #form="ngForm" autocomplete="off" *ngIf="CustService.formData" (submit)="onSubmit(from)" novalidate>
+                    <div class="row">
+                      
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="CustomerName" #CustomerName="ngModel" [(ngModel)]="CustService.formData.CustomerName"  class="form-control" placeholder="اسم العميل" 
+                            data-toggle="tooltip" data-placement="top" title data-original-title="اسم العميل" required 
+                            [class.is-invalid]="!isValid && (CustService.formData.CustomerName == null || CustService.formData.CustomerName == '') " >
+                            <div class="form-control-position">
+                              <i class="fa fa-keyboard-o"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="address" #address="ngModel" [(ngModel)]="CustService.formData.address"  class="form-control" placeholder="العنوان" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="العنوان" >
+                            <div class="form-control-position">
+                              <i class="fa fa-map-marker"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="Tele" #Tele="ngModel" [(ngModel)]="CustService.formData.Tele"  class="form-control" placeholder="رقم الهاتف" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف " OnlyNumber="true" pattern="\d{11}" maxlength="11" >
+                            <div class="form-control-position">
+                              <i class="fa fa-user"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="tele2" #tele2="ngModel" [(ngModel)]="CustService.formData.tele2"  class="form-control" placeholder="رقم الهاتف 2" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف 2" OnlyNumber="true" pattern="\d{11}" maxlength="11">
+                            <div class="form-control-position">
+                              <i class="fa fa-phone"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="mob1" #mob1="ngModel" [(ngModel)]="CustService.formData.mob1"  class="form-control" placeholder="موبايل 1" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 1" OnlyNumber="true" pattern="\d{11}" maxlength="11">
+                            <div class="form-control-position">
+                              <i class="fa fa-phone"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="mob2" #mob2="ngModel" [(ngModel)]="CustService.formData.mob2"  class="form-control" placeholder="موبايل 2" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 2" OnlyNumber="true" pattern="\d{11}" maxlength="11">
+                            <div class="form-control-position">
+                              <i class="fa fa-user"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select  name="StoreId" #StoreId="ngModel" [(ngModel)]="CustService.formData.StoreId" class="form-control"
+                          required  [class.is-invalid]="!isValid && (CustService.formData.StoreId == null || CustService.formData.StoreId == 0) " >
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let store of storeslist" [ngValue]="store.StoreId">{{store.StoreName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-truck"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div>
+                          <h6>
+                            <label>
+                              مدين
+                            </label>
+                          </h6>
+                        </div>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="OpenBalDebit" #OpenBalDebit="ngModel" [(ngModel)]="CustService.formData.OpenBalDebit"  class="form-control" required 
+                          [class.is-invalid]="!isValid && (CustService.formData.OpenBalDebit == null ) "
+                            data-toggle="tooltip" data-placement="top" title data-original-title="مدين" >
+                            <div class="form-control-position">
+                              <i class="fa fa-usd"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-3">
+                        <div>
+                          <h6>
+                            <label>
+                              دائن
+                            </label>
+                          </h6>
+                        </div>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="OpenBalCredit" #OpenBalCredit="ngModel" [(ngModel)]="CustService.formData.OpenBalCredit"  class="form-control"  required 
+                          [class.is-invalid]="!isValid && (CustService.formData.OpenBalCredit == null ) "
+                            data-toggle="tooltip" data-placement="top" title data-original-title="دائن" >
+                            <div class="form-control-position">
+                              <i class="fa fa-usd"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12" style="align-items: center;">
+                        <button class="btn btn-success " type="submit" [disabled]="(!isEnabled)? true : null" ><i class="icon-check2"></i>
+                          حفظ</button>
+                        <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/CustomersView" ><i class="fa fa-table"></i> الرجوع لقائمة العملاء</button>
+                      </div>
+                    </div>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  
+  </section>

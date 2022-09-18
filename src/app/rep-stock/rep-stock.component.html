@@ -1,0 +1,149 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">تقرير مخزون الأصناف</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form (submit)="Saveform()">
+                  <div class="form-group">
+                    <label for="Department">المخزن</label>
+                    <select id="Department" name="Department" class="form-control form-control-lg input-lg"
+                      [(ngModel)]="selectedstore" (ngModelChange)="setSelectedStore($event)">
+                      <option value='0'>All</option>
+                      <option *ngFor="let store of storeslist" [ngValue]="store">{{store.StoreName}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width" style="text-align: right">
+                      <input matInput placeholder="الصنف" aria-label="الصنف" [matAutocomplete]="auto"
+                        [formControl]="stateCtrl" dir="ltr">
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                          <span>{{state.ItemName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            style="font-weight: bolder;">{{state.ItemSalePrice}}LE</span>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            style="font-weight: bolder;">({{state.AvailableQty}})</span>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-checkbox [(ngModel)]="hideZeros" id="ChkhideZeros" name="ChkhideZeros">&nbsp;إخفاء الأرصدة
+                      الصفرية&nbsp;
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{{selectedstore.StoreName}}</h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+              <li><a (click)="changLang()"><i class="icon-flag-checkered"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" />
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-sm table-hover table-bordered tbl-en" [class.tbl-ar]="this.tranLabels.lng == 'AR'" 
+                  [class.tbl-en]="this.tranLabels.lng == 'EN'" *ngIf="selectedstore">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>{{ this.tranLabels.code }}</th>
+                        <th>{{ this.tranLabels.item }}</th>
+                        <th>{{ this.tranLabels.qty }}</th>
+                        <th *ngIf="this.tranLabels.lng == 'AR'" >{{ this.tranLabels.unit }}</th>
+                        <!-- <th>{{ this.tranLabels.costPrice }}</th> -->
+                        <th>{{ this.tranLabels.sillingPrice }}</th>
+                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.totalsillingPrice }}</th>
+                        <th>{{ this.tranLabels.store }}</th>
+                        
+                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.sillingPriceCurr }}</th>
+                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.totalSillingPriceCurr }}</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="storeItemsStock">
+                      <tr *ngFor="let stockitem of storeItemsStock | customerEmailFilter:ItemName;let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ stockitem.ItemNO }}</td>
+                        <td>{{ stockitem.ItemName }}</td>
+                        <td>{{ stockitem.Qty }}</td>
+                        <td *ngIf="this.tranLabels.lng == 'AR'" >{{ stockitem.UnitName }}</td>
+                        <!-- <td>{{ stockitem.COSTPrice }}</td> -->
+                        <td>{{ stockitem.ItemSalePrice }}</td>
+                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.ItemSalePrice * stockitem.Qty | number : '1.2-2' }}</td>
+                        <td>{{ stockitem.StoreName }}</td>
+                        
+                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.DollarPrice | number : '1.2-2'}}</td>
+                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.DollarPrice * stockitem.Qty | number : '1.2-2' }}</td>
+                      </tr>
+                    </tbody>
+
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>{{ this.tranLabels.total }}</th>
+                        <th></th>
+                        <th>{{ ItemsCount }}</th>
+                        <th></th>
+                        <!-- <th>{{ TotalCOSTPrice }}</th> -->
+                        <th></th>
+                        <th *ngIf="UserType=='ADMIN'">{{ TotalStockPrice }}</th>
+                        <th></th>
+                        <th *ngIf="UserType=='ADMIN'"></th>
+                        <th *ngIf="UserType=='ADMIN'">{{ TotalDollarPrice }}</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

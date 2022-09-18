@@ -1,0 +1,51 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                  <input type="hidden" name="VacOrderId" value="service.formData.VacOrderId">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>التاريخ من</label>
+                        <div class="input-group">
+                          <input type="date" name="VacOrdDateFrom" #VacOrdDateFrom="ngModel"
+                            [(ngModel)]="service.formData.VacOrdDateFrom" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>الى</label>
+                        <div class="input-group">
+                          <input type="date" name="VacOrdDateTo" #VacOrdDateTo="ngModel"
+                            [(ngModel)]="service.formData.VacOrdDateTo">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid" ><i class="fas fa-database"></i>
+                      Submit</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

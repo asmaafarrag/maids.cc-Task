@@ -1,0 +1,86 @@
+<section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title"> عروض الاسعار</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">                                       
+                                        <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="gePriceLists()" class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                              <th>#</th>
+                                              <th>التاريخ</th>
+                                              <th>اسم العميل</th>
+                                              <th>العميل</th> 
+                                              <th>اسم المسئول</th>
+						                      <th>رقم التليفون</th>
+
+
+                                               <th><button class="btn btn-outline-success" routerLink="/PriceList"><i
+                                                            class="fa fa-plus"></i>
+                                                        اضافة عرض </button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="itemsList">
+                                            <tr *ngFor="let itm of itemsList | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row"> {{ i + 1}}</th>
+                                                <td (click)="openForEdit(itm.PriceListID)">{{ itm.PriceListDate}}</td>
+                                                <td (click)="openForEdit(itm.PriceListID)">{{ itm.custnam}}</td>
+                                                <td (click)="openForEdit(itm.PriceListID)">{{ itm.CustomerId}}</td>
+                                                <td (click)="openForEdit(itm.PriceListID)">{{ itm.RespName}}</td>	
+                                                <td (click)="openForEdit(itm.PriceListID)">{{ itm.TelNo}}</td>
+                                                <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
+                                                        (click)="onOrderDelete(i,itm.PriceListID)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                ...
+
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-9">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section> 

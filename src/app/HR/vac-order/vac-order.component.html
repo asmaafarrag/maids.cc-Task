@@ -1,0 +1,98 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                  <input type="hidden" name="VacOrderId" value="service.formData.VacOrderId">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>تاريخ الطلب</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">#</div>
+                          </div>
+                          <input type="date" name="VacOrderDate" #VacOrderDate="ngModel" disabled
+                            [(ngModel)]="service.formData.VacOrderDate" useValueAsDate>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="EmpID">الموظف</label>
+                        <select name="EmpID" #EmpID="ngModel" [(ngModel)]="service.formData.EmpID" required
+                          (change)="changeEmp($event.target)" class="form-control form-control-lg input-lg">
+                          <option *ngFor="let Emp of Empslist" [ngValue]="Emp.EmpID">{{Emp.EmpName}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="VacId">نوع الاجازة</label>
+                        <select name="VacId" #VacID="ngModel" [(ngModel)]="service.formData.VacId" required
+                          (change)="changeVac($event.target)" class="form-control form-control-lg input-lg" >
+                          <option *ngFor="let Vac of Vacslist" [ngValue]="Vac.VacId" >{{Vac.VacName}}</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>التاريخ من</label>
+                        <div class="input-group">
+                          <input type="date" name="VacOrdDateFrom" #VacOrdDateFrom="ngModel"
+                            [(ngModel)]="service.formData.VacOrdDateFrom" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>الى</label>
+                        <div class="input-group">
+                          <input type="date" name="VacOrdDateTo" #VacOrdDateTo="ngModel"
+                            [(ngModel)]="service.formData.VacOrdDateTo">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    
+                    <label for="manager">سبب الاجازة</label>
+                    <input type="text" name="VacNotes" #VacNotes="ngModel" [(ngModel)]="service.formData.VacNotes"
+                      class="form-control form-control-lg input-lg"  required minlength="10" >
+                      <div *ngIf="VacNotes.invalid && (VacNotes.dirty || VacNotes.touched)" class="alert alert-danger">
+                            <div *ngIf="VacNotes.errors.required">    يجب كتابه سبب الاجازه </div>
+                             <div *ngIf="VacNotes.errors.minlength"> يجب ان يكون على الاقل عشره احرف</div>
+                            </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid" ><i class="fas fa-database"></i>
+                      Submit</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

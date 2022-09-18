@@ -1,0 +1,140 @@
+<section id="card-actions">
+  <h3 class="card-title">اذن اضافة مخازن</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+  
+                  <form #form="ngForm" autocomplete="off" *ngIf="addServ.formData" (submit)="onSubmit(from)" novalidate>
+                    <input type="hidden" name="AddID" #AddID="ngModel" [(ngModel)]="addServ.formData.AddID">
+                   
+                    <div class="row">
+  
+                     
+                      <div class="col-md-12">
+                        <label for="">التاريخ</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="AddDate" #AddDate="ngModel" [ngModel]="addServ.formData.AddDate | date:'yyyy-MM-dd'" 
+                          (ngModelChange)="addServ.formData.AddDate = $event" class="form-control" placeholder="التاريخ" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date">
+  
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="">المخزن</label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select  name="StoreId" #StoreId="ngModel" [(ngModel)]="addServ.formData.StoreId" class="form-control"
+                          required [class.is-invalid]="!isValid && (addServ.formData.StoreId == null || addServ.formData.StoreId == 0)"
+                          [disabled]="addServ.formData.AddID !== -1 ? true : null" >
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let store of storeslist" [ngValue]="store.StoreId">{{store.StoreName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-truck"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="">الجهة</label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="CCID" #CCID="ngModel" [(ngModel)]="addServ.formData.CCID" class="form-control"
+                          required [class.is-invalid]="!isValid && (addServ.formData.CCID == null || addServ.formData.CCID == 0)"   
+                          [disabled]="addServ.formData.AddID !== -1 ? true : null">
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let c of CCslist" [ngValue]="c.CCID">{{c.CCName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+  
+                        </fieldset>
+                      </div>
+  
+                    </div>
+                   
+                    <div class="row">
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="AddNotes" #AddNotes="ngModel" [(ngModel)]="addServ.formData.AddNotes" class="form-control" placeholder="ملاحظات" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="ملاحظات">
+                          <div class="form-control-position">
+                            <i class="fa fa-pencil-square-o"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 mb-2">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-sm table-bordered">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>اسم الصنف</th>
+                                <th>الكمية</th>
+                                <th>الوحدة</th>
+                                <th>السعر</th>
+                                <th>الاجمالى</th>
+                                <th>
+                                  <a class="btn btn-sm btn-success text-white" (click)="AddOrEditSalInvItems(null,addServ.formData.AddID)"><i class="fa fa-plus"></i>إضافة صنف</a>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let Item of addServ.formData.addDets;let i=index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{Item.ItemName}}</td>
+                                <td>{{Item.Qty}}</td>
+                                <td>{{Item.UnitName}}</td>
+                                <td>{{Item.Price}}</td>
+                                <td>{{Item.Tot}}</td>
+                                <td>
+                                  <a class="btn btn-sm btn-info text-white" (click)="AddOrEditSalInvItems(i,addServ.formData.AddID)"><i class="fa fa-pencil"></i>تعديل</a>
+                                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteSalInvItems(Item.SerNo, i)"><i class="fa fa-trash"></i>حذف</a>
+                                </td>
+                              </tr>
+  
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    
+                      <div class="col-md-4">
+                        <label for="Department">عدد الاصناف</label>
+                        <span>{{ItemsCount}}</span>                      
+                      </div>
+                      <div class="col-md-4">
+                        <label for="Department">إجمالى قيمة الإذن</label>
+                        <p>{{addServ.formData.AddVal}}</p>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="btn btn-success " type="submit" [disabled]="((addServ.formData.AddID !== -1 && UserType!='ADMIN') || !isEnabled) ? true : null"><i class="icon-check2" ></i>
+                          حفظ</button>
+                          <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/AddsView"  ><i class="fa fa-table"></i> الرجوع لاستعراض الاذون</button>
+                      </div>
+  
+                    
+                    </div>
+                    
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  </section>
