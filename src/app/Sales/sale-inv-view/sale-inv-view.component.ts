@@ -56,8 +56,8 @@ export class SaleInvViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    let pageNo = localStorage.getItem("saleinvpage")
-    this.page=+pageNo
+    // let pageNo = localStorage.getItem("saleinvpage")
+    // this.page=+pageNo
   
   }
 
@@ -65,13 +65,22 @@ export class SaleInvViewComponent implements OnInit {
 
   getSaleInvs() {
     const params = this.getRequestParams(this.term, this.page, this.pageSize);
-    // console.log(this.term);
+    console.log(this.term);
     if (this.UserType.toUpperCase() == 'ADMIN') {
       this.SalesSaleInvServ.getSaleInvs(params).subscribe(res => {
-        const { TotalRecords, Data } = res;
-        this.SalesSaleInvList = Data;
-        this.count = TotalRecords;
-        console.log(this.count , "count")
+
+        // if(this.term){
+        //   const result = res.filter(x => x.SellingId === +this.term);
+        //   console.log(result);
+        // }
+
+        // else {
+          const { TotalRecords, Data } = res;
+          this.SalesSaleInvList = Data;
+          this.count = TotalRecords;
+          console.log(this.count , "count")
+        // }
+       
       },
         err => { console.log(err); });
     }
@@ -135,7 +144,7 @@ export class SaleInvViewComponent implements OnInit {
 
   handlePageChange(event) {
     this.page = event;
-    localStorage.setItem( "saleinvpage", event)
+    // localStorage.setItem( "saleinvpage", event)
     this.getSaleInvs();
   }
 

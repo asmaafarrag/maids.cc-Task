@@ -47,7 +47,9 @@ export class RepPurchAnalysisComponent implements OnInit {
     TotalEGYTPrice: number = 0;
     TotalDollarPrice: number = 0;
 
-    
+    LTotalEGYTPrice: number = 0;
+    LTotalDollarPrice: number = 0;
+    TotPurchasing_Qty:number =0;
 
     ItemTransferViewList : SellingsOfPurchasingView[];
   
@@ -136,11 +138,24 @@ export class RepPurchAnalysisComponent implements OnInit {
     }  
 
     calcGrandTotal() {
+
+      
+
+      this.TotPurchasing_Qty = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.Purchasing_Qty }, 0);
+      this.TotPurchasing_Qty = parseFloat((this.TotPurchasing_Qty).toFixed(2));
+
       this.TotalEGYTPrice = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.Price }, 0);
       this.TotalEGYTPrice = parseFloat((this.TotalEGYTPrice).toFixed(2));
   
       this.TotalDollarPrice = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.DollarPrice }, 0);
-      this.TotalDollarPrice = parseFloat((this.TotalDollarPrice).toFixed(4));
+      this.TotalDollarPrice = parseFloat((this.TotalDollarPrice).toFixed(2));
+
+      this.LTotalDollarPrice = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.TotalDollarPrice }, 0);
+      this.LTotalDollarPrice = parseFloat((this.LTotalDollarPrice).toFixed(2));
+
+      this.LTotalEGYTPrice = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.TotalPrice }, 0);
+      this.LTotalEGYTPrice = parseFloat((this.LTotalEGYTPrice).toFixed(2));
+  
     }
   
   }

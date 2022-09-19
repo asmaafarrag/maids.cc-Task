@@ -123,8 +123,8 @@
                           <td>{{ stockitem.Rest_Qty }}</td>
                           <td>{{ stockitem.Price }}</td>
                           <td>{{ stockitem.DollarPrice }}</td>
-                          <td>{{ stockitem.TotalPrice  }}</td>
-                          <td>{{ stockitem.TotalDollarPrice  }}</td>
+                          <td>{{ stockitem.TotalPrice  | number:'1.0-3'  }}</td>
+                          <td>{{ stockitem.TotalDollarPrice  | number:'1.0-3' }}</td>
                         </tr>
                       </tbody>
                       <thead>
@@ -132,13 +132,13 @@
                          <th>الاجمالى</th>
                          <th></th>
                          <th></th>
-                         <th></th>
+                         <th>{{TotPurchasing_Qty}}</th>
                          <th></th>
                          <th></th>
                          <th>{{TotalEGYTPrice}}</th>
                          <th>{{TotalDollarPrice}}</th>   
-                         <th></th>
-                         <th></th>                   
+                         <th>{{LTotalEGYTPrice}}</th>
+                         <th>{{LTotalDollarPrice}}</th>                   
                        </tr>
                      </thead> 
   
