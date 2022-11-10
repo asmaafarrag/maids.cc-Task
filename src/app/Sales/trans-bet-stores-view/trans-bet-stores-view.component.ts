@@ -53,8 +53,8 @@ export class TransBetStoresViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    let pageNo = localStorage.getItem("transbetstorespage")
-    this.page=+pageNo
+    // let pageNo = localStorage.getItem("transbetstorespage")
+    // this.page=+pageNo
   
   }
 
@@ -62,7 +62,7 @@ export class TransBetStoresViewComponent implements OnInit {
 
   getTransBetStores() {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-
+    console.log(params);
       if (this.UserType.toUpperCase() == 'ADMIN') {
         this.TransBetStoresServ.getTransBetStores(params).subscribe(res => {
           const { TotalRecords, Data } = res;
@@ -108,7 +108,7 @@ export class TransBetStoresViewComponent implements OnInit {
 
   handlePageChange(event) {
     this.page = event;
-    localStorage.setItem( "transbetstorespage", event)
+    // localStorage.setItem( "transbetstorespage", event)
     this.getTransBetStores();
   }
 

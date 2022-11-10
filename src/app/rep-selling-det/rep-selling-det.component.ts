@@ -74,6 +74,7 @@ export class RepSellingDetComponent implements OnInit {
     var today = new Date(); 
     today.setDate(today.getDate() - 30);    
     this.fromDate.patchValue(today);
+ 
   }
 
   // ngAfterViewInit() {

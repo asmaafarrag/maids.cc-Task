@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-   ApiUrl:'http://104.196.134.107/AfitAPI',
-    //  ApiUrl:'https://afitapi.minicodeco.com',
+  //  ApiUrl:'http://104.196.134.107/AfitAPI',
+     ApiUrl:'https://afitapi.minicodeco.com',
     //  ApiUrl : 'http://localhost:22376'
  
 };

@@ -51,6 +51,10 @@ export class RepPurchAnalysisComponent implements OnInit {
     LTotalDollarPrice: number = 0;
     TotPurchasing_Qty:number =0;
 
+    totSelling_Qty:number=0;
+    totRest_Qty:number=0;
+
+
     ItemTransferViewList : SellingsOfPurchasingView[];
   
     fromDate = new FormControl();
@@ -156,6 +160,13 @@ export class RepPurchAnalysisComponent implements OnInit {
       this.LTotalEGYTPrice = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.TotalPrice }, 0);
       this.LTotalEGYTPrice = parseFloat((this.LTotalEGYTPrice).toFixed(2));
   
+
+      this.totRest_Qty = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.Rest_Qty }, 0);
+      this.totRest_Qty = parseFloat((this.totRest_Qty).toFixed(2));
+      
+      this.totSelling_Qty = this.ItemTransferViewList.reduce((prev, curr) => { return prev + curr.Selling_Qty }, 0);
+      this.totSelling_Qty = parseFloat((this.totSelling_Qty).toFixed(2));
+      
     }
   
   }
