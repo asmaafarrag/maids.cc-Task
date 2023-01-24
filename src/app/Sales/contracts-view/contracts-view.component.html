@@ -1,0 +1,167 @@
+<section id="card-actions">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="card">
+              <div class="card-body collapse in">
+                  <div class="card-block">
+                    <div class="row mb-2">
+                      <div class="col-md-6">
+                        <h3 class="card-title">  عقود العملاء</h3>
+                      </div>
+
+                      <!-- <div class="col-md-6">
+                        <button class="btn btn-danger" style="float:left; margin-left:10px" routerLink="/PriceList"><i
+                          class="fa fa-plus"></i>
+                           اضافة عرض </button>
+                      </div> -->
+                    </div>
+                      <div class="row">
+                          <div class="col-xl-12 col-lg-12">
+                              <div class="form-group">
+
+                                  <div class="input-group">
+                                      <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="gePriceLists()" class="form-control" />
+                                      <span class="input-group-addon"><a >
+                                          <i class="fa fa-search"></i>
+                                      </a></span>
+                                  </div>
+                              </div>
+
+                              <div class="table-responsive">
+                                  <table class="table  table-bordered">
+                                      <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>كود العقد</th>
+                                            <th>تاريخ العقد</th>
+                                            <th>مقدم إلى </th>
+                                            <th>تاريخ العرض </th>
+                                            <th>المستخدم </th>
+                                            <th> تاريخ التسجيل </th>
+
+
+                                             <th></th>
+                                          </tr>
+                                      </thead>
+
+                                      <tbody  *ngIf="itemsList">
+                                          <tr *ngFor="let itm of itemsList | paginate : {
+                                              itemsPerPage: pageSize,
+                                              currentPage: page,
+                                              totalItems: count
+                                            };
+                                      let i = index " style="cursor: pointer;">
+                                          <th scope="row"> {{ i + 1}}</th>
+                                          <td (click)="openForEdit(itm.contract_ID)">{{itm.contract_Code}}</td>
+                                          <td (click)="openForEdit(itm.contract_ID)">{{itm.contract_Date  | date:
+                                            'dd/MM/yyyy'}}</td>
+                                          <td (click)="openForEdit(itm.contract_ID)">{{itm.customer_Name}}</td>
+                                          <td (click)="openForEdit(itm.contract_ID)">{{itm.priceList_Date  | date:
+                                            'dd/MM/yyyy'}}</td>
+                                            <td (click)="openForEdit(itm.contract_ID)">{{itm.entryUser}}</td>
+                                            <td (click)="openForEdit(itm.contract_ID)">{{itm.entrydate |
+                                              date:
+                                              'yyyy/MM/dd'}}</td>
+                                          <!-- <td (click)="openForEdit(itm.contract_ID)">{{itm.customer_Name}}</td> -->
+
+                                          <!-- <td scope="row"><input   type="checkbox"
+                                              id="SellingSelectedCheckBox" #SellingSelectedCheckBox
+                                          ></td> -->
+
+                                          <td>
+
+                                            <a class="btn text-info"
+                                            (click)="printPdf(itm.contract_ID)"><i
+                                                class="fa fa-print fa-lg"></i>
+                                            </a>
+
+
+                                            <a class="btn text-danger" *ngIf="UserType=='admin'"
+                                            (click)="onOrderDelete(i,itm.contract_ID)"><i
+                                              class="fa fa-trash fa-lg"></i>
+                                           </a>
+
+
+                                            <!-- <button class="btn btn-outline-danger"  >  طباعة العقد </button>-->
+                                          </td>
+
+                                        </tr>
+                                      </tbody>
+
+                                      <!-- <tbody >
+                                          <tr *ngFor="let itm of itemsList | paginate : {
+                          itemsPerPage: pageSize,
+                          currentPage: page,
+                          totalItems: count
+                        };
+                  let i = index " style="cursor: pointer;">
+                                              <th scope="row"> {{ i + 1}}</th>
+                                              <td (click)="openForEdit(itm.contract_ID)">12-1-2022</td>
+                                              <td (click)="openForEdit(itm.contract_ID)">MiniCode</td>
+                                              <td (click)="openForEdit(itm.contract_ID)">10000</td>
+                                              <td scope="row"><input   type="checkbox"
+                                                id="SellingSelectedCheckBox" #SellingSelectedCheckBox
+                                                [(ngModel)]="itm.isSelected"
+                                                (change)="onSellingSelectedChanged(SellingSelectedCheckBox.checked,i)" ></td>
+
+                                              <td>
+
+
+                                                  <a class="btn text-info"
+                                                  (click)="openForEdit(SaleInv.SellingId)"><i
+                                                      class="fa fa-pencil fa-lg">تعديل</i>
+                                                  </a>
+
+                                                   <!-- <td>
+
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" #IsActivated name="IsActivated"
+                          [(ngModel)]="Userserv.formData.IsActivated"  (change)="change()">
+                          <label class="custom-control-label" for="customCheck1"></label>
+                          {{Userserv.formData.IsActivated}}
+                      </div>
+                    </div>
+
+
+
+                  </td> --
+
+                                                  <a class="btn text-info"
+                                                  (click)="openForEdit(SaleInv.SellingId)"><i
+                                                      class="fa fa-pencil fa-lg">تحويل إلى عقد</i>
+                                                  </a>
+
+                                              </td>
+                                          </tr>
+                                      </tbody> -->
+                                  </table>
+
+                              </div>
+                          </div>
+
+                          <div class="col-md-3">
+                              ...
+
+                              عدد السجلات فى الصفحة:
+                              <select (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                      {{ size }}
+                                  </option>
+                              </select>
+                          </div>
+                          <div class="col-md-9">
+                              <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                  (pageChange)="handlePageChange($event)"></pagination-controls>
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+</section>

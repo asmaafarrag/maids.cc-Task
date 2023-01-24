@@ -1,5 +1,5 @@
 <section id="card-actions">
-  <h4 class="card-title">الاصناف</h4>
+  <h4 class="card-title" style="text-align: center;" > الأصناف </h4>
   <div class="row">
     <div class="col-xs-12">
       <div class="card">
@@ -9,95 +9,309 @@
               <div class="col-xl-12 col-lg-12 mb-2">
 
                 <form #form="ngForm" autocomplete="off" *ngIf="servItem.formData" (submit)="onSubmit(from)" novalidate>
+
                   <div class="row">
 
-                    <div class="col-md-4">
-                      <label>كود الصنف</label>
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input name="ItemNO" #ItemNO="ngModel" [(ngModel)]="servItem.formData.ItemNO"
-                          class="form-control" placeholder="كود الصنف" required>
-                        <div class="form-control-position">
-                          <i class="fa fa-barcode"></i>
-                        </div>
-
-                      </fieldset>
-                    </div>
-                    <div class="col-md-8">
-                      <label>اسم الصنف</label>
+                    <div class="col-md-4 mt-2">
+                      <label> اسم الصنف </label>
 
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input name="ItemName" #ItemName="ngModel" [(ngModel)]="servItem.formData.ItemName"
+                        <input name="item_Name" #item_Name="ngModel" [(ngModel)]="servItem.formData.item_Name"
                           class="form-control" placeholder="اسم الصنف" required data-toggle="tooltip"
-                          [class.is-invalid]="!isValid && servItem.formData.ItemName == ''"
+                          [class.is-invalid]="!isValid && (servItem.formData.item_Name == '' || servItem.formData.item_Name == null)"
                           data-placement="top" title data-original-title="اسم الصنف">
                         <div class="form-control-position">
                           <i class="fa fa-keyboard-o"></i>
                         </div>
                       </fieldset>
                     </div>
+
+                    <div class="col-md-2 mt-2">
+                      <label> عدد الصفوف </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input id="row" name="rows_Count" #rows_Count="ngModel" [(ngModel)]="servItem.formData.rows_Count"
+                          class="form-control" placeholder="عدد الصفوف" required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && (servItem.formData.rows_Count == 0 || servItem.formData.rows_Count == null)"
+                          data-placement="top" title data-original-title="عدد الصفوف" (keyup)="IncreaseValue()">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-2 mt-2">
+                      <label> عدد الأعمدة </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input id="column" name="columns_Count" #columns_Count="ngModel" [(ngModel)]="servItem.formData.columns_Count"
+                          class="form-control" placeholder="عدد الأعمدة" required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && (servItem.formData.columns_Count == 0 || servItem.formData.columns_Count == null)"
+                          data-placement="top" title data-original-title="عدد الأعمدة" (keyup)="IncreaseValue()">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-2 mt-2">
+                      <label> رقم البداية  </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="opening_StartValue" #opening_StartValue="ngModel" [(ngModel)]="servItem.formData.opening_StartValue"
+                          class="form-control" placeholder="رقم بداية الفتح " required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && (servItem.formData.opening_StartValue == 0 || servItem.formData.opening_StartValue == null)"
+                          data-placement="top" title data-original-title="رقم بداية  " (keyup)="IncreaseValue()">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-2 mt-2">
+                      <label>  مقدار الزيادة  </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  name="opening_Step" #opening_Step="ngModel" [(ngModel)]="servItem.formData.opening_Step"
+                          class="form-control" placeholder="  مقدار الزيادة " required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && (servItem.formData.opening_Step == 0 || servItem.formData.opening_Step == null)"
+                          data-placement="top" title data-original-title=" مقدار الزيادة  " (keyup)="IncreaseValue()">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+
+
+
+
+
                   </div>
-              
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label> الوحدة</label>
 
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <select name="UnitId" #UnitId="ngModel" [(ngModel)]="servItem.formData.UnitId"
-                          class="form-control" required
-                          [class.is-invalid]="!isValid && servItem.formData.UnitId == null">
-                          
-                          <option value='0'>-- Select --</option>
 
-                          <option *ngFor="let Unt of Unitslist" [ngValue]="Unt.UNITID">{{Unt.UnitName}}</option>
-                        </select>
-                        <div class="form-control-position">
-                          <i class="fa fa-thermometer-quarter"></i>
-                        </div>
+                  <div class="row mt-2" style="display: flex;
+                  justify-content: center;">
 
-                      </fieldset>
+                    <!-- <div class="col-md-4">
+                      <div class="form-group" style="display: flex;
+                      flex-direction: column; align-items: center;">
+
+                      <img [src]="imageUrl" style="height:90px; text-align: center;">
+
+
+                      </div>
+
+                    </div> -->
+
+                    <div class="col-md-3">
+                      <div class="form-group" style="display: flex;
+                      flex-direction: column; align-items: center;">
+                        <label style="font-weight: 700;">إضافة صورة </label>
+                        <img [src]="imageUrl" style="height:120px; text-align: center;">
+
+
+                        <!-- <input  type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="item_ImageURL" #item_ImageURL="ngModel" [(ngModel)]="servItem.formData.item_ImageURL" class="form-control"> -->
+                        <input  type="file" #Image accept="image/*" (change)="handleFileSelect($event)" name="item_ImageFile" #item_ImageFile="ngModel" [(ngModel)]="servItem.formData.item_ImageFile" class="form-control">
+
+                        <!-- <br> -->
+                        <!-- <div>
+                            <h1>Base64 encoded version</h1>
+                            <textarea id="base64textarea" placeholder="Base64 will appear here" cols="50" rows="15">{{base64textString}}</textarea>
+                        </div> -->
+
+                      </div>
+
                     </div>
-                    <div class="col-md-4">
-                      <label>سعر البيع</label>
 
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input name="ItemSalePrice" #ItemSalePrice="ngModel"  [class.is-invalid]="!isValid && servItem.formData.ItemSalePrice == null"
-                          [(ngModel)]="servItem.formData.ItemSalePrice" class="form-control" placeholder="سعر البيع"
-                          required data-toggle="tooltip" data-placement="top" title data-original-title="سعر البيع"
-                          type="number">
-                        <div class="form-control-position">
-                          <i class="fa fa-money"></i>
-                        </div>
-                      </fieldset>
 
-                    </div>
-                    <div class="col-md-4">
-                      <label>المجموعة</label>
 
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <select name="GroupID" #GroupID="ngModel" [(ngModel)]="servItem.formData.GroupID"
-                          class="form-control" required
-                          [class.is-invalid]="!isValid && servItem.formData.GroupID == null">
-                          <option value='0'>-- Select --</option>
 
-                          <option *ngFor="let Grp of Groupslist" [ngValue]="Grp.GroupID">{{Grp.GroupName}}</option>
-                        </select>
-                        <div class="form-control-position">
-                          <i class="fa fa-thermometer-quarter"></i>
-                        </div>
-
-                      </fieldset>
-                    </div>
                   </div>
-               
-                  <div class="row">
 
 
-                    <div class="col-xl-12 col-lg-12">
-                      <button class="btn btn-success" [disabled]="(!isEnabled) ? true : null" type="submit"><i
+
+                  <!-- <section id="card-actions">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                          <div class="row">
+                            <div class="col-xs-12">
+
+
+
+                            </div>
+                          </div>
+                            <div class="card">
+
+                                <div class="card-body collapse in">
+                                    <div class="card-block">
+
+
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12">
+
+
+
+                                              <div class="table-responsive mt-2 mb-2" >
+
+                                                <table  class="table table-hover table-bordered " dir="ltr" style="text-align:center;">
+                                                  <tr>
+                                                    <td rowspan="2" style="vertical-align: middle;">WIDTH</td>
+                                                    <td [attr.colspan]="columns_Count.value">OPENING</td>
+                                                  </tr>
+
+
+                                                  <tr >
+                                                    <td *ngFor="let colum of createRange(columns_Count.value)">--</td>
+                                                  </tr>
+
+                                                  <tr
+                                                  *ngFor="let row of createRange(rows_Count.value)">
+                                                  <td >--</td>
+
+
+                                                  <td *ngFor="let colum of createRange(columns_Count.value)">
+                                                    <input type="text" placeholder="Enter text" />
+                                                  </td>
+                                                </tr>
+
+                                                  </table>
+
+                                             </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </section> -->
+
+
+
+
+<!--
+                    <div class="table-container">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-hover table-bordered "
+                          dir="ltr"
+                          *ngIf="rows_Count.value && columns_Count.value && opening_StartValue.value && opening_Step.value"
+                          border="1"
+                          style="border-color: #ccc;text-align:center;"
+                          cellspacing="0"
+                          cellpadding="0"
+                          class="no-spacing"
+                          cellspacing="0"
+
+                        >
+
+                        <tr>
+                          <td rowspan="2" style="vertical-align: middle;">WIDTH</td>
+                          <td [attr.colspan]="columns_Count.value" (click)=" IncreaseValue()">OPENING</td>
+                        </tr>
+
+
+                        <tr  *ngIf="range != null">
+                          <td *ngFor="let colum of range" >{{colum}}</td>
+                        </tr>
+
+                        <tr
+                        *ngFor="let Item of servItem.formData.itemPrices; let i=index;">
+                          <td>{{Item.item_Price_Width}}</td>
+                          <td *ngIf="Item.price_Col_1"><input type="text" name="price_Col_1" #price_Col_1="ngModel" [(ngModel)]="Item.price_Col_1"/></td>
+                          <td *ngIf="Item.price_Col_2"><input type="text" name="price_Col_2" #price_Col_2="ngModel" [(ngModel)]="Item.price_Col_2"/></td>
+                          <td *ngIf="Item.price_Col_3"><input type="text" name="price_Col_3" #price_Col_3="ngModel" [(ngModel)]="Item.price_Col_3"/></td>
+                          <td *ngIf="Item.price_Col_4"><input type="text" name="price_Col_4" #price_Col_4="ngModel" [(ngModel)]="Item.price_Col_4"/></td>
+                          <td *ngIf="Item.price_Col_5"><input type="text" name="price_Col_5" #price_Col_5="ngModel" [(ngModel)]="Item.price_Col_5"/></td>
+                          <td *ngIf="Item.price_Col_6"><input type="text" name="price_Col_6" #price_Col_6="ngModel" [(ngModel)]="Item.price_Col_6"/></td>
+                          <td *ngIf="Item.price_Col_7"><input type="text" name="price_Col_7" #price_Col_7="ngModel" [(ngModel)]="Item.price_Col_7"/></td>
+                          <td *ngIf="Item.price_Col_8"><input type="text" name="price_Col_8" #price_Col_8="ngModel" [(ngModel)]="Item.price_Col_8"/></td>
+                          <td *ngIf="Item.price_Col_9"><input type="text" name="price_Col_9" #price_Col_9="ngModel" [(ngModel)]="Item.price_Col_9"/></td>
+                          <td *ngIf="Item.price_Col_10"><input type="text" name="price_Col_10" #price_Col_10="ngModel" [(ngModel)]="Item.price_Col_10"/></td>
+                          <td *ngIf="Item.price_Col_11"><input type="text" name="price_Col_11" #price_Col_11="ngModel" [(ngModel)]="Item.price_Col_11"/></td>
+                          <td *ngIf="Item.price_Col_12"><input type="text" name="price_Col_12" #price_Col_12="ngModel" [(ngModel)]="Item.price_Col_12"/></td>
+                          <td *ngIf="Item.price_Col_13"><input type="text" name="price_Col_13" #price_Col_13="ngModel" [(ngModel)]="Item.price_Col_13"/></td>
+                          <td *ngIf="Item.price_Col_14"><input type="text" name="price_Col_14" #price_Col_14="ngModel" [(ngModel)]="Item.price_Col_14"/></td>
+                          <td *ngIf="Item.price_Col_15"><input type="text" name="price_Col_15" #price_Col_15="ngModel" [(ngModel)]="Item.price_Col_15"/></td>
+                          <td *ngIf="Item.price_Col_16"><input type="text" name="price_Col_16" #price_Col_16="ngModel" [(ngModel)]="Item.price_Col_16"/></td>
+                          <td *ngIf="Item.price_Col_17"><input type="text" name="price_Col_17" #price_Col_17="ngModel" [(ngModel)]="Item.price_Col_17"/></td>
+                          <td *ngIf="Item.price_Col_18"><input type="text" name="price_Col_18" #price_Col_18="ngModel" [(ngModel)]="Item.price_Col_18"/></td>
+                          <td *ngIf="Item.price_Col_19"><input type="text" name="price_Col_19" #price_Col_19="ngModel" [(ngModel)]="Item.price_Col_19"/></td>
+                          <td *ngIf="Item.price_Col_20"><input type="text" name="price_Col_20" #price_Col_20="ngModel" [(ngModel)]="Item.price_Col_20"/></td>
+                          <td *ngIf="Item.price_Col_21"><input type="text" name="price_Col_21" #price_Col_21="ngModel" [(ngModel)]="Item.price_Col_21"/></td>
+                          <td *ngIf="Item.price_Col_22"><input type="text" name="price_Col_22" #price_Col_22="ngModel" [(ngModel)]="Item.price_Col_22"/></td>
+                          <td *ngIf="Item.price_Col_23"><input type="text" name="price_Col_23" #price_Col_23="ngModel" [(ngModel)]="Item.price_Col_23"/></td>
+                          <td *ngIf="Item.price_Col_24"><input type="text" name="price_Col_24" #price_Col_24="ngModel" [(ngModel)]="Item.price_Col_24"/></td>
+                          <td *ngIf="Item.price_Col_25"><input type="text" name="price_Col_25" #price_Col_25="ngModel" [(ngModel)]="Item.price_Col_25"/></td>
+                          <td *ngIf="Item.price_Col_26"><input type="text" name="price_Col_26" #price_Col_26="ngModel" [(ngModel)]="Item.price_Col_26"/></td>
+                          <td *ngIf="Item.price_Col_27"><input type="text" name="price_Col_27" #price_Col_27="ngModel" [(ngModel)]="Item.price_Col_27"/></td>
+                          <td *ngIf="Item.price_Col_28"><input type="text" name="price_Col_28" #price_Col_28="ngModel" [(ngModel)]="Item.price_Col_28"/></td>
+                          <td *ngIf="Item.price_Col_29"><input type="text" name="price_Col_29" #price_Col_29="ngModel" [(ngModel)]="Item.price_Col_29"/></td>
+                          <td *ngIf="Item.price_Col_30"><input type="text" name="price_Col_30" #price_Col_30="ngModel" [(ngModel)]="Item.price_Col_30"/></td>
+
+
+                          <!-- <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td> --
+                        </tr>
+
+
+                        <tr *ngFor="let row of  createRange(rows_Count.value)" >
+                          <td><input type="text" name="item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="Item.item_Price_Width"/>{{Item.item_Price_Width}}</td>
+                          <td><input type="text" name="price_Col_1" #price_Col_1="ngModel" [(ngModel)]="Item.price_Col_1"/></td>
+                          <td><input type="text" name="price_Col_2" #price_Col_2="ngModel" [(ngModel)]="Item.price_Col_2"/></td>
+                          <td><input type="text" name="price_Col_3" #price_Col_3="ngModel" [(ngModel)]="Item.price_Col_3"/></td>
+                          <td><input type="text" name="price_Col_4" #price_Col_4="ngModel" [(ngModel)]="Item.price_Col_4"/> </td>
+                          <td><input type="text" name="price_Col_5" #price_Col_5="ngModel" [(ngModel)]="Item.price_Col_5"/></td>
+                          <td><input type="text" name="price_Col_6" #price_Col_6="ngModel" [(ngModel)]="Item.price_Col_6"/></td>
+                          <td><input type="text" name="price_Col_7" #price_Col_7="ngModel" [(ngModel)]="Item.price_Col_7"/></td>
+                          <td><input type="text" name="price_Col_8" #price_Col_8="ngModel" [(ngModel)]="Item.price_Col_8"/>{{Item.price_Col_8}}</td>
+                          <td><input type="text" name="price_Col_9" #price_Col_9="ngModel" [(ngModel)]="Item.price_Col_9"/>{{Item.price_Col_9}}</td>
+                          <td><input type="text" name="price_Col_10" #price_Col_10="ngModel" [(ngModel)]="Item.price_Col_10"/>{{Item.price_Col_10}}</td>
+                          <td><input type="text" name="price_Col_11" #price_Col_11="ngModel" [(ngModel)]="Item.price_Col_11"/>{{Item.price_Col_11}}</td>
+                          <td><input type="text" name="price_Col_12" #price_Col_12="ngModel" [(ngModel)]="Item.price_Col_12"/>{{Item.price_Col_12}}</td>
+                          <td><input type="text" name="price_Col_13" #price_Col_13="ngModel" [(ngModel)]="Item.price_Col_13"/>{{Item.price_Col_13}}</td>
+                          <td><input type="text" name="price_Col_14" #price_Col_14="ngModel" [(ngModel)]="Item.price_Col_14"/>{{Item.price_Col_14}}</td>
+                          <td><input type="text" name="price_Col_15" #price_Col_15="ngModel" [(ngModel)]="Item.price_Col_15"/>{{Item.price_Col_15}}</td>
+                          <td><input type="text" name="price_Col_16" #price_Col_16="ngModel" [(ngModel)]="Item.price_Col_16"/>{{Item.price_Col_16}}</td>
+                          <td><input type="text" name="price_Col_17" #price_Col_17="ngModel" [(ngModel)]="Item.price_Col_17"/>{{Item.price_Col_17}}</td>
+                          <td><input type="text" name="price_Col_18" #price_Col_18="ngModel" [(ngModel)]="Item.price_Col_18"/>{{Item.price_Col_18}}</td>
+                          <td><input type="text" name="price_Col_19" #price_Col_19="ngModel" [(ngModel)]="Item.price_Col_19"/>{{Item.price_Col_19}}</td>
+                          <td><input type="text" name="price_Col_20" #price_Col_20="ngModel" [(ngModel)]="Item.price_Col_20"/>{{Item.price_Col_20}}</td>
+                          <td><input type="text" name="price_Col_21" #price_Col_21="ngModel" [(ngModel)]="Item.price_Col_21"/>{{Item.price_Col_21}}</td>
+                          <td><input type="text" name="price_Col_22" #price_Col_22="ngModel" [(ngModel)]="Item.price_Col_22"/>{{Item.price_Col_22}}</td>
+                          <td><input type="text" name="price_Col_23" #price_Col_23="ngModel" [(ngModel)]="Item.price_Col_23"/>{{Item.price_Col_23}}</td>
+                          <td><input type="text" name="price_Col_24" #price_Col_24="ngModel" [(ngModel)]="Item.price_Col_24"/>{{Item.price_Col_24}}</td>
+                          <td><input type="text" name="price_Col_25" #price_Col_25="ngModel" [(ngModel)]="Item.price_Col_25"/>{{Item.price_Col_25}}</td>
+                          <td><input type="text" name="price_Col_26" #price_Col_26="ngModel" [(ngModel)]="Item.price_Col_26"/>{{Item.price_Col_26}}</td>
+                          <td><input type="text" name="price_Col_27" #price_Col_27="ngModel" [(ngModel)]="Item.price_Col_27"/>{{Item.price_Col_27}}</td>
+                          <td><input type="text" name="price_Col_28" #price_Col_28="ngModel" [(ngModel)]="Item.price_Col_28"/>{{Item.price_Col_28}}</td>
+                          <td><input type="text" name="price_Col_29" #price_Col_29="ngModel" [(ngModel)]="Item.price_Col_29"/>{{Item.price_Col_29}}</td>
+                          <td><input type="text" name="price_Col_30" #price_Col_30="ngModel" [(ngModel)]="Item.price_Col_30"/>{{Item.price_Col_30}}</td>
+
+
+                          <!-- <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td>
+                        </tr>--
+                        </table>
+                      </div>
+                    </div> -->
+
+
+
+
+
+                  <div class="row mt-2">
+
+
+                    <div class="col-xl-12 col-lg-12" style="text-align: center;">
+                      <button class="btn btn-danger"  type="submit"><i
                           class="icon-check2"></i>
-                        حفظ</button>
+                          حفظ</button>
                       <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/ItemsView"><i
-                          class="fa fa-table"></i> الرجوع لاستعراض الاصناف</button>
+                          class="fa fa-table"></i>  الرجوع لقائمة الأصناف </button>
+
+
                     </div>
                   </div>
                 </form>

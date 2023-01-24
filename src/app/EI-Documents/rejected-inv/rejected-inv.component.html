@@ -1,0 +1,110 @@
+<section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title"> الفواتير المرفوضة</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <input type="text" [(ngModel)]="term" placeholder="بحث" class="form-control" />
+
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered" id="Tbl">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>رقم الفاتورة</th>
+                                                <th>تاريخ الفاتورة</th>
+                                                <th>العميل</th>
+
+                                                <!-- <th>المخزن</th> -->
+
+                                                <th>الاجمالى</th>
+                                                <th>الخصم</th>
+                                                <th>الصافى</th>
+
+                                                <!-- <th><button class="btn btn-outline-danger" routerLink="/SaleInvs"><i
+                                                            class="fa fa-plus"></i>
+                                                        اضافة فاتورة</button>
+                                                     
+
+                                                        <button class="btn btn-sm btn-danger clearfix">
+                                                            <label>
+                                                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                                              Import
+                                                              <input  type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" (change)="onFileChange($event)" >
+                                                            </label>
+                                                          </button>
+                                                          
+                                                    </th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="SalesSaleInvList">
+                                            <tr *ngFor="let SaleInv of SalesSaleInvList | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row"> {{ pageSize * (page - 1) + i + 1}}</th>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.BranchId }}-{{
+                                                    SaleInv.SellingNo }}</td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{SaleInv.SellingDate |
+                                                    date:
+                                                    'dd/MM/yyyy'}} </td>
+                                                <th (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.CustomerName }}
+                                                </th>
+                                                <!-- <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.StoreName }}
+                                                </td> -->
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingTot }}
+                                                </td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingDisc }}
+                                                </td>
+                                                <td (click)="openForEdit(SaleInv.SellingId)">{{ SaleInv.SellingVal }}
+                                                </td>
+
+                                                <!-- <td><a class="btn text-danger"  *ngIf="UserType!='VIEWER'"
+                                                        (click)="onOrderDelete(i,SaleInv.SellingId)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a></td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                ...
+
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+
+
+                            </div>
+                            <div class="col-md-7">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" (click)="fnExport();"
+                                    class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                                    Export to Excel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -30,7 +30,6 @@ export class AddRetService {
     return this.http.get(environment.ApiUrl + '/api/AddRets/GetByUser/'+UserId, { headers: reqHeader, params: param }).pipe(map(data => data));
   }
 
-
   postAddRet() {
     var body = {
       ...this.formData,

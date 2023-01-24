@@ -1,0 +1,33 @@
+.media{
+  text-align: -webkit-center;
+}
+
+.add{
+  width: 18%;
+}
+
+.add-text{
+  margin-bottom: 32px;
+  display: block;
+}
+
+
+.add-icon{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.cardd{
+  background-color: #fff;
+  color: #fff;
+  width: auto;
+  border-radius: 15px;
+}
+
+
+.cardd:hover{
+  background-color: #A8001f;
+  color: #fff;
+  width: auto;
+  border-radius: 15px;
+}

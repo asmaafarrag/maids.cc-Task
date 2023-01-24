@@ -1,0 +1,71 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">طلبات الإشتراك  </h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+              <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-sm table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th> كود الطلب </th>
+                          <th> تاريخ الطلب </th>
+                          <th> العميل </th>                                     
+                          <th> الفترة من </th>
+                          <th> عدد الشهور </th>
+                          <th> الفترة إلى </th>
+                          <th> القيمة</th>
+                          <th>مدفوع</th>
+                          <th>ملغي</th>
+                          <th><button class="btn btn-outline-light" routerLink="/CreateSubscribe"><i
+                            class="fa fa-plus" ></i>  اضافة طلب  </button></th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let EmpPerm of itemsList;let i = index; " style="cursor: pointer;">
+                          <td  scope="row">{{i+1}}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.SubscribeRequestCode}}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.SubscribeRequestDate  | date: 'dd/MM/yyyy' }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.UserName }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.SubscribeFromDate  | date: 'dd/MM/yyyy'  }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.MonthsCount }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.SubscribeToDate  | date: 'dd/MM/yyyy'  }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.SubscribeTotalPrice }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.IsPaid }}</td>
+                          <td (click)="openForEdit(EmpPerm.SubscribeRequestID)">{{ EmpPerm.IsCanceled }}</td>
+
+                          
+                          <!-- <td>
+                            <a class="btn btn-sm btn-info text-white" (click)="AdOrEditSalBandItem(i,EmpPerm.SubscribeRequestID)"><i class="fa fa-pencil mr-1"></i>سداد</a>
+                            <a class="btn btn-sm btn-danger text-white ml-1" (click)="RefuseRequest(i,EmpPerm.SubscribeRequestID)"><i class="fa fa-close mr-1"></i>إلغاء</a>
+                          </td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

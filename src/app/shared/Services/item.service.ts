@@ -5,7 +5,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Item } from '../Models/item';
 import { environment } from 'src/environments/environment';
-import { ItemPriceModel } from '../Models/item-price-model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,40 +19,46 @@ export class ItemService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    return this.http.get(environment.ApiUrl + '/api/Item/GetItemList', { headers: reqHeader, params: param }).pipe(map(data => data));
+    return this.http.get(environment.ApiUrl + '/api/Items/get-Items-with-pagination', { headers: reqHeader, params: param }).pipe(map(data => data));
   }
 
-  getItemsPriceList(param): any {
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Item/GetItempriceList', { headers: reqHeader, params: param }).pipe(map(data => data));
-  }
 
-  postItem() {
-    return this.http.post(environment.ApiUrl + '/api/Item', this.formData);
-  }
+  // GetUnSubmitedItems(sellingList :Item[] ,EInvMode :string){
+  //   var body = {
+  //     salInvModelList: sellingList,
+  //     // generatedAccessToken: generatedAccessToken,
+  //     EInvMode:EInvMode
+  //   };
+  //   console.log(body);
+  //   //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+  //   const reqHeader = new HttpHeaders({
+  //     'Content-Type': 'application/json', 'Authorization':
+  //       'Bearer ' + localStorage.getItem('userToken')
+  //   });
+  //   // return this.http.get(environment.ApiUrl + '/api/v1.0/codetypes/requests/codes', { headers: reqHeader }).pipe(map(data => <Item[]>data));
+  //   return this.http.post(environment.ApiUrl + '/api/v1.0/codetypes/requests/codes?EInvMode='+ EInvMode, body.salInvModelList);
+  // }
+
 
   postItems() {
     var body = {
       ...this.formData,
-      addDets: this.formData.ItemTaxTypes
+      addDets: this.formData.itemPrices
     };
-    return this.http.post(environment.ApiUrl + '/api/Item', body);
-  }
-  
-  putItem() {
-    return this.http.put(environment.ApiUrl + '/api/Item/' + this.formData.ItemID, this.formData);
+    console.log(body,"body")
+    return this.http.post(environment.ApiUrl + '/api/Items/add-item', body);
   }
 
-  putItemPriceList(ItemsList :ItemPriceModel[]) {
-   // console.log(this.formData , 'this.formData')
-    return this.http.put(environment.ApiUrl + '/api/Item/PutItemPriceList' , ItemsList);
+  putItem() {
+    return this.http.put(environment.ApiUrl + '/api/Items/update-item/' + this.formData.item_ID, this.formData);
+  }
+
+  putItemPrices() {
+    return this.http.put(environment.ApiUrl + '/api/Items/update-item-prices/' + this.formData.item_ID, this.formData);
   }
 
   deleteItem(ItemId:number) {
-    return this.http.delete(environment.ApiUrl + '/api/Item/' + ItemId);
+    return this.http.delete(environment.ApiUrl + '/api/Items/delete-item/' + ItemId);
   }
 
   GetMaxItemNo(): Observable<number> {
@@ -69,8 +74,18 @@ export class ItemService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    return this.http.get(environment.ApiUrl + '/api/Item/' + saleInvId, { headers: reqHeader }).pipe(map(data => <Item>data));
+    return this.http.get(environment.ApiUrl + '/api/Items/get-item-by-id/' + saleInvId, { headers: reqHeader }).pipe(map(data => <Item>data));
   }
+
+
+  getItemWPriceById(id: number): Observable<Item> {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization':
+        'Bearer ' + localStorage.getItem('userToken')
+    });
+    return this.http.get(environment.ApiUrl + '/api/Items/get-item-with-price-by-id/' + id, { headers: reqHeader }).pipe(map(data => <Item>data));
+  }
+
 
 
 }

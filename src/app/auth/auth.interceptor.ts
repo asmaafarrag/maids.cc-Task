@@ -1,34 +1,25 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest, HttpUserEvent, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError ,from } from 'rxjs';
+import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest, HttpUserEvent, HttpResponse } from '@angular/common/http';
 import { tap, scan } from 'rxjs/operators';
 import { UserService } from '../shared/Services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router ) { }
+  constructor(private router: Router) { }
   // Common Task Of Implememdted class 'HttpInterceptor'
   // All Http Request will path through this interceptor to take accessToken
   // some requests doesn't need authorization so i need to check the request header if 'Auth' or 'Not'
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-
-    // const httpRequest = req.clone({
-    //   headers: new HttpHeaders({
-    //     'Cache-Control': 'no-cache',
-    //     'Pragma': 'no-cache',
-    //     'Expires': 'Sat, 01 Jan 2000 00:00:00 GMT'
-    //   })
-    // });
-
-    // return next.handle(httpRequest);
-  
-
     if (req.headers.get('No-Auth') === 'True') {
       return next.handle(req.clone());
     }
+    //else if (req.url.indexOf('eta.gov.eg') > 0) {
+    //  console.log(req.headers);
+    //  return next.handle(req.clone());  
+    //}
     if (localStorage.getItem('userToken') != null) {
       const clonedreq = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('userToken'))
@@ -59,12 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     // if the request doesn't have token in local storage the redirect the user to login page
     this.router.navigateByUrl('/login');
-  }
+  
 
-  private handleError(error: HttpErrorResponse): any {
-    if (error.status === 404) {
-     // Do your thing here      
-    window.location.reload();
-  }         
- }
+  }
 }

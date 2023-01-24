@@ -210,13 +210,29 @@
       });
     },
 
+    // changeLogo: function(menuType){
+    //   var logo = $('.brand-logo');
+    //   if(menuType == 'expand'){
+    //     logo.attr('src',logo.data('expand'));
+    //   }
+    //   else{
+    //     logo.attr('src',logo.data('collapse'));
+    //   }
+    // },
+
     changeLogo: function(menuType){
       var logo = $('.brand-logo');
       if(menuType == 'expand'){
         logo.attr('src',logo.data('expand'));
+        document.getElementsByClassName('brand-logo')[0].style.width="100%";
+
+
       }
       else{
         logo.attr('src',logo.data('collapse'));
+        document.getElementsByClassName('brand-logo')[0].style.width="300%";
+
+
       }
     },
 

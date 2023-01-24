@@ -20,30 +20,24 @@ export class CustomerService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    return this.http.get(environment.ApiUrl + '/api/Customers/GetCustomersList', { headers: reqHeader, params:param }).pipe(map(data => data));
+    // return this.http.get(environment.ApiUrl + '/api/Customers/get-customers-with-pagination', { headers: reqHeader, params: param , observe: 'response' });
+    return this.http.get(environment.ApiUrl + '/api/Customers/get-customers-with-pagination', { headers: reqHeader, params:param }).pipe(map(data => data));
   }
 
-  getCustomersListByEmpId(param,empId:string): any {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Customers/GetCustomersListByEmpId?empId='+empId, { headers: reqHeader, params:param }).pipe(map(data => data));
-  }
- 
+
+
   postCustomer() {
-    return this.http.post(environment.ApiUrl + '/api/Customers', this.formData);
+    return this.http.post(environment.ApiUrl + '/api/Customers/add-customer', this.formData);
   }
 
   putCustomer() {
-    return this.http.put(environment.ApiUrl + '/api/Customers/'+this.formData.CustomerID, this.formData);
+    return this.http.put(environment.ApiUrl + '/api/Customers/update-customer/'+this.formData.customer_ID, this.formData);
   }
 
-
-  deleteCustomer(Id:number) {
-    return this.http.delete(environment.ApiUrl + '/api/Customers/' + Id);
+  deleteCustomer(iD : number) {
+    return this.http.delete(environment.ApiUrl + '/api/Customers/delete-customer/'+iD);
   }
+
 
 
   getCustomerById(CustId : number): Observable<Customer> {
@@ -52,6 +46,6 @@ export class CustomerService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    return this.http.get(environment.ApiUrl + '/api/Customers/'+CustId, { headers: reqHeader }).pipe(map(data => <Customer>data));
+    return this.http.get(environment.ApiUrl + '/api/Customers/get-customer-by-id/'+CustId, { headers: reqHeader }).pipe(map(data => <Customer>data));
   }
 }

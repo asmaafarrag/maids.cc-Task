@@ -20,22 +20,22 @@ import { AccInc, AccIncListQ } from '../shared/Models/acc-inc-list-q.model';
 })
 export class RepIncomeStatmentComponent implements OnInit {
 
-  selectedPeriod : number;
-  //AccIncList : AccIncListQ[];
-  AccIncQ : AccInc;
+  // selectedPeriod : number;
+  // //AccIncList : AccIncListQ[];
+  // AccIncQ : AccInc;
 
-  constructor(private servAccIncListQService: AccIncListQService) { }
+  // constructor(private servAccIncListQService: AccIncListQService) { }
 
   ngOnInit() {
-    this.AccIncQ = {MFirstName:'1',MSecondName:'2',MThirdName:'3',AccIncItems:null}
+    // this.AccIncQ = {MFirstName:'1',MSecondName:'2',MThirdName:'3',AccIncItems:null}
   }
 
-  setPeriod(str) {
-    this.selectedPeriod = str;
-  }
+  // setPeriod(str) {
+  //   this.selectedPeriod = str;
+  // }
 
-  Saveform() : void {   
-    this.servAccIncListQService.getAccIncListQ(this.selectedPeriod).subscribe(res=> this.AccIncQ = res) ;         
-  } 
+  // Saveform() : void {
+  //   this.servAccIncListQService.getAccIncListQ(this.selectedPeriod).subscribe(res=> this.AccIncQ = res) ;
+  // }
 
 }

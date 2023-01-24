@@ -1,3 +1,4 @@
+import { Contracts } from './../Models/contracts';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,14 +13,14 @@ export class PriceListsService {
 
     formData: PriceLists;
     constructor(private http: HttpClient) { }
-  
+
     getPriceLists(param): any {
       //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
       const reqHeader = new HttpHeaders({
         'Content-Type': 'application/json', 'Authorization':
           'Bearer ' + localStorage.getItem('userToken')
       });
-      return this.http.get(environment.ApiUrl + '/api/PriceLists', { headers: reqHeader, params: param }).pipe(map(data => data));
+      return this.http.get(environment.ApiUrl + '/api/PriceLists/get-pricelists-drop-down-list', { headers: reqHeader, params: param }).pipe(map(data => data));
     }
 
     getPriceListPages(param): any {
@@ -27,36 +28,56 @@ export class PriceListsService {
         'Content-Type': 'application/json', 'Authorization':
           'Bearer ' + localStorage.getItem('userToken')
       });
-      return this.http.get(environment.ApiUrl + '/api/PriceLists/GetPages', { headers: reqHeader, params: param }).pipe(map(data => data));
+      return this.http.get(environment.ApiUrl + '/api/PriceLists/get-pricelists-with-pagination', { headers: reqHeader, params: param }).pipe(map(data => data));
     }
-  
+
     postPriceLists() {
       var body = {
         ...this.formData,
         //saleInvItems:this.saleInvItems
-        PriceListDets: this.formData.PriceListDets
+        priceListItems: this.formData.priceListItems,
+        priceListOtherItems: this.formData.priceListOtherItems,
+        priceListAddOns: this.formData.priceListAddOns,
       };
-      return this.http.post(environment.ApiUrl + '/api/PriceLists', body);
+      console.log(body , "body")
+      return this.http.post(environment.ApiUrl + '/api/PriceLists/add-pricelist', body);
     }
-  
+
     putPriceLists() {
-      return this.http.put(environment.ApiUrl + '/api/PriceLists/' + this.formData.PriceListID, this.formData);
+      console.log(this.formData)
+      return this.http.put(environment.ApiUrl + '/api/PriceLists/update-pricelist/' + this.formData.priceList_ID, this.formData);
     }
-  
+
     deletePriceLists(id:number) {
-      return this.http.delete(environment.ApiUrl + '/api/PriceLists/' + id);
+      return this.http.delete(environment.ApiUrl + '/api/PriceLists/delete-pricelist/' + id);
     }
-  
+
     getPriceListsById(id: number): Observable<PriceLists> {
       //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
       const reqHeader = new HttpHeaders({
         'Content-Type': 'application/json', 'Authorization':
           'Bearer ' + localStorage.getItem('userToken')
       });
-      return this.http.get(environment.ApiUrl + '/api/PriceLists/' + id, { headers: reqHeader }).pipe(map(data => <PriceLists>data));
+      return this.http.get(environment.ApiUrl + '/api/PriceLists/get-pricelist-by-id/' + id, { headers: reqHeader }).pipe(map(data => <PriceLists>data));
     }
-  
-  
-  
+
+
+    GetUserPriceListsContractsReport(userId: any , fromDate? : Date , toDate? : Date) : any {
+      //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+      const reqHeader = new HttpHeaders({
+        'Content-Type': 'application/json', 'Authorization':
+          'Bearer ' + localStorage.getItem('userToken')
+      });
+      return this.http.get(environment.ApiUrl + '/api/PriceLists/get-user-pricelists-contracts-report?userId='+userId+'&fromDate='+fromDate+'&toDate='+toDate, { headers: reqHeader }).pipe(map(data => <PriceLists[]>data));
+    }
+
+    GetUserContractsReport(userId: any , fromDate? : Date , toDate? : Date) : any {
+      //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+      const reqHeader = new HttpHeaders({
+        'Content-Type': 'application/json', 'Authorization':
+          'Bearer ' + localStorage.getItem('userToken')
+      });
+      return this.http.get(environment.ApiUrl + '/api/PriceLists/get-user-pricelists-contracts-report?userId='+userId+'&fromDate='+fromDate+'&toDate='+toDate, { headers: reqHeader }).pipe(map(data => <Contracts[]>data));
+    }
+
   }
-  

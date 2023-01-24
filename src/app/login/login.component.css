@@ -1,0 +1,39 @@
+#partitioned {
+ /* padding-left: 15px; */
+    letter-spacing: 40px;
+    border: 0;
+    outline: none;
+    background-image: linear-gradient(to left, rgb(181 42 32) 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    width: 456px;
+    min-width: 456px;
+  }
+
+  #divInner{
+    left: 0;
+    position: sticky;
+
+
+  }
+
+  #divOuter{
+    width: 450px;
+    overflow: hidden;
+
+  }
+
+  .loginimg{
+    vertical-align : middle;
+    /* min-width:15.2rem !important;
+    width: 15.2rem !important; */
+  }
+
+
+  .is-invalid{
+    border:1px solid red !important;
+  }
+
+

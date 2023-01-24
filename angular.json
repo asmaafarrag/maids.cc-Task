@@ -62,9 +62,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "CapitalERP:build",
-            "ssl" : true
-          
+            "browserTarget": "CapitalERP:build"
+         
+
           },
           "configurations": {
             "production": {

@@ -2,7 +2,7 @@
 
 
 
-<!--{{endDate}} 
+<!--{{endDate}}
 
 {{endDate - today}}-->
 
@@ -14,61 +14,18 @@
 
                 <div class="card-body collapse in">
                     <div class="card-block">
-                        <h3 class="card-title">تعديل أسعار الأصناف</h3>
+                        <h3 class="card-title">تسعير الأصناف (باليورو) </h3>
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="form-group">
-                                    
-                                    <div class="input-group">                                       
+
+                                    <div class="input-group">
                                         <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="getItems()" class="form-control" />
                                         <span class="input-group-addon"><a >
                                             <i class="fa fa-search"></i>
                                         </a></span>
                                     </div>
                                 </div>
-
-                              
-                
-                                <div class="row">
-                                    <div class="col-xl-12 col-lg-12">
-                                
-                                        <div class="row " style="padding: 20px 0; padding-right: 12px;">
-                                            <!-- <div class="col-md-4 col-xs-6">
-                                                <label>التاريخ</label>
-                                
-                                                <fieldset class="form-group position-relative has-icon-left">
-                                                  <input name="UpdatePriceDate" #UpdatePriceDate="ngModel"
-                                                    [ngModel]="ItemServ.formData.UpdatePriceDate | date:'yyyy-MM-dd'"
-                                                    (ngModelChange)="ItemServ.formData.UpdatePriceDate = $event" class="form-control"
-                                                    placeholder="التاريخ" required data-toggle="tooltip" data-placement="top" title
-                                                    data-original-title="التاريخ" type="date">
-                                
-                                                </fieldset>
-                                            </div> -->
-                                
-
-                                
-                                            <div class="col-md-4 col-xs-6">
-                                                <label>نسبة الزيادة</label>
-                                                <fieldset class="form-group position-relative has-icon-left">
-                                                     <input type="number" name="itemupdateRatioprice" #itemupdateRatioprice="ngModel" 
-                                                    class="form-control" [(ngModel)]="ItemServ.formData.itemupdateRatioprice" required >  
-                                                    <div class="form-control-position">
-                                                        <i class="fa fa-percent"></i>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                
-                                            <div class="col-md-4 text-center col-xs-6 " style="margin-top: 27px; display: flex;
-                                            flex-direction: row;">
-                                                
-                                                <button type="button" class="btn btn-outline-secondary" (click)=" ApplyAllChangePrice(ItemServ.formData.itemupdateRatioprice )"> تطبيق على  {{count}} أصناف </button>
-                                              
-                                            </div>
-                                        </div>
-                                
-                                    </div>
-                                </div> 
 
 
 
@@ -77,16 +34,17 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <!-- <th>مسلسل</th> -->
-                                                <th>كود الصنف</th>
-                                                <th>اسم الصنف</th>
-                                                <th>الوحدة</th>
+                                                <!-- <th>مسلسل</th>
+                                                <th>كود الصنف</th>-->
+                                                 <th> الصنف</th>
+                                                <!--<th>الوحدة</th>
                                                 <th>سعر البيع</th>
                                                 <th>السعر بعد التعديل </th>
-                                                <th>تاريخ أخر تعديل </th>
- 
-                                                <th><button class="btn btn-outline-success" (click)="putChange()">
-                                                         حفظ</button></th> 
+                                                <th>تاريخ أخر تعديل </th>-->
+                                                <th></th>
+
+                                                <!-- <th><button class="btn btn-outline-success" (click)="putChange()">
+                                                         تعديل السعر</button></th> -->
                                             </tr>
                                         </thead>
                                         <tbody *ngIf="ItemsList">
@@ -96,27 +54,31 @@
                                                 totalItems: count
                                               };
                                                let i = index " style="cursor: pointer;"  >
-                                        
-                                               <!-- [ngStyle]="{'background-color': ((itm.UpdatePriceDate - today) < 0  ) ? 'inherit' : 'rgb(203 229 189)' }" -->
 
-                                       
+                                               <!-- [ngStyle]="{'background-color': ((itm.UpdatePriceDate - today) < 0  ) ? 'inherit' : 'rgb(203 229 189)' }" -
+
+-->
                                                 <th scope="row"> {{( i + 1 ) }}</th>
-                                                <!-- <td >{{ itm.ItemID }}</td> -->
+                                                <!-- <td >{{ itm.ItemID }}</td>
 
-                                                <td >{{ itm.ItemNO }}</td>
-                                                <th >{{ itm.ItemName }}</th>
+                                                <td >{{ itm.ItemNO }}</td>-->
+                                                <th (click)="putChange(itm.item_ID)" >{{ itm.item_Name }}</th>
 
-                                                <td >{{ itm.UnitName }}</td>
+                                               <!-- <td >{{ itm.UnitName }}</td>
 
-                                                <td >{{ itm.ItemSalePrice }}</td> 
+                                                <td >{{ itm.ItemSalePrice }}</td> -->
 
-                                                <!-- <td (click)="openForEdit(itm.ItemID)">{{ itm.UnitName }}</td>  -->
-                                                <td ><input style="width: max-content;"  matInput  type="text" name="itemupdateprice" id="itemupdateprice" [(ngModel)]="itm.itemupdateprice "  class="form-control"></td> 
-                                                 <!-- <td><input type="number" name="ItemSalePrice"  placeholder="السعر بعد التعديل" #ItemSalePrice='ngModel'  [(ngModel)]="ItemServ.formData.ItemSalePrice ">{{ itm.ItemSalePrice }}</td>  -->
-                                                <!-- <td >{{ itm.UpdatePriceDate}}</td> -->
-                                                <td>{{ itm.UpdatePriceDate | date: 'dd/MM/yyyy' }} </td>
+                                                <td><button class="btn btn-outline-danger"  (click)="putChange(itm.item_ID)">تعديل السعر</button>
 
-                                              
+
+
+                                                </td>
+                                               <!-- <td ><input style="width: max-content;"  matInput  type="text" name="itemupdateprice" id="itemupdateprice" [(ngModel)]="itm.itemupdateprice "  class="form-control"></td>
+                                                  <td><input type="number" name="ItemSalePrice"  placeholder="السعر بعد التعديل" #ItemSalePrice='ngModel'  [(ngModel)]="ItemServ.formData.ItemSalePrice ">{{ itm.ItemSalePrice }}</td>  -->
+                                                <!-- <td >{{ itm.UpdatePriceDate}}</td>
+                                                <td>{{ itm.UpdatePriceDate | date: 'dd/MM/yyyy' }} </td>-->
+
+
                                                 <!-- [ngClass]="{
                                                     'negative' : today - itm.UpdatePriceDate  >= endDate - today,
                                                     'positive' : today - itm.UpdatePriceDate < endDate - today
@@ -126,9 +88,9 @@
                                                 <!-- <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
                                                         (click)="onOrderDelete(i,itm.ItemID)"><i
                                                             class="fa fa-trash fa-lg"></i> </a>
-                                                    <a class="btn text-success" 
+                                                    <a class="btn text-success"
                                                     (click)="ApplyChangePrice(itm.ItemID , itm.ItemSalePrice , ItemServ.formData.itemupdateRatioprice )"><i
-                                                        class="fa fa-plus fa-lg"></i> </a>   
+                                                        class="fa fa-plus fa-lg"></i> </a>
                                                 </td> -->
                                             </tr>
                                         </tbody>
@@ -152,7 +114,7 @@
                                     (pageChange)="handlePageChange($event)"></pagination-controls>
                             </div> -->
                             <div class="col-md-2">
-                                Result: {{count}}
+                                Result:
                              </div>
                         </div>
 

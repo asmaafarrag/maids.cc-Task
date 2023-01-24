@@ -1,0 +1,162 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">تقرير عقود المسوقين </h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+
+                <form >
+                  <!-- <div class="form-group">
+                    <label for="Department">المخزن</label>
+                    <select id="Department" name="Department" class="form-control form-control-lg input-lg"
+                      [(ngModel)]="selectedstore" (ngModelChange)="setSelectedStore($event)">
+                      <option value='0'>All</option>
+                      <option *ngFor="let store of storeslist" [ngValue]="store">{{store.StoreName}}</option>
+                    </select>
+                  </div>
+
+
+                    <div class="form-group ">
+                      <mat-form-field class="example-full-width" style="text-align: right">
+                        <input matInput placeholder="المسوق" aria-label="المسوق" [matAutocomplete]="auto"
+                          [formControl]="stateCtrl" dir="ltr">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                            <span>{{state.id}}</span>
+
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>-->
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label>  المسوق </label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select  name="userId"  [(ngModel)]="selectedUser" (ngModelChange)="setSelectedStore($event)"
+                          class="form-control"
+                          required >
+                            <option *ngFor="let user of userList" [ngValue]="user.id">{{user.name}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-truck"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+
+
+                  <div class="form-group">
+                    <mat-form-field class="ml-2">
+                      <input matInput [matDatepicker]="picker1" placeholder="الفترة من" [value]="fromDate.value" [formControl]="fromDate"
+                       (input)="getPriceList()" >
+                      <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                      <mat-datepicker #picker1 ></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="mr-2">
+                      <input matInput [matDatepicker]="picker2" placeholder="الى" [value]="toDate.value" [formControl]="toDate"
+                      (input)="getPriceList()">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2 ></mat-datepicker>
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="container-fluid text-center">
+                    <button type="button" (click)="getPriceList()" class="btn btn-danger btn-lg btn-block">عرض التقرير</button>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"></h4>
+          <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+          <div class="heading-elements">
+            <ul class="list-inline mb-0">
+              <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+
+              <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <!-- <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" /> -->
+                عدد العقود : {{PriceListCount }}
+
+                <div class="table-responsive text-nowrap mt-1">
+                  <table class="table table-hover table-sm table-bordered" *ngIf="selectedUser">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th> التاريخ</th>
+                        <th>العميل</th>
+                        <th>الإجمالي</th>
+                        <th></th>
+
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="PriceList">
+                      <tr *ngFor="let itm of PriceList | customerEmailFilter:ItemName;let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ itm.contract_Date | date:
+                          'dd/MM/yyyy'}}</td>
+                        <td>{{ itm.customer_Name }}</td>
+                        <td>{{ itm.contract_Total }}</td>
+                        <td>
+                          <a class="btn text-danger"
+                            (click)="printPdf(itm.contract_ID)"><i
+                                class="fa fa-print fa-lg"></i>
+                          </a>
+                        </td>
+
+                      </tr>
+                    </tbody>
+
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+

@@ -1,26 +1,375 @@
-<nav>  
+<!-- <nav>
   <div style="text-align:center">
-   <h1> Capital ERP    </h1>
-  </div>   
-</nav>
+   <h1> E Invoice </h1>
+  </div>
+</nav> -->
 
-<div class="row">
-  <div class="col-sm-12" *ngIf="UserType=='ADMIN'" ><canvas id="canvas"></canvas></div>
-</div>
+
+<!-- <div class="box box2">
+    <h1>{{ "home" |  translate }}</h1>
+</div> -->
 
  <!-- stats -->
- <div class="row">
-    <!-- <div class="col-xl-3 col-lg-6 col-xs-12">
+
+
+ <div class="row mt-2">
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="media">
+
+                    <div class="media-right media-middle">
+
+                        <!-- <i class="fa fa-user-o  font-large-2 float-xs-right" style="color: #e11f1f"></i> -->
+
+                        <img src="../../assets/app-assets/images/svg/undraw_coffee_break_h3uu.svg" alt="" style="width: 113px;">
+                    </div>
+
+                    <div class="media-body text-xs-right" style="color: black;"  >
+                      <h4 class="pink" style="margin-top:10px; font-family:sans-serif;">ART PERGOLA</h4>
+                      <!-- <span>عدد العملاء</span> -->
+                      <span class="w-900" style="font-family: cursive; margin-top:23px;">FOR RERGOLAS EST</span>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card" >
+        <div class="card-body">
+          <div class="card-block">
+
+            <div class="col-md-4"  >
+
+              <div class="media-right media-middle">
+                <i class="fa fa-user-o pink  float-xs-right" style="margin-right: 20px;font-size: 18px;" ></i>
+              </div>
+
+
+              <div class="media" style="width: 60%; margin-top: 10px; ">
+                <div class="media-body text-xs-left" style="color: black; text-align:center;" >
+                  <span>عدد العملاء</span>
+                  <h5 style=" text-align:center; margin-top: 5px;" >3</h5>
+
+                </div>
+                <!-- <div class="media-right media-middle">
+                    <i class="fa fa-user-o  font-large-2 float-xs-right" style="color: #e11f1f"></i>
+                </div> -->
+              </div>
+
+
+            </div>
+
+
+            <div class="col-md-4"  >
+
+              <div class="media-right media-middle">
+                <i class="fa fa-file-o pink  float-xs-right" style="margin-right: 20px;font-size: 18px;" ></i>
+              </div>
+
+
+              <div class="media" style="width: 60%; margin-top: 10px;">
+                <div class="media-body text-xs-left" style="color: black; text-align:center;" >
+                  <span>عدد العقود</span>
+                  <h5 style=" text-align:center; margin-top: 5px;" >7</h5>
+
+                </div>
+                <!-- <div class="media-right media-middle">
+                    <i class="fa fa-user-o  font-large-2 float-xs-right" style="color: #e11f1f"></i>
+                </div> -->
+              </div>
+
+
+            </div>
+
+
+            <div class="col-md-4"  >
+
+              <div class="media-right media-middle">
+                <i class="fa fa-bars pink  float-xs-right" style="margin-right: 20px;font-size: 18px;" ></i>
+              </div>
+
+
+              <div class="media" style="width: 60%; margin-top: 10px;">
+                <div class="media-body text-xs-left" style="color: black; text-align:center;" >
+                  <span>عدد العروض</span>
+                  <h5 style=" text-align:center; margin-top: 5px;" >5</h5>
+
+                </div>
+                <!-- <div class="media-right media-middle">
+                    <i class="fa fa-user-o  font-large-2 float-xs-right" style="color: #e11f1f"></i>
+                </div> -->
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+ </div>
+
+<!--
+ <div class="container">
+  <div class="row">
+      <div class="col-lg-3">
+          <div class="card card-margin">
+              <!-- <div class="card-header no-border">
+                  <h5 class="card-title">MOM</h5>
+              </div> --
+              <div class="card-body pt-0">
+                  <div class="widget-49">
+                      <div class="widget-49-title-wrapper">
+                        <div class="media">
+
+                          <div class="row add-icon">
+
+                            <div class="media-right media-middle">
+                              <i class="icon-file-text font-large-2 float-xs-right"></i>
+                            </div>
+
+                          </div>
+
+                          <span class="add-text">عقود العملاء</span>
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3">
+          <div class="card card-margin">
+              <!-- <div class="card-header no-border">
+                  <h5 class="card-title">MOM</h5>
+              </div> --
+              <div class="card-body pt-0">
+                  <div class="widget-49">
+                      <div class="widget-49-title-wrapper">
+                          <div class="media">
+
+                            <div class="row add-icon">
+
+                              <div class="media-right media-middle">
+                                <i class="icon-grid2 font-large-2 float-xs-right"></i>
+                              </div>
+
+                            </div>
+                            <span class="add-text"> إضافة أصناف</span>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3">
+          <div class="card card-margin">
+              <!-- <div class="card-header no-border">
+                  <h5 class="card-title">MOM</h5>
+              </div> --
+              <div class="card-body pt-0">
+                  <div class="widget-49">
+                      <div class="widget-49-title-wrapper">
+                          <div class="media">
+
+                            <div class="row add-icon">
+
+                              <div class="media-right media-middle">
+                                <i class="icon-user1 font-large-2 float-xs-right"></i>
+                              </div>
+                            </div>
+                            <span class="add-text">إضافة عميل</span>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="cardd card-margin">
+            <!-- <div class="card-header no-border">
+                <h5 class="card-title">MOM</h5>
+            </div> --
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+                      <div class="media">
+
+                        <div class="row add-icon">
+
+                          <div class="media-right media-middle">
+                            <i class="icon-exchange font-large-2 float-xs-right"></i>
+                          </div>
+
+                        </div>
+
+                        <span class="add-text"> إضافة عرض سعر</span>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+ <div class="row mb-2">
+  <div class="col-md-3  add">
+    <div class="cardd">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="media">
+
+            <div class="row add-icon">
+
+              <div class="media-right media-middle">
+                <i class="icon-user1 font-large-2 float-xs-right"></i>
+              </div>
+            </div>
+            <span class="add-text">إضافة عميل</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3  add">
+    <div class="cardd">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="media">
+
+            <div class="row add-icon">
+
+              <div class="media-right media-middle">
+                <i class="icon-grid2 font-large-2 float-xs-right"></i>
+              </div>
+
+            </div>
+
+            <span class="add-text"> إضافة أصناف</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-3  add">
+    <div class="cardd">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="media">
+
+            <div class="row add-icon">
+
+              <div class="media-right media-middle">
+                <i class="icon-file-text font-large-2 float-xs-right"></i>
+              </div>
+
+            </div>
+
+            <span class="add-text">عقود العملاء</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-3  add">
+    <div class="cardd">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="media">
+
+            <div class="row add-icon">
+
+              <div class="media-right media-middle">
+                <i class="icon-exchange font-large-2 float-xs-right"></i>
+              </div>
+
+            </div>
+
+            <span class="add-text"> إضافة عرض سعر</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3  add">
+    <div class="cardd">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="media">
+
+            <div class="row add-icon">
+
+              <div class="media-right media-middle">
+                <i class="icon-exchange font-large-2 float-xs-right"></i>
+              </div>
+
+            </div>
+
+            <span class="add-text"> إضافة عرض سعر</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+
+
+
+<!--
+    <div class="col-xl-3 col-lg-6 col-xs-12" >
         <div class="card">
             <div class="card-body">
                 <div class="card-block">
                     <div class="media">
-                        <div class="media-body text-xs-left" *ngIf="SuppCount" >
-                            <h3 class="pink">{{SuppCount.Supplier_Count}}</h3>
-                            <span>عدد الموردين</span>
+                        <div class="media-body text-xs-left" style="color: black;"  >
+                            <h3 class="pink" *ngIf="sellingRetCount">{{sellingRetCount.SellingRets_Count}}</h3>
+                            <!-- <span>عدد مرتجعات البيع</span> --
+                            <span> {{ "sellingRetcount" |  translate }} </span>
+
                         </div>
                         <div class="media-right media-middle">
-                            <i class="icon-bag2 pink font-large-2 float-xs-right"></i>
+                            <i class="fa fa-arrow-left  font-large-2 float-xs-right" style="color: #e11f1f"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="media">
+                        <div class="media-body text-xs-left" style="color: black;"  >
+                            <h3 class="pink">{{userCount.Users_Count}}</h3>
+                            <span>عدد المستخدمين</span>
+                        </div>
+                        <div class="media-right media-middle">
+                            <i class="icon-people pink font-large-2 float-xs-right" style="color: #e11f1f"></i>
                         </div>
                     </div>
                 </div>
@@ -29,83 +378,59 @@
     </div> -->
 
 
-    <div class="col-xl-3 col-lg-6 col-xs-12">
+
+
+
+    <!-- <div class="col-xl-3 col-lg-6 col-xs-12">
         <div class="card">
             <div class="card-body">
                 <div class="card-block">
                     <div class="media">
-                        <div class="media-body text-xs-left" style="color: black;"  >
-                            <h3 class="pink" *ngIf="SellingCount">{{SellingCount.Sellings_Count}}</h3>
-                            <span>عدد فواتير البيع</span>
-                        </div>
-                        <div class="media-right media-middle">
-                            <i class="icon-bag2   font-large-2 float-xs-right" style="color: #e11f1f"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-xs-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-block">
-                    <div class="media">
-                        <div class="media-body text-xs-left" *ngIf="CustCount" >
-                            <h3 class="teal" *ngIf="CustCount">{{CustCount.Customer_Count}}</h3>
-                            <span>عدد العملاء</span>
-                        </div>
-                        <div class="media-right media-middle">
-                            <i class="icon-user1 teal font-large-2 float-xs-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-xs-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-block">
-                    <div class="media">
-                        <div class="media-body text-xs-left">
+                        <div class="media-body text-xs-left" style="color: black;">
                             <h3 class="deep-orange">64.89 %</h3>
-                            <span>Conversion Rate</span>
+                            <span>معدل قبول الفواتير</span>
                         </div>
                         <div class="media-right media-middle">
-                            <i class="icon-diagram deep-orange font-large-2 float-xs-right"></i>
+                            <i class="icon-diagram deep-orange font-large-2 float-xs-right" style="color: #e11f1f"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-xs-12">
+    </div> -->
+    <!-- <div class="col-xl-3 col-lg-6 col-xs-12">
         <div class="card">
             <div class="card-body">
                 <div class="card-block">
                     <div class="media">
-                        <div class="media-body text-xs-left">
+                        <div class="media-body text-xs-left" style="color: black;">
                             <h3 class="cyan">423</h3>
-                            <span>Support Tickets</span>
+                            <span>الفواتير المرفوضة</span>
                         </div>
                         <div class="media-right media-middle">
-                            <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>
+                            <i class="icon-ios-help-outline cyan font-large-2 float-xs-right" style="color: #e11f1f"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!--/ stats -->
 
+<!-- <div class="row">
+  <div class="col-sm-12"  *ngIf="UserType!='VIEWER'" ><canvas id="canvas"></canvas></div>
+</div> -->
+
+
+
 <!-- Recent invoice with Statistics -->
-<div class="row match-height">  
-    <div class="col-xl-12 col-lg-12" *ngIf="UserType=='ADMIN'" >
-        <div class="card">
+<div class="row match-height">
+    <div class="col-xl-12 col-lg-12"   >
+        <div class="card" >
             <div class="card-header">
-                <h4 class="card-title">أحدث فواتير بيع</h4>
+                <h4 class="card-title"> أحدث عروض الأسعار
+                </h4>
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -115,28 +440,26 @@
                 </div>
             </div>
             <div class="card-body">
-   
+
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" *ngIf="sellingList">
-                        <thead>
+                        <thead style="background:white;">
                             <tr>
-                                <th>رقم الفاتورة</th>
-                                <th>العميل</th>
-                                <th>النوع</th>
-                                <th>التاريخ</th>
-                                <th>السعر</th>
+                              <th>تاريخ العرض</th>
+                              <th>مقدم إلى </th>
+                              <th>إجمالي العرض</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let sellingitem of sellingList">
-                                <td class="text-truncate"><a href="#">{{ sellingitem.SellingNo }}</a></td>
-                                <td class="text-truncate">{{ sellingitem.CustomerName }}</td>
-                                <td class="text-truncate"><span [ngClass]="(sellingitem.SellingType=='CREDIT')?'tag tag-default tag-warning':'tag tag-default tag-success'" 
+                            <tr *ngFor="let sellingitem of sellingList" style="cursor: pointer;">
+                                <td (click)="openForEdit(sellingitem.SellingId)" class="text-truncate"><a href="#">{{ sellingitem.SellingNo }}</a></td>
+                                <td (click)="openForEdit(sellingitem.SellingId)" class="text-truncate">{{ sellingitem.CustomerName }}</td>
+                                <!-- <td (click)="openForEdit(sellingitem.SellingId)" class="text-truncate"><span [ngClass]="(sellingitem.SellingType=='CREDIT')?'tag tag-default tag-warning':'tag tag-default tag-success'"
                                        >{{ sellingitem.SellingType }}</span></td>
-                                <td class="text-truncate">{{ sellingitem.SellingDate }}</td>
-                                <td class="text-truncate">{{ sellingitem.SellingTot }}</td>
+                                <td (click)="openForEdit(sellingitem.SellingId)" class="text-truncate">{{ sellingitem.SellingDate }}</td> -->
+                                <td (click)="openForEdit(sellingitem.SellingId)" class="text-truncate">{{ sellingitem.SellingTot }}</td>
                             </tr>
-                                                      
+
                         </tbody>
                     </table>
                 </div>
@@ -144,15 +467,17 @@
         </div>
     </div>
 </div>
+
+
 <!-- Recent invoice with Statistics -->
-<div class="row match-height">
-   
+<!-- <div class="row match-height">
+
     <div class="col-xl-12 col-md-12 col-sm-12">
         <div class="card" style="height: 440px;">
             <div class="card-body">
                 <div class="card-block">
                     <h4 class="card-title">برامجنا</h4>
-                    <h6 class="card-subtitle text-muted">الأنظمة والبرامج الأخرى لشركة منى كود</h6>
+                    <h6 class="card-subtitle text-muted">الأنظمة والبرامج الأخرى لشركة ميني كود</h6>
                 </div>
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -188,4 +513,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

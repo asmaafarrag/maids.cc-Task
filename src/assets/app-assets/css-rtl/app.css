@@ -1,6 +1,6 @@
-@media (max-width: 1366px) {
-  html {
-    font-size : 14px;
+@media (max-width: 2690px) {
+  html{
+    font-size : 12px;
   }
 }
 
@@ -9,7 +9,7 @@ html {
 }
 html body {
   height : 100%;
-  background-color : #F3F3F3;
+  background-color : #f9f9f9;
   direction : rtl;
 }
 html body.fixed-navbar {
@@ -70,7 +70,7 @@ html body .pace .pace-progress {
      -moz-box-align : center;
   -ms-flex-align : center;
           align-items : center;
-  height : 100vh;
+  height : 92vh;
 }
 
 @media (max-width: 767px) {
@@ -168,7 +168,7 @@ footer.footer-light {
 }
 
 footer.footer-dark {
-  background : #1D2B36;
+  background : #b52a20;
   color : #FFFFFF;
 }
 
@@ -398,14 +398,14 @@ footer.footer-dark {
   background-color : #F2F2F2;
 }
 .main-menu.menu-dark {
-  color : #DCDCDC;
-  background : #1D2B36;
+  color : #e11f1f;
+  background : #fff;
 }
 .main-menu.menu-dark .main-menu-header {
   padding : 20px;
 }
 .main-menu.menu-dark .main-menu-header .menu-search {
-  background : #0B1115;
+  background : #d6d2d269;
   padding : 0.5rem 1rem;
   color : #C3C3C3;
 }
@@ -413,14 +413,14 @@ footer.footer-dark {
   border-color : #020304;
 }
 .main-menu.menu-dark .navigation {
-  background : #1D2B36;
+  background : #fff;
 }
 .main-menu.menu-dark .navigation .navigation-header {
   color : #DCDCDC;
   padding : 24px 20px 8px 20px;
 }
 .main-menu.menu-dark .navigation li a {
-  color : #DCDCDC;
+  color : #3b3a3a;
 }
 .main-menu.menu-dark .navigation li a span.menu-sub-title {
   color : white;
@@ -443,28 +443,28 @@ footer.footer-dark {
   top : 3px;
 }
 .main-menu.menu-dark .navigation > li.open > ul {
-  background : #162029;
+  background : #fff;
 }
 .main-menu.menu-dark .navigation > li.open > a {
-  color : #C3C3C3;
-  background : #162029;
+  color : #b12d2d;
+  background :#eeecec;
 }
 .main-menu.menu-dark .navigation > li.open .hover > a {
-  background : #121B22;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li:not(.open) > ul {
   display : none;
 }
-.main-menu.menu-dark .navigation > li.hover > a, .main-menu.menu-dark .navigation > li:hover > a, .main-menu.menu-dark .navigation > li.active > a {
-  color : #C3C3C3;
-  background-color : #162029;
+.main-menu.menu-dark .navigation > li.hover > a, .main-menu.menu-dark .navigation > li:hover > a, .main-menu.menu-dark .navigation > li.active .hover > a {
+  color : #fff;
+  background-color : #A8001f;
 }
 .main-menu.menu-dark .navigation > li.hover > a.mm-next, .main-menu.menu-dark .navigation > li:hover > a.mm-next, .main-menu.menu-dark .navigation > li.active > a.mm-next {
   background-color : inherit;
 }
-.main-menu.menu-dark .navigation > li.active > a {
-  background-color : #162029;
-}
+/* .main-menu.menu-dark .navigation > li.active > a {
+  background-color : #fff;
+} */
 .main-menu.menu-dark .navigation > li .active {
   background : #121B22;
 }
@@ -473,7 +473,7 @@ footer.footer-dark {
   background : #121B22;
 }
 .main-menu.menu-dark .navigation > li .active .hover > a {
-  background : #162029;
+  background : #eeecec;
 }
 .main-menu.menu-dark .navigation > li ul {
   padding : 0;
@@ -481,7 +481,7 @@ footer.footer-dark {
   font-size : 1rem;
 }
 .main-menu.menu-dark .navigation > li ul li {
-  color : #DCDCDC;
+  color : #fff;
   background : transparent;
 }
 .main-menu.menu-dark .navigation > li ul li > a {
@@ -491,92 +491,92 @@ footer.footer-dark {
   display : none;
 }
 .main-menu.menu-dark .navigation > li ul .open {
-  background : #0F161B;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .open > a {
-  color : #DCDCDC;
+  color : #b12d2d;
 }
 .main-menu.menu-dark .navigation > li ul .open > ul {
   display : block;
-  background : #0F161B;
+  background : #0c609d;
 }
 .main-menu.menu-dark .navigation > li ul .open > ul li > a {
   padding : 8px 60px 8px 20px;
 }
 .main-menu.menu-dark .navigation > li ul .open > ul .open {
-  background : #06090B;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .open > ul .open > ul {
   display : block;
-  background : #06090B;
+  background :#d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .open > ul .open > ul li > a {
   padding : 8px 70px 8px 20px;
 }
 .main-menu.menu-dark .navigation > li ul .open .hover > a {
-  background : #0B1115;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .hover > a, .main-menu.menu-dark .navigation > li ul:hover > a {
-  color : #E6E6E6;
-  background-color : #162029;
+  color : #b12d2d;
+  background-color : #fff;
 }
 .main-menu.menu-dark .navigation > li ul .active {
-  background : rgba(0, 0, 0, 0.06);
+  background : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .active > a {
-  color : #C3C3C3;
-  background-color : #0B1115;
+  color : #b12d2d;
+  background-color : #d6d2d269;
 }
 .main-menu.menu-dark .navigation > li ul .active .hover > a {
   background-color : transparent;
 }
 .main-menu.menu-dark .navigation > li > ul {
-  background : #1D2B36;
+  background : #fff;
 }
 .main-menu.menu-dark ul.menu-popout {
-  background : #1D2B36;
+  background : #fff;
 }
 .main-menu.menu-dark ul.menu-popout li a {
-  color : #DCDCDC;
+  color : #fff;
 }
 .main-menu.menu-dark ul.menu-popout li a span.menu-sub-title {
   color : white;
 }
 .main-menu.menu-dark ul.menu-popout li.hover > a, .main-menu.menu-dark ul.menu-popout li:hover > a, .main-menu.menu-dark ul.menu-popout li.open > a {
-  background : #121B22;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark ul.menu-popout .has-sub:not(.open) > ul {
   display : none;
 }
 .main-menu.menu-dark ul.menu-popout .open {
-  background : #0F161B;
+  background : #ffff;
 }
 .main-menu.menu-dark ul.menu-popout .open > a {
   color : #DCDCDC;
 }
 .main-menu.menu-dark ul.menu-popout .open > ul {
   display : block;
-  background : #0F161B;
+  background : #fff;
 }
 .main-menu.menu-dark ul.menu-popout .open > ul .open {
-  background : #06090B;
+  background :#d6d2d269;
 }
 .main-menu.menu-dark ul.menu-popout .open > ul .open > ul {
   display : block;
-  background : #06090B;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark ul.menu-popout .open li.hover > a, .main-menu.menu-dark ul.menu-popout .open li:hover > a {
-  background : #0B1115;
+  background : #d6d2d269;
 }
 .main-menu.menu-dark ul.menu-popout .hover > a, .main-menu.menu-dark ul.menu-popout:hover > a {
   color : #E6E6E6;
-  background-color : #162029;
+  background-color : #fff;
 }
 .main-menu.menu-dark ul.menu-popout .active {
   background : rgba(0, 0, 0, 0.06);
 }
 .main-menu.menu-dark ul.menu-popout .active > a {
-  color : #C3C3C3;
+  color : #fff;
   background-color : #0B1115;
 }
 .main-menu.menu-dark ul.menu-popout .active .hover > a, .main-menu.menu-dark ul.menu-popout .active :hover > a {

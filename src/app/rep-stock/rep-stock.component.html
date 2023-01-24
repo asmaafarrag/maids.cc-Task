@@ -1,4 +1,4 @@
-<section id="card-actions">
+<!-- <section id="card-actions">
   <div class="row">
     <div class="col-xs-12">
       <div class="card">
@@ -85,7 +85,7 @@
               <div class="col-xl-12 col-lg-12 mb-2">
                 <input type="text" [(ngModel)]="ItemName" placeholder="بحث" class="form-control" />
                 <div class="table-responsive text-nowrap">
-                  <table class="table table-sm table-hover table-bordered tbl-en" [class.tbl-ar]="this.tranLabels.lng == 'AR'" 
+                  <table class="table table-sm table-bordered tbl-en" [class.tbl-ar]="this.tranLabels.lng == 'AR'"
                   [class.tbl-en]="this.tranLabels.lng == 'EN'" *ngIf="selectedstore">
                     <thead>
                       <tr>
@@ -94,13 +94,13 @@
                         <th>{{ this.tranLabels.item }}</th>
                         <th>{{ this.tranLabels.qty }}</th>
                         <th *ngIf="this.tranLabels.lng == 'AR'" >{{ this.tranLabels.unit }}</th>
-                        <!-- <th>{{ this.tranLabels.costPrice }}</th> -->
+                        <th>{{ this.tranLabels.costPrice }}</th>
                         <th>{{ this.tranLabels.sillingPrice }}</th>
-                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.totalsillingPrice }}</th>
+                        <th  *ngIf="UserType!='VIEWER'">{{ this.tranLabels.totalsillingPrice }}</th>
                         <th>{{ this.tranLabels.store }}</th>
-                        
-                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.sillingPriceCurr }}</th>
-                        <th *ngIf="UserType=='ADMIN'">{{ this.tranLabels.totalSillingPriceCurr }}</th>
+
+                        <th  *ngIf="UserType!='VIEWER'">{{ this.tranLabels.sillingPriceCurr }}</th>
+                        <th  *ngIf="UserType!='VIEWER'">{{ this.tranLabels.totalSillingPriceCurr }}</th>
                       </tr>
                     </thead>
                     <tbody *ngIf="storeItemsStock">
@@ -110,13 +110,13 @@
                         <td>{{ stockitem.ItemName }}</td>
                         <td>{{ stockitem.Qty }}</td>
                         <td *ngIf="this.tranLabels.lng == 'AR'" >{{ stockitem.UnitName }}</td>
-                        <!-- <td>{{ stockitem.COSTPrice }}</td> -->
+                        <td>{{ stockitem.COSTPrice }}</td>
                         <td>{{ stockitem.ItemSalePrice }}</td>
-                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.ItemSalePrice * stockitem.Qty | number : '1.2-2' }}</td>
+                        <td  *ngIf="UserType!='VIEWER'">{{ stockitem.ItemSalePrice * stockitem.Qty | number : '1.2-2' }}</td>
                         <td>{{ stockitem.StoreName }}</td>
-                        
-                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.DollarPrice | number : '1.2-2'}}</td>
-                        <td *ngIf="UserType=='ADMIN'">{{ stockitem.DollarPrice * stockitem.Qty | number : '1.2-2' }}</td>
+
+                        <td  *ngIf="UserType!='VIEWER'">{{ stockitem.DollarPrice | number : '1.2-2'}}</td>
+                        <td  *ngIf="UserType!='VIEWER'">{{ stockitem.DollarPrice * stockitem.Qty | number : '1.2-2' }}</td>
                       </tr>
                     </tbody>
 
@@ -127,12 +127,12 @@
                         <th></th>
                         <th>{{ ItemsCount }}</th>
                         <th></th>
-                        <!-- <th>{{ TotalCOSTPrice }}</th> -->
+                        <th>{{ TotalCOSTPrice }}</th>
                         <th></th>
-                        <th *ngIf="UserType=='ADMIN'">{{ TotalStockPrice }}</th>
+                        <th  *ngIf="UserType!='VIEWER'">{{ TotalStockPrice }}</th>
                         <th></th>
-                        <th *ngIf="UserType=='ADMIN'"></th>
-                        <th *ngIf="UserType=='ADMIN'">{{ TotalDollarPrice }}</th>
+                        <th  *ngIf="UserType!='VIEWER'"></th>
+                        <th  *ngIf="UserType!='VIEWER'">{{ TotalDollarPrice }}</th>
                       </tr>
                     </thead>
                   </table>
@@ -146,4 +146,4 @@
   </div>
 
 
-</section>
+</section> -->

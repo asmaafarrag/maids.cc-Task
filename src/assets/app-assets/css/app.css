@@ -7,7 +7,8 @@ html {
   html body {
     height: 100%;
     background-color: #F3F3F3;
-    direction: ltr; }
+    direction: ltr;
+   }
     html body.fixed-navbar {
       padding-top: 4rem; }
     html body .content {
@@ -110,7 +111,7 @@ footer.footer-light {
   background: #FFFFFF; }
 
 footer.footer-dark {
-  background: #1D2B36;
+  background: #b52a20;
   color: #fff; }
 
 /*=========================================================================================
@@ -132,9 +133,10 @@ footer.footer-dark {
     .main-menu.menu-light .main-menu-header {
       padding: 20px; }
       .main-menu.menu-light .main-menu-header .menu-search {
-        background: #e6e6e6;
-        padding: 0.5rem 1rem;
-        color: #3d3f41; }
+        background : #E6E6E6;
+        padding : 0.5rem 1rem;
+        color : #3D3F41;
+      }
         .main-menu.menu-light .main-menu-header .menu-search:focus {
           border-color: #d9d9d9; }
     .main-menu.menu-light .navigation {
@@ -276,26 +278,29 @@ footer.footer-dark {
     .main-menu.menu-light.mm-menu .mm-listview.navigation-main > li:hover .mm-arrow:after,
     .main-menu.menu-light.mm-menu .mm-listview.navigation-main > li:hover .mm-next:after {
       border-color: #FFFFFF; }
-    .main-menu.menu-light.mm-menu .mm-hasnavbar .mm-listview > li:hover {
-      background-color: #f2f2f2; }
-  .main-menu.menu-dark {
-    color: #dcdcdc;
-    background: #1D2B36; }
+      .main-menu.menu-light.mm-menu .mm-hasnavbar .mm-listview > li:hover {
+        background-color : #F2F2F2;
+      }
+      .main-menu.menu-dark {
+        color : #e11f1f;
+        background : #fff;
+      }
     .main-menu.menu-dark .main-menu-header {
       padding: 20px; }
       .main-menu.menu-dark .main-menu-header .menu-search {
-        background: #0b1115;
-        padding: 0.5rem 1rem;
-        color: #c3c3c3; }
+        background : #d6d2d269;
+        padding : 0.5rem 1rem;
+        color : #C3C3C3;
+      }
         .main-menu.menu-dark .main-menu-header .menu-search:focus {
           border-color: #020304; }
     .main-menu.menu-dark .navigation {
-      background: #1D2B36; }
+      background: #fff; }
       .main-menu.menu-dark .navigation .navigation-header {
         color: #dcdcdc;
         padding: 24px 20px 8px 20px; }
       .main-menu.menu-dark .navigation li a {
-        color: #dcdcdc; }
+        color: #b12d2d; }
         .main-menu.menu-dark .navigation li a span.menu-sub-title {
           color: white; }
       .main-menu.menu-dark .navigation li.hover > a, .main-menu.menu-dark .navigation li.open > a {
@@ -311,101 +316,102 @@ footer.footer-dark {
             position: relative;
             top: 3px; }
         .main-menu.menu-dark .navigation > li.open > ul {
-          background: #162029; }
+          background: #fff; }
         .main-menu.menu-dark .navigation > li.open > a {
-          color: #c3c3c3;
-          background: #162029; }
+          color : #b12d2d;
+          background :#eeecec;}
         .main-menu.menu-dark .navigation > li.open .hover > a {
-          background: #121b22; }
+          background: #d6d2d269; }
         .main-menu.menu-dark .navigation > li:not(.open) > ul {
           display: none; }
         .main-menu.menu-dark .navigation > li.hover > a, .main-menu.menu-dark .navigation > li:hover > a, .main-menu.menu-dark .navigation > li.active > a {
-          color: #c3c3c3;
-          background-color: #162029; }
+          color : #b12d2d;
+          background-color : #eeecec }
           .main-menu.menu-dark .navigation > li.hover > a.mm-next, .main-menu.menu-dark .navigation > li:hover > a.mm-next, .main-menu.menu-dark .navigation > li.active > a.mm-next {
             background-color: inherit; }
-        .main-menu.menu-dark .navigation > li.active > a {
-          background-color: #162029; }
+        /* .main-menu.menu-dark .navigation > li.active > a {
+          background-color : inherit;
+        } */
         .main-menu.menu-dark .navigation > li .active {
           background: #121b22; }
           .main-menu.menu-dark .navigation > li .active > a {
             color: #FFFFFF;
             background: #121b22; }
           .main-menu.menu-dark .navigation > li .active .hover > a {
-            background: #162029; }
+            background: #eeecec; }
         .main-menu.menu-dark .navigation > li ul {
           padding: 0;
           margin: 0;
           font-size: 1rem; }
           .main-menu.menu-dark .navigation > li ul li {
-            color: #dcdcdc;
+            color: #fff;
             background: transparent; }
             .main-menu.menu-dark .navigation > li ul li > a {
               padding: 8px 20px 8px 50px; }
           .main-menu.menu-dark .navigation > li ul .has-sub:not(.open) > ul {
             display: none; }
           .main-menu.menu-dark .navigation > li ul .open {
-            background: #0f161b; }
+            background: #d6d2d269; }
             .main-menu.menu-dark .navigation > li ul .open > a {
-              color: #dcdcdc; }
+              color: #b12d2d; }
             .main-menu.menu-dark .navigation > li ul .open > ul {
               display: block;
-              background: #0f161b; }
+              background: #0c609d; }
               .main-menu.menu-dark .navigation > li ul .open > ul li > a {
                 padding: 8px 20px 8px 60px; }
               .main-menu.menu-dark .navigation > li ul .open > ul .open {
-                background: #06090b; }
+                background: #d6d2d269; }
                 .main-menu.menu-dark .navigation > li ul .open > ul .open > ul {
                   display: block;
-                  background: #06090b; }
+                  background: #d6d2d269; }
                   .main-menu.menu-dark .navigation > li ul .open > ul .open > ul li > a {
                     padding: 8px 20px 8px 70px; }
             .main-menu.menu-dark .navigation > li ul .open .hover > a {
-              background: #0b1115; }
+              background: #d6d2d269; }
           .main-menu.menu-dark .navigation > li ul .hover > a, .main-menu.menu-dark .navigation > li ul:hover > a {
-            color: #e6e6e6;
-            background-color: #162029; }
+            color: #b12d2d;
+            background-color: #fff; }
           .main-menu.menu-dark .navigation > li ul .active {
             background: rgba(0, 0, 0, 0.06); }
             .main-menu.menu-dark .navigation > li ul .active > a {
-              color: #c3c3c3;
-              background-color: #0b1115; }
+              color: #b12d2d;
+              background-color: #d6d2d269; }
             .main-menu.menu-dark .navigation > li ul .active .hover > a {
               background-color: transparent; }
         .main-menu.menu-dark .navigation > li > ul {
-          background: #1D2B36; }
+          background: #fff; }
     .main-menu.menu-dark ul.menu-popout {
-      background: #1D2B36; }
+      background: #fff; }
       .main-menu.menu-dark ul.menu-popout li a {
-        color: #dcdcdc; }
+        color: #fff; }
         .main-menu.menu-dark ul.menu-popout li a span.menu-sub-title {
           color: white; }
       .main-menu.menu-dark ul.menu-popout li.hover > a, .main-menu.menu-dark ul.menu-popout li:hover > a, .main-menu.menu-dark ul.menu-popout li.open > a {
-        background: #121b22; }
+        background: #d6d2d269; }
       .main-menu.menu-dark ul.menu-popout .has-sub:not(.open) > ul {
         display: none; }
       .main-menu.menu-dark ul.menu-popout .open {
-        background: #0f161b; }
+        background: #fff; }
         .main-menu.menu-dark ul.menu-popout .open > a {
           color: #dcdcdc; }
         .main-menu.menu-dark ul.menu-popout .open > ul {
           display: block;
-          background: #0f161b; }
+          background: #fff; }
           .main-menu.menu-dark ul.menu-popout .open > ul .open {
-            background: #06090b; }
+            background: #d6d2d269; }
             .main-menu.menu-dark ul.menu-popout .open > ul .open > ul {
               display: block;
-              background: #06090b; }
+              background: #d6d2d269; }
         .main-menu.menu-dark ul.menu-popout .open li.hover > a, .main-menu.menu-dark ul.menu-popout .open li:hover > a {
-          background: #0b1115; }
+          background: #d6d2d269; }
       .main-menu.menu-dark ul.menu-popout .hover > a, .main-menu.menu-dark ul.menu-popout:hover > a {
         color: #e6e6e6;
-        background-color: #162029; }
+        background-color: #fff; }
       .main-menu.menu-dark ul.menu-popout .active {
         background: rgba(0, 0, 0, 0.06); }
         .main-menu.menu-dark ul.menu-popout .active > a {
-          color: #c3c3c3;
-          background-color: #0b1115; }
+          color: #fff;
+          background-color: #0B1115; }
         .main-menu.menu-dark ul.menu-popout .active .hover > a, .main-menu.menu-dark ul.menu-popout .active :hover > a {
           background-color: transparent; }
     .main-menu.menu-dark.mm-menu .mm-search input {

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Excel } from '../../Models/excel';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,10 +30,18 @@ export class ExcelService {
 
   SendFile(ItemList) {
     console.log(ItemList,'in service');
-    console.log(environment.ApiUrl + '/api/Clients/ClientsExcelSheet', ItemList);
-    console.log(this.http.post(environment.ApiUrl + '/api/Clients/ClientsExcelSheet', ItemList));
+    console.log(environment.ApiUrl + '/api/Item/PostItemExcelsheet', ItemList);
+    console.log(this.http.post(environment.ApiUrl + '/api/Item/PostItemExcelsheet', ItemList));
 
-    return this.http.post(environment.ApiUrl + '/api/Clients/ClientsExcelSheet', ItemList);
+    return this.http.post(environment.ApiUrl + '/api/Item/PostItemExcelsheet', ItemList);
+  }
+
+  SendFileCust(ItemList) {
+    console.log(ItemList,'in service');
+    console.log(environment.ApiUrl + '/api/Item/PostCustomerExcelSheet', ItemList);
+    console.log(this.http.post(environment.ApiUrl + '/api/Item/PostCustomerExcelSheet', ItemList));
+
+    return this.http.post(environment.ApiUrl + '/api/Item/PostCustomerExcelSheet', ItemList);
   }
 
 

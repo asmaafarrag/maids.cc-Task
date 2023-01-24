@@ -45,8 +45,8 @@ export class TransBetStoresService {
     return this.http.put(environment.ApiUrl + '/api/TransBetStores/'+this.formData.TBSID, this.formData);
   }
 
-  deleteTransBetStores(iD : number) {
-    return this.http.delete(environment.ApiUrl + '/api/TransBetStores/'+iD);
+  deleteTransBetStores() {
+    return this.http.delete(environment.ApiUrl + '/api/TransBetStores/'+this.formData.TBSID);
   }
 
 

@@ -1,0 +1,133 @@
+<!--<div class="card-block" *ngIf="!access_token" >
+    <form class="form-horizontal form-simple" action="customer-orders.html" method="post" #NextloginForm="ngForm"
+      (ngSubmit)="OnLogin(UserName.value,Password.value)">
+
+       <fieldset class="form-group position-relative has-icon-left">
+
+          <input id="emailLogin"class="form-control" #UserName ngModel name="UserName" placeholder="اسم المستخدم" required >
+          <div class="form-control-position">
+            <i class="icon-head"></i>
+          </div>
+        </fieldset>
+      <fieldset class="form-group position-relative has-icon-left">
+
+        <input id="passwordLogin" type="password" class="form-control" #Password ngModel name="Password" placeholder="كلمة المرور" required >
+        <div class="form-control-position">
+          <i class="icon-key3"></i>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-danger "><i class="fa fa-sign-in"></i> دخول</button>
+        <a class="btn btn-danger  ml-1" (click)="Logout()"><i class="fa fa-trash"></i>خروج</a>
+
+      </div>
+    </form>
+
+  </div> -->
+
+  <!-- <div class="card-block" *ngIf="access_token" >
+    <div class="text-center">
+        <a class="btn btn-danger white ml-1" (click)="logOut()"><i class="fa fa-trash"></i>خروج</a>
+
+      </div>
+</div>
+ <div class="card-block" *ngIf="!access_token" >
+
+    <form class="form-horizontal form-simple" action="customer-orders.html" method="post" #NextloginForm="ngForm"
+      (submit)="OnLogin(UserName.value,Password.value)">
+
+       <fieldset class="form-group position-relative has-icon-left">
+
+          <input id="emailLogin"class="form-control" #UserName ngModel name="UserName" placeholder="اسم المستخدم" required >
+          <div class="form-control-position">
+            <i class="icon-head"></i>
+          </div>
+        </fieldset>
+      <fieldset class="form-group position-relative has-icon-left">
+
+        <input id="passwordLogin" type="password" class="form-control" #Password ngModel name="Password" placeholder="كلمة المرور" required >
+        <div class="form-control-position">
+          <i class="icon-key3"></i>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-danger "><i class="fa fa-sign-in"></i> دخول</button>
+         <a class="btn btn-danger  ml-1" (click)="Logout()"><i class="fa fa-trash"></i>خروج</a>
+
+      </div>
+    </form>
+
+  </div>
+<section id="card-actions" >
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title"> الاصناف الغير مرسلة للضرائب</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <button   *ngIf="UserType!='VIEWER'" class="btn btn-outline-danger" (click)="submitToETA()"><i
+                                    class="fa fa-plus"></i>
+                                ارسال الأصناف للضرائب</button>
+
+                                <input type="text" [(ngModel)]="term" placeholder="بحث" class="form-control" />
+                                <div class="table-responsive">
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th><input  type="checkbox" [checked]="isChecked$ | async" (change)="toggleChecked()"></th>
+                                                <th>كود الصنف</th>
+                                                <!-- <th>GPC عنصر مرتبط  </th> --
+                                                <th>اسم الصنف </th>
+                                                <th>اسم الصنف بالإنجليزي</th>
+                                                <th>نشط من</th>
+                                                <th>نشط إلى</th>
+
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="SalesSaleInvList">
+                                            <tr *ngFor="let SaleInv of SalesSaleInvList ; let i = index " style="cursor: pointer;">
+                                                <th scope="row"><input   type="checkbox"
+                                                    id="SellingSelectedCheckBox" #SellingSelectedCheckBox
+                                                    (change)="onSellingSelectedChanged(SellingSelectedCheckBox.checked,i)" ></th>
+                                                <td (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.ItemBarCode }}</td>
+                                                 <td (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.parentCode }}</td>                                                                         --
+                                                <th (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.ItemName }}</th>
+                                                <td (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.ItemNameE }}</td>
+                                                <td (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.activeFrom | date:
+                                                    'dd/MM/yyyy'}} </td>
+                                                <td (click)="openForEdit(SaleInv.ItemID)">{{ SaleInv.activeTo | date:
+                                                    'dd/MM/yyyy'}} </td>
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>  -->

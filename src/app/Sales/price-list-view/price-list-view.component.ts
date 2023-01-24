@@ -14,25 +14,25 @@ import { PriceListsService } from 'src/app/shared/Services/price-lists.service';
 })
 export class PriceListViewComponent implements OnInit {
 
- 
+
   term: string;
   isEnabled: boolean = true;
   itemsList: PriceLists[];
   currentIndex = -1;
-  page: number = 1;
+  page: number = 0;
   count: number = 0;
-  pageSize: number = 5;
-  pageSizes = [5, 10, 20];
+  pageSize: number = 50;
+  pageSizes = [20, 30, 40 , 50 , 60];
   title: string = '';
-
   UserID: string;
   UserType: string;
+  url = 'http://pergola-api.minicodeco.com/api/PriceLists/print-pricelist/'
 
   ngOnInit(): void {
   }
 
   constructor(private dialog : MatDialog, private PriceListsTypeServ: PriceListsService, private router: Router, private toastr: ToastrService, private currentRoute: ActivatedRoute) {
-    
+
     this.UserID = localStorage.getItem('lUsr');
     this.UserType = localStorage.getItem('UserType');
     router.events.subscribe((val) => {
@@ -40,26 +40,40 @@ export class PriceListViewComponent implements OnInit {
         this.gePriceLists();
       }
     });
-     
+
   }
 
 
   gePriceLists() {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
     this.PriceListsTypeServ.getPriceListPages(params).subscribe(res => {
-      const { TotalRecords, Data } = res;
-      this.itemsList = Data;
-      this.count = TotalRecords;
+      console.log(res)
+      this.itemsList = res.data;
+      this.count = res.recordsTotal;
     },
       err => { console.log(err); });
 
   }
 
   openForEdit(Id: number) {
+
+
     this.router.navigate(['/PriceList/edit/' + Id]);
   }
 
-  
+  openContract(Id: number) {
+    localStorage.setItem('priceIDD' , Id.toString());
+    this.router.navigate(['/Contract']);
+
+    // localStorage.removeItem('priceIDD' );
+  }
+
+  printPdf(id:number){
+    window.open(this.url + id , '_blank');
+  }
+
+
+
   onOrderDelete(ItemIndex: number, Id: number) {
     if (confirm("هل انت متأكد من حذف هذا البيان")) {
       this.PriceListsTypeServ.deletePriceLists(Id).subscribe(
@@ -109,6 +123,6 @@ export class PriceListViewComponent implements OnInit {
     this.gePriceLists();
   }
 
- 
+
 
 }

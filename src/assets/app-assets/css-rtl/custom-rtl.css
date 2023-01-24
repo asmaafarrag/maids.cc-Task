@@ -29,7 +29,7 @@
 }
 
 code[class*='language-'], pre[class*='language-'] {
-  direction : ltr;
+  direction : rtl;
 }
 
 @media print {

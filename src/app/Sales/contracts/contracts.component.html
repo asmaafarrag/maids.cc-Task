@@ -1,0 +1,259 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default"> العقد  </span></h4>
+                </div>
+                <form #form="ngForm" autocomplete="off"  (submit)="onSubmit(form)" novalidate>
+                  <!-- <input type="hidden" name="priceList_ID" #priceList_ID="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_ID"> -->
+
+
+                    <div class="row mt-3" *ngIf=" editM != true" >
+
+                    <div class="col-md-6">
+                      <label>تاريخ العرض  </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  readonly name="priceList_Date" #priceList_Date="ngModel" [ngModel]="PriceListsServ.formData.priceList_Date | date:'yyyy-MM-dd'"
+                        (ngModelChange)="PriceListsServ.formData.priceList_Date = $event"  class="form-control" placeholder="التاريخ" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date" max="today" style="text-align:right;">
+
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-6">
+                      <label>  مقدم إلى  </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input readonly name="priceList_Customer" #priceList_Customer="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_Customer"  class="form-control" placeholder=" مقدم إلى"
+                          data-toggle="tooltip" data-placement="top" title data-original-title=" مقدم إلى" required
+                          [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_Customer == null || PriceListsServ.formData.priceList_Customer == '') " >
+                          <div class="form-control-position">
+                            <i class="fa fa-keyboard-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row mt-3"  *ngIf=" editM == true">
+
+                    <div class="col-md-6">
+                      <label>تاريخ العرض  </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  readonly name="priceList_Date" #priceList_Date="ngModel" [ngModel]="contractServ.formData.priceList_Date | date:'yyyy-MM-dd'"
+                        (ngModelChange)="contractServ.formData.priceList_Date = $event"  class="form-control" placeholder="التاريخ" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date" max="today" style="text-align:right;">
+
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-6">
+                      <label>  مقدم إلى  </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input readonly name="priceList_Customer" #priceList_Customer="ngModel" [(ngModel)]="contractServ.formData.priceList_Customer"  class="form-control" placeholder=" مقدم إلى"
+                          data-toggle="tooltip" data-placement="top" title data-original-title=" مقدم إلى" required
+                          [class.is-invalid]="!isValid && (contractServ.formData.priceList_Customer == null || contractServ.formData.priceList_Customer == '') " >
+                          <div class="form-control-position">
+                            <i class="fa fa-keyboard-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                  </div>
+
+
+
+                    <div class="row">
+
+
+                      <!-- <div class="col-md-3">
+                        <label>   كود العقد  </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input  name="contract_Code" #contract_Code="ngModel" [(ngModel)]="contractServ.formData.contract_Code"  class="form-control" placeholder=" كود العقد "
+                            data-toggle="tooltip" data-placement="top" title data-original-title=" كود العقد " required
+                            [class.is-invalid]="!isValid && (contractServ.formData.contract_Code == null || contractServ.formData.contract_Code == 0)" >
+                            <div class="form-control-position">
+                              <i class="fa fa-keyboard-o"></i>
+                            </div>
+                        </fieldset>
+                      </div> -->
+
+                      <div class="col-md-4 ">
+                        <label> العميل </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                            <select name="customer_Name" #customer_Name="ngModel" [(ngModel)]="contractServ.formData.customer_Name"
+                            class="form-control" required [class.is-invalid]="!isValid && (contractServ.formData.customer_Name == null || contractServ.formData.customer_Name == '')"  >
+                             <option *ngFor="let customer of CustomerList" [ngValue]="customer.customer_Name">{{customer.customer_Name}}</option>
+                            </select>
+                            <div class="form-control-position">
+                             <i class="icon-user4"></i>
+                            </div>
+
+                        </fieldset>
+
+
+                      </div>
+
+                      <div class="col-md-2" style="margin-top: 24px;"  >
+                        <fieldset class="form-group position-relative has-icon-left">
+                            <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItems()"><i class="fa fa-plus"></i></a>
+                        </fieldset>
+                      </div>
+
+
+
+                     <!---- <div class="col-md-6" *ngIf=" editM != true">
+                        <label for=""> العميل </label>
+
+
+
+                        <div class="form-row" >
+                          <div class="form-group col-md-10">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" style="text-align: right">
+                            <input [(ngModel)]="selectedCustomer" matInput  [matAutocomplete]="auto"
+                              [formControl]="stateCtrl" dir="rtl"  >
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  >
+                              <mat-option style="font-size: small;" *ngFor="let state of filteredStates | async" [value]="state"  >
+                              <span>{{state.customer_Name}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+
+                          </div>
+
+                          <div class="col-md-2" style="top: 17px;right: -229px; float:right;" >
+                              <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItems()"><i class="fa fa-plus"></i></a>
+                          </div>
+
+
+                        </div>
+
+
+
+                        <!-- <div class="col-md-2" style="top: 17px;right: -51px; float:right;" >
+
+                          <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItems()"><i class="fa fa-plus"></i></a>
+                        </div>
+
+
+                      </div>-->
+
+
+
+                      <!-- <div class="col-md-3" *ngIf="editM == true">
+                        <label for=""> العميل</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="customer_Name" #customer_Name="ngModel" [(ngModel)]="contractServ.formData.customer_Name" class="form-control"
+                          required [class.is-invalid]="!isValid && (contractServ.formData.customer_ID == null || contractServ.formData.customer_ID == 0)" (ngModelChange)="setSelectedCustomer($event)"
+                          >
+                          <option *ngFor="let cust of customerslist" [ngValue]="cust.customer_ID">{{cust.customer_Name}}</option>
+                        </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+
+                        </fieldset>
+                      </div> -->
+
+                      <div class="col-md-4">
+                        <label>تاريخ العقد  </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="contract_Date" #contract_Date="ngModel" [ngModel]="contractServ.formData.contract_Date | date:'yyyy-MM-dd'"
+                          (ngModelChange)="contractServ.formData.contract_Date = $event"
+                          [class.is-invalid]="!isValid && (contractServ.formData.contract_Date == null || contractServ.formData.contract_Date == '') " class="form-control" placeholder="التاريخ" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date" max="today" style="text-align:right;">
+
+                        </fieldset>
+                      </div>
+
+
+                      <!-- <div class="col-md-3">
+                        <label>تاريخ العقد بالهجري</label>
+                        <fieldset  class="form-group position-relative has-icon-left">
+                          <input  name="contract_Hijri" #contract_Hijri="ngModel"
+                          [class.is-invalid]="!isValid && (contractServ.formData.contract_Hijri == null || contractServ.formData.contract_Hijri == '') "
+                          [ngModel]="contractServ.formData.contract_Hijri | date:'yyyy-MM-dd'"
+                          (ngModelChange)="contractServ.formData.contract_Hijri = $event"  class="form-control" placeholder="التاريخ" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date" max="today">
+
+                        </fieldset>
+                      </div> -->
+
+
+
+
+                      <!-- <hijri-gregorian-datepicker
+                          [label]="'تاريخ العقد بالهجري '"
+                          [(selectedDate)]="date"
+                          [isRequired]="true"
+                          [GregLabel]="'Gregorian'"
+                          [hijriLabel]  ="'Hijri'"
+                          [selectedDateType]="selectedDateType"
+                          #datePicker>
+                    </hijri-gregorian-datepicker> -->
+
+
+
+<!--
+                      <div class="input-group">
+                        <input id="id" name="name" class="form-control" [placeholder]="placeholder" name="dp" [(ngModel)]="value" ngbDatepicker #dp="ngbDatepicker" container="body" [firstDayOfWeek]="7">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                            <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
+                          </button>
+                        </div>
+                      </div> -->
+
+
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <div class="row mt-2">
+                <div class="col-xl-12 col-lg-12"  style="margin-right:25px; text-align:center;">
+                      <button class="btn btn-danger ml-2" type="submit" ><i class="icon-check2"></i>
+                         حفظ </button>
+
+                         <button *ngIf="print" type="button" class="btn text-danger ml-2"
+                          (click)="printPdf(contractServ.formData.contract_ID)"><i
+                              class="fa fa-print fa-lg"></i>
+                          </button>
+
+                      <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/ContractView" ><i class="fa fa-table"></i> الرجوع لقائمة العقود</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+

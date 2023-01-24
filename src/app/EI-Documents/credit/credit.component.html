@@ -1,0 +1,220 @@
+<!-- <section id="card-actions">
+  <h3 class="card-title">اشعار اضافة</h3>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off" *ngIf="servCreditNote.formData" (submit)="onSubmit(form)" novalidate>
+
+
+                  <div class="row">
+
+                      <div class="col-md-6">
+                        <label>رقم الإشعار</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingCreditNoteId" #SellingCreditNoteId="ngModel" [(ngModel)]="servCreditNote.formData.SellingCreditNoteId" class="form-control"
+                           placeholder="رقم الإشعار" required>
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        <label> تاريخ الإشعار</label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingCreditNoteDate" #SellingCreditNoteDate="ngModel" [ngModel]="servCreditNote.formData.SellingCreditNoteDate | date:'yyyy-MM-dd'"
+                          (ngModelChange)="servCreditNote.formData.SellingCreditNoteDate = $event"  class="form-control" placeholder="التاريخ" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="التاريخ" type="date">
+
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <label> العميل</label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="CustomerID" #CustomerID="ngModel" [(ngModel)]="servCreditNote.formData.CustomerID" class="form-control"
+                          required [class.is-invalid]="!isValid && (servCreditNote.formData.CustomerID == null || servCreditNote.formData.CustomerID == 0)"
+                          [disabled]="servCreditNote.formData.SellingCreditNoteId !== -1 ? true : null">
+                          <option value='0'>-- Select --</option>
+                            <option *ngFor="let cust of customerslist" [ngValue]="cust.CustomerID">{{cust.CustomerName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+
+                        </fieldset>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label >الفاتورة</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="SellingId" #SellingId="ngModel" [(ngModel)]="servCreditNote.formData.SellingId" class="form-control"
+                           [class.is-invalid]="!isValid && (servCreditNote.formData.SellingId == 0 )"
+                          [disabled]="servCreditNote.formData.SellingCreditNoteId !== -1 ? true : null">
+                          <option value='0'>-- Select --</option>
+                          <option *ngFor="let Selling of sellinglist" [ngValue]="Selling.SellingId">{{Selling.SellingNo}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-credit-card"></i>
+                          </div>
+
+                        </fieldset>
+
+                      </div>
+                      <div class="col-md-4">
+                        <label> الفرع</label>
+
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="BranchId" #BranchId="ngModel" [(ngModel)]="servCreditNote.formData.BranchId" class="form-control"
+                          required [class.is-invalid]="!isValid && (servCreditNote.formData.BranchId == 0 )"
+                          [disabled]="servCreditNote.formData.SellingCreditNoteId !== -1 ? true : null">
+                          <option *ngFor="let branch of branchlist" [ngValue]="branch.BranchId">{{branch.BranchName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-credit-card"></i>
+                          </div>
+
+                        </fieldset>
+
+                      </div>
+
+
+
+
+
+                      <!-- <div class="col-md-6">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="SellingType" #SellingType="ngModel" [(ngModel)]="servCreditNote.formData.SellingType" class="form-control"
+                          required [class.is-invalid]="!isValid && (servCreditNote.formData.SellingType == '' )"
+                          [disabled]="servCreditNote.formData.SellingId !== -1 ? true : null">
+                          <option value='CASH'>CASH</option>
+                          <option value='CREDIT'>CREDIT</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="fa fa-credit-card"></i>
+                          </div>
+
+                        </fieldset>
+
+                      </div>
+   --
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="SellingCreditNoteNotes" #SellingCreditNoteNotes="ngModel" [(ngModel)]="servCreditNote.formData.SellingCreditNoteNotes" class="form-control" placeholder="ملاحظات" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="ملاحظات">
+                          <div class="form-control-position">
+                            <i class="fa fa-pencil-square-o"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 mb-2">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-sm table-bordered">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>كود الصنف</th>
+                                <th>اسم الصنف</th>
+                                <!-- <th>بلد المنشأ</th> --
+                                <th>الكمية</th>
+                                <th>الوحدة</th>
+                                <th>القيمة</th>
+                                <th>الاجمالى</th>
+                                <th>نسبة الضريبة</th>
+                                <th>اجمالى الضريبة</th>
+                                <th>
+                                  <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItems(null,servCreditNote.formData.SellingCreditNoteId)"><i class="fa fa-plus"></i>إضافة صنف</a>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let Item of servCreditNote.formData.SellingCreditNoteDets;let i=index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{Item.ItemNO}}</td>
+                                <td>{{Item.ItemName}}</td>
+                                <!-- <td>{{Item.CompanyName}}</td> --
+                                <td>{{Item.Qty}}</td>
+                                <td>{{Item.UnitName}}</td>
+                                <td>{{Item.Price}}</td>
+                                <td>{{Item.Tot}}</td>
+                                <td>{{Item.ItemSaleTaxRatio}}</td>
+                                <td>{{Item.DetTaxSal}}</td>
+                                <td>
+                                  <a class="btn btn-sm btn-info text-white" (click)="AddOrEditSalInvItems(i,servCreditNote.formData.SellingCreditNoteId)"><i class="fa fa-pencil"></i>تعديل</a>
+                                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteSalInvItems(Item.SerNo, i)"><i class="fa fa-trash"></i>حذف</a>
+                                </td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <label for="Department">عدد الاصناف</label>
+                        <span>{{ItemsCount}}</span>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="Department">إجمالى الاشعار</label>
+                        <p>{{servCreditNote.formData.SellingCreditNoteTotalAmount}}</p>
+                      </div>
+                      <div class="col-md-4">
+                        <label >إجمالى الضرائب</label>
+                        <p>{{servCreditNote.formData.SellingCreditNoteTotalTax}}</p>
+                      </div>
+
+
+                    </div>
+                    <div class="row">
+
+                      <div class="col-md-2">
+                        <label for="Department">نسبة الخصم</label>
+                        <input name="SellingDiscRatio" #SellingDiscRatio="ngModel" [(ngModel)]="servCreditNote.formData.SellingDiscRatio"  placeholder="اجمالى الاشعار" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="نسبة الخصم"  (keyup)="calcDiscValue()" >%
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Department">قيمة الخصم</label>
+                          <input name="SellingCreditNoteTotalItemsDiscount" #SellingCreditNoteTotalItemsDiscount="ngModel" [(ngModel)]="servCreditNote.formData.SellingCreditNoteTotalItemsDiscount"  placeholder="اجمالى الاشعار" required
+                          data-toggle="tooltip" data-placement="top"  title data-original-title="خصم قيمة" (keyup)="calcDiscRatio()">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="Department">صافى الاشعار</label>
+                        <input name="SellingCreditNoteNetAmount" #SellingCreditNoteNetAmount="ngModel" [(ngModel)]="servCreditNote.formData.SellingCreditNoteNetAmount" class="form-control" placeholder="اجمالى الاشعار" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="صافى الاشعار">
+                      </div>
+
+                      <div class="col-md-4">
+                        <button class="btn btn-danger"  type="submit" [disabled]="((servCreditNote.formData.SellingCreditNoteId !== -1  && UserType!='ADMIN') || !isEnabled)? true : null"><i class="icon-check2" ></i>
+                          حفظ</button>
+                          <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/CreditView"  ><i class="fa fa-table"></i> الرجوع لاستعراض الفواتير</button>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section> -->

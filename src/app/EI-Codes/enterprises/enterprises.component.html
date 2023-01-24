@@ -1,0 +1,101 @@
+<section id="card-actions">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card-body collapse in">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 mb-2">
+                  <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default">اضافة شركات</span></h4>
+                  </div>
+                  <form #form="ngForm" autocomplete="off" *ngIf="enterprisesServ.formData" (submit)="onSubmit(from)" novalidate>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                          <label>كود الربط مع الضرائب التجريبي </label>
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input name="EnterpriseClientId" #EnterpriseClientId="ngModel" [(ngModel)]="enterprisesServ.formData.EnterpriseClientId"   class="form-control" placeholder="كود الربط مع الضرائب التجريبي" required
+                              data-toggle="tooltip" data-placement="top" title data-original-title="كود الربط مع الضرائب التجريبي" >
+                              <div class="form-control-position">
+                                <i class="fa fa-building"></i>
+                              </div>
+                          </fieldset>
+                        </div>
+
+
+                        <div class="col-md-6">
+                          <label>  الرقم السري التجريبي</label>
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input name="EnterpriseClientSecret" #EnterpriseClientSecret="ngModel" [(ngModel)]="enterprisesServ.formData.EnterpriseClientSecret"    class="form-control" placeholder="الرقم السري التجريبي " 
+                              data-toggle="tooltip" data-placement="top" title data-original-title="الرقم السري التجريبي " 
+                              required [class.is-invalid]="!isValid && (enterprisesServ.formData.EnterpriseClientSecret == null || enterprisesServ.formData.EnterpriseClientSecret == '')" 
+                              >
+                              <div class="form-control-position">
+                                <i class="fa fa-keyboard-o"></i>
+                              </div>
+                          </fieldset>
+                        </div>
+                        
+                      </div>
+
+
+
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <label>كود الربط مع الضرائب الفعلي</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="EnterpriseClientIdActive" #EnterpriseClientIdActive="ngModel" [(ngModel)]="enterprisesServ.formData.EnterpriseClientIdActive"   class="form-control" placeholder="كود الربط مع الضرائب الفعلي" required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="كود الربط مع الضرائب الفعلي" >
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <label> الرقم السري الفعلي</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="EnterpriseClientSecretActive" #EnterpriseClientSecretActive="ngModel" [(ngModel)]="enterprisesServ.formData.EnterpriseClientSecretActive"    class="form-control" placeholder="الرقم السري الفعلي " 
+                            data-toggle="tooltip" data-placement="top" title data-original-title="الرقم السري الفعلي " 
+                            required [class.is-invalid]="!isValid && (enterprisesServ.formData.EnterpriseClientSecretActive == null || enterprisesServ.formData.EnterpriseClientSecretActive == '')" 
+                            >
+                            <div class="form-control-position">
+                              <i class="fa fa-keyboard-o"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    
+          
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12" style="align-items: center;">
+                        <div class="text-center">
+
+
+                        <button class="btn btn-danger " type="submit"><i class="icon-check2"></i>
+                          حفظ</button>
+                    
+                 
+                          <!-- <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/login" ><i class="fa fa-table"></i> تسجيل الدخول</button> -->
+
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  
+  </section>

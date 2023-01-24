@@ -2,6 +2,43 @@
     border:1px solid red !important;
   }
 
-  .card-title{
-    color: green !important;
+
+
+
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
   }
+
+  .example-radio-button {
+    margin: 5px;
+  }
+
+  .tp-radio-group {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin:  0 15px;
+ }
+ .tp-radio-button {
+    margin: 18px;
+ }
+ .tp-selected-value {
+    margin: 15px 0;
+ }
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #eae8e8;
+  padding: 0;
+}
+.table th, .table td {
+  padding:0px;
+}
+
+
+table.no-spacing {
+  border-spacing:0; /* Removes the cell spacing via CSS */
+  border-collapse: collapse;  /* Optional - if you don't want to have double border where cells touch */
+}

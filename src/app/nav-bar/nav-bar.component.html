@@ -1,203 +1,278 @@
 <div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
   <!-- main menu header-->
-  <div class="main-menu-header">
+  <!-- <div class="main-menu-header"  [hidden]="!userService.isLoggedIn()">
     <input type="text" placeholder="Search" class="menu-search form-control round" />
-  </div>
+  </div> -->
   <!-- / main menu header-->
   <!-- main menu content-->
-  <div class="main-menu-content">
+  <div class="main-menu-content" >
     <ul [hidden]="!userService.isLoggedIn()" id="main-menu-navigation" data-menu="menu-navigation"
-      class="navigation navigation-main">
+      class="navigation navigation-main" style="margin-top: 35px;">
 
 
-      <li class="active"><a routerLink="/home" (click)="toggleSideNav()"><i class="icon-home3"></i><span
-            data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">الرئيسية</span></a>
-      </li>
-      <li><a routerLink="/SalesRequestOrder" (click)="toggleSideNav()"><i class="icon-paper"></i><span
-            data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">أوامر التوريد</span></a>
+      <li class="active" style="margin-bottom: 5px;"><a  routerLink="/home" (click)="toggleSideNav()"><i class="icon-home3"></i><span
+            data-i18n="nav.bootstrap_tables.table_basic" class="menu-title"> الصفحة الرئيسية</span></a>
       </li>
 
-      <li class="nav-item"><a><i class="icon-briefcase4"></i>
-        <span data-i18n="nav.dash.main" class="menu-title">HR</span></a>
-      <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
+      <li  style="margin-bottom: 5px;"><a routerLink="/CustomersView" (click)="toggleSideNav()"><i class="icon-user"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">العملاء</span></a>
+      </li>
+
+      <li  style="margin-bottom: 5px;"><a routerLink="/ItemsView" (click)="toggleSideNav()"><i class="icon-grid2"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">الأصناف</span></a>
+      </li>
+
+      <li  style="margin-bottom: 5px;"><a routerLink="/ChangeItemPrice" (click)="toggleSideNav()"><i class="icon-eur"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">تسعير الأصناف</span></a>
+      </li>
+
+      <li  style="margin-bottom: 5px;"><a routerLink="/priceListView" (click)="toggleSideNav()"><i class="icon-exchange"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">عروض الأسعار</span></a>
+      </li>
+
+      <li  style="margin-bottom: 5px;"><a routerLink="/contractsView" (click)="toggleSideNav()"><i class="icon-file-text"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">عقود العملاء </span></a>
+      </li>
+      <!-- *ngIf="UserType=='admin'" -->
+      <li  [hidden]=" UserType !='admin'" style="margin-bottom: 5px;"><a routerLink="/userView" (click)="toggleSideNav()"><i class="fa fa-user-circle-o"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title"> المسوقين  </span></a>
+      </li>
+
+      <li   [hidden]=" UserType !='admin'"  style="margin-bottom: 5px;"><a routerLink="/contractsReports" (click)="toggleSideNav()"><i class="fa fa-file-o"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">  تقرير عقود المسوقين  </span></a>
+      </li>
+
+      <li   [hidden]=" UserType !='admin'"  style="margin-bottom: 5px;"><a routerLink="/PriceListReports" (click)="toggleSideNav()"><i class="fa fa-file-text-o"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">  تقرير عروض المسوقين  </span></a>
+      </li>
+
+
+     <!--   <li  style="margin-bottom: 5px;"><a routerLink="/Item" (click)="toggleSideNav()"><i class="icon-sitemap"></i><span
+        data-i18n="nav.bootstrap_tables.table_basic" class="menu-title">الصنف </span></a>
+      </li>
+
+
+
+
+     <li *ngIf="UserType!='SENDER'" class="nav-item" (click)="open()"><a><i class="icon-grid2"></i>
+        <span data-i18n="nav.dash.main" class="menu-title"> {{ "mainsection" |  translate }}</span>
+
+        </a>
       <ul class="menu-content">
+
         <li>
-          <a routerLink="/VacOrd" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">طلب اجازة</a>
+          <a routerLink="/CustomersView" (click)="toggleSideNav()" data-i18n="nav.dash.main"  class="menu-item"> العملاء </a>
         </li>
+
         <li>
-          <a routerLink="/EmpPermit" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">طلب تصريح</a>
+          <a routerLink="/ItemsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  الأصناف </a>
         </li>
+
         <li>
-          <a routerLink="/VacOrds" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">طلبات تحت الاعتماد</a>
+          <a routerLink="/ChangeItemPrice" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> تسعير الأصناف</a>
         </li>
+
         <li>
-          <a routerLink="/RepEmpVacs" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تقرير اجازات موظف</a>
+          <a routerLink="/priceListView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> عروض الأسعار </a>
         </li>
-        <!--
+
         <li>
-          <a routerLink="/EmpPermits" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">طلبات التصاريح</a>
+          <a routerLink="/Itemline" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  صنف </a>
         </li>
-        -->
-        
-        
+
+
+
       </ul>
-      </li>
-
-      <li class="nav-item"><a><i class="icon-whatshot"></i>
-        <span data-i18n="nav.dash.main" class="menu-title">CRM</span></a>
-      <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
-      <ul class="menu-content">
-        <li>
-          <a routerLink="/CrmProjects" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">المشاريع</a>
-        </li>
-        <li>
-          <a   [routerLink]="['/CrmClients/view/6/'+ clientspage]"  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">العملاء</a>
-        </li>
+    </li> -->
 
 
-        
-        <!-- <li>
-          <a   [routerLink]="['/test/view/6/'+ clientspage]"  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">العملاء</a>
-        </li> -->
-        <!-- <li>
-          <a   routerLink="/SalesRep" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">إحصائيات المندوبين</a>
-        </li> -->
-        <li>
-          <a  [routerLink]="['/CrmClients/view/0/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">مطلوب للمتابعة</a>
-        </li>
-        <li>
-          <a  [routerLink]="['/CrmClients/view/1/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الجديد والمتابعة</a>
-        </li>
+    <!--   <li *ngIf="UserType!='SENDER'" class="nav-item" (click)="open()"><a><i class="icon-grid2"></i>
+          <span data-i18n="nav.dash.main" class="menu-title"> {{ "mainsection" |  translate }}</span>
+          <i *ngIf="!t" class="fa fa-arrow-down  font-small-1 float-xs-right" style=" margin-left: 42px;
+          color: #b52a20; margin-top: 5px;"></i>
 
-        <li>
-          <a [routerLink]="['/CrmClients/view/2/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الزيارات</a>
-        </li>
-        <li>
-          <a [routerLink]="['/CrmClients/view/3/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تحديد موعد</a>
-        </li>
-        <li>
-          <a [routerLink]="['/CrmClients/view/4/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الصفقات</a>
-        </li>
-        <li>
-          <a [routerLink]="['/CrmClients/view/5/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الفرص الضائعة</a>
-        </li>
-        <li>
-          <a [routerLink]="['/CrmClients/view/-1/'+ clientspage]" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">المتأخرات</a>
-        </li>
-
-        <li>
-          <a routerLink="/ChangeClients" (click)="toggleSideNav()"  *ngIf="UserType=='ADMIN'" data-i18n="nav.dash.main" class="menu-item">Change Clients</a>
-        </li>
-
-        
-        <!-- <li>
-          <a routerLink="/Houses" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">خريطة العقارات</a>
-        </li>
-        <li>
-          <a routerLink="/ReserveUnits" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الوحدات المحجوزة</a>
-        </li> -->
-        
-      </ul>
-      </li>
-      <li class="nav-item"><a><i class="fa fa-shopping-cart"></i>
-        <span data-i18n="nav.dash.main" class="menu-title">المبيعات</span></a>
-      <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
-      <ul class="menu-content">
-        <li><a routerLink="/SaleInvView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">فواتير البيع</a>
-        </li>
-        <li><a routerLink="/InvInView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">سندات القبض</a>
-        </li>
-        <li><a routerLink="/InvOutView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">سندات الصرف</a>
-        </li>
-        <li><a routerLink="/TransBetStoresView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تحويل بين المخازن</a>
-        </li>
-        <li><a routerLink="/AddsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">اذون الاضافة</a>
-        </li>
-        <li><a routerLink="/AddRetsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">اذون الصرف</a>
-        </li>
-        <li><a routerLink="/SellingRetsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">مرتجعات المبيعات</a>
-        </li>
-        <li><a routerLink="/CustDiscView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">اشعارات خصم عملاء</a>
-        </li>
-        
-
-        <li>
-          <a routerLink="/CustomersView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">العملاء</a>
-        </li>
-        <li>
-          <a routerLink="/ItemsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الاصناف</a>
-        </li>
-        <li>
-          <a routerLink="/ChangeItemPrice" *ngIf="UserType=='ADMIN'" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تغير أسعار الأصناف</a>
-        </li>
-        <li>
-          <a routerLink="/priceListView" *ngIf="UserType=='ADMIN'" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> عرض الأسعار </a>
-        </li>
-        
-      </ul>
-    </li>
-
-    <li class="nav-item"><a><i class="fa fa-shopping-cart"></i>
-      <span data-i18n="nav.dash.main" class="menu-title">المشتريات</span></a>
-    <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
-    <ul class="menu-content">
-      <li><a routerLink="/PurchasingsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">فواتير المشتريات</a>
-      </li>
-      <li><a routerLink="/SuppliersView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الموردون</a>
-      </li>
-      <li><a routerLink="/SuppDiscView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">اشعار خصم موردون</a>
-      </li>
-      
-      
-    </ul>
-    </li>
-      <li class="nav-item"><a><i class="icon-table2"></i>
-          <span data-i18n="nav.dash.main" class="menu-title">التقارير</span></a>
-        <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>-->
+          <i *ngIf="t" class="fa fa-arrow-up  font-small-1 float-xs-right" style=" margin-left: 42px;
+          color: #b52a20; margin-top: 5px;"></i>
+          </a>
         <ul class="menu-content">
           <li>
-            <a routerLink="/repStock" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تقرير مخزون
-              الأصناف</a>
+            <a routerLink="/ActivityTypeView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "activitytype" |  translate }}</a>
+          </li>
+          <li>
+            <a  *ngIf="UserType =='SALES'" routerLink="/userView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  {{ "users" |  translate }}</a>
+          </li>
+          <li>
+            <a routerLink="/BranchView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  {{ "branch" |  translate }} </a>
+          </li>
+          <li>
+            <a routerLink="/unitView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "unit" |  translate }} </a>
+          </li>
+          <li>
+            <a routerLink="/TaxTypeView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "TaxType" |  translate }} </a>
+          </li>
+          <li>
+            <a routerLink="/GroupView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">{{ "groups" |  translate }} </a>
+          </li>
+          <!-- <li>
+            <a routerLink="/codes" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تكويد الاصناف</a>
+          </li> --
 
+          <li>
+            <a routerLink="/ItemsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  {{ "items" |  translate }} </a>
+          </li>
+          <li>
+            <a routerLink="/CustomersView" (click)="toggleSideNav()" data-i18n="nav.dash.main"  class="menu-item">  {{ "customers" |  translate }} </a>
+          </li>
+          <li>
+            <a routerLink="/CountryView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "country" |  translate }} </a>
           </li>
 
-          <li><a routerLink="/repInventory" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-            class="menu-item">تقرير جرد الاصناف بالمخازن </a>
+          <li>
+            <a routerLink="/GovernateView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "governate" |  translate }}</a>
           </li>
 
-          <li><a *ngIf="UserType=='ADMIN'" routerLink="/repInventoryItems" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-            class="menu-item">تقرير إجماليات المبيعات لفترة  </a>
+          <li>
+            <a  routerLink="/RegionCitiesView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> {{ "city" |  translate }}</a>
           </li>
 
-
-          <li><a *ngIf="UserType=='ADMIN'" routerLink="/repSalesAnalysis" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-            class="menu-item">تقرير تحليل المبيعات   </a>
-          </li>
-          
-
-          <li><a routerLink="/repSellingDet" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تقرير
-              المبيعات بالاصناف</a>
-          </li>
-          
-          <li><a routerLink="/RepItemCardView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تقرير
-            حركة صنف</a>
-        </li>
-          <li><a routerLink="/RepIncomeStatment" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-              class="menu-item">قائمة الدخل</a>
-          </li>
-          <li><a routerLink="/RepAccStatement" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-              class="menu-item">تقرير كشف حساب</a>
+          <li>
+            <a  routerLink="/Subscription" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">  {{ "Subcription" |  translate }} </a>
           </li>
 
-          <li><a  *ngIf="UserType=='ADMIN'"   routerLink="/repPurchasingsAnalysis" (click)="toggleSideNav()" data-i18n="nav.dash.main"
-            class="menu-item">تقرير تحليل فواتير الشراء </a>
-        </li>
+          <li>
+            <a routerLink="/userView" (click)="toggleSideNav()" data-i18n="nav.dash.main"  class="menu-item">  {{ "users" |  translate }} </a>
+          </li>
 
-          
-          
-        
         </ul>
       </li>
+
+
+
+
+      <li *ngIf="UserType!='SENDER'  " (click)="openn()" class="nav-item"><a><i class="fa fa-shopping-cart"></i>
+          <span data-i18n="nav.menu_levels.main" class="menu-title">{{ "sales" |  translate }}</span>
+          <i *ngIf="!u" class="fa fa-arrow-down  font-small-1 float-xs-right" style=" margin-left: 42px;
+          color: #b52a20; margin-top: 5px;"></i>
+
+          <i *ngIf="u" class="fa fa-arrow-up  font-small-1 float-xs-right" style=" margin-left: 42px;
+          color: #b52a20; margin-top: 5px;"></i>
+
+        </a>
+
+
+        <ul class="menu-content">
+          <li><a  routerLink="/InvoiceView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+                 {{ "sellingInvoice" |  translate }}</a>
+          </li>
+
+
+
+          <li><a   routerLink="/SellingRetsView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+                 {{ "sellingRetInvoice" |  translate }} </a>
+          </li>
+
+
+
+
+          <li><a   routerLink="/AddInvView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+            {{ "AddInv" |  translate }} </a>
+         </li>
+
+          <!-- <li><a  routerLink="/CreditView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">تسجيل
+              اشعار اضافة</a>
+          </li> -->
+<!--
+          <li><a *ngIf="UserType!='DATAENTIRY'" routerLink="/UnSubmitedInvoiceView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+                {{ "sendsellingInvoice" |  translate }} </a>
+
+          </li>
+
+
+          <li><a *ngIf="UserType!='DATAENTIRY'" routerLink="/UnSubmitedSellingRetView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+              {{ "sendsellingRetInvoice" |  translate }}</a>
+
+          </li> -->
+
+          <!-- <li><a *ngIf="UserType!='DATAENTIRY'" routerLink="/MUnsItem" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">ارسال
+             الأصناف </a>
+
+          </li> --
+
+
+          <li>
+            <a  routerLink="/allInv" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+              {{ "invoices" |  translate }} </a>
+          </li>
+
+          <!-- <li>
+            <a routerLink="/Allcodes" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الأكواد
+             </a>
+          </li> -->
+
+
+          <!-- <li><a  (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">
+              الفواتير الواردة
+              <span class="tag tag tag-pill bg-info  float-xs-right">4</span></a>
+          </li> --
+
+
+        </ul>
+      </li>
+
+
+      <li  *ngIf="UserType=='SENDER'" class="nav-item"><a><i class="fa fa-shopping-cart"></i>
+        <span data-i18n="nav.menu_levels.main" class="menu-title">المرسل للضرائب</span></a>
+        <!--<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>--
+        <ul class="menu-content">
+
+
+
+          <li><a   routerLink="/UnSubmitedInvoiceView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">ارسال
+              فواتير البيع <span class="tag tag tag-pill tag-danger float-xs-right">3</span></a>
+
+          </li>
+
+
+          <li><a  routerLink="/UnSubmitedSellingRetView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">ارسال
+            مرتجعات البيع <span class="tag tag tag-pill tag-primary float-xs-right">2</span></a>
+
+          </li>
+
+
+        </ul>
+      </li>
+
+
+ <li  *ngIf="UserType!='SENDER'" class="nav-item"><a><i class="icon-table2"></i>
+          <span data-i18n="nav.dash.main" class="menu-title">التقارير</span></a>
+        --<span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span>--
+        <ul class="menu-content">
+          <li>
+            <a routerLink="/InvoiceView" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> الفواتير
+              الغير معتمدة</a>
+          </li>
+
+          <li>
+            <a routerLink="/notification" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item"> الإشعارات
+              </a>
+          </li>
+
+
+
+
+
+
+          -- <li>
+            <a routerLink="/repAcceptedInv" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الفواتير
+              المقبولة</a>
+          </li>
+          <li>
+            <a routerLink="/repRejectedInv" (click)="toggleSideNav()" data-i18n="nav.dash.main" class="menu-item">الفواتير
+              المرفوضة</a>
+          </li> --
+
+        </ul>
+      </li> -->
 
     </ul>
   </div>
@@ -215,20 +290,20 @@
         <div class="col-lg-6 offer mb-3 mb-lg-0"></div>
         <div class="col-lg-6 text-center text-lg-right">
           <ul class="menu list-inline mb-0">
-            <li class="list-inline-item" *ngIf = "!userService.isLoggedIn()" ><a routerLink="/repStock">Login</a></li>            
+            <li class="list-inline-item" *ngIf = "!userService.isLoggedIn()" ><a routerLink="/repStock">Login</a></li>
             <li class="list-inline-item"><a href="contact.html">Contact</a></li>
             <li class="list-inline-item" *ngIf = "userService.isLoggedIn()"><a href="#" (click)="logOut()">Log Out</a></li>
           </ul>
         </div>
       </div>
     </div>
-  
+
   </div>
   <nav class="navbar navbar-expand-lg">
     <div class="container"><a href="index.html" class="navbar-brand home"><img src="./assets/Design/img/logo.png" alt="MiniCode logo"
           class="d-none d-md-inline-block"><img src="./assets/Design/img/logo-small.png" alt="MiniCode logo" class="d-inline-block d-md-none"><span
           class="sr-only">MiniCode - go to homepage</span></a>
-     
+
       <div id="navigation" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto" *ngIf = "userService.isLoggedIn()" >
           <li class="nav-item"><a routerLink="/home" class="nav-link active">الرئيسية</a></li>
@@ -251,7 +326,7 @@
                     <ul class="list-unstyled mb-3">
                       <li class="nav-item"><a href="category.html" class="nav-link">تقرير الشيكات</a></li>
                       <li class="nav-item"><a href="category.html" class="nav-link">قائمة حسابات إجمالى</a></li>
-                      <li class="nav-item"><a href="category.html" class="nav-link">قائمة الدخل</a></li>                      
+                      <li class="nav-item"><a href="category.html" class="nav-link">قائمة الدخل</a></li>
                     </ul>
                   </div>
                   <div class="col-md-6 col-lg-3">
@@ -282,14 +357,14 @@
                 </div>
               </li>
             </ul>
-          </li>        
+          </li>
         </ul>
         <div class="navbar-buttons d-flex justify-content-end">
-         
+
         </div>
       </div>
     </div>
   </nav>
-  
+
 </header>
 -->

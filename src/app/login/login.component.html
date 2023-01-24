@@ -1,23 +1,23 @@
-<section id="card-actions" class="flexbox-container">
-  <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1  box-shadow-2 p-0">
+ <section id="card-actions" class="flexbox-container">
+  <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1  box-shadow-2 p-0" style="width: min-content;">
     <div class="card border-grey border-lighten-3 m-0">
       <div class="card-header no-border">
         <div class="card-title text-xs-center">
-          <div class="p-1"><img src="././assets/app-assets/images/logo/robust-logo-dark.png" alt="branding logo">
+          <div class="p-1"><img class="loginimg" src="././assets/app-assets/images/logo/Artlogo2.jpeg" alt="branding logo">
           </div>
         </div>
         <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with
-            Capital ERP</span></h6>
+            Art Pergola</span></h6>
       </div>
       <div class="card-body collapse in">
-        <div class="card-block" *ngIf="!access_token">
+        <!-- <div class="card-block" *ngIf="!access_token">
 
-         
 
-          <form class="form-horizontal form-simple" action="customer-orders.html" method="post" #loginForm="ngForm"
+
+           <form class="form-horizontal form-simple" action="customer-orders.html" method="post" #loginForm="ngForm"
             (ngSubmit)="OnSubmit(CustomerInfoSerial.value)">
             <fieldset class="form-group position-relative has-icon-left mb-0">
-             
+
               <input id="CustomerInfoSerialLogin" type="text" class="form-control" #CustomerInfoSerial ngModel
                 name="CustomerInfoSerial" placeholder="كود العميل" required>
               <div class="form-control-position">
@@ -27,47 +27,68 @@
             <div class="form-group">
 
               </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="icon-unlock2"></i>
+            <button type="submit" class="btn btn-info btn-block"><i class="icon-unlock2"></i>
               تسجيل الدخول</button>
           </form>
-        </div>
+        </div> -->
 
-        <div class="card-block" *ngIf="access_token">
+
+
+        <div class="card-block" >
           <form class="form-horizontal form-simple" action="customer-orders.html" method="post" #NextloginForm="ngForm"
-            (ngSubmit)="OnLogin(UserName.value,Password.value)">
-            
-            <fieldset class="form-group position-relative has-icon-left">
-               
-                <input id="emailLogin"class="form-control" #UserName ngModel name="UserName" placeholder="اسم المستخدم" required >
-                <div class="form-control-position">
-                  <i class="icon-head"></i>
-                </div>
-              </fieldset>
-            <fieldset class="form-group position-relative has-icon-left">
-            
-              <input id="passwordLogin" type="password" class="form-control" #Password ngModel name="Password" placeholder="كلمة المرور" required >
-              <div class="form-control-position">
-                <i class="icon-key3"></i>
+            (ngSubmit)="OnLogin(emailOrPhone.value,password.value)">
+
+
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <label >اسم المستخدم </label>
+
+                <fieldset class="form-group position-relative has-icon-left">
+                    <input id="emailLogin" class="form-control" #emailOrPhone ngModel name="emailOrPhone" placeholder="اسم المستخدم" required >
+
+                    <div class="form-control-position">
+                      <i class="icon-head"></i>
+                    </div>
+                </fieldset>
               </div>
-            </fieldset>
+
+              <div class="col-md-6">
+                <label for="">كلمة المرور </label>
+
+                <fieldset class="form-group position-relative has-icon-left">
+                  <input id="passwordLogin" type="password" class="form-control" #password ngModel name="password" placeholder="كلمة المرور" required >
+
+                  <div class="form-control-position">
+                    <i class="icon-key3"></i>
+                  </div>
+                </fieldset>
+
+              </div>
+            </div>
+
+
 
             <div class="form-group">
 
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> دخول</button>
-              <a class="btn btn-primary ml-1" (click)="Logout()"><i class="fa fa-trash"></i>خروج</a>
-             
+            <div class="text-center " style="text-align: center; margin-top: 20px;">
+              <button type="submit" class="btn btn-danger "><i class="fa fa-sign-in"></i>   دخول  </button>
+              <!-- <button class="btn btn-warning  ml-2 " type='button'
+                routerLink="/register"><i class="fa fa-user "></i>  مستخدم جديد  </button> -->
+
             </div>
+
           </form>
-          
+
         </div>
       </div>
       <div class="card-footer">
+
+
         <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
           {{errorMessage}}
         </div>
-       
+
       </div>
     </div>
   </div>

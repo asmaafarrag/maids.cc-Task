@@ -8,7 +8,7 @@ import { VacOrdersView } from "../Models/vac-orders-view";
 import { Emps } from "../Models/emps";
 
 import { environment } from 'src/environments/environment';
-import { Vacs } from '../Models/vacs';
+
 import { EmpVacBal } from '../Models/emp-vac-bal';
 
 @Injectable({
@@ -38,14 +38,7 @@ export class VacOrdersService {
     return this.http.get(environment.ApiUrl + '/api/Emps', { headers: reqHeader }).pipe(map(data => <Emps[]>data));
   }
 
-  getVacs(): Observable<Vacs[]> {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Vacs', { headers: reqHeader }).pipe(map(data => <Vacs[]>data));
-  }
+
 
   getSelectedEmps(EmpID : number ): Observable<Emps[]> {
     //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });

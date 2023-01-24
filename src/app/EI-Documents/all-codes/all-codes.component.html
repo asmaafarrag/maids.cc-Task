@@ -1,0 +1,149 @@
+<!-- <section id="card-actions" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+
+
+                    <div class="card-block">
+
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 mb-2">
+
+                                    <ul class="nav nav-tabs" style="display: flex;" >
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="base-tab1" data-toggle="tab"
+                                                aria-controls="tab1" href="#tab1" aria-expanded="true">كل الاستخدام</a>
+                                        </li>
+                                        <li class="nav-item"  (click)="tab2Clicked()" >
+                                            <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2"
+                                              href="#tab2" aria-expanded="false"> تفاصيل الطلبات</a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <div class="form-group">
+
+                                                <div class="input-group">
+
+                                                    <input type="search"  placeholder="بحث" (change)="getAllInv()" class="form-control" />
+                                                    <span class="input-group-addon"><a >
+                                                        <i class="fa fa-search"></i>
+                                                    </a></span>
+                                                </div>
+                                             </div>
+                                        </li>
+
+
+
+                                    </ul>
+
+
+                                    <div class="tab-content px-1 pt-1" >
+                                        <div role="tabpanel" class="tab-pane active" id="tab1" aria-expanded="true"
+                                            aria-labelledby="base-tab1">
+
+                                            <div class="table-responsive">
+                                                <table class="table  table-bordered" id="Tbl">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>نوع </th>
+                                                            <th>رقم مميز</th>
+                                                            <th>اسم الصنف</th>
+                                                            <th>نشط من</th>
+                                                            <th>نشط إلى</th>
+                                                            <th>نشط </th>
+                                                       </tr>
+                                                    </thead>
+                                                    <tbody *ngIf="SalesSaleInvList">
+                                                        <tr *ngFor="let SaleInv of SalesSaleInvList | paginate : {
+                                        itemsPerPage: pageSize,
+                                        currentPage: page,
+                                        totalItems: count
+                                      };
+                                let i = index " style="cursor: pointer;">
+                                                            <th scope="row"> {{ pageSize * (page - 1) + i + 1}}</th>
+
+                                                            <td >{{SaleInv.codeType }}</td>
+
+                                                            <th >{{ SaleInv.ItemBarCode }}
+                                                            </th>
+
+                                                            <td >{{ SaleInv.ItemName }}
+                                                            </td>
+
+
+                                                            <td >{{SaleInv.activeFrom |
+                                                                date: 'dd/MM/yyyy'}} </td>
+
+                                                            <td >{{SaleInv.activeTo |
+                                                                date: 'dd/MM/yyyy'}} </td>
+
+                                                            <td >{{ SaleInv.status }}</td>
+
+                                                            <td><a class="btn text-danger"
+                                                                    (click)="cancel(SaleInv.uuid)"><i
+                                                                        class="fa fa-times fa-lg"></i> </a>
+                                                                    <a class="btn text-primary"
+                                                                    (click)="Print(SaleInv.uuid)"><i
+                                                                        class="fa fa-print fa-lg"></i> </a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                ...
+
+                                                عدد السجلات فى الصفحة:
+                                                <select (change)="handlePageSizeChange($event)">
+                                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                                        {{ size }}
+                                                    </option>
+                                                </select>
+
+
+                                            </div>
+                                            <div class="col-md-7">
+                                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="tab-pane" id="tab2" aria-labelledby="base-tab2">
+
+                                            <app-details-code></app-details-code>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+ -->

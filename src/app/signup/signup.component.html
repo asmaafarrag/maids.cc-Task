@@ -1,48 +1,106 @@
-<div>
-  <div class="box">
-    <h1>New account</h1>
-    <p class="lead">Not our registered customer yet?</p>
-    <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The
-      whole process will not take you more than a minute!</p>
-    <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>,
-      our customer service center is working for you 24/7.</p>
-    <hr>
-    <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)" ngNativeValidate>
-      <div class="form-group">
-        <label for="UserName">User Code</label>
-        <input id="UserName" type="text" class="form-control" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName"
-          required >
-        <div class="text-danger" *ngIf="UserName.invalid && (UserName.dirty || UserName.touched)">
-          <div *ngIf="UserName.errors?.required &&  UserName.touched">UserName is required</div>          
+<!-- <section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <div class="col-md-12" style="text-align: center; margin-bottom:15px; ;"><h4><span class="label label-default"> إضافة مسوق </span></h4>
+                </div>
+                <form #form="ngForm" autocomplete="off"  (submit)="onSubmit(from)" autocomplete="false" novalidate>
+
+
+                  <div class="row">
+
+                      <div class="col-md-4">
+                        <label> name  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="name" autocomplete="false"  #name="ngModel" [(ngModel)]="userService.formData.name"   class="form-control"  required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="اسم المستخدم"
+                            [class.is-invalid]="!isValid && (userService.formData.name == null || userService.formData.name == '')">
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label> Email or phone  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="emailOrPhone" autocomplete="false"  #emailOrPhone="ngModel" [(ngModel)]="userService.formData.emailOrPhone"   class="form-control" placeholder="email or phone " required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="email or phone "
+                            [class.is-invalid]="!isValid && (userService.formData.emailOrPhone == null || userService.formData.emailOrPhone == '')">
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>  كلمة السر <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input type="password" autocomplete="false" name="password" #password="ngModel" [(ngModel)]="userService.formData.password"    class="form-control" placeholder="كلمة السر "
+                            data-toggle="tooltip" data-placement="top" title data-original-title="كلمة السر "
+                            required [class.is-invalid]="!isValid && (userService.formData.password == null || userService.formData.password == '')"
+                            [type]="hide ? 'password' : 'text'"
+                            >
+                            <div class="form-control-position" style="top:19; right: auto !important;">
+                              <i class="fa fa-eye" matSuffix (click)="hide = !hide" ></i>
+                          </div>
+                        </fieldset>
+                      </div>
+
+
+                      <!-- <div class="col-md-4">
+                        <label>نوع المستخدم <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="UserType" #UserType="ngModel" [(ngModel)]="userServ.formData.UserType" class="form-control"
+                          required [class.is-invalid]="!isValid && (userServ.formData.UserType == null || userServ.formData.UserType == '')"  (ngModelChange)="setSelectedBranch($event)"  >
+                            <option value='ADMIN'>ADMIN</option>
+                            <option value='USER'>USER</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+
+                        </fieldset>
+                      </div> --
+
+
+
+                    </div>
+
+
+
+
+                  <div class="row" style="    text-align: center;
+                  margin-top: 40px;">
+                    <div class="col-xl-12 col-lg-12" style="align-items: center;">
+                      <div class="text-center">
+
+
+                      <button class="btn btn-danger " type="submit"><i class="icon-check2"></i>
+                        حفظ</button>
+
+                        <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/userView" ><i class="fa fa-table"></i> الرجوع لقائمة المسوقين</button>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
-      
-      <div class="form-group">
-        <label for="FirstName">Customer Name</label>
-        <input id="FirstName" type="text" class="form-control" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName"
-          required>
-        <span class="error-message" *ngIf="FirstName.invalid && FirstName.touched">Name is required*</span>
-      </div>
-      <div class="form-group">
-        <label for="LastName">Customer Program</label>
-        <input id="LastName" type="text" class="form-control" name=LastName #LastName="ngModel" [(ngModel)]="user.LastName"
-          required>
-        <span class="error-message" *ngIf="LastName.invalid && LastName.touched">Customer Program is required*</span>
-      </div>
-      
-     
-      <div class="form-group">
-        <label for="CustomerInfoConnStr">CustomerInfoConnStr</label>
-        <input id="CustomerInfoConnStr" type="text" class="form-control" name=CustomerInfoConnStr #CustomerInfoConnStr="ngModel" [(ngModel)]="user.CustomerInfoConnStr"
-          required>
-        <span class="error-message" *ngIf="CustomerInfoConnStr.invalid && CustomerInfoConnStr.touched">CustomerInfoConnStr is required*</span>
-      </div>
-      
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Register</button>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
 
 
+</section> -->

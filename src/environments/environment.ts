@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  //  ApiUrl:'http://104.196.134.107/AfitAPI',
-     ApiUrl:'https://afitapi.minicodeco.com',
-    //  ApiUrl : 'http://localhost:22376'
- 
+    ApiUrl:'http://pergola-api.minicodeco.com',
+    // ApiUrl:'http://104.196.134.107/AfitAPI',
+
+  //  ApiUrl : 'http://localhost:22376',
+  // ApiUrl:'https://afitapi.minicodeco.com',
+  EtaUrl : 'https://api.preprod.invoicing.eta.gov.eg',
+  idSrvBaseUrl: 'https://id.preprod.eta.gov.eg'
 };
 
 /*
@@ -17,5 +20,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
- 
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

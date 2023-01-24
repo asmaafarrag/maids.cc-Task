@@ -1,147 +1,527 @@
 <section id="card-actions">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="card">
-          <div class="card-body collapse in">
-            <div class="card-block">
-              <div class="row">
-                <div class="col-xl-12 col-lg-12 mb-2">
-                  <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default">اضافة عميل</span></h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default"> العملاء  </span></h4>
+                </div>
+                <form #form="ngForm" autocomplete="off" *ngIf="CustService.formData" (submit)="onSubmit(form)" novalidate>
+                  <!-- <input type="hidden" name="CustomerID" #CustomerID="ngModel" [(ngModel)]="this.formData.CustomerID"> -->
+
+                  <div class="row mt-3">
+
+                    <div class="col-md-3">
+                      <label> اسم العميل <span style="color: red;">*</span> </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="customer_Name" #customer_Name="ngModel" [(ngModel)]="CustService.formData.customer_Name"  class="form-control" placeholder="اسم العميل"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="اسم العميل" required
+                          [class.is-invalid]="!isValid && (CustService.formData.customer_Name == null || CustService.formData.customer_Name == '') " >
+                          <div class="form-control-position">
+                            <i class="fa fa-user"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-3">
+                      <label> رقم الموبايل<span style="color: red;">*</span> </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input type="tel" name="customer_Phone" #customer_Phone="ngModel" [(ngModel)]="CustService.formData.customer_Phone"  class="form-control"
+                          data-toggle="tooltip" data-placement="top" title data-original-title=" الموبايل" required
+                          [class.is-invalid]="!isValid && (CustService.formData.customer_Phone == null || CustService.formData.customer_Phone == 0) " >
+                          <div class="form-control-position">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+
+                    <div class="col-md-3">
+                      <label> سجل تجاري <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="commercial_Record" #commercial_Record="ngModel" [(ngModel)]="CustService.formData.commercial_Record"  class="form-control" placeholder="سجل تجاري" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="سجل تجاري"   [class.is-invalid]="!isValid && (CustService.formData.commercial_Record == null || CustService.formData.commercial_Record == '') " >
+                          <div class="form-control-position">
+                            <i class="fa fa-file-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-3">
+                      <label> ممثل التعاقد  <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="contracting_Representative" #contracting_Representative="ngModel" [(ngModel)]="CustService.formData.contracting_Representative"  class="form-control" placeholder="ممثل التعاقد" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="ممثل التعاقد"  [class.is-invalid]="!isValid && (CustService.formData.contracting_Representative == null || CustService.formData.contracting_Representative == '') ">
+                          <div class="form-control-position">
+                            <i class="fa fa-user-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                    </div>
+
+
+
+
+                    <!-- <div class="col-md-6">
+                      <label> الفرع</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <select name="BranchId" #BranchId="ngModel" [(ngModel)]="CustService.formData.BranchId" class="form-control" required>
+                        <option *ngFor="let branch of branchlist" [ngValue]="branch.BranchId">{{branch.BranchName}}</option>
+                        </select>
+                        <div class="form-control-position">
+                          <i class="fa fa-credit-card"></i>
+                        </div>
+
+                      </fieldset>
+
+                    </div>
+
+
                   </div>
-                  <form #form="ngForm" autocomplete="off" *ngIf="CustService.formData" (submit)="onSubmit(from)" novalidate>
-                    <div class="row">
-                      
-                      <div class="col-md-12">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="CustomerName" #CustomerName="ngModel" [(ngModel)]="CustService.formData.CustomerName"  class="form-control" placeholder="اسم العميل" 
-                            data-toggle="tooltip" data-placement="top" title data-original-title="اسم العميل" required 
-                            [class.is-invalid]="!isValid && (CustService.formData.CustomerName == null || CustService.formData.CustomerName == '') " >
-                            <div class="form-control-position">
-                              <i class="fa fa-keyboard-o"></i>
-                            </div>
-                        </fieldset>
-                      </div>
+
+                  <div class="row">
+
+
+                    <div class="col-md-6">
+                      <label> {{ "CustomerType" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <select name="CompanyTypeID" #CompanyTypeID="ngModel" [(ngModel)]="CustService.formData.CompanyTypeID" class="form-control"
+                        [class.is-invalid]="!isValid && (CustService.formData.CompanyTypeID == null || CustService.formData.CompanyTypeID == 0) " required>
+                          <option value="0">Select</option>
+                        <option *ngFor="let CompanyType of CompanyTypelist" [ngValue]="CompanyType.CompanyTypeID">{{CompanyType.CompanyTypeName}}</option>
+                        </select>
+                        <div class="form-control-position">
+                          <i class="fa fa-credit-card"></i>
+                        </div>
+
+                      </fieldset>
+
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="address" #address="ngModel" [(ngModel)]="CustService.formData.address"  class="form-control" placeholder="العنوان" required
-                            data-toggle="tooltip" data-placement="top" title data-original-title="العنوان" >
-                            <div class="form-control-position">
-                              <i class="fa fa-map-marker"></i>
-                            </div>
-                        </fieldset>
-                      </div>
+                    <div class="col-md-6">
+                      <label> {{ "Tel1" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  name="Tele" #Tele="ngModel" [(ngModel)]="CustService.formData.Tele"  class="form-control" placeholder="رقم الهاتف" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف "  OnlyNumber="true" pattern="\d{11}" maxlength="11" >
+                          <div class="form-control-position">
+                            <i class="fa fa-user"></i>
+                          </div>
+                      </fieldset>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="Tele" #Tele="ngModel" [(ngModel)]="CustService.formData.Tele"  class="form-control" placeholder="رقم الهاتف" required
-                            data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف " OnlyNumber="true" pattern="\d{11}" maxlength="11" >
-                            <div class="form-control-position">
-                              <i class="fa fa-user"></i>
-                            </div>
-                        </fieldset>
-                      </div>
-                      <div class="col-md-6">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="tele2" #tele2="ngModel" [(ngModel)]="CustService.formData.tele2"  class="form-control" placeholder="رقم الهاتف 2" required
-                            data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف 2" OnlyNumber="true" pattern="\d{11}" maxlength="11">
-                            <div class="form-control-position">
-                              <i class="fa fa-phone"></i>
-                            </div>
-                        </fieldset>
-                      </div>
-                      
+
+                    <div class="col-md-6">
+                      <label> {{ "Mob1" |  translate }}</label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  name="mob1" #mob1="ngModel" [(ngModel)]="CustService.formData.mob1"  class="form-control" placeholder="موبايل 1"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 1"  OnlyNumber="true" pattern="\d{11}" maxlength="11" >
+                          <div class="form-control-position">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                      </fieldset>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="mob1" #mob1="ngModel" [(ngModel)]="CustService.formData.mob1"  class="form-control" placeholder="موبايل 1" required
-                            data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 1" OnlyNumber="true" pattern="\d{11}" maxlength="11">
-                            <div class="form-control-position">
-                              <i class="fa fa-phone"></i>
-                            </div>
-                        </fieldset>
-                      </div>
-                      <div class="col-md-6">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="mob2" #mob2="ngModel" [(ngModel)]="CustService.formData.mob2"  class="form-control" placeholder="موبايل 2" required
-                            data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 2" OnlyNumber="true" pattern="\d{11}" maxlength="11">
-                            <div class="form-control-position">
-                              <i class="fa fa-user"></i>
-                            </div>
-                        </fieldset>
-                      </div>
+
+
+
+
+
+                  </div>
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <label>  {{ "Tel2" |  translate }} </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input  name="tele2" #tele2="ngModel" [(ngModel)]="CustService.formData.tele2"  class="form-control" placeholder="رقم الهاتف 2"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم الهاتف 2"  OnlyNumber="true" pattern="\d{11}" maxlength="11" >
+                          <div class="form-control-position">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                      </fieldset>
                     </div>
+
+                    <div class="col-md-6">
+                      <label>  {{ "Mob2" |  translate }} </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="mob2" #mob2="ngModel" [(ngModel)]="CustService.formData.mob2"  class="form-control" placeholder="موبايل 2"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="موبايل 2"  OnlyNumber="true" pattern="\d{11}" maxlength="11"  >
+                          <div class="form-control-position">
+                            <i class="fa fa-user"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+                  </div>
+
+
                     <div class="row">
-                      <div class="col-md-12">
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <select  name="StoreId" #StoreId="ngModel" [(ngModel)]="CustService.formData.StoreId" class="form-control"
-                          required  [class.is-invalid]="!isValid && (CustService.formData.StoreId == null || CustService.formData.StoreId == 0) " >
-                          <option value='0'>-- Select --</option>
-                            <option *ngFor="let store of storeslist" [ngValue]="store.StoreId">{{store.StoreName}}</option>
+
+
+
+
+                    <div class="col-md-6">
+                      <label> {{ "countryname" |  translate }} <span style="color: red;">*</span> </label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                          <select name="CountryID" #CountryID="ngModel" [(ngModel)]="CustService.formData.CountryID" class="form-control"
+                           required [class.is-invalid]="!isValid && (CustService.formData.CountryID == null || CustService.formData.CountryID == 0)"  >
+                            <option value='0'>-- Select --</option>
+
+                           <option *ngFor="let Country of Countrylist" [ngValue]="Country.CountryID">{{Country.CountryName}}</option>
                           </select>
                           <div class="form-control-position">
-                            <i class="fa fa-truck"></i>
+                          <i class="icon-user4"></i>
                           </div>
-  
-                        </fieldset>
-                      </div>
+
+                      </fieldset>
                     </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div>
-                          <h6>
-                            <label>
-                              مدين
-                            </label>
-                          </h6>
+
+
+                    <div class="col-md-6" *ngIf="CustService.formData.CountryID == 2145" >
+                      <label>  {{ "governatename" |  translate }} <span style="color: red;">*</span></label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                          <select (click)="onSelect($event.target.value)" name="GovernateId" #GovernateId="ngModel" [(ngModel)]="CustService.formData.GovernateId" class="form-control"
+                          required [class.is-invalid]="!isValid && (CustService.formData.GovernateId == null || CustService.formData.GovernateId == 0)" >
+                          <option value='0'>-- Select --</option>
+                           <option *ngFor="let Governate of Governatelist" [ngValue]="Governate.GovernateId">{{Governate.GovernateName}}</option>
+                          </select>
+                          <div class="form-control-position">
+                          <i class="icon-user4"></i>
+                          </div>
+
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-6" *ngIf="CustService.formData.CountryID != 2145">
+                      <label> {{ "governatename" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="GovernateTxt" #GovernateTxt="ngModel" [(ngModel)]="CustService.formData.GovernateTxt"
+                         class="form-control" placeholder="المحافظة" required data-toggle="tooltip"  [class.is-invalid]="!isValid && (CustService.formData.GovernateTxt == null || CustService.formData.GovernateTxt == '')"
+                         data-placement="top" title data-original-title="المحافظة"
+                         [class.is-invalid]="!isValid && CustService.formData.GovernateTxt == null " >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="row">
+
+                    <div class="col-md-6" *ngIf="CustService.formData.CountryID == 2145">
+                      <label>  {{ "cityname" |  translate }} <span style="color: red;">*</span></label>
+                      <fieldset class="form-group position-relative has-icon-left">
+                          <select *ngIf="RegionCitylist" name="RegionCityId" #RegionCityId="ngModel" [(ngModel)]="CustService.formData.RegionCityId" class="form-control"
+                          required [class.is-invalid]="!isValid && (CustService.formData.RegionCityId == null || CustService.formData.RegionCityId == 0)"  >
+                            <option value='0'>-- Select --</option>
+
+                           <option *ngFor="let RegionCity of RegionCitylist" [ngValue]="RegionCity.RegionCityId">{{RegionCity.RegionCityName}}</option>
+
+                          </select>
+                          <div class="form-control-position">
+                          <i class="icon-user4"></i>
+                          </div>
+
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-6" *ngIf="CustService.formData.CountryID != 2145">
+                      <label> {{ "cityname" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="RegionCityTxt" #RegionCityTxt="ngModel" [(ngModel)]="CustService.formData.RegionCityTxt"
+                         class="form-control" placeholder="المدينة" required data-toggle="tooltip"
+                         data-placement="top" title data-original-title="المدينة"  [class.is-invalid]="!isValid && (CustService.formData.RegionCityTxt == null  ||  CustService.formData.RegionCityTxt == '') " >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                      <label> سجل تجاري <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="street" #street="ngModel" [(ngModel)]="CustService.formData.street"  class="form-control" placeholder="الشارع" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="الشارع" >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+
+
+                  </div>
+
+
+                   <div class="row">
+
+                    <div class="col-md-6">
+                      <label> {{ "buildNo" |  translate }}<span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="buildingNumber" #buildingNumber="ngModel" [(ngModel)]="CustService.formData.buildingNumber"  class="form-control" placeholder="رقم العمارة" required
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم العمارة" >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+
+
+                    <div class="col-md-6">
+                      <label>  {{ "postalcode" |  translate }}<span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="postalCode" #postalCode="ngModel" [(ngModel)]="CustService.formData.postalCode"  class="form-control" placeholder=" الكود البريدي"
+                          data-toggle="tooltip" data-placement="top" title data-original-title=" الكود البريدي" required >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                  </div>
+
+                  <div class="row">
+
+
+                    <div class="col-md-6">
+                      <label>  {{ "floor" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="floor" #floor="ngModel" [(ngModel)]="CustService.formData.floor"  class="form-control" placeholder="الطابق"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="الطابق" required>
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-6">
+                      <label>   {{ "apartment" |  translate }} <span style="color: red;">*</span> </label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="room" #room="ngModel" [(ngModel)]="CustService.formData.room"  class="form-control" placeholder="رقم الشقة"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم الشقة" required>
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                  </div>
+
+
+
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <label> {{ "landmark" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="landmark" #landmark="ngModel" [(ngModel)]="CustService.formData.landmark"  class="form-control" placeholder=" معلم معروف"
+                          data-toggle="tooltip" data-placement="top" title data-original-title=" معلم معروف" required >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label>  {{ "Additioninfo" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="additionalInformation" #additionalInformation="ngModel" [(ngModel)]="CustService.formData.additionalInformation"  class="form-control" placeholder="  معلومات إضافية"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="  معلومات إضافية" required >
+                          <div class="form-control-position">
+                            <i class="fa fa-map-marker"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                  </div>
+
+
+                  -- <div class="row">
+                    <div class="col-md-12">
+                      <label> {{ "store" |  translate }} <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <select  name="StoreId" #StoreId="ngModel" [(ngModel)]="CustService.formData.StoreId" class="form-control"
+                        required  [class.is-invalid]="!isValid && (CustService.formData.StoreId == null || CustService.formData.StoreId == 0) " >
+                          <option value="0"> Select</option>
+                          <option *ngFor="let store of storeslist" [ngValue]="store.StoreId">{{store.StoreName}}</option>
+                        </select>
+                        <div class="form-control-position">
+                          <i class="fa fa-truck"></i>
                         </div>
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="OpenBalDebit" #OpenBalDebit="ngModel" [(ngModel)]="CustService.formData.OpenBalDebit"  class="form-control" required 
-                          [class.is-invalid]="!isValid && (CustService.formData.OpenBalDebit == null ) "
-                            data-toggle="tooltip" data-placement="top" title data-original-title="مدين" >
-                            <div class="form-control-position">
-                              <i class="fa fa-usd"></i>
-                            </div>
-                        </fieldset>
-                      </div>
-                      <div class="col-md-3">
-                        <div>
-                          <h6>
-                            <label>
-                              دائن
-                            </label>
-                          </h6>
-                        </div>
-                        <fieldset class="form-group position-relative has-icon-left">
-                          <input name="OpenBalCredit" #OpenBalCredit="ngModel" [(ngModel)]="CustService.formData.OpenBalCredit"  class="form-control"  required 
-                          [class.is-invalid]="!isValid && (CustService.formData.OpenBalCredit == null ) "
-                            data-toggle="tooltip" data-placement="top" title data-original-title="دائن" >
-                            <div class="form-control-position">
-                              <i class="fa fa-usd"></i>
-                            </div>
-                        </fieldset>
-                      </div>
+
+                      </fieldset>
                     </div>
-                    <div class="row">
-                      <div class="col-xl-12 col-lg-12" style="align-items: center;">
-                        <button class="btn btn-success " type="submit" [disabled]="(!isEnabled)? true : null" ><i class="icon-check2"></i>
-                          حفظ</button>
-                        <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/CustomersView" ><i class="fa fa-table"></i> الرجوع لقائمة العملاء</button>
-                      </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="text-danger"
+                      *ngIf="CustService.formData.OpenBalDebit != 0 && CustService.formData.OpenBalCredit != 0">
+
+
+                     <span *ngIf="lang == 'ar'"> لا يمكن تسجيل العميل دائن ومدين فى نفس الوقت</span>
+                     <span *ngIf="lang == 'en'"> It is not possible to register the customer as a creditor and a debtor at the same time </span>
+
                     </div>
-                  </form>
-  
-                </div>
+                    <div class="col-md-3">
+                      <div>
+                        <h6>
+                          <label>
+                              {{ "OpenBalDebit" |  translate }} <span style="color: red;">*</span>
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="OpenBalDebit" #OpenBalDebit="ngModel" [(ngModel)]="CustService.formData.OpenBalDebit"  class="form-control" required
+                        [class.is-invalid]="!isValid && (CustService.formData.OpenBalDebit == null )   "
+                          data-toggle="tooltip" data-placement="top" title data-original-title="مدين" >
+                          <div class="form-control-position">
+                            <i class="fa fa-usd"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                      <div>
+                        <h6>
+                          <label>
+                              {{ "OpenBalCredit" |  translate }}<span style="color: red;">*</span>
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="OpenBalCredit" #OpenBalCredit="ngModel" [(ngModel)]="CustService.formData.OpenBalCredit"  class="form-control"  required
+                        [class.is-invalid]="!isValid && (CustService.formData.OpenBalCredit == null ) "
+                          data-toggle="tooltip" data-placement="top" title data-original-title="دائن" >
+                          <div class="form-control-position">
+                            <i class="fa fa-usd"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <div class="col-md-3" *ngIf="CustService.formData.CompanyTypeID == 1" >
+                      <div>
+                        <h6>
+                          <label>
+                           {{ "registration number" |  translate }}<span style="color: red;">*</span>
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="RegistrationNumber" #RegistrationNumber="ngModel" [(ngModel)]="CustService.formData.RegistrationNumber"
+                         class="form-control"  required  OnlyNumber="true" pattern="\d{9}" maxlength="9"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم التسجيل الضريبى"  >
+                          <div class="form-control-position">
+
+                            <i class="fa fa-id-card-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-3" *ngIf="CustService.formData.CompanyTypeID == 2" >
+                      <div>
+                        <h6>
+                          <label>
+                          {{ "registration number2" |  translate }} <span style="color: red;">*</span>
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="RegistrationNumber" #RegistrationNumber="ngModel" [(ngModel)]="CustService.formData.RegistrationNumber"
+                         class="form-control"  required  OnlyNumber="true"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="رقم البطاقة "  >
+                          <div class="form-control-position">
+
+                            <i class="fa fa-id-card-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="col-md-3" *ngIf="CustService.formData.CompanyTypeID == 3" >
+                      <div>
+                        <h6>
+                          <label>
+                             {{ "registration number3" |  translate }}<span style="color: red;">*</span>
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="RegistrationNumber" #RegistrationNumber="ngModel" [(ngModel)]="CustService.formData.RegistrationNumber"
+                         class="form-control"  required  OnlyNumber="true"
+                          data-toggle="tooltip" data-placement="top" title data-original-title="الهوية الشخصية  "  >
+                          <div class="form-control-position">
+
+                            <i class="fa fa-id-card-o"></i>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <mat-checkbox class="example-margin" style="margin-top: 35px; " name="HasTaxGainCom" #HasTaxGainCom="ngModel" [(ngModel)]="CustService.formData.HasTaxGainCom"> {{ "HasTaxGain"|  translate }} </mat-checkbox>
+                     -- <div class="col-md-3">
+                      <div>
+                        <h6>
+                          <label>
+                            نوع العميل
+                          </label>
+                        </h6>
+                      </div>
+                      <fieldset class="form-group position-relative has-icon-left">
+
+                      </fieldset>
+                    </div>
+                  </div>-->
+
+
+
+                  <div class="row mt-2">
+                <div class="col-xl-12 col-lg-12"  style="margin-right:25px; text-align:center;">
+                      <button class="btn btn-danger ml-2" type="submit"  ><i class="icon-check2"></i>
+                         حفظ </button>
+                      <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/CustomersView" ><i class="fa fa-table"></i> الرجوع لقائمة العملاء</button>
+                    </div>
+                  </div>
+                </form>
+
               </div>
             </div>
           </div>
-  
         </div>
+
       </div>
     </div>
-  
-  
-  </section>
+  </div>
+
+
+</section>

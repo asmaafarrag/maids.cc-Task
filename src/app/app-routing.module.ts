@@ -1,4 +1,19 @@
-import { RepPurchAnalysisComponent } from './rep-purch-analysis/rep-purch-analysis.component';
+import { PriceListReportsComponent } from './Sales/price-list-reports/price-list-reports.component';
+import { UserReportsComponent } from './Sales/user-reports/user-reports.component';
+import { UserViewComponent } from './Sales/user-view/user-view.component';
+import { UserComponent } from './Sales/user/user.component';
+import { InvoiceExcelComponent } from './invoice-excel/invoice-excel.component';
+// import { ContractPdfComponent } from './Sales/contract-pdf/contract-pdf.component';
+// import { PdfviewComponent } from './Sales/pdfview/pdfview.component';
+import { ContractsViewComponent } from './Sales/contracts-view/contracts-view.component';
+import { ContractsComponent } from './Sales/contracts/contracts.component';
+import { ItemLineComponent } from './Sales/item-line/item-line.component';
+import { PriceListViewComponent } from './Sales/price-list-view/price-list-view.component';
+import { PriceListComponent } from './Sales/price-list/price-list.component';
+import { ChangeItemPriceComponent } from './Sales/change-item-price/change-item-price.component';
+import { PdfmakenewversionComponent } from './pdfmakenewversion/pdfmakenewversion.component';
+import { WaitSubComponent } from './EI-Documents/wait-sub/wait-sub.component';
+import { I18nLangComponent } from './i18n-lang/i18n-lang.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -7,71 +22,34 @@ import { RepSellingDetComponent } from './rep-selling-det/rep-selling-det.compon
 import { RepIncomeStatmentComponent } from './rep-income-statment/rep-income-statment.component';
 import { RepAccStatementComponent } from './rep-acc-statement/rep-acc-statement.component';
 
-import { SalesRequestOrderComponent } from './sales-request-order/sales-request-order.component';
-
-import { ClientsComponent } from './CRM/clients/clients.component';
-import { ClientComponent } from './CRM/client/client.component';
-import { ProjectsComponent } from './CRM/projects/projects.component';
-import { ProjectComponent } from './CRM/project/project.component';
-import { ClientActionComponent } from './CRM/client-action/client-action.component';
-import { ClientActionsComponent } from './CRM/client-actions/client-actions.component';
-
-import { VacOrderComponent } from './HR/vac-order/vac-order.component';
-
 import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component'
 
 import { AuthGuard } from './auth/auth.guard';
-import { VacOrdersComponent } from './HR/vac-orders/vac-orders.component';
-import { RepEmpVacComponent } from './HR/rep-emp-vac/rep-emp-vac.component';
-import { EmpPermitComponent } from './HR/emp-permit/emp-permit.component';
-import { EmpPermitsComponent } from './HR/emp-permits/emp-permits.component';
 
-import { HousesComponent } from './RealState/houses/houses.component';
-import { ReserveUnitsComponent } from './RealState/reserve-units/reserve-units.component';
 
-import { SaleInvsComponent } from './Sales/sale-invs/sale-invs.component';
-import { SaleInvViewComponent } from './Sales/sale-inv-view/sale-inv-view.component';
 import { ItemsComponent } from './Sales/items/items.component';
 
-import { InvsInComponent } from './Sales/invs-in/invs-in.component';
-import { InvsInViewComponent } from './Sales/invs-in-view/invs-in-view.component';
-import { InvsOutComponent } from './Sales/invs-out/invs-out.component';
-import { InvsOutViewComponent } from './Sales/invs-out-view/invs-out-view.component';
-
-import { TransBetStoresComponent } from './Sales/trans-bet-stores/trans-bet-stores.component';
-import { TransBetStoresViewComponent } from './Sales/trans-bet-stores-view/trans-bet-stores-view.component';
-import { AddsViewComponent } from './Sales/adds-view/adds-view.component';
-import { AddsComponent } from './Sales/adds/adds.component';
-import { AddRetsViewComponent } from './Sales/add-rets-view/add-rets-view.component';
-import { AddRetsComponent } from './Sales/add-rets/add-rets.component';
-import { PurchasingsViewComponent } from './Purchase/purchasings-view/purchasings-view.component';
-import { PurchasingsComponent } from './Purchase/purchasings/purchasings.component';
 import { CustomersComponent } from './Sales/customers/customers.component';
 import { CustomersViewComponent } from './Sales/customers-view/customers-view.component';
 import { ItemCardView } from './shared/Models/item-card-view';
 import { RepItemCardViewComponent } from './rep-item-card-view/rep-item-card-view.component';
-import { SuppliersViewComponent } from './Purchase/suppliers-view/suppliers-view.component';
-import { SuppliersComponent } from './Purchase/suppliers/suppliers.component';
 import { ItemsViewComponent } from './Sales/items-view/items-view.component';
-import { SellingRetsViewComponent } from './Sales/selling-rets-view/selling-rets-view.component';
-import { SellingRetsComponent } from './Sales/selling-rets/selling-rets.component';
-import { PurchasingForSellingComponent } from './Purchase/purchasing-for-selling/purchasing-for-selling.component';
-
-import { CustDiscountsViewComponent } from './Sales/cust-discounts-view/cust-discounts-view.component';
-import { CustDiscountsComponent } from './Sales/cust-discounts/cust-discounts.component';
-import { SuppDiscountsViewComponent } from './Purchase/supp-discounts-view/supp-discounts-view.component';
-import { SuppDiscountsComponent } from './Purchase/supp-discounts/supp-discounts.component';
-import { RepInventoryComponent } from './rep-inventory/rep-inventory.component';
-import { RepInventoryItemsComponent } from './rep-inventory-items/rep-inventory-items.component';
-import { SalesAnalysisReportComponent } from './sales-analysis-report/sales-analysis-report.component';
-import { PdfComponent } from './pdf/pdf.component';
-import { ChangeItemPriceComponent } from './sales/change-item-price/change-item-price.component';
-import { ImportClientsComponent } from './CRM/import-clients/import-clients.component';
-import { ExampleComponent } from './crm/example/example.component';
-import { ChangeClientsComponent } from './CRM/change-clients/change-clients.component';
-import { PriceListViewComponent } from './sales/price-list-view/price-list-view.component';
-import { PriceListComponent } from './sales/price-list/price-list.component';
+import { SellingCreditNotes } from './shared/Models/SellingCreditNotes';
+import { DebitNoteViewComponent } from './EI-Documents/debit-note-view/debit-note-view.component';
+import { DebitComponent } from './EI-Documents/debit/debit.component';
+import { EnterprisesViewComponent } from './EI-Codes/enterprises-view/enterprises-view.component';
+import { EnterprisesComponent } from './EI-Codes/enterprises/enterprises.component';
+import { AcceptedInvComponent } from './Ei-Documents/accepted-inv/accepted-inv.component';
+import { RejectedInvComponent } from './Ei-Documents/rejected-inv/rejected-inv.component';
+import { AllInvoiceComponent } from './EI-Documents/all-invoice/all-invoice.component';
+import { NotificationComponent } from './EI-Documents/notification/notification.component';
+import { UnsubmitteSellingsRetComponent } from './EI-Documents/unsubmitte-sellings-ret/unsubmitte-sellings-ret.component';
+import { TestComponent } from './test/test.component';
+import { DocumentByTypeComponent } from './EI-Documents/document-by-type/document-by-type.component';
+import { StatusForSellingsComponent } from './EI-Documents/status-for-sellings/status-for-sellings.component';
+import { ImportItemsComponent } from './sales/import-items/import-items.component';
+import { ImportCustomerComponent } from './sales/import-customer/import-customer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -82,146 +60,45 @@ const routes: Routes = [
   { path: 'repSellingDet', component: RepSellingDetComponent, canActivate: [AuthGuard] },
   { path: 'RepIncomeStatment', component: RepIncomeStatmentComponent, canActivate: [AuthGuard] },
   { path: 'RepAccStatement', component: RepAccStatementComponent, canActivate: [AuthGuard] },
-  { path: 'SalesRequestOrder', component: SalesRequestOrderComponent, canActivate: [AuthGuard] },
-  { path: 'repInventory', component: RepInventoryComponent, canActivate: [AuthGuard] },
-  { path: 'repInventoryItems', component: RepInventoryItemsComponent, canActivate: [AuthGuard] },
-  { path: 'repSalesAnalysis', component: SalesAnalysisReportComponent, canActivate: [AuthGuard] },
-  { path: 'repPurchasingsAnalysis', component: RepPurchAnalysisComponent, canActivate: [AuthGuard] },
+  { path: 'repAcceptedInv', component: AcceptedInvComponent, canActivate: [AuthGuard] },
+  { path: 'repRejectedInv', component: RejectedInvComponent, canActivate: [AuthGuard] },
+  { path: 'allInv', component: AllInvoiceComponent, canActivate: [AuthGuard] },
+  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
+  { path: 'UnSubmitedSellingRetView', component: UnsubmitteSellingsRetComponent, canActivate: [AuthGuard] },
+  { path: 'ImportItems', component: ImportItemsComponent, canActivate: [AuthGuard] },
+  { path: 'ImportCustomer', component: ImportCustomerComponent, canActivate: [AuthGuard] },
 
-  { path: 'pdf', component: PdfComponent, canActivate: [AuthGuard] },
-  { path: 'ChangeItemPrice', component: ChangeItemPriceComponent, canActivate: [AuthGuard] },
-  { path: 'ImportClients', component: ImportClientsComponent, canActivate: [AuthGuard] },
+  // { path: 'i18n', component: I18nLangComponent, canActivate: [AuthGuard] },
 
-  { path: 'ChangeClients', component: ChangeClientsComponent, canActivate: [AuthGuard] },
+  { path: 'MUnsItem', component: TestComponent, canActivate: [AuthGuard] },
 
-  {
-    path: 'CrmClients', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: ClientsComponent, pathMatch: 'full' },
-      { path: 'view/:id', component: ClientsComponent, pathMatch: 'full' },
-      { path: 'view/:id/:clientspage', component: ClientsComponent, pathMatch: 'full' }
-    ]
-  },
+  { path: 'DocumenByType', component: DocumentByTypeComponent, canActivate: [AuthGuard] },
+  { path: 'statusforselling', component: StatusForSellingsComponent, canActivate: [AuthGuard] },
+
+  { path: 'contractsReports', component: UserReportsComponent, canActivate: [AuthGuard] },
+  { path: 'PriceListReports', component: PriceListReportsComponent, canActivate: [AuthGuard] },
+
+
 
   {
-    path: 'test', canActivate: [AuthGuard]
+    path: 'statusforselling', canActivate: [AuthGuard]
     , children: [
-      { path: '', component: ExampleComponent, pathMatch: 'full' },
-      { path: 'view/:id', component: ExampleComponent, pathMatch: 'full' },
-      { path: 'view/:id/:clientspage', component: ExampleComponent, pathMatch: 'full' }
-    ]
-  },
-  {
-    path: 'CrmClient', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: ClientComponent },
-      { path: 'edit/:id', component: ClientComponent }
-    ]
-  },
-  {
-    path: 'CrmClientAction', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: ClientActionComponent },
-      { path: 'edit/:id', component: ClientActionComponent }
-    ]
-  },
-  {
-    path: 'CrmClientActions', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: ClientActionsComponent },
-      { path: 'report/:id', component: ClientActionsComponent }
-    ]
-  },
-
-  { path: 'CrmProjects', component: ProjectsComponent, canActivate: [AuthGuard] },
-  {
-    path: 'CrmProject', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: ProjectComponent },
-      { path: 'edit/:id', component: ProjectComponent }
+      { path: '', component: StatusForSellingsComponent },
+      { path: 'report/:id', component: StatusForSellingsComponent }
     ]
   },
 
 
-
-  { path: 'VacOrd', component: VacOrderComponent, canActivate: [AuthGuard] },
-  { path: 'VacOrds', component: VacOrdersComponent, canActivate: [AuthGuard] },
-  { path: 'RepEmpVacs', component: RepEmpVacComponent, canActivate: [AuthGuard] },
-
-  { path: 'EmpPermit', component: EmpPermitComponent, canActivate: [AuthGuard] },
-  { path: 'EmpPermits', component: EmpPermitsComponent, canActivate: [AuthGuard] },
-
-  { path: 'Houses', component: HousesComponent, canActivate: [AuthGuard] },
-  { path: 'ReserveUnits', component: ReserveUnitsComponent, canActivate: [AuthGuard] },
-
-  { path: 'SaleInvView', component: SaleInvViewComponent, canActivate: [AuthGuard] },
-
+  { path: 'userView', component: UserViewComponent, canActivate: [AuthGuard] },
   {
-    path: 'SaleInvs', canActivate: [AuthGuard]
+    path: 'user', canActivate: [AuthGuard]
     , children: [
-      { path: '', component: SaleInvsComponent },
-      { path: 'edit/:id', component: SaleInvsComponent }
+      { path: '', component: UserComponent },
+      { path: 'edit/:id', component: UserComponent }
     ]
   },
 
-  { path: 'InvInView', component: InvsInViewComponent, canActivate: [AuthGuard] },
-  {
-    path: 'InvIn', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: InvsInComponent },
-      { path: 'edit/:id', component:InvsInComponent  }
-    ]
-  },
 
-  { path: 'InvOutView', component: InvsOutViewComponent, canActivate: [AuthGuard] },
-  {
-    path: 'InvOut', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: InvsOutComponent },
-      { path: 'edit/:id', component: InvsOutComponent }
-    ]
-  },
-
-  { path: 'TransBetStoresView', component: TransBetStoresViewComponent, canActivate: [AuthGuard] },
-
-  {
-    path: 'TransBetStores', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: TransBetStoresComponent },
-      { path: 'edit/:id', component: TransBetStoresComponent }
-    ]
-  },
-
-  { path: 'AddsView', component: AddsViewComponent, canActivate: [AuthGuard] },
-
-  {
-    path: 'Adds', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: AddsComponent },
-      { path: 'edit/:id', component: AddsComponent }
-    ]
-  },
-
-  { path: 'AddRetsView', component: AddRetsViewComponent, canActivate: [AuthGuard] },
-
-  {
-    path: 'AddRets', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: AddRetsComponent },
-      { path: 'edit/:id', component: AddRetsComponent }
-    ]
-  },
-
-  { path: 'PurchasingsView', component: PurchasingsViewComponent, canActivate: [AuthGuard] },
-  { path: 'PurchasingForSelling', component: PurchasingForSellingComponent, canActivate: [AuthGuard] },
-
-  {
-    path: 'Purchasings', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: PurchasingsComponent },
-      { path: 'edit/:id', component: PurchasingsComponent }
-    ]
-  },
 
   { path: 'CustomersView', component: CustomersViewComponent, canActivate: [AuthGuard] },
   {
@@ -232,16 +109,19 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'SuppliersView', component: SuppliersViewComponent, canActivate: [AuthGuard] },
-  {
-    path: 'Suppliers', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: SuppliersComponent },
-      { path: 'edit/:id', component: SuppliersComponent }
-    ]
-  },
 
   { path: 'RepItemCardView', component: RepItemCardViewComponent, canActivate: [AuthGuard] },
+
+  // { path: 'Item', component: ItemLineComponent, canActivate: [AuthGuard] },
+
+
+  {
+    path: 'Item', canActivate: [AuthGuard]
+    , children: [
+      { path: '', component: ItemLineComponent },
+      { path: 'edit/:id', component: ItemLineComponent }
+    ]
+  },
 
   { path: 'ItemsView', component: ItemsViewComponent, canActivate: [AuthGuard] },
   {
@@ -252,35 +132,119 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'CustDiscView', component: CustDiscountsViewComponent, canActivate: [AuthGuard] },
+
+
+
+  // { path: 'unitView', component: UnitViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'unit', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: UnitComponent },
+  //     { path: 'edit/:id', component: UnitComponent }
+  //   ]
+  // },
+
+  // { path: 'BranchView', component: BranchViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'Branch', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: BranchComponent },
+  //     { path: 'edit/:id', component: BranchComponent }
+  //   ]
+  // },
+
+  // { path: 'GroupView', component: GroupViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'Group', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: GroupComponent },
+  //     { path: 'edit/:id', component: GroupComponent }
+  //   ]
+  // },
+
+
+  // { path: 'TaxTypeView', component: TaxTypeViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'TaxType', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: TaxTypeComponent },
+  //     { path: 'edit/:id', component: TaxTypeComponent }
+  //   ]
+  // },
+  // { path: 'CountryView', component: CountryViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'Country', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: CountryComponent },
+  //     { path: 'edit/:id', component: CountryComponent }
+  //   ]
+  // },
+  // { path: 'ActivityTypeView', component: ActivityTypeViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'ActivityType', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: ActivityTypeComponent },
+  //     { path: 'edit/:id', component: ActivityTypeComponent }
+  //   ]
+  // },
+
+
+  { path: 'DebitView', component: DebitNoteViewComponent, canActivate: [AuthGuard] },
   {
-    path: 'CustDisc', canActivate: [AuthGuard]
+    path: 'Debit', canActivate: [AuthGuard]
     , children: [
-      { path: '', component: CustDiscountsComponent },
-      { path: 'edit/:id', component: CustDiscountsComponent }
+      { path: '', component: DebitComponent },
+      { path: 'edit/:id', component: DebitComponent }
     ]
   },
 
-  { path: 'SuppDiscView', component: SuppDiscountsViewComponent, canActivate: [AuthGuard] },
+
+  { path: 'EnterprisesView', component: EnterprisesViewComponent, canActivate: [AuthGuard] },
   {
-    path: 'SuppDisc', canActivate: [AuthGuard]
+    path: 'Enterprises', canActivate: [AuthGuard]
     , children: [
-      { path: '', component: SuppDiscountsComponent },
-      { path: 'edit/:id', component: SuppDiscountsComponent }
+      { path: '', component: EnterprisesComponent },
+      { path: 'edit/:id', component: EnterprisesComponent }
     ]
   },
 
-  
 
-  { path: 'SellingRetsView', component: SellingRetsViewComponent, canActivate: [AuthGuard] },
-  {
-    path: 'SellingRets', canActivate: [AuthGuard]
-    , children: [
-      { path: '', component: SellingRetsComponent },
-      { path: 'edit/:id', component: SellingRetsComponent }
-    ]
-  },
-// عرض الاسعار
+  // { path: 'GovernateView', component: GovernateViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'Governate', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: GovernateComponent },
+  //     { path: 'edit/:id', component: GovernateComponent }
+  //   ]
+  // },
+
+  // { path: 'RegionCitiesView', component: RegionCitiesViewComponent, canActivate: [AuthGuard] },
+  // {
+  //   path: 'RegionCities', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: RegionCitiesComponent },
+  //     { path: 'edit/:id', component: RegionCitiesComponent }
+  //   ]
+  // },
+
+  // {
+  //   path: 'CreateSubscribe', canActivate: [AuthGuard]
+  //   , children: [
+  //     { path: '', component: CreateSubscribeComponent },
+  //     { path: 'edit/:id', component: CreateSubscribeComponent }
+  //   ]
+  // } ,
+
+  { path: 'Subscription', component: WaitSubComponent, canActivate: [AuthGuard] },
+
+
+  // {path : 'pdf' , component: PdfmakenewversionComponent , canActivate : [AuthGuard]},
+
+  { path: 'ChangeItemPrice', component: ChangeItemPriceComponent, canActivate: [AuthGuard] },
+
+
+
+  // عرض الاسعار
 
 { path: 'priceListView', component: PriceListViewComponent, canActivate: [AuthGuard] },
 {
@@ -291,7 +255,38 @@ const routes: Routes = [
   ]
 },
 
+{ path: 'contractsView', component: ContractsViewComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contracts', canActivate: [AuthGuard]
+    , children: [
+      { path: '', component: ContractsComponent },
+      { path: 'edit/:id', component: ContractsComponent }
+    ]
+  },
 
+  // { path: 'pdf', component: PdfviewComponent, canActivate: [AuthGuard] },
+  // { path: 'cpdf', component: ContractPdfComponent, canActivate: [AuthGuard] },
+
+  // { path: 'PIExcel', component: InvoiceExcelComponent, canActivate: [AuthGuard] },
+
+  {
+    path: 'PIExcel', canActivate: [AuthGuard]
+    , children: [
+      { path: '', component: InvoiceExcelComponent },
+      { path: ':id', component: InvoiceExcelComponent }
+    ]
+  },
+
+
+
+  { path: 'ContractView', component: ContractsViewComponent, canActivate: [AuthGuard] },
+  {
+    path: 'Contract', canActivate: [AuthGuard]
+    , children: [
+      { path: '', component: ContractsComponent },
+      { path: 'edit/:id', component: ContractsComponent }
+    ]
+  },
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@
 
 body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-header {
   float : right;
-  width : 240px;
+  width : 190px;
 }
 
 body.vertical-layout.vertical-menu.menu-expanded .navbar.navbar-brand-center .navbar-header {
@@ -26,11 +26,11 @@ body.vertical-layout.vertical-menu.menu-expanded .navbar.navbar-brand-center .na
 }
 
 body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-container {
-  margin-right : 240px;
+  margin-right : 193px;
 }
 
 body.vertical-layout.vertical-menu.menu-expanded .main-menu {
-  width : 240px;
+  width : 180px;
   -webkit-transition : 300ms ease all;
      -moz-transition : 300ms ease all;
        -o-transition : 300ms ease all;
@@ -47,7 +47,7 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation > li > a
   float : right;
 }
 body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation > li > a > i:before {
-  font-size : 1.2rem;
+  font-size : 1rem;
 }
 body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation > li > a > span {
   display : inline-block;
@@ -83,7 +83,7 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu .main-menu-footer {
 }
 
 body.vertical-layout.vertical-menu.menu-expanded .content, body.vertical-layout.vertical-menu.menu-expanded .footer {
-  margin-right : 240px;
+  margin-right: 195px;
 }
 
 body.vertical-layout.vertical-menu.menu-expanded .navbar-brand-center .content, body.vertical-layout.vertical-menu.menu-expanded .navbar-brand-center .footer {
@@ -92,7 +92,7 @@ body.vertical-layout.vertical-menu.menu-expanded .navbar-brand-center .content, 
 
 body.vertical-layout.vertical-menu.menu-collapsed .navbar .navbar-header {
   float : right;
-  width : 60px;
+  width : 45px;
 }
 
 body.vertical-layout.vertical-menu.menu-collapsed .navbar.navbar-brand-center .navbar-header {

@@ -25,16 +25,6 @@ export class SupplierService {
     return this.http.get(environment.ApiUrl + '/api/Suppliers', { headers: reqHeader }).pipe(map(data => <Supplier[]>data));
   }
 
-  
-  getSuppliersByEmpId(empId:string): Observable<Supplier[]> {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Suppliers/GetSuppliersbyEmpId?empId='+empId, { headers: reqHeader }).pipe(map(data => <Supplier[]>data));
-  }
-
   getSuppliersList(param): any {
     //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
     const reqHeader = new HttpHeaders({
@@ -43,17 +33,6 @@ export class SupplierService {
     });
     return this.http.get(environment.ApiUrl + '/api/Suppliers/GetSuppliersList', { headers: reqHeader, params:param }).pipe(map(data => data));
   }
-
-  getSuppliersListyByEmpId(param,empId:string): any {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Suppliers/GetSuppliersListListByEmpId?empId='+empId, { headers: reqHeader, params:param }).pipe(map(data => data));
-
-  }
-  
 
   
   postSupplier() {
@@ -76,7 +55,6 @@ export class SupplierService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    console.log(SuppId);
     return this.http.get(environment.ApiUrl + '/api/Suppliers/'+SuppId, { headers: reqHeader }).pipe(map(data => <Supplier>data));
   }
 

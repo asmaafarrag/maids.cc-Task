@@ -1,0 +1,182 @@
+<section id="card-actions">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+                <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default"> المسوقين</span></h4>
+                </div>
+                <form #form="ngForm" autocomplete="off"  (submit)="onSubmit(form)" autocomplete="false" novalidate>
+
+
+                  <div class="row" [hidden]="edit">
+
+                      <div class="col-md-4">
+                        <label> name  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="name" autocomplete="false"  #name="ngModel" [(ngModel)]="UserServices.formData.name"   class="form-control"  required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="username " >
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label> email Or Phone  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="emailOrPhone" autocomplete="false"  #emailOrPhone="ngModel" [(ngModel)]="UserServices.formData.emailOrPhone"   class="form-control" placeholder="email or phone " required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="email or phone " >
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>   Password <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input type="password" autocomplete="false" name="password" #password="ngModel" [(ngModel)]="UserServices.formData.password"    class="form-control" placeholder="كلمة السر "
+                            data-toggle="tooltip" data-placement="top" title data-original-title="كلمة السر "
+                            required [class.is-invalid]="!isValid && (UserServices.formData.password == null || UserServices.formData.password == '')"
+                            [type]="hide ? 'password' : 'text'"
+                            >
+                            <div class="form-control-position" style="top:19; right: auto !important;">
+                              <i class="fa fa-eye" matSuffix (click)="hide = !hide" ></i>
+                          </div>
+                        </fieldset>
+                      </div>
+
+
+                      <!-- <div class="col-md-4">
+                        <label>نوع المستخدم <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="UserType" #UserType="ngModel" [(ngModel)]="UserServices.formData.UserType" class="form-control"
+                          required [class.is-invalid]="!isValid && (UserServices.formData.UserType == null || UserServices.formData.UserType == '')"  (ngModelChange)="setSelectedBranch($event)"  >
+                            <option value='ADMIN'>ADMIN</option>
+                            <option value='USER'>USER</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+
+                        </fieldset>
+                      </div> -->
+
+
+
+                    </div>
+
+
+
+
+                    <div class="row" *ngIf="edit == true">
+
+                      <div class="col-md-4">
+                        <label> name  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="name" autocomplete="false"  #name="ngModel" [(ngModel)]="userServ.formData.name"   class="form-control"  required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="username " >
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label> UserName  <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="userName" autocomplete="false"  #userName="ngModel" [(ngModel)]="userServ.formData.userName"   class="form-control" placeholder="email or phone " required
+                            data-toggle="tooltip" data-placement="top" title data-original-title="email or phone " >
+                            <div class="form-control-position">
+                              <i class="fa fa-building"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
+
+
+                      <div class="col-md-4">
+                        <label> ?Active</label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input type="checkbox" name="isActive"  id="isActive" #isActive="ngModel"  [(ngModel)]="userServ.formData.isActive"
+                         placeholder="Active? " required  data-toggle="tooltip" data-placement="top" title data-original-title="Active? "
+                            (click)="changeState()">
+
+                        </fieldset>
+                      </div>
+
+
+
+                      <!-- <div class="col-md-4">
+                        <label>   Password <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input type="password" autocomplete="false" name="password" #password="ngModel" [(ngModel)]="userServ.formData.password"    class="form-control" placeholder="كلمة السر "
+                            data-toggle="tooltip" data-placement="top" title data-original-title="كلمة السر "
+                            required [class.is-invalid]="!isValid && (userServ.formData.password == null || userServ.formData.password == '')"
+                            [type]="hide ? 'password' : 'text'"
+                            >
+                            <div class="form-control-position" style="top:19; right: auto !important;">
+                              <i class="fa fa-eye" matSuffix (click)="hide = !hide" ></i>
+                          </div>
+                        </fieldset>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label>نوع المستخدم <span style="color: red;">*</span></label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <select name="UserType" #UserType="ngModel" [(ngModel)]="UserServices.formData.UserType" class="form-control"
+                          required [class.is-invalid]="!isValid && (UserServices.formData.UserType == null || UserServices.formData.UserType == '')"  (ngModelChange)="setSelectedBranch($event)"  >
+                            <option value='ADMIN'>ADMIN</option>
+                            <option value='USER'>USER</option>
+                          </select>
+                          <div class="form-control-position">
+                            <i class="icon-user4"></i>
+                          </div>
+
+                        </fieldset>
+                      </div> -->
+
+
+
+                    </div>
+
+
+<!-- {{UserServices.formData.UserType}} -->
+
+
+                  <div class="row" style="    text-align: center;
+                  margin-top: 40px;">
+                    <div class="col-xl-12 col-lg-12" style="align-items: center;">
+                      <div class="text-center">
+
+
+                      <button class="btn btn-danger " type="submit"><i class="icon-check2"></i>
+                        حفظ</button>
+
+                        <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/userView" ><i class="fa fa-table"></i> الرجوع لقائمة المسوقين</button>
+
+
+                        <!-- <button type='button' class="btn btn-outline-dark ml-2 btn-md" routerLink="/login" ><i class="fa fa-table"></i> تسجيل الدخول</button> -->
+
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

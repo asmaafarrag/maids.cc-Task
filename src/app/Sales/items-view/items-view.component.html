@@ -6,13 +6,31 @@
 
                 <div class="card-body collapse in">
                     <div class="card-block">
-                        <h3 class="card-title">الاصناف</h3>
+
+                      <div class="row mb-2">
+
+                        <div class="col-md-6">
+                          <h3 class="card-title" >الأصناف</h3>
+                        </div>
+
+                        <div class="col-md-6">
+                          <button class="btn btn-outline-danger" style="float:left; margin-left:10px" routerLink="/Items"><i
+                            class="fa fa-plus"></i>
+                            إضافة صنف</button>
+
+
+
+                        </div>
+
+                      </div>
+
+
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">                                       
-                                        <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="getItems()" class="form-control" />
+
+                                <div class="form-group text-center">
+                                    <div class="input-group">
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getItems()" class="form-control" />
                                         <span class="input-group-addon"><a >
                                             <i class="fa fa-search"></i>
                                         </a></span>
@@ -20,36 +38,76 @@
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table class="table  table-bordered">
+                                    <table class="table table-hover table-bordered" id="Tbl">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>كود الصنف</th>
-                                                <th>اسم الصنف</th>
-                                                <th>الوحدة</th>
-                                                <th>سعر البيع</th>
-                                                <th><button class="btn btn-outline-success" routerLink="/Items"><i
-                                                            class="fa fa-plus"></i>
-                                                        اضافة صنف</button></th>
+                                                <!-- <th>كود الصنف</th> -->
+                                                <th> الصنف </th>
+
+                                                <!-- <th> {{ "itemsnameE" |  translate }} </th>
+                                                <th> {{ "itemscode" |  translate }} </th>
+                                                <th> {{ "unitname" |  translate }} </th>
+                                                <th> {{ "itemsaleprice" |  translate }} </th>
+                                                <th> {{ "groupsname" |  translate }} </th> -->
+
+                                                <!-- <th>
+                                                  EntryUser
+
+                                                </th>
+
+                                                <th>
+                                                  Entrydate
+                                                </th> -->
+                                                <th>
+
+
+                                                 <!-- <button class="btn btn-sm btn-danger clearfix"
+                                                 routerLink="/ImportItems"
+                                                 >
+                                                    <label>
+                                                        <span class="glyphicon glyphicon-floppy-disk" ></span>
+                                                        Import
+                                                        </label>
+                                                </button> -->
+                                                <!-- <div *ngIf="Loadend === true">
+                                                    <button class="btn btn-success " (click)="SendtoAPI()"  ><i class="icon-check2"></i>
+                                                        المتابعة</button>
+
+                                                    </div>  -->
+
+                                                </th>
                                             </tr>
                                         </thead>
+
                                         <tbody *ngIf="ItemsList">
                                             <tr *ngFor="let itm of ItemsList | paginate : {
-                                                itemsPerPage: pageSize,
-                                                currentPage: page,
-                                                totalItems: count
-                                              };
-                                        let i = index " style="cursor: pointer;">
-                                                <th scope="row">  {{( i + 1 ) }}</th>
-                                                <td (click)="openForEdit(itm.ItemID)">{{ itm.ItemNO }}</td>
-                                                <th (click)="openForEdit(itm.ItemID)">{{ itm.ItemName }}</th>
+                            itemsPerPage: pageSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index " style="cursor: pointer;">
+                                                <th scope="row">  {{ i + 1 }}</th>
+                                                <!-- <td (click)="openForEdit(itm.ItemID)">{{ itm.ItemNO }}</td> -->
+                                                <td (click)="openForEdit(itm.item_ID)">{{ itm.item_Name }}</td>
+                                                <!-- <th (click)="openForEdit(itm.ItemID)">{{ itm.ItemNameE }}</th>
+                                                <th (click)="openForEdit(itm.ItemID)">{{ itm.ItemBarCode }}</th>
+                                                <td (click)="openForEdit(itm.ItemID)">{{ itm.UnitName }}</td> -->
+                                                <!-- <td (click)="openForEdit(itm.item_ID)">{{ itm.entryUser }}</td>
+                                                <td (click)="openForEdit(itm.item_ID)">{{ itm.entrydate |
+                                                  date:
+                                                  'yyyy/MM/dd'}}</td> -->
 
-                                                <td (click)="openForEdit(itm.ItemID)">{{ itm.UnitName }}</td>
-                                                <td (click)="openForEdit(itm.ItemID)">{{ itm.ItemSalePrice }}</td>
+                                                <td>
 
-                                                <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
-                                                        (click)="onOrderDelete(i,itm.ItemID)"><i
-                                                            class="fa fa-trash fa-lg"></i> </a></td>
+                                                    <!-- <a class="btn text-info" *ngIf="UserType!='VIEWER'" (click)="openForEdit(itm.ItemID)"><i
+                                                        class="fa fa-pencil fa-lg"></i>
+                                                    </a> -->
+
+                                                    <a class="btn text-danger" *ngIf="UserType=='admin'"
+                                                        (click)="onOrderDelete(i,itm.item_ID)"><i
+                                                            class="fa fa-trash fa-lg"></i> </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -60,21 +118,32 @@
                             <div class="col-md-3">
                                 ...
 
-                                عدد السجلات فى الصفحة:
+                                عدد السجلات في الصفحة:
                                 <select (change)="handlePageSizeChange($event)">
                                     <option *ngFor="let size of pageSizes" [ngValue]="size">
                                         {{ size }}
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-5">
                                 <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
                                     (pageChange)="handlePageChange($event)"></pagination-controls>
                             </div>
                             <div class="col-md-2">
                                 Result: {{count}}
-                             </div>
+                            </div>
+                            <!-- <div class="col-md-2">
+                                <button type="button" (click)="fnExport();"
+                                    class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                                    Export to Excel</button>
+                            </div> -->
+
+
                         </div>
+
+
+
+
 
                     </div>
                 </div>

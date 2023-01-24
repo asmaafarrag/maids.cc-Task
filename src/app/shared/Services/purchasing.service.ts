@@ -15,16 +15,6 @@ export class PurchasingService {
   formData : Purchasing;
   constructor(private http: HttpClient) { }
 
-
-  getPurchasingss(): Observable<Purchasing[]> {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Purchasings', { headers: reqHeader }).pipe(map(data => <Purchasing[]>data));
-  }
-
   getPurchasings(param): any {
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json', 'Authorization':
@@ -71,14 +61,6 @@ export class PurchasingService {
         'Bearer ' + localStorage.getItem('userToken')
     });
     return this.http.get(environment.ApiUrl + '/api/Purchasings/' + saleInvId, { headers: reqHeader }).pipe(map(data => <Purchasing>data));
-  }
-
-  GetMaxPurchasingsNo(): Observable<string> {
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Purchasings/GetMaxPurchasingsNo', { headers: reqHeader }).pipe(map(data => <string>data));
   }
 
 }

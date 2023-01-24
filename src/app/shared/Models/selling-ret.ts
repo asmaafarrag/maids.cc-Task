@@ -7,13 +7,14 @@ export class SellingRet {
     SellingRetType: string;
     CustomerID: number;
     TreasuryId:number;
+    
     CustomerName: string;
     SellingRetDisc: number;
     SellingRetTot: number;
     StoreId: number;
     StoreName: string;
     SellingRetDiscRatio: number;
-    // isSelected:boolean;
+    isSelected:boolean;
     SellingRetNo: string;
     AgentId: number;
     EntryUserId: number;
@@ -25,7 +26,16 @@ export class SellingRet {
     TaxGainComRatio :number;
     TaxGainCom :number;
     SaleTaxRatio :number;
-    SaleTax  :number;                   
+    SaleTax  :number;   
+    DiscRatioExt:number;
+    DiscValueExt:number;    
+    CurrId :string;
+    CurrName :string;
+    CurrVal :number;
+    CurrRate :number;     
+    FreeOfSalesTax:boolean;  
+    HasTaxGainCom:boolean;  
+    RefSellingId :number;   
 }
 
 export class SellingRetDets {
@@ -44,14 +54,19 @@ export class SellingRetDets {
     DiscV:number;
     DiscRatio:number;
 
-                
-                ItemSaleTaxRatio:number;
-                ItmSaleTax:number;
-                QtySaleTax:number;
-                TotWithTax :number;
-                PricWithTax :number;
-                DetTaxSal :number;
-                DetTaxGainCom:number;
+
+    ItemSaleTaxRatio:number;
+    ItmSaleTax:number;
+    QtySaleTax:number;
+    TotWithTax :number;
+    PricWithTax :number;
+    DetTaxSal :number;
+    DetTaxGainCom:number;
+    TaxGainComRatio:number;
+    DetItemDescription:string;
+
+    SellingRetDetTaxTypes:SellingRetDetTaxTypes[]
+
 }
 
 
@@ -61,5 +76,7 @@ export class SellingRetDetTaxTypes{
     TaxTypeID:number;
     TaxTypeRate:number;
     TaxTypeAmount:number;
+    TaxTypeCalcWayId :number;  
+
 }
 

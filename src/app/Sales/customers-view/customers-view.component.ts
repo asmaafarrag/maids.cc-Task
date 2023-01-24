@@ -12,6 +12,7 @@ import { Customer } from 'src/app/shared/Models/customer.model';
 import { CustomerService } from 'src/app/shared/Services/customer.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { ExcelService } from 'src/app/shared/Services/excel/excel.service';
 
 @Component({
   selector: 'app-customers-view',
@@ -24,7 +25,7 @@ export class CustomersViewComponent implements OnInit {
 
   custList: Customer[];
   currentIndex = -1;
-  page: number = 1;
+  page: number = 0;
   count: number = 0;
   pageSize: number = 5;
   pageSizes = [5, 10, 20];
@@ -34,10 +35,13 @@ export class CustomersViewComponent implements OnInit {
   UserType: string;
   EmpID : string;
 
-  constructor(private CustServ: CustomerService, private router: Router, private toastr: ToastrService, private currentRoute: ActivatedRoute) {
+  constructor(private CustServ: CustomerService, private router: Router, private toastr: ToastrService, private currentRoute: ActivatedRoute
+    , private ExcelServ: ExcelService) {
     this.UserType = localStorage.getItem('UserType');
     this.UserID = localStorage.getItem('lUsr');
    this.EmpID =localStorage.getItem('EmpID');
+   sessionStorage.setItem( 'Customercount' , JSON.stringify(this.count))
+
 
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
@@ -49,35 +53,50 @@ export class CustomersViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let pageNo = localStorage.getItem("customerspage")
-    this.page=+pageNo
-  
+    sessionStorage.setItem( 'Customercount' , JSON.stringify(this.count))
+
   }
 
   getCustomersList() {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-    if (this.UserType.toUpperCase() == 'ADMIN') {
       this.CustServ.getCustomersList(params).subscribe(res => {
-        const { TotalRecords, Data } = res;
-        this.custList = Data;
-        this.count = TotalRecords;
-      },
-        err => { console.log(err); });
-    }
-    else {
-      this.CustServ.getCustomersListByEmpId(params,this.EmpID).subscribe(res => {
-        const { TotalRecords, Data } = res;
-        this.custList = Data;
-        this.count = TotalRecords;
-      },
-        err => { console.log(err); });
-    }
 
-    
+        console.log(res,"res")
+        // const { TotalRecords, Data } = res;
+        this.custList =  res.data;
+        this.count = res.recordsTotal;
+      },
+        err => { console.log(err); });
+
+
+
+
   }
 
   openForEdit(custId: number) {
     this.router.navigate(['/Customers/edit/' + custId]);
+  }
+
+
+  onOrderDelete(Index: number,Id: number) {
+    if (confirm("هل انت متأكد من حذف هذا العميل")) {
+      this.CustServ.deleteCustomer(Id).subscribe(
+        res => {
+          this.showDeleted();
+          this.custList.splice(Index, 1);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+
+
+    }
+  }
+
+
+  showDeleted() {
+    this.toastr.info('تم حذف العميل', 'العميل ');
   }
 
 
@@ -103,7 +122,6 @@ export class CustomersViewComponent implements OnInit {
 
   handlePageChange(event) {
     this.page = event;
-    localStorage.setItem( "customerspage", event)
     this.getCustomersList();
   }
 
@@ -113,24 +131,52 @@ export class CustomersViewComponent implements OnInit {
     this.getCustomersList();
   }
 
-  onOrderDelete(ItemIndex: number, Id: number) {
-    console.log("d", Id)
-    if (confirm("هل انت متأكد من حذف هذا الاذن")) {
-      this.CustServ.deleteCustomer(Id).subscribe(
-        res => {
-          this.showDeleted();
-          this.custList.splice(ItemIndex, 1);
-        },
-        err => {
-          console.log(err);
+
+  fnExport() {
+    this.ExcelServ.exportToFile('Customer', 'Tbl');
+  }
+
+  fnImport() {
+    this.ExcelServ.exportToFile('Customer', 'Tbl');
+  }
+
+  onFileChange(evt: any) {
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+
+    var obj = { CustomerName: 'a', CompanyTypeName: 'b', Tele: 'c' , mob1: 'c', CountryName: 'c'
+
+    ,GovernateName: 'c'  , RegionCityName:'c' , street:'c', buildingNumber:'c' ,  postalCode:'c'
+
+    ,floor:'c', room:'c' , landmark:'c', additionalInformation: 'c',  StoreName:'c' , OpenBalDebit:'c'
+
+    ,OpenBalCredit :'c' , RegistrationNumber:'c'
+    };
+     //const header: string[] = Object.getOwnPropertyNames(new SalesSaleInv());
+      const header: string[] = Object.getOwnPropertyNames(obj);
+      console.log(header);
+
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+
+      const bstr: string = e.target.result;
+      const data = <any[]>this.ExcelServ.importFromFile(bstr);
+
+
+
+      const importedData = data.slice(1, -1);
+
+      this.custList = importedData.map(arr => {
+        const obj = {};
+        for (let i = 0; i < header.length; i++) {
+          const k = header[i];
+          obj[k] = arr[i];
         }
-      )
-    }
+        return <Customer>obj;
+      })
+
+    };
+    reader.readAsBinaryString(target.files[0]);
+
   }
-
-
-  showDeleted() {
-    this.toastr.info('تم حذف العميل', 'العميل ');
-  }
-
 }

@@ -1,0 +1,887 @@
+<!-- <section id="card-actions">
+  <div class="row">
+      <div class="col-xs-12">
+
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- <div class="card">
+
+              <div class="card-body collapse in">
+                <div class="card-block" style="margin: 10px 20px; padding:0;">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+
+                          <h3 class="card-title"> العملاء </h3>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+
+                          <button class="btn btn-danger" style="float:left; margin-left:10px" routerLink="/Customers"><i class="fa fa-plus"></i>
+                            {{ "addnewCustomer" |  translate }}</button>
+
+                            --
+                            <button class="btn btn-outline-danger clearfix" style="float:left; margin-left:10px" routerLink="/ImportCustomer">
+                              <span class="fa fa-file" ></span>
+                              Import
+                           </button>
+
+                           <button type="button" (click)="fnExport();" style="float:left; margin-left:10px"
+                           class="btn btn-outline-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                           Export to Excel</button> --
+
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div> --
+
+          </div>
+        </div>
+          <div class="card">
+
+              <div class="card-body collapse in">
+                  <div class="card-block">
+
+                    <!-- <h3 class="card-title" style="text-align:center;"> الصنف </h3> --
+
+                      <div class="row">
+                          <div class="col-xl-12 col-lg-12">
+
+
+
+                            <div class="table-responsive mt-2 mb-2" style="height: 43.9rem;
+                            overflow-y:auto ;
+                            margin-bottom: 10px;">
+
+                              <table  class="table table-hover table-bordered " dir="ltr" style="text-align:center;">
+                                <tr>
+                                  <td rowspan="2" style="vertical-align: middle;">WIDTH</td>
+                                  <td colspan="14">OPENING</td>
+                                </tr>
+                                <tr>
+                                  <td>150</td>
+                                  <td>200</td>
+                                  <td>250</td>
+                                  <td>300</td>
+                                  <td>350</td>
+                                  <td>400</td>
+                                  <td>450</td>
+                                  <td>500</td>
+                                  <td>550</td>
+                                  <td>600</td>
+                                  <td>650</td>
+                                  <td>700</td>
+                                  <td>750</td>
+                                  <td>800</td>
+                                </tr>
+                                <tr>
+                                  <td>300</td>
+                                  <td><input type="text" value="2.199"></td>
+                                  <td><input type="text" value="2.376"></td>
+                                  <td><input type="text" value="2.553"></td>
+                                  <td><input type="text" value="2.778"></td>
+                                  <td><input type="text" value="2.956"></td>
+                                  <td><input type="text" value="3.145"></td>
+                                  <td><input type="text" value="3.313"></td>
+                                  <td><input type="text" value="3.526"></td>
+                                  <td><input type="text" value="3.759"></td>
+                                  <td><input type="text" value="3.931"></td>
+                                  <td><input type="text" value="4.122"></td>
+                                  <td><input type="text" value="4.313"></td>
+                                  <td><input type="text" value="4.482"></td>
+                                  <td><input type="text" value="4.705"></td>
+
+                                  <!-- <td><input type="text"></td>
+                                  <td><input type="text"></td>
+                                  <td><input type="text"></td>
+                                  <td><input type="text"></td> --
+                                </tr>
+
+                                <tr>
+                                  <td>350</td>
+                                  <td><input type="text" value="2.366"></td>
+                                  <td><input type="text" value="2.565"></td>
+                                  <td><input type="text" value="2.761"></td>
+                                  <td><input type="text" value="3.039"></td>
+                                  <td><input type="text" value="3.238"></td>
+                                  <td><input type="text" value="3.456"></td>
+                                  <td><input type="text" value="3.654"></td>
+                                  <td><input type="text" value="3.888"></td>
+                                  <td><input type="text" value="4.172"></td>
+                                  <td><input type="text" value="4.375"></td>
+                                  <td><input type="text" value="4.575"></td>
+                                  <td><input type="text" value="4.783"></td>
+                                  <td><input type="text" value="4.984"></td>
+                                  <td><input type="text" value="5.243"></td>
+                                </tr>
+
+                                <tr>
+                                  <td>400</td>
+                                  <td><input type="text" value="2.483"></td>
+                                  <td><input type="text" value="2.693"></td>
+                                  <td><input type="text" value="2.903"></td>
+                                  <td><input type="text" value="3.211"></td>
+                                  <td><input type="text" value="3.422"></td>
+                                  <td><input type="text" value="3.652"></td>
+                                  <td><input type="text" value="4.409"></td>
+                                  <td><input type="text" value="4.697"></td>
+                                  <td><input type="text" value="5.026"></td>
+                                  <td><input type="text" value="5.272"></td>
+                                  <td><input type="text" value="5.517"></td>
+                                  <td><input type="text" value="5.778"></td>
+                                  <td><input type="text" value="6.024"></td>
+                                  <td><input type="text" value="6.356"></td>
+                                </tr>
+
+                                <tr>
+                                  <td>450</td>
+                                  <td><input type="text" value="2.982"></td>
+                                  <td><input type="text" value="3.236"></td>
+                                  <td><input type="text" value="3.497"></td>
+                                  <td><input type="text" value="3.842"></td>
+                                  <td><input type="text" value="4.104"></td>
+                                  <td><input type="text" value="4.380"></td>
+                                  <td><input type="text" value="4.654"></td>
+                                  <td><input type="text" value="4.944"></td>
+                                  <td><input type="text" value="5.291"></td>
+                                  <td><input type="text" value="5.548"></td>
+                                  <td><input type="text" value="5.816"></td>
+                                  <td><input type="text" value="6.111"></td>
+                                  <td><input type="text" value="6.377"></td>
+                                  <td><input type="text" value="6.695"></td>
+                                </tr>
+
+                                <tr>
+                                  <td>500</td>
+                                  <td><input type="text" value="3.095"></td>
+                                  <td><input type="text" value="3.358"></td>
+                                  <td><input type="text" value="3.632"></td>
+                                  <td><input type="text" value="4.003"></td>
+                                  <td><input type="text" value="4.277"></td>
+                                  <td><input type="text" value="4.574"></td>
+                                  <td><input type="text" value="4.847"></td>
+                                  <td><input type="text" value="5.157"></td>
+                                  <td><input type="text" value="5.521"></td>
+                                  <td><input type="text" value="5.789"></td>
+                                  <td><input type="text" value="6.086"></td>
+                                  <td><input type="text" value="6.383"></td>
+                                  <td><input type="text" value="6.661"></td>
+                                  <td><input type="text" value="6.997"></td>
+                                </tr>
+                                <tr>
+                                  <td>550</td>
+                                  <td><input type="text" value="3.229"></td>
+                                  <td><input type="text" value="3.513"></td>
+                                  <td><input type="text" value="3.798"></td>
+                                  <td><input type="text" value="4.192"></td>
+                                  <td><input type="text" value="4.485"></td>
+                                  <td><input type="text" value="4.799"></td>
+                                  <td><input type="text" value="5.082"></td>
+                                  <td><input type="text" value="5.404"></td>
+                                  <td><input type="text" value="5.789"></td>
+                                  <td><input type="text" value="6.096"></td>
+                                  <td><input type="text" value="6.384"></td>
+                                  <td><input type="text" value="6.695"></td>
+                                  <td><input type="text" value="6.984"></td>
+                                  <td><input type="text" value="7.346"></td>
+                                </tr>
+                                <tr>
+                                  <td>600</td>
+                                  <td><input type="text" value="3.332"></td>
+                                  <td><input type="text" value="3.636"></td>
+                                  <td><input type="text" value="3.932"></td>
+                                  <td><input type="text" value="4.342"></td>
+                                  <td><input type="text" value="4.658"></td>
+                                  <td><input type="text" value="4.981"></td>
+                                  <td><input type="text" value="5.276"></td>
+                                  <td><input type="text" value="5.607"></td>
+                                  <td><input type="text" value="6.039"></td>
+                                  <td><input type="text" value="6.338"></td>
+                                  <td><input type="text" value="6.636"></td>
+                                  <td><input type="text" value="6.968"></td>
+                                  <td><input type="text" value="7.284"></td>
+                                  <td><input type="text" value="7.664"></td>
+                                </tr>
+                                <tr>
+                                  <td>650</td>
+                                  <td><input type="text" value="3.526"></td>
+                                  <td><input type="text" value="3.862"></td>
+                                  <td><input type="text" value="4.187"></td>
+                                  <td><input type="text" value="4.678"></td>
+                                  <td><input type="text" value="5.013"></td>
+                                  <td><input type="text" value="5.373"></td>
+                                  <td><input type="text" value="5.709"></td>
+                                  <td><input type="text" value="6.090"></td>
+                                  <td><input type="text" value="6.561"></td>
+                                  <td><input type="text" value="6.891"></td>
+                                  <td><input type="text" value="7.229"></td>
+                                  <td><input type="text" value="7.613"></td>
+                                  <td><input type="text" value="7.943"></td>
+                                  <td><input type="text" value="8.387"></td>
+                                </tr>
+                                <tr>
+                                  <td>700</td>
+                                  <td><input type="text" value="3.643"></td>
+                                  <td><input type="text" value="3.991"></td>
+                                  <td><input type="text" value="4.339"></td>
+                                  <td><input type="text" value="4.848"></td>
+                                  <td><input type="text" value="5.188"></td>
+                                  <td><input type="text" value="5.569"></td>
+                                  <td><input type="text" value="5.936"></td>
+                                  <td><input type="text" value="6.322"></td>
+                                  <td><input type="text" value="6.813"></td>
+                                  <td><input type="text" value="7.165"></td>
+                                  <td><input type="text" value="7.533"></td>
+                                  <td><input type="text" value="7.901"></td>
+                                  <td><input type="text" value="8.252"></td>
+                                  <td><input type="text" value="8.717"></td>
+                                </tr>
+                                <tr>
+                                  <td>750</td>
+                                  <td><input type="text" value="3.782"></td>
+                                  <td><input type="text" value="4.143"></td>
+                                  <td><input type="text" value="4.503"></td>
+                                  <td><input type="text" value="5.038"></td>
+                                  <td><input type="text" value="5.399"></td>
+                                  <td><input type="text" value="5.797"></td>
+                                  <td><input type="text" value="6.188"></td>
+                                  <td><input type="text" value="6.585"></td>
+                                  <td><input type="text" value="7.099"></td>
+                                  <td><input type="text" value="7.480"></td>
+                                  <td><input type="text" value="7.845"></td>
+                                  <td><input type="text" value="8.239"></td>
+                                  <td><input type="text" value="9.147"></td>
+                                  <td><input type="text" value="9.634"></td>
+                                </tr>
+                                <tr>
+                                  <td>800</td>
+                                  <td><input type="text" value="3.901"></td>
+                                  <td><input type="text" value="4.272"></td>
+                                  <td><input type="text" value="4.656"></td>
+                                  <td><input type="text" value="5.211"></td>
+                                  <td><input type="text" value="5.583"></td>
+                                  <td><input type="text" value="6.427"></td>
+                                  <td><input type="text" value="6.820"></td>
+                                  <td><input type="text" value="7.248"></td>
+                                  <td><input type="text" value="7.792"></td>
+                                  <td><input type="text" value="8.204"></td>
+                                  <td><input type="text" value="8.609"></td>
+                                  <td><input type="text" value="9.036"></td>
+                                  <td><input type="text" value="9.431"></td>
+                                  <td><input type="text" value="9.944"></td>
+                                </tr>
+                                <tr>
+                                  <td>850</td>
+                                  <td><input type="text" value="4.362"></td>
+                                  <td><input type="text" value="4.764"></td>
+                                  <td><input type="text" value="5.188"></td>
+                                  <td><input type="text" value="5.766"></td>
+                                  <td><input type="text" value="6.170"></td>
+                                  <td><input type="text" value="6.642"></td>
+                                  <td><input type="text" value="7.055"></td>
+                                  <td><input type="text" value="7.496"></td>
+                                  <td><input type="text" value="8.075"></td>
+                                  <td><input type="text" value="8.492"></td>
+                                  <td><input type="text" value="8.899"></td>
+                                  <td><input type="text" value="9.350"></td>
+                                  <td><input type="text" value="9.766"></td>
+                                  <td><input type="text" value="-----"></td>
+                                </tr>
+                                <tr>
+                                  <td>900</td>
+                                  <td><input type="text" value="4.464"></td>
+                                  <td><input type="text" value="4.889"></td>
+                                  <td><input type="text" value="5.322"></td>
+                                  <td><input type="text" value="5.914"></td>
+                                  <td><input type="text" value="6.360"></td>
+                                  <td><input type="text" value="6.825"></td>
+                                  <td><input type="text" value="7.248"></td>
+                                  <td><input type="text" value="7.726"></td>
+                                  <td><input type="text" value="8.305"></td>
+                                  <td><input type="text" value="8.732"></td>
+                                  <td><input type="text" value="9.160"></td>
+                                  <td><input type="text" value="9.621"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                </tr>
+                                <tr>
+                                  <td>950</td>
+                                  <td><input type="text" value="4.687"></td>
+                                  <td><input type="text" value="5.150"></td>
+                                  <td><input type="text" value="5.634"></td>
+                                  <td><input type="text" value="6.307"></td>
+                                  <td><input type="text" value="6.790"></td>
+                                  <td><input type="text" value="7.301"></td>
+                                  <td><input type="text" value="7.773"></td>
+                                  <td><input type="text" value="8.289"></td>
+                                  <td><input type="text" value="8.948"></td>
+                                  <td><input type="text" value="9.414"></td>
+                                  <td><input type="text" value="9.881"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                </tr>
+                                <tr>
+                                  <td>1000</td>
+                                  <td><input type="text" value="4.804"></td>
+                                  <td><input type="text" value="5.290"></td>
+                                  <td><input type="text" value="5.775"></td>
+                                  <td><input type="text" value="6.468"></td>
+                                  <td><input type="text" value="6.974"></td>
+                                  <td><input type="text" value="7.497"></td>
+                                  <td><input type="text" value="7.998"></td>
+                                  <td><input type="text" value="8.510"></td>
+                                  <td><input type="text" value="9.199"></td>
+                                  <td><input type="text" value="9.678"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                </tr>
+                                <tr>
+                                  <td>1050</td>
+                                  <td><input type="text" value="4.944"></td>
+                                  <td><input type="text" value="5.452"></td>
+                                  <td><input type="text" value="5.940"></td>
+                                  <td><input type="text" value="6.687"></td>
+                                  <td><input type="text" value="7.186"></td>
+                                  <td><input type="text" value="7.735"></td>
+                                  <td><input type="text" value="8.240"></td>
+                                  <td><input type="text" value="8.775"></td>
+                                  <td><input type="text" value="9.486"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                  <td><input type="text" value="-----"></td>
+                                </tr>
+                                <tr>
+                                  <td>1100</td>
+                                  <td><input type="text" value="5.060"></td>
+                                  <td><input type="text" value="5.581"></td>
+                                  <td><input type="text" value="6.092"></td>
+                                  <td><input type="text" value="6.860"></td>
+                                  <td><input type="text" value="7.369"></td>
+                                  <td><input type="text" value="7.932"></td>
+                                  <td><input type="text" value="8.458"></td>
+                                  <td><input type="text" value="9.006"></td>
+                                  <td><input type="text" value="----- "></td>
+                                  <td><input type="text" value="----- "></td>
+                                  <td><input type="text" value="----- "></td>
+                                  <td><input type="text" value="----- "></td>
+                                  <td><input type="text" value="----- "></td>
+                                  <td><input type="text" value="----- "></td>
+                                </tr>
+                                </table>
+
+                           </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</section> -->
+
+
+
+<section id="card-actions">
+  <h4 class="card-title" style="text-align: center;" > تسعير الأصناف </h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-body collapse in">
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 mb-2">
+
+                <form #form="ngForm" autocomplete="off"  (submit)="onSubmit(form)" novalidate>
+
+                  <!-- <input type="hidden" name="item_ID" #item_ID="ngModel" [(ngModel)]="this.formData.item_ID" >
+                  <input type="hidden" name="item_Price_ID" #item_Price_ID="ngModel" [(ngModel)]="this.formData.item_Price_ID" >
+                  <input type="hidden" name="item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="this.formData.item_Price_Width" >
+                  <input type="hidden" name="price_Col_1" #price_Col_1="ngModel" [(ngModel)]="this.formData.price_Col_1" >
+                  <input type="hidden" name="price_Col_2" #price_Col_2="ngModel" [(ngModel)]="this.formData.price_Col_2" >
+                  <input type="hidden" name="price_Col_3" #price_Col_3="ngModel" [(ngModel)]="this.formData.price_Col_3" >
+                  <input type="hidden" name="price_Col_4" #price_Col_4="ngModel" [(ngModel)]="this.formData.price_Col_4" >
+                  <input type="hidden" name="price_Col_5" #price_Col_5="ngModel" [(ngModel)]="this.formData.price_Col_5" >
+                  <input type="hidden" name="price_Col_6" #price_Col_6="ngModel" [(ngModel)]="this.formData.price_Col_6" >
+                  <input type="hidden" name="price_Col_7" #price_Col_7="ngModel" [(ngModel)]="this.formData.price_Col_7" >
+                  <input type="hidden" name="price_Col_8" #price_Col_8="ngModel" [(ngModel)]="this.formData.price_Col_8" >
+                  <input type="hidden" name="price_Col_9" #price_Col_9="ngModel" [(ngModel)]="this.formData.price_Col_9" >
+                  <input type="hidden" name="price_Col_10" #price_Col_10="ngModel" [(ngModel)]="this.formData.price_Col_10" >
+                  <input type="hidden" name="price_Col_11" #price_Col_11="ngModel" [(ngModel)]="this.formData.price_Col_11" > -->
+
+                  <div class="row">
+
+                    <div class="col-md-4 mt-2">
+                      <label> اسم الصنف <span style="color: red;">*</span></label>
+
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input readonly style="width:100%;" name="item_Name" #item_Name="ngModel" [(ngModel)]="servItem.formData.item_Name"
+                          class="form-control" placeholder="اسم الصنف" required data-toggle="tooltip"
+                          [class.is-invalid]="!isValid && servItem.formData.item_Name == ''"
+                          data-placement="top" title data-original-title="اسم الصنف">
+                        <div class="form-control-position">
+                          <i class="fa fa-keyboard-o"></i>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-4 mt-3">
+
+
+                    </div>
+
+                    <div class="col-md-4 mt-3">
+
+                      <button class="btn btn-sm btn-info clearfix ml-1 " style="float:left;"
+                      (click)="getId()">
+                        <label  style="color:#fff;">
+                          <span class="fa fa-file-excel-o"></span>
+                                Import
+
+                        </label>
+                    </button>
+
+
+                      <button class="btn btn-sm btn-primary clearfix " style="float:left;" (click)="download()">
+                        <label  style="color:#fff;">
+                          <span class="fa fa-file-excel-o"></span>
+                                تنزيل نموذج للشيت
+
+
+
+                        </label>
+                    </button>
+
+                  </div>
+
+                  </div>
+
+
+
+
+
+
+
+                    <!-- <div class="table-container">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-hover table-bordered "
+                          dir="ltr"
+
+                          border="1"
+                          style="border-color: #ccc;text-align:center;"
+                          cellspacing="0"
+                          cellpadding="0"
+
+
+                        >
+
+                        <tr>
+                          <td rowspan="2" style="vertical-align: middle;">WIDTH</td>
+                          <td [attr.colspan]="servItem.formData.columns_Count" (click)=" IncreaseValue()">OPENING</td>
+                        </tr>
+
+
+                        <tr  *ngIf="range != null">
+                          <td *ngFor="let colum of range" >{{colum}}</td>
+                        </tr>
+
+                        <!-- <tr
+                        *ngFor="let Item of servItem.formData.itemPrices; let i=index;">
+                          <td>{{Item.item_Price_Width}}</td>
+                          <td *ngIf="Item.price_Col_1"><input type="text" name="price_Col_1" #price_Col_1="ngModel" [(ngModel)]="Item.price_Col_1"/></td>
+                          <td *ngIf="Item.price_Col_2"><input type="text" name="price_Col_2" #price_Col_2="ngModel" [(ngModel)]="Item.price_Col_2"/></td>
+                          <td *ngIf="Item.price_Col_3"><input type="text" name="price_Col_3" #price_Col_3="ngModel" [(ngModel)]="Item.price_Col_3"/></td>
+                          <td *ngIf="Item.price_Col_4"><input type="text" name="price_Col_4" #price_Col_4="ngModel" [(ngModel)]="Item.price_Col_4"/></td>
+                          <td *ngIf="Item.price_Col_5"><input type="text" name="price_Col_5" #price_Col_5="ngModel" [(ngModel)]="Item.price_Col_5"/></td>
+                          <td *ngIf="Item.price_Col_6"><input type="text" name="price_Col_6" #price_Col_6="ngModel" [(ngModel)]="Item.price_Col_6"/></td>
+                          <td *ngIf="Item.price_Col_7"><input type="text" name="price_Col_7" #price_Col_7="ngModel" [(ngModel)]="Item.price_Col_7"/></td>
+                          <td *ngIf="Item.price_Col_8"><input type="text" name="price_Col_8" #price_Col_8="ngModel" [(ngModel)]="Item.price_Col_8"/></td>
+                          <td *ngIf="Item.price_Col_9"><input type="text" name="price_Col_9" #price_Col_9="ngModel" [(ngModel)]="Item.price_Col_9"/></td>
+                          <td *ngIf="Item.price_Col_10"><input type="text" name="price_Col_10" #price_Col_10="ngModel" [(ngModel)]="Item.price_Col_10"/></td>
+                          <td *ngIf="Item.price_Col_11"><input type="text" name="price_Col_11" #price_Col_11="ngModel" [(ngModel)]="Item.price_Col_11"/></td>
+                          <td *ngIf="Item.price_Col_12"><input type="text" name="price_Col_12" #price_Col_12="ngModel" [(ngModel)]="Item.price_Col_12"/></td>
+                          <td *ngIf="Item.price_Col_13"><input type="text" name="price_Col_13" #price_Col_13="ngModel" [(ngModel)]="Item.price_Col_13"/></td>
+                          <td *ngIf="Item.price_Col_14"><input type="text" name="price_Col_14" #price_Col_14="ngModel" [(ngModel)]="Item.price_Col_14"/></td>
+                          <td *ngIf="Item.price_Col_15"><input type="text" name="price_Col_15" #price_Col_15="ngModel" [(ngModel)]="Item.price_Col_15"/></td>
+                          <td *ngIf="Item.price_Col_16"><input type="text" name="price_Col_16" #price_Col_16="ngModel" [(ngModel)]="Item.price_Col_16"/></td>
+                          <td *ngIf="Item.price_Col_17"><input type="text" name="price_Col_17" #price_Col_17="ngModel" [(ngModel)]="Item.price_Col_17"/></td>
+                          <td *ngIf="Item.price_Col_18"><input type="text" name="price_Col_18" #price_Col_18="ngModel" [(ngModel)]="Item.price_Col_18"/></td>
+                          <td *ngIf="Item.price_Col_19"><input type="text" name="price_Col_19" #price_Col_19="ngModel" [(ngModel)]="Item.price_Col_19"/></td>
+                          <td *ngIf="Item.price_Col_20"><input type="text" name="price_Col_20" #price_Col_20="ngModel" [(ngModel)]="Item.price_Col_20"/></td>
+                          <td *ngIf="Item.price_Col_21"><input type="text" name="price_Col_21" #price_Col_21="ngModel" [(ngModel)]="Item.price_Col_21"/></td>
+                          <td *ngIf="Item.price_Col_22"><input type="text" name="price_Col_22" #price_Col_22="ngModel" [(ngModel)]="Item.price_Col_22"/></td>
+                          <td *ngIf="Item.price_Col_23"><input type="text" name="price_Col_23" #price_Col_23="ngModel" [(ngModel)]="Item.price_Col_23"/></td>
+                          <td *ngIf="Item.price_Col_24"><input type="text" name="price_Col_24" #price_Col_24="ngModel" [(ngModel)]="Item.price_Col_24"/></td>
+                          <td *ngIf="Item.price_Col_25"><input type="text" name="price_Col_25" #price_Col_25="ngModel" [(ngModel)]="Item.price_Col_25"/></td>
+                          <td *ngIf="Item.price_Col_26"><input type="text" name="price_Col_26" #price_Col_26="ngModel" [(ngModel)]="Item.price_Col_26"/></td>
+                          <td *ngIf="Item.price_Col_27"><input type="text" name="price_Col_27" #price_Col_27="ngModel" [(ngModel)]="Item.price_Col_27"/></td>
+                          <td *ngIf="Item.price_Col_28"><input type="text" name="price_Col_28" #price_Col_28="ngModel" [(ngModel)]="Item.price_Col_28"/></td>
+                          <td *ngIf="Item.price_Col_29"><input type="text" name="price_Col_29" #price_Col_29="ngModel" [(ngModel)]="Item.price_Col_29"/></td>
+                          <td *ngIf="Item.price_Col_30"><input type="text" name="price_Col_30" #price_Col_30="ngModel" [(ngModel)]="Item.price_Col_30"/></td>
+
+
+                          <!-- <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td> --
+                        </tr> --
+
+
+                         <tr *ngFor="let row of  createRange(servItem.formData.rows_Count)" >
+                          <td><input type="text" name="item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="this.formData.item_Price_Width"/></td>
+                          <td><input type="text" name="price_Col_1" #price_Col_1="ngModel" [(ngModel)]="this.formData.price_Col_1"/>{{this.formData.price_Col_1}}</td>
+                          <td><input type="text" name="price_Col_2" #price_Col_2="ngModel" [(ngModel)]="this.formData.price_Col_2"/>{{this.formData.price_Col_2}}</td>
+                          <td><input type="text" name="price_Col_3" #price_Col_3="ngModel" [(ngModel)]="this.formData.price_Col_3"/>{{this.formData.price_Col_3}}</td>
+                          <td><input type="text" name="price_Col_4" #price_Col_4="ngModel" [(ngModel)]="this.formData.price_Col_4"/>{{this.formData.price_Col_4}} </td>
+                          <td><input type="text" name="price_Col_5" #price_Col_5="ngModel" [(ngModel)]="this.formData.price_Col_5"/>{{this.formData.price_Col_5}}</td>
+                          <td><input type="text" name="price_Col_6" #price_Col_6="ngModel" [(ngModel)]="this.formData.price_Col_6"/>{{this.formData.price_Col_6}}</td>
+                          <td><input type="text" name="price_Col_7" #price_Col_7="ngModel" [(ngModel)]="this.formData.price_Col_7"/>{{this.formData.price_Col_7}}</td>
+                          <td><input type="text" name="price_Col_8" #price_Col_8="ngModel" [(ngModel)]="this.formData.price_Col_8"/>{{this.formData.price_Col_8}}</td>
+                          <td><input type="text" name="price_Col_9" #price_Col_9="ngModel" [(ngModel)]="this.formData.price_Col_9"/>{{this.formData.price_Col_9}}</td>
+                          <td><input type="text" name="price_Col_10" #price_Col_10="ngModel" [(ngModel)]="this.formData.price_Col_10"/>{{this.formData.price_Col_10}}</td>
+                          <td><input type="text" name="price_Col_11" #price_Col_11="ngModel" [(ngModel)]="this.formData.price_Col_11"/>{{this.formData.price_Col_11}}</td>
+                          <td><input type="text" name="price_Col_12" #price_Col_12="ngModel" [(ngModel)]="this.formData.price_Col_12"/>{{this.formData.price_Col_12}}</td>
+                          <td><input type="text" name="price_Col_13" #price_Col_13="ngModel" [(ngModel)]="this.formData.price_Col_13"/>{{this.formData.price_Col_13}}</td>
+                          <td><input type="text" name="price_Col_14" #price_Col_14="ngModel" [(ngModel)]="this.formData.price_Col_14"/>{{this.formData.price_Col_14}}</td>
+                          <td><input type="text" name="price_Col_15" #price_Col_15="ngModel" [(ngModel)]="this.formData.price_Col_15"/>{{this.formData.price_Col_15}}</td>
+                          <td><input type="text" name="price_Col_16" #price_Col_16="ngModel" [(ngModel)]="this.formData.price_Col_16"/>{{this.formData.price_Col_16}}</td>
+                          <td><input type="text" name="price_Col_17" #price_Col_17="ngModel" [(ngModel)]="this.formData.price_Col_17"/>{{this.formData.price_Col_17}}</td>
+                          <td><input type="text" name="price_Col_18" #price_Col_18="ngModel" [(ngModel)]="this.formData.price_Col_18"/>{{this.formData.price_Col_18}}</td>
+                          <td><input type="text" name="price_Col_19" #price_Col_19="ngModel" [(ngModel)]="this.formData.price_Col_19"/>{{this.formData.price_Col_19}}</td>
+                          <td><input type="text" name="price_Col_20" #price_Col_20="ngModel" [(ngModel)]="this.formData.price_Col_20"/>{{this.formData.price_Col_20}}</td>
+                          <td><input type="text" name="price_Col_21" #price_Col_21="ngModel" [(ngModel)]="this.formData.price_Col_21"/>{{this.formData.price_Col_21}}</td>
+                          <td><input type="text" name="price_Col_22" #price_Col_22="ngModel" [(ngModel)]="this.formData.price_Col_22"/>{{this.formData.price_Col_22}}</td>
+                          <td><input type="text" name="price_Col_23" #price_Col_23="ngModel" [(ngModel)]="this.formData.price_Col_23"/>{{this.formData.price_Col_23}}</td>
+                          <td><input type="text" name="price_Col_24" #price_Col_24="ngModel" [(ngModel)]="this.formData.price_Col_24"/>{{this.formData.price_Col_24}}</td>
+                          <td><input type="text" name="price_Col_25" #price_Col_25="ngModel" [(ngModel)]="this.formData.price_Col_25"/>{{this.formData.price_Col_25}}</td>
+                          <td><input type="text" name="price_Col_26" #price_Col_26="ngModel" [(ngModel)]="this.formData.price_Col_26"/>{{this.formData.price_Col_26}}</td>
+                          <td><input type="text" name="price_Col_27" #price_Col_27="ngModel" [(ngModel)]="this.formData.price_Col_27"/>{{this.formData.price_Col_27}}</td>
+                          <td><input type="text" name="price_Col_28" #price_Col_28="ngModel" [(ngModel)]="this.formData.price_Col_28"/>{{this.formData.price_Col_28}}</td>
+                          <td><input type="text" name="price_Col_29" #price_Col_29="ngModel" [(ngModel)]="this.formData.price_Col_29"/>{{this.formData.price_Col_29}}</td>
+                          <td><input type="text" name="price_Col_30" #price_Col_30="ngModel" [(ngModel)]="this.formData.price_Col_30"/>{{this.formData.price_Col_30}}</td>
+
+
+                          <!-- <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td> ---
+                        </tr>
+                        </table>
+                      </div>
+                    </div> -->
+
+
+
+
+                    <div class="table-container" *ngIf=" this.servItem.formData.item_Name">
+                      <div class="table-responsive">
+                        <table id="table"
+                          class="table table-hover table-bordered "
+                          dir="ltr"
+                          border="1"
+                          style="border-color: #ccc;text-align:center;"
+                          cellspacing="0"
+                          cellpadding="0"
+
+
+                        >
+
+                         <tr >
+                          <td rowspan="2" style="vertical-align: middle;">WIDTH</td>
+                          <td [attr.colspan]="servItem.formData.columns_Count">OPENING </td>
+
+                        </tr>
+
+
+                        <tr style="background: #f9f9f9;" *ngIf="range != null">
+                          <td style="text-align:center;" *ngFor="let colum of range" >{{colum}}</td>
+                        </tr>
+
+
+                        <tbody *ngIf="servItem.formData.itemPrices ; let i of index">
+
+                          <tr *ngFor="let field of itemslist">
+                          <td >
+                            <input   [ngModelOptions]="{standalone: true}" name="item_Price_Width" placeholder="{{field.item_Price_Width}}" [(ngModel)]=" field.item_Price_Width">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 0">
+                            <input   [ngModelOptions]="{standalone: true}" name="price_Col_1" placeholder="{{field.price_Col_1}}"  [(ngModel)]=" field.price_Col_1">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 1">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_2" (ngModelChange)="onChange($event, field)" placeholder="{{field.price_Col_2}}"  [(ngModel)]=" field.price_Col_2">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 2">
+                            <input   [ngModelOptions]="{standalone: true}" name="price_Col_3" placeholder="{{field.price_Col_3}}"  [(ngModel)]="field.price_Col_3">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 3">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_4" placeholder="{{field.price_Col_4}}" [(ngModel)]="field.price_Col_4">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 4">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_5" placeholder="{{field.price_Col_5}}" [(ngModel)]="field.price_Col_5">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 5">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_6" placeholder="{{field.price_Col_6}}" [(ngModel)]="field.price_Col_6">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 6">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_7" placeholder="{{field.price_Col_7}}" [(ngModel)]="field.price_Col_7">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 7">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_8" placeholder="{{field.price_Col_8}}" [(ngModel)]="field.price_Col_8">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 8">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_9" placeholder="{{field.price_Col_9}}" [(ngModel)]="field.price_Col_9">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 9">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_10" placeholder="{{field.price_Col_10}}" [(ngModel)]="field.price_Col_10">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 10">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_11" placeholder="{{field.price_Col_11}}" [(ngModel)]="field.price_Col_11">
+                          </td>
+
+
+                          <td *ngIf="servItem.formData.columns_Count > 11">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_12" placeholder="{{field.price_Col_12}}" [(ngModel)]="field.price_Col_12">
+                          </td>
+
+
+                          <td *ngIf="servItem.formData.columns_Count > 12">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_13" placeholder="{{field.price_Col_13}}" [(ngModel)]="field.price_Col_13">
+                          </td>
+
+
+                          <td *ngIf="servItem.formData.columns_Count > 13">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_14" placeholder="{{field.price_Col_14}}" [(ngModel)]="field.price_Col_14">
+                          </td>
+
+
+                          <td *ngIf="servItem.formData.columns_Count > 14">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_15" placeholder="{{field.price_Col_15}}" [(ngModel)]="field.price_Col_15">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 15">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_16" placeholder="{{field.price_Col_16}}" [(ngModel)]="field.price_Col_16">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 16">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_17" placeholder="{{field.price_Col_17}}" [(ngModel)]="field.price_Col_17">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 17">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_18" placeholder="{{field.price_Col_18}}" [(ngModel)]="field.price_Col_18">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 18">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_19" placeholder="{{field.price_Col_19}}" [(ngModel)]="field.price_Col_19">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 19">
+                            <input   [ngModelOptions]="{standalone: true}" name="price_Col_20" placeholder="{{field.price_Col_20}}" [(ngModel)]="field.price_Col_20">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 20">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_21" placeholder="{{field.price_Col_21}}" [(ngModel)]="field.price_Col_21">
+                          </td>
+
+                          <td *ngIf="servItem.formData.columns_Count > 21">
+                            <input  [ngModelOptions]="{standalone: true}" name="price_Col_22" placeholder="{{field.price_Col_22}}" [(ngModel)]="field.price_Col_22">
+                          </td>
+
+
+
+
+                          <!-- <td><input type="number" name=" item_Price_ID" #item_Price_ID="ngModel" [(ngModel)]="Item.item_Price_ID" /></td> -->
+                          <!-- <td><input type="number" name=" item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="Item.item_Price_Width" /></td> -->
+                        <!--  <td *ngIf="servItem.formData.columns_Count > 0"><input type="number" name=" price_Col_1" #price_Col_1="ngModel" [(ngModel)]="Item.price_Col_1" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 1"><input type="number" name=" price_Col_2" #price_Col_2="ngModel" [(ngModel)]="Item.price_Col_2" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 2"><input type="number" name=" price_Col_3" #price_Col_3="ngModel" [(ngModel)]="Item.price_Col_3" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 3"><input type="number" name=" price_Col_4" #price_Col_4="ngModel" [(ngModel)]="Item.price_Col_4" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 4"><input type="number" name=" price_Col_5" #price_Col_5="ngModel" [(ngModel)]="Item.price_Col_5" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 5"><input type="number" name=" price_Col_6" #price_Col_6="ngModel" [(ngModel)]="Item.price_Col_6" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 6"><input type="number" name=" price_Col_7" #price_Col_7="ngModel" [(ngModel)]="Item.price_Col_7" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 7"><input type="number" name=" price_Col_8" #price_Col_8="ngModel" [(ngModel)]="Item.price_Col_8" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 8"><input type="number" name=" price_Col_9" #price_Col_9="ngModel" [(ngModel)]="Item.price_Col_9" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 9"><input type="number" name=" price_Col_10" #price_Col_10="ngModel" [(ngModel)]="Item.price_Col_10" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 10"><input type="number" name=" price_Col_11" #price_Col_11="ngModel" [(ngModel)]="Item.price_Col_11" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 11"><input type="number" name=" price_Col_12" #price_Col_12="ngModel" [(ngModel)]="Item.price_Col_12" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 12"><input type="number" name=" price_Col_13" #price_Col_13="ngModel" [(ngModel)]="Item.price_Col_13" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 13"><input type="number" name=" price_Col_14" #price_Col_14="ngModel" [(ngModel)]="Item.price_Col_14" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 14"><input type="number" name=" price_Col_15" #price_Col_15="ngModel" [(ngModel)]="Item.price_Col_15" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 15"><input type="number" name=" price_Col_16" #price_Col_16="ngModel" [(ngModel)]="Item.price_Col_16" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 16"><input type="number" name=" price_Col_17" #price_Col_17="ngModel" [(ngModel)]="Item.price_Col_17" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 17"><input type="number" name=" price_Col_18" #price_Col_18="ngModel" [(ngModel)]="Item.price_Col_18" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 18"><input type="number" name=" price_Col_19" #price_Col_19="ngModel" [(ngModel)]="Item.price_Col_19" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 19"><input type="number" name=" price_Col_20" #price_Col_20="ngModel" [(ngModel)]="Item.price_Col_20" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 20"><input type="number" name=" price_Col_21" #price_Col_21="ngModel" [(ngModel)]="Item.price_Col_21" /></td>
+                          <td *ngIf="servItem.formData.columns_Count > 21"><input type="number" name=" price_Col_22" #price_Col_22="ngModel" [(ngModel)]="Item.price_Col_22" /></td>
+                           <td><input type="number" name=" price_Col_23" #price_Col_23="ngModel" [(ngModel)]="Item.price_Col_23" /></td>
+                          <td><input type="number" name=" price_Col_24" #price_Col_24="ngModel" [(ngModel)]="Item.price_Col_24" /></td>
+                          <td><input type="number" name=" price_Col_25" #price_Col_25="ngModel" [(ngModel)]="Item.price_Col_25" /></td>
+                          <td><input type="number" name=" price_Col_26" #price_Col_26="ngModel" [(ngModel)]="Item.price_Col_26" /></td>
+                          <td><input type="number" name=" price_Col_27" #price_Col_27="ngModel" [(ngModel)]="Item.price_Col_26" /></td>
+                          <td><input type="number" name=" price_Col_28" #price_Col_28="ngModel" [(ngModel)]="Item.price_Col_28" /></td>
+                          <td><input type="number" name=" price_Col_29" #price_Col_29="ngModel" [(ngModel)]="Item.price_Col_29" /></td>
+                          <td><input type="number" name=" price_Col_30" #price_Col_30="ngModel" [(ngModel)]="Item.price_Col_30" /></td> -->
+                          <!-- <td> <span *ngIf="show == true" (click)="change()" > {{Item.item_Price_Width}} </span><input [hidden]="show == true"  type="number" name=" item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="Item.item_Price_Width" />  </td> -->
+
+
+                          <!-- <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td> -->
+                        </tr>
+
+                      <!----  <tr>
+                          <td><input type="text" name=" item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="this.formData.item_Price_Width" /></td>
+                          <td><input type="text" name=" price_Col_1" #price_Col_1="ngModel" [(ngModel)]="this.formData.price_Col_1" /></td>
+                          <td><input type="text" name=" price_Col_2" #price_Col_2="ngModel" [(ngModel)]="this.formData.price_Col_2" /></td>
+                          <td><input type="text" name=" price_Col_3" #price_Col_3="ngModel" [(ngModel)]="this.formData.price_Col_3" /></td>
+                          <td><input type="text" name=" price_Col_4" #price_Col_4="ngModel" [(ngModel)]="this.formData.price_Col_4" /></td>
+                          <td><input type="text" name=" price_Col_5" #price_Col_5="ngModel" [(ngModel)]="this.formData.price_Col_5" /></td>
+                          <td><input type="text" name=" price_Col_6" #price_Col_6="ngModel" [(ngModel)]="this.formData.price_Col_6" /></td>
+                          <td><input type="text" name=" price_Col_7" #price_Col_7="ngModel" [(ngModel)]="this.formData.price_Col_7" /></td>
+                          <td><input type="text" name=" price_Col_8" #price_Col_8="ngModel" [(ngModel)]="this.formData.price_Col_8" /></td>
+                          <td><input type="text" name=" price_Col_9" #price_Col_9="ngModel" [(ngModel)]="this.formData.price_Col_9" /></td>
+                          <!-- <td><input type="text" name=" price_Col_10" #price_Col_10="ngModel" [(ngModel)]="this.formData.price_Col_10" /></td>
+                          <td><input type="text" name=" price_Col_11" #price_Col_11="ngModel" [(ngModel)]="this.formData.price_Col_11" /></td>
+                          <td><input type="text" name=" price_Col_12" #price_Col_12="ngModel" [(ngModel)]="this.formData.price_Col_12" /></td>
+                          <td><input type="text" name=" price_Col_13" #price_Col_13="ngModel" [(ngModel)]="this.formData.price_Col_13" /></td>
+                          <td><input type="text" name=" price_Col_14" #price_Col_14="ngModel" [(ngModel)]="this.formData.price_Col_14" /></td>
+                          <td><input type="text" name=" price_Col_15" #price_Col_15="ngModel" [(ngModel)]="this.formData.price_Col_15" /></td>
+                          <td><input type="text" name=" price_Col_16" #price_Col_16="ngModel" [(ngModel)]="this.formData.price_Col_16" /></td>
+                          <td><input type="text" name=" price_Col_17" #price_Col_17="ngModel" [(ngModel)]="this.formData.price_Col_17" /></td>
+                          <td><input type="text" name=" price_Col_18" #price_Col_18="ngModel" [(ngModel)]="this.formData.price_Col_18" /></td>
+                          <td><input type="text" name=" price_Col_19" #price_Col_19="ngModel" [(ngModel)]="this.formData.price_Col_19" /></td>
+                          <td><input type="text" name=" price_Col_20" #price_Col_20="ngModel" [(ngModel)]="this.formData.price_Col_20" /></td>
+                          <td><input type="text" name=" price_Col_21" #price_Col_21="ngModel" [(ngModel)]="this.formData.price_Col_21" /></td>
+                          <td><input type="text" name=" price_Col_22" #price_Col_22="ngModel" [(ngModel)]="this.formData.price_Col_22" /></td>
+                          <td><input type="text" name=" price_Col_23" #price_Col_23="ngModel" [(ngModel)]="this.formData.price_Col_23" /></td>
+                          <td><input type="text" name=" price_Col_24" #price_Col_24="ngModel" [(ngModel)]="this.formData.price_Col_24" /></td>
+                          <td><input type="text" name=" price_Col_25" #price_Col_25="ngModel" [(ngModel)]="this.formData.price_Col_25" /></td>
+                          <td><input type="text" name=" price_Col_26" #price_Col_26="ngModel" [(ngModel)]="this.formData.price_Col_26" /></td>
+                          <td><input type="text" name=" price_Col_27" #price_Col_27="ngModel" [(ngModel)]="this.formData.price_Col_27" /></td>
+                          <td><input type="text" name=" price_Col_28" #price_Col_28="ngModel" [(ngModel)]="this.formData.price_Col_28" /></td>
+                          <td><input type="text" name=" price_Col_29" #price_Col_29="ngModel" [(ngModel)]="this.formData.price_Col_29" /></td>
+                          <td><input type="text" name=" price_Col_30" #price_Col_30="ngModel" [(ngModel)]="this.formData.price_Col_30" /></td> -->
+
+                          <!--  <td *ngIf="Item.price_Col_2"><input type="text" name=" price_Col_2" #price_Col_2="ngModel" [(ngModel)]="Item.price_Col_2" /></td>
+                          <td *ngIf="Item.price_Col_3"><input type="text" name=" price_Col_3" #price_Col_3="ngModel" [(ngModel)]="Item.price_Col_3" /></td>
+                          <td *ngIf="Item.price_Col_4"><input type="text" name=" price_Col_4" #price_Col_4="ngModel" [(ngModel)]="Item.price_Col_4" /></td>
+                          <td *ngIf="Item.price_Col_5"><input type="text" name=" price_Col_5" #price_Col_5="ngModel" [(ngModel)]="Item.price_Col_5" /></td>
+                          <td *ngIf="Item.price_Col_6"><input type="text" name=" price_Col_6" #price_Col_6="ngModel" [(ngModel)]="Item.price_Col_6" /></td>
+                          <td *ngIf="Item.price_Col_7"><input type="text" name=" price_Col_7" #price_Col_7="ngModel" [(ngModel)]="Item.price_Col_7" /></td>
+                          <td *ngIf="Item.price_Col_8"><input type="text" name=" price_Col_8" #price_Col_8="ngModel" [(ngModel)]="Item.price_Col_8" /></td>
+                          <td *ngIf="Item.price_Col_9"><input type="text" name=" price_Col_9" #price_Col_9="ngModel" [(ngModel)]="Item.price_Col_9" /></td>
+                          <td *ngIf="Item.price_Col_10"><input type="text" name=" price_Col_10" #price_Col_10="ngModel" [(ngModel)]="Item.price_Col_10" /></td>
+                          <td *ngIf="Item.price_Col_11"><input type="text" name=" price_Col_11" #price_Col_11="ngModel" [(ngModel)]="Item.price_Col_11" /></td>
+                          <td *ngIf="Item.price_Col_12"><input type="text" name=" price_Col_12" #price_Col_12="ngModel" [(ngModel)]="Item.price_Col_12" /></td>
+                          <td *ngIf="Item.price_Col_13"><input type="text" name=" price_Col_13" #price_Col_13="ngModel" [(ngModel)]="Item.price_Col_13" /></td>
+                          <td *ngIf="Item.price_Col_14"><input type="text" name=" price_Col_14" #price_Col_14="ngModel" [(ngModel)]="Item.price_Col_14" /></td>
+                          <td *ngIf="Item.price_Col_15"><input type="text" name=" price_Col_15" #price_Col_15="ngModel" [(ngModel)]="Item.price_Col_15" /></td>
+                          <td *ngIf="Item.price_Col_16"><input type="text" name=" price_Col_16" #price_Col_16="ngModel" [(ngModel)]="Item.price_Col_16" /></td>
+                          <td *ngIf="Item.price_Col_17"><input type="text" name=" price_Col_17" #price_Col_17="ngModel" [(ngModel)]="Item.price_Col_17" /></td>
+                          <td *ngIf="Item.price_Col_18"><input type="text" name=" price_Col_18" #price_Col_18="ngModel" [(ngModel)]="Item.price_Col_18" /></td>
+                          <td *ngIf="Item.price_Col_19"><input type="text" name=" price_Col_19" #price_Col_19="ngModel" [(ngModel)]="Item.price_Col_19" /></td>
+                          <td *ngIf="Item.price_Col_20"><input type="text" name=" price_Col_20" #price_Col_20="ngModel" [(ngModel)]="Item.price_Col_20" /></td>
+                          <td *ngIf="Item.price_Col_21"><input type="text" name=" price_Col_21" #price_Col_21="ngModel" [(ngModel)]="Item.price_Col_21" /></td>
+                          <td *ngIf="Item.price_Col_22"><input type="text" name=" price_Col_22" #price_Col_22="ngModel" [(ngModel)]="Item.price_Col_22" /></td>
+                          <td *ngIf="Item.price_Col_23"><input type="text" name=" price_Col_23" #price_Col_23="ngModel" [(ngModel)]="Item.price_Col_23" /></td>
+                          <td *ngIf="Item.price_Col_24"><input type="text" name=" price_Col_24" #price_Col_24="ngModel" [(ngModel)]="Item.price_Col_24" /></td>
+                          <td *ngIf="Item.price_Col_25"><input type="text" name=" price_Col_25" #price_Col_25="ngModel" [(ngModel)]="Item.price_Col_25" /></td>
+                          <td *ngIf="Item.price_Col_26"><input type="text" name=" price_Col_26" #price_Col_26="ngModel" [(ngModel)]="Item.price_Col_26" /></td>
+                          <td *ngIf="Item.price_Col_27"><input type="text" name=" price_Col_27" #price_Col_27="ngModel" [(ngModel)]="Item.price_Col_26" /></td>
+                          <td *ngIf="Item.price_Col_28"><input type="text" name=" price_Col_28" #price_Col_28="ngModel" [(ngModel)]="Item.price_Col_28" /></td>
+                          <td *ngIf="Item.price_Col_29"><input type="text" name=" price_Col_29" #price_Col_29="ngModel" [(ngModel)]="Item.price_Col_29" /></td>
+                          <td *ngIf="Item.price_Col_30"><input type="text" name=" price_Col_30" #price_Col_30="ngModel" [(ngModel)]="Item.price_Col_30" /></td>
+
+
+                         <td *ngFor="let colum of  createRange(columns_Count.value)" ><input type="text" />{{colum}}</td> --
+                        </tr> -->
+
+                        </tbody>
+
+                        <!-- <button type="button" (click)="onSubmitt(form)" class="btn btn-dark ml-1"><i class="fa fa-database"></i> Save</button> -->
+
+
+
+                        </table>
+                      </div>
+                    </div>
+
+
+                   <!-- <div class="col-md-2">
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="item_Price_Width" #item_Price_Width="ngModel"
+                          [(ngModel)]="this.formData.item_Price_Width" class="form-control"
+                          required data-toggle="tooltip" data-placement="top" title data-original-title="1 "
+                          type="number" >
+
+                      </fieldset>
+
+                    </div>
+
+
+                    <div class="col-md-2">
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="price_Col_1" #price_Col_1="ngModel"
+                          [(ngModel)]="this.formData.price_Col_1" class="form-control"
+                          required data-toggle="tooltip" data-placement="top" title data-original-title="1 "
+                          type="number" >
+
+                      </fieldset>
+
+                    </div>
+
+
+                    <div class="col-md-2"  *ngIf="range.value > 2">
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input name="price_Col_2" #price_Col_2="ngModel"
+                          [(ngModel)]="this.formData.price_Col_2" class="form-control"
+                          required data-toggle="tooltip" data-placement="top" title data-original-title="1 "
+                          type="number" >
+
+                      </fieldset>
+
+                    </div> -->
+
+                    <!-- <input type="text" name=" item_Price_Width" #item_Price_Width="ngModel" [(ngModel)]="this.formData.item_Price_Width" /> -->
+
+
+
+
+                  <div class="row mt-2">
+
+
+                    <div class="col-xl-12 col-lg-12" style="text-align: center;">
+                      <button class="btn btn-danger"  type="submit"><i
+                          class="icon-check2"></i>
+                          حفظ</button>
+                      <button class="btn btn-outline-dark ml-2 " type='button' routerLink="/ItemsView"><i
+                          class="fa fa-table"></i>  الرجوع لقائمة الأصناف </button>
+
+
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

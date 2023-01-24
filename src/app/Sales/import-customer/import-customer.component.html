@@ -1,0 +1,126 @@
+<!-- <section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <h3 class="card-title" style="color: red !important;">إضافة عملاء من شيت اكسيل</h3>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+
+                                <div class="form-group text-center">
+                                    <div class="input-group">
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getItems()" class="form-control" />
+                                        <span class="input-group-addon"><a >
+                                            <i class="fa fa-search"></i>
+                                        </a></span>
+                                    </div>
+                                </div>
+
+
+                                <button *ngIf="Loadend === false" class="btn btn-sm btn-danger clearfix">
+                                    <label>
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Import
+                                        <input hidden type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                        (change)="onChange($event)" #inputFile>
+                                        </label>
+                                </button>
+
+
+                                <button *ngIf="Loadend === true" style="cursor: pointer;" class="btn btn-dark clearfix ">
+                                    <label>
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Clear
+                                        <input hidden
+                                        (click)="Clear()"  >
+                                    </label>
+                                </button>
+
+
+                                <div *ngIf="Loadend === true">
+                                    <button class="btn btn-danger " (click)="SendtoAPI()"  ><i class="icon-check2"></i>
+                                        المتابعة</button>
+
+                                </div>
+
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table table-sm table-bordered">
+                                      <thead>
+                                        <tr>
+
+                                            <th>اسم العميل</th>
+                                            <th>التليفون</th>
+                                            <th>التليفون 2 </th>
+                                            <th>الموبايل</th>
+                                            <th>الموبايل 2</th>
+                                            <th> رقم التسجيل الضريبي</th>
+                                            <th>نوع الشركة</th>
+                                            <th>الدولة</th>
+                                            <th>المحافظة</th>
+                                            <th>المدينة</th>
+                                            <th>الشارع</th>
+                                            <th>رقم العمارة</th>
+                                            <th>الكود البريدي</th>
+                                            <th>الطابق</th>
+                                            <th>الغرفة</th>
+                                            <th>علامة مميزة</th>
+                                            <th>معلومات إضافة</th>
+
+
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+
+                                        <tr *ngFor="let item of dataSheet | async">
+                                          <td *ngFor="let key of keys">
+                                            {{item[key]}}
+                                          </td>
+                                        </tr>
+
+
+                                      </tbody>
+                                    </table>
+                                  </div>
+                            </div>
+
+                            <!-- <div class="col-md-3">
+                                ...
+
+                                عدد السجلات فى الصفحة:
+                                <select (change)="handlePageSizeChange($event)">
+                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+                            </div>
+                            <div class="col-md-2">
+                                Result: {{count}}
+                            </div> -->
+                            <!-- <div class="col-md-2" *ngIf="dataSheet">
+                                <button type="button" (click)="fnExport();"
+                                    class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                                    Export to Excel</button>
+                            </div> --
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section> -->

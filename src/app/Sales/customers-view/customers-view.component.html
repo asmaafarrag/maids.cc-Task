@@ -1,87 +1,155 @@
 <section id="card-actions">
+  <div class="row">
+      <div class="col-xs-12">
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="card">
+        <div class="row">
+          <div class="col-xs-12">
 
-                <div class="card-body collapse in">
-                    <div class="card-block">
-                        <h3 class="card-title">العملاء</h3>
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12">
+            <!-- <div class="card">
 
-                                <div class="form-group text-center">  
-                                    <div class="input-group"> 
-                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getCustomersList()" class="form-control" />
-                                        <span class="input-group-addon"><a >
-                                            <i class="fa fa-search"></i>
-                                        </a></span>
-                                    </div>
-                                </div>
+              <div class="card-body collapse in">
+                <div class="card-block" style="margin: 10px 20px; padding:0;">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
 
-                                <div class="table-responsive">
-                                    <table class="table  table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>اسم العميل</th>
-                                                <th>التليفون</th>
-                                                <th>التليفون 2</th>
-                                                <th>الموبايل</th>
-                                                <th>الموبايل 2</th>
-                                                <th>العنوان</th>
-                                                <th><button class="btn btn-outline-success" routerLink="/Customers"><i
-                                                            class="fa fa-plus"></i>
-                                                        اضافة عميل</button></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody *ngIf="custList">
-                                            <tr *ngFor="let Cust of custList | filter:term | paginate : {
-                            itemsPerPage: pageSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index " style="cursor: pointer;">
-                                                <th scope="row">  {{( i + 1 ) }}</th>
-                                                <td (click)="openForEdit(Cust.CustomerID)">{{ Cust.CustomerName }}</td>
-                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.Tele }}</th>
-                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.tele2 }}</th>
-                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.mob1 }}</th>
-                                                <th (click)="openForEdit(Cust.CustomerID)">{{ Cust.mob2 }}</th>
-                                                <td (click)="openForEdit(Cust.CustomerID)">{{ Cust.address }}</td>
-                                                <td><a class="btn text-danger" *ngIf="UserType=='ADMIN'"
-                                                        (click)="onOrderDelete(null,Cust.CustomerID)"><i
-                                                            class="fa fa-trash fa-lg"></i> </a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                          <h3 class="card-title"> العملاء </h3>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                ...
-
-                                عدد السجلات فى الصفحة:
-                                <select (change)="handlePageSizeChange($event)">
-                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                        {{ size }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-md-7">
-                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
-                                    (pageChange)="handlePageChange($event)"></pagination-controls>
-                            </div>
-                            <div class="col-md-2">
-                                Result: {{count}}
-                             </div>
                         </div>
 
-                    </div>
-                </div>
+                        <div class="col-md-6">
 
-            </div>
+
+                          <button class="btn btn-danger" style="float:left; margin-left:10px" routerLink="/Customers"><i class="fa fa-plus"></i>
+                            {{ "addnewCustomer" |  translate }}</button>
+
+                            <!--
+                            <button class="btn btn-outline-danger clearfix" style="float:left; margin-left:10px" routerLink="/ImportCustomer">
+                              <span class="fa fa-file" ></span>
+                              Import
+                           </button>
+
+                           <button type="button" (click)="fnExport();" style="float:left; margin-left:10px"
+                           class="btn btn-outline-danger clearfix"><span class="fa fa-file-excel-o"></span>
+                           Export to Excel</button> --
+
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div> -->
+
+          </div>
         </div>
-    </div>
+          <div class="card">
+
+              <div class="card-body collapse in">
+                  <div class="card-block">
+                      <div class="row">
+                          <div class="col-xl-12 col-lg-12">
+
+                            <div class="row mb-2">
+
+
+                              <div class="col-md-6">
+                                <h3 class="card-title" style="padding-right: 10px;"> العملاء </h3>
+                              </div>
+
+
+                              <div class="col-md-6">
+                                <button class="btn btn-outline-danger" style="float:left; margin-left:10px" routerLink="/Customers"><i class="fa fa-plus"></i>
+                                  إضافة عميل</button>
+                              </div>
+
+
+
+                            </div>
+
+
+
+                              <div class="form-group text-center">
+                                  <div class="input-group">
+                                      <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getCustomersList()" class="form-control" />
+                                      <span class="input-group-addon"><a >
+                                          <i class="fa fa-search"></i>
+                                      </a></span>
+                                  </div>
+                              </div>
+
+                              <div class="table-responsive">
+                                  <table class="table table-hover table-bordered" id="Tbl">
+                                      <thead>
+                                          <tr>
+                                              <th>#</th>
+                                              <th> العميل</th>
+                                              <th>الموبايل</th>
+                                              <th> ممثل التعاقد</th>
+                                              <th> رقم السجل التجاري </th>
+                                              <th>المستخدم </th>
+                                              <th> تاريخ التسجيل </th>
+                                              <th></th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody *ngIf="custList">
+                                          <tr *ngFor="let Cust of custList | paginate : {
+                          itemsPerPage: pageSize,
+                          currentPage: page,
+                          totalItems: count
+                        };
+                  let i = index " style="cursor: pointer;">
+                                              <th scope="row"> {{   i + 1}}</th>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.customer_Name }}</td>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.customer_Phone }}</td>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.contracting_Representative }}</td>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.commercial_Record }}</td>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.entryUser }}</td>
+                                              <td (click)="openForEdit(Cust.customer_ID)">{{ Cust.entrydate |
+                                                date:
+                                                'yyyy/MM/dd' }}</td>
+
+
+                                              <td>
+
+                                                  <!-- <a class="btn text-info" *ngIf="UserType!='VIEWER'" (click)="openForEdit(Cust.customer_ID)"><i
+                                                      class="fa fa-pencil fa-lg"></i>
+                                                  </a> -->
+
+                                                  <a class="btn text-danger" *ngIf="UserType=='admin'"
+                                                      (click)="onOrderDelete(i,Cust.customer_ID)"><i
+                                                          class="fa fa-trash fa-lg"></i> </a></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              ...
+
+                             عدد السجلات
+                              <select (change)="handlePageSizeChange($event)">
+                                  <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                      {{ size }}
+                                  </option>
+                              </select>
+                          </div>
+                          <div class="col-md-7">
+                              <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                  (pageChange)="handlePageChange($event)"></pagination-controls>
+                          </div>
+                          <div class="col-md-2">
+                              Result : {{count}}
+                          </div>
+
+
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
 
 </section>

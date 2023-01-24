@@ -1,0 +1,259 @@
+<!-- <section id="card-actions" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+
+
+                    <div class="card-block">
+
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 mb-2">
+
+                                    <ul class="nav nav-tabs" style="display: flex;" >
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="base-tab1" data-toggle="tab"
+                                                aria-controls="tab1" href="#tab1" aria-expanded="true">{{ "All" |  translate }}</a>
+                                        </li>
+                                        <li class="nav-item"  (click)="tab2Clicked()" >
+                                            <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2"
+                                              href="#tab2" aria-expanded="false">{{ "SentInv" |  translate }} </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="base-tab3" data-toggle="tab" aria-controls="tab3"
+                                            (click)="tab3Clicked()"  href="#tab3" aria-expanded="false">{{ "RecInv" |  translate }}</a>
+                                        </li>
+
+                                    </ul>
+
+
+                                    <div class="tab-content px-1 pt-1" >
+                                        <div role="tabpanel" class="tab-pane active" id="tab1" aria-expanded="true"
+                                            aria-labelledby="base-tab1">
+
+                                            <li class="nav-item" style="list-style: none;" >
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+
+                                                        <input type="search" [(ngModel)]="title" placeholder="بحث"  (change)="getAllInv()" class="form-control" />
+                                                        <span class="input-group-addon">
+                                                        <a>
+                                                            <i class="fa fa-search"></i>
+                                                        </a>
+                                                       </span>
+                                                    </div>
+                                                 </div>
+                                            </li>
+
+                                            <div class="table-responsive">
+                                                <table class="table  matSort  table-bordered" id="Tbl">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+
+                                                            <th> {{ "internalId" |  translate }}</th>
+                                                            <th> {{ "uuid" |  translate }}</th>
+                                                            <th> {{ "dateTimeReceived" |  translate }}</th>
+                                                            <th> {{ "typeName" |  translate }}</th>
+                                                            <th> {{ "tot" |  translate }}</th>
+                                                            <th> {{ "issuerName" |  translate }}</th>
+                                                            <th> {{ "receiverName" |  translate }}</th>
+                                                            <th> {{ "submissionUUID" |  translate }}</th>
+                                                            <th> {{ "status" |  translate }}</th>
+
+                                                            <!-- <th>url</th> --
+                                                    </thead>
+                                                    <tbody *ngIf="SalesSaleInvList">
+                                                        <tr *ngFor="let SaleInv of SalesSaleInvList | paginate : {
+                                        itemsPerPage: pageSize,
+                                        currentPage: page,
+                                        totalItems: count
+                                      };
+                                let i = index " style="cursor: pointer;">
+                                                            <th scope="row"> {{ pageSize * (page - 1) + i + 1}}</th>
+                                                            <td> {{ SaleInv.internalId }}</td>
+                                                            <td >{{SaleInv.uuid  }} </td>
+                                                            <td >{{SaleInv.dateTimeReceived |
+                                                               date:  'dd/MM/yyyy'}} </td>
+                                                            <th >{{ SaleInv.typeName }}
+                                                            </th>
+                                                            <td >{{ SaleInv.total }}
+                                                            </td>
+                                                            <td >{{ SaleInv.issuerName }}
+                                                            </td>
+                                                            <td >{{ SaleInv.receiverName }}
+                                                            </td>
+
+                                                            <td >{{ SaleInv.submissionUUID }}
+                                                            </td>
+                                                            <td >{{ SaleInv.status }}
+                                                            </td>
+
+                                                            <!-- <td >{{ SaleInv.publicUrl }}
+                                                            </td> --
+
+                                                            <td>
+                                                                <a class="btn text-primary"
+                                                                (click)="Print(SaleInv.publicUrl)"><i
+                                                                    class="fa fa-print fa-lg"></i> </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                ...
+
+                                                {{ "RowsNo" |  translate }}:
+                                                <select (change)="handlePageSizeChange($event)">
+                                                    <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                                        {{ size }}
+                                                    </option>
+                                                </select>
+
+
+                                            </div>
+                                            <div class="col-md-7">
+                                                <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                                    (pageChange)="handlePageChange($event)"></pagination-controls>
+
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                Result:{{count}}
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="tab-pane" id="tab2" aria-labelledby="base-tab2">
+
+
+                                            <app-inv-sender></app-inv-sender>
+
+
+                                        </div>
+
+
+
+                                        <div class="tab-pane" id="tab3" aria-labelledby="base-tab3">
+
+                                            <app-inv-reciver></app-inv-reciver>
+
+                                        </div>
+
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<mat-tab-group>
+    <mat-tab label="الكل" #tab [disabled]='!tab.isActive'>
+
+        <div class="table-responsive">
+            <table class="table  table-bordered" id="Tbl">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>الرقم الإلكتروني/الرقم الداخلي</th>
+                        <th>تاريخ الإستلام</th>
+                        <th>النوع / رقم الإصدار</th>
+                        <th>الإجمالي (ج.م)</th>
+                        <th>البائع</th>
+                        <th>المشتري</th>
+                        <th>الحافظة </th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="SalesSaleInvList">
+                    <tr *ngFor="let SaleInv of SalesSaleInvList | paginate : {
+itemsPerPage: pageSize,
+currentPage: page,
+totalItems: count
+};
+let i = index " style="cursor: pointer;">
+                        <th scope="row"> {{ pageSize * (page - 1) + i + 1}}</th>
+                        <td>{{SaleInv.uuid }}</td>
+                        <td>{{SaleInv.dateTimeReceived |
+                            date: 'dd/MM/yyyy'}} </td>
+                        <th>{{ SaleInv.typeName }}
+                        </th>
+                        <td>{{ SaleInv.total }}
+                        </td>
+                        <td>{{ SaleInv.issuerName }}
+                        </td>
+                        <td>{{ SaleInv.receiverName }}
+                        </td>
+
+                        <td>{{ SaleInv.submissionUUID }}
+                        </td>
+                        <td>{{ SaleInv.status }}
+                        </td>
+
+                        <td><a class="btn text-danger" (click)="cancel(SaleInv.uuid)"><i class="fa fa-times fa-lg"></i>
+                            </a>
+                            <a class="btn text-primary" (click)="Print(SaleInv.uuid)"><i class="fa fa-print fa-lg"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-3">
+            ...
+
+            عدد السجلات فى الصفحة:
+            <select (change)="handlePageSizeChange($event)">
+                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                    {{ size }}
+                </option>
+            </select>
+
+
+        </div>
+        <div class="col-md-7">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                (pageChange)="handlePageChange($event)"></pagination-controls>
+
+        </div>
+
+
+    </mat-tab>
+    <mat-tab label="الوثائق المرسلة">
+
+        <ng-template matTabContent>
+            <app-inv-sender></app-inv-sender>
+        </ng-template>
+
+
+    </mat-tab>
+    <mat-tab label="الوثائق المستلمة">
+
+        <ng-template matTabContent>
+            <app-inv-reciver></app-inv-reciver>
+        </ng-template>
+
+    </mat-tab>
+</mat-tab-group> --> -->

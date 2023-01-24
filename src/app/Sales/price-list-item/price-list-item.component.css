@@ -5,3 +5,57 @@
   mat-form-field {
     width: 100%;
   }
+
+
+
+  /* form  {
+    height: auto;
+    overflow-y:auto ;
+    overflow-x: clip;
+    margin-bottom: 10px;
+  } */
+
+  input {
+    width: 38px;
+  }
+
+
+.btn-link {
+    font-weight: normal;
+    color: #be323b;
+    border-radius: 0;
+    font-weight: 900;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #eae8e8;
+
+}
+
+
+.table th, .table td {
+  padding:7px;
+}
+
+button {
+  background: transparent;
+  border: none;
+}
+
+td{
+  cursor:pointer;
+}
+/*
+  .table-bordered th, .table-bordered td {
+    border: 1px solid #eae8e8;
+    padding: 0;
+  }
+  .table th, .table td {
+    padding:0px;
+  }
+
+
+  table.no-spacing {
+    border-spacing:0; /* Removes the cell spacing via CSS
+    border-collapse: collapse;   Optional - if you don't want to have double border where cells touch
+  } */

@@ -1,0 +1,19 @@
+thead
+{
+  background-color: #fff;
+}
+
+#main {
+  /* border: 1px dotted black; */
+  display: flex;
+  align-items: center; /* Vertical align the elements to the center */
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #eae8e8;
+  text-align: center;
+}
+
+.is-invalid{
+  border:1px solid red !important;
+}

@@ -16,15 +16,6 @@ export class SellingService {
  
  constructor(private http: HttpClient) { }
 
- getSelling(): Observable<Selling[]> {
-  //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-  const reqHeader = new HttpHeaders({
-    'Content-Type': 'application/json', 'Authorization':
-      'Bearer ' + localStorage.getItem('userToken')
-  });
-  return this.http.get(environment.ApiUrl + '/api/Sellings/GetAllSellings', { headers: reqHeader }).pipe(map(data => <Selling[]>data));
-}
-
  getTopTenSellings(): Observable<Selling[]> {
   //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
   const reqHeader = new HttpHeaders({

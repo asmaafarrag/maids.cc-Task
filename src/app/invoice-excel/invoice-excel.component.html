@@ -1,0 +1,48 @@
+<section id="card-actions">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                     
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+
+                                <button *ngIf="Loadend === true" style="cursor: pointer;" class="btn btn-dark clearfix ">
+                                    <label>
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Clear
+                                        <input hidden 
+                                        (click)="Clear()"  >
+                                     </label>
+                                </button>
+
+                                
+                                <div *ngIf="Loadend === true">
+                                    <button class="btn btn-danger " (click)="SendtoAPI()"  ><i class="icon-check2"></i>
+                                        المتابعة</button>
+                  
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <input type="file" (change)="onFileChange($event)" multiple="false" *ngIf="Loadend === false" />
+
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr *ngFor="let row of data">
+                                                    <td *ngFor="let cell of row">
+                                                            {{cell}}
+                                                    </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                               </div>   
+                            </div>                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

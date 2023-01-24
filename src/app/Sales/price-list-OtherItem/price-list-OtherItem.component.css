@@ -1,0 +1,28 @@
+.is-invalid{
+    border:1px solid red !important;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+
+
+  /* form  {
+    height: 27.9rem;
+    overflow-y:auto ;
+    overflow-x: clip;
+    margin-bottom: 10px;
+  } */
+
+  input {
+    width: 38px;
+  }
+
+
+.btn-link {
+    font-weight: normal;
+    color: #be323b;
+    border-radius: 0;
+    font-weight: 900;
+}

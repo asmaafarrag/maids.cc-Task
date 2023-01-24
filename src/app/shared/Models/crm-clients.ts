@@ -24,27 +24,4 @@ export class CRMClients {
     ContactPersonJob: string;
     ContactPersonMobile: string;
     ContactPersonEmail: string;
-    isSelected:boolean;
-}
-
-
-export class ClientExcelsheetCRM{
-        ClientName :string;
-        ClientMobile :string;
-        ProjectID :number;
-        CreationDate :Date;
-        StageID :number;
-        ChannelID :number;
-        LastComment :string;
-        EmpID:number;
-        ClientPhone :string;
-        ClientAddress :string;
-        ClientCity :string;
-        ClientCityState :string;
-        ClientWebSite :string;
-        ContactPerson :string;
-        ContactPersonJob :string;
-        ContactPersonMobile :string;
-        ContactPersonEmail :string;
-        ClientWorkField :string;
 }

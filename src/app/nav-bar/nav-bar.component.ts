@@ -5,7 +5,6 @@ import { UserService } from '../shared/Services/user.service';
 import { data } from '../../assets/app-assets/js/core/app-menu.js';
 import { interval } from 'rxjs';
 
-
 declare var $:any;
 @Component({
   selector: 'app-nav-bar',
@@ -15,60 +14,43 @@ declare var $:any;
 
 export class NavBarComponent implements OnInit {
   UserType: string;
-  clientspage :string = "";
-  
-  constructor(private router: Router, public userService: UserService,private renderer: Renderer2) { 
+  t : boolean = false;
+  openu = false;
+  u : boolean = false;
+
+  constructor(private router: Router, public userService: UserService,private renderer: Renderer2) {
     this.UserType = localStorage.getItem('UserType');
   }
 
   ngOnInit() {
-    this.clientspage = localStorage.getItem("clientspage");
-
-    interval(10000).subscribe(x => {
-      this.UserType = localStorage.getItem('UserType');
-
-    });
   }
 
-  route(){
-    if(localStorage.getItem("stageTypeId") == null){
 
-      let clientspage = localStorage.getItem("clientspage");
 
-      this.router.navigate(['CrmClients/' + clientspage])
 
-    }
-    else if(localStorage.getItem("stageTypeId") != null){
+  toggleSideNav(): void {
 
-      let stageTypeId = localStorage.getItem("stageTypeId");
-      // let clientId = localStorage.getItem("clientId");
-      let clientspage = localStorage.getItem("clientspage");
-
-      
-      this.router.navigate(['CrmClients/view/'+ stageTypeId + '/' + clientspage ])
-
-    }
-  }
-
-  
-
-  toggleSideNav(): void {    
-  
     $.app.menu.hidden = true;
-   
+
     this.renderer.removeClass(document.body, 'menu-open');
-    this.renderer.addClass(document.body, 'menu-hide');
-   
+    // this.renderer.addClass(document.body, 'menu-hide');
+
   }
- 
+
+  open(){
+    this.t = ! this.t;
+  }
+
+  openn(){
+    this.u = ! this.u;
+  }
+
 
   logOut() {
     localStorage.removeItem('userToken');
     localStorage.removeItem('lUsr');
     localStorage.removeItem('EmpID');
     localStorage.removeItem('UserType');
-    localStorage.removeItem('stageTypeId');
-    localStorage.removeItem('clientspage');
     this.router.navigate(['/Login']);
   }
 }

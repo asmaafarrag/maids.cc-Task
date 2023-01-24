@@ -1,0 +1,360 @@
+<!--<section id="card-actions">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                         <h3 class="card-title">فواتير البيع</h3> 
+                        <div class="row">
+
+
+                            <div class="col-xl-12 col-lg-12">
+
+
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div class="card bg-light mb-3  " style="background-color: #fefefe" >
+                                            <div class="card-body">
+                                                <h5 class="card-header border-light  p-1" style="background-color: #eeecec;">البائع</h5>
+
+
+                                                <div style=" padding-left: 15px;padding-right: 15px;">
+                                                    <div class="row mt-1 ">
+
+                                                        <div class="col-md-12 ">
+                                                            <label>اسم البائع </label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="issuerName" #issuerName="ngModel" [(ngModel)]="servSaleInv.formData.issuerName"
+                                                                    class="form-control" placeholder="اسم البائع " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mb-2 mt-1">
+                                                        <div class="col-md-6 ">
+                                                            <label>رقم التسجيل الضريبي </label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="SellingNo" #SellingNo="ngModel" [(ngModel)]="servSaleInv.formData.SellingNo"
+                                                                    class="form-control" placeholder="رقم التسجيل الضريبي " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <label>النوع</label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="SellingNo" #SellingNo="ngModel" [(ngModel)]="servSaleInv.formData.SellingNo"
+                                                                    class="form-control" placeholder="النوع " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-1 mb-2">
+                                                        <div class="col-md-6">
+                                                            <label> عنوان الفرع </label>
+
+                                                            <textarea class="form-control" rows="3" name="LastComment" #LastComment="ngModel"
+                                                                [(ngModel)]="service.formData.LastComment" class="form-control" placeholder="عنوان الفرع"
+                                                                data-toggle="tooltip" data-placement="top" title data-original-title="عنوان الفرع"></textarea>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <label> كود النشاط الضريبي </label>
+
+                                                            <textarea class="form-control" rows="3" name="LastComment" #LastComment="ngModel"
+                                                                [(ngModel)]="service.formData.LastComment" class="form-control" placeholder="كود النشاط الضريبي"
+                                                                data-toggle="tooltip" data-placement="top" title data-original-title="كود النشاط الضريبي"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                   
+                                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 ">
+                                        <div class="card bg-light mb-3  " style="background-color: #fefefe" >
+                                            <div class="card-body">
+                                                <h5 class="card-header border-light  p-1" style="background-color: #eeecec; ">المشتري</h5>
+
+
+                                                <div style=" padding-left: 15px;padding-right: 15px;">
+                                                    <div class="row mt-1 ">
+
+                                                        <div class="col-md-12 ">
+                                                            <label>اسم المشتري </label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="receiverName" #receiverName="ngModel" [(ngModel)]="servSaleInv.formData.receiverName"
+                                                                    class="form-control" placeholder="اسم المشتري " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mb-2 mt-1">
+                                                        <div class="col-md-6 ">
+                                                            <label>رقم التسجيل الضريبي </label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="SellingNo" #SellingNo="ngModel" [(ngModel)]="servSaleInv.formData.SellingNo"
+                                                                    class="form-control" placeholder="رقم التسجيل الضريبي " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <label>النوع</label>
+                                                            <fieldset class="form-group position-relative has-icon-left">
+
+
+                                                                <input name="SellingNo" #SellingNo="ngModel" [(ngModel)]="servSaleInv.formData.SellingNo"
+                                                                    class="form-control" placeholder="النوع " required>
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-building"></i>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-1 mb-2">
+                                                        <div class="col-md-12">
+                                                            <label> عنوان الفرع </label>
+
+                                                            <textarea class="form-control" rows="3" name="LastComment" #LastComment="ngModel"
+                                                                [(ngModel)]="service.formData.LastComment" class="form-control" placeholder="عنوان الفرع"
+                                                                data-toggle="tooltip" data-placement="top" title data-original-title="عنوان الفرع"></textarea>
+                                                        </div>
+
+                                                     
+                                                    </div>
+                                                </div>
+                                               
+                                   
+                                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 ">
+
+
+                                      <div class="card bg-light mb-3  " style="background-color: #fefefe" >
+                                            <div class="card-body">
+                                                <h5 class="card-header border-light  p-1" style="background-color: #eeecec;">الأصناف</h5>
+
+
+                                               
+                                   
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 mb-2">
+                                                        <div class="table-responsive text-nowrap">
+                                                            <table class="table table-hover table-sm table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th>#</th>
+                                                                    <th>اسم الكود</th>
+                                                                    <th>كود الصنف</th>
+                                                                    <th> الوصف</th>
+                                                                    <th>الكمية / نوع الوحدة</th>
+                                                                    <th>سعر الوحدة (ج.م)</th>
+                                                                    <th>قيمة المبيعات ( ج.م)</th>
+                                                                
+                                                                
+                                                                
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr *ngFor="let Item of servSaleInv.formData.saleInvItems;let i=index;">
+                                                                    <th scope="row">{{i+1}}</th>
+                                                                    <td>{{Item.ItemName}}</td>
+                                                                    <td>{{Item.ItemNO}}</td>
+                                                                    <td>{{Item.ItemNO}}</td>
+                                                                    <td>{{Item.Qty}}</td>
+                                                                    <td>{{Item.Price}}</td>
+                                                                    <td>{{Item.Tot}}</td>                          
+                                                                
+                                                               
+                                                                    </tr>
+                                        
+                                                                </tbody>
+
+                                                          
+
+                                                                     <ul>
+                                                                        <li>
+                                                                            <label for="Department">إجمالى المبيعات (ج.م)</label>
+                                                                            <span>{{ItemsCount}}</span>                      
+
+                                                                        </li>
+                                                                        <li>
+                                                                            <label for="Department">إجمالى الخصم (ج.م) </label>
+                                                                            <p>{{servSaleInv.formData.SellingTot}}</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label > إجمالى خصم الأصناف (ج.م)</label>
+                                                                            <p>{{servSaleInv.formData.SaleTax}}</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label >ضريبة القيمة المضافة (ج.م)</label>
+                                                                            <p>{{servSaleInv.formData}}</p>
+                                                                        </li>
+                                                                    </ul> -->
+                                                            
+<!--                                                  
+                                                                    <div class="row">
+                                        
+                                                                        <div class="col-md-8">
+                                                                        <label for="Department">إجمالى المبيعات (ج.م)</label>
+                                                                        <span>{{ItemsCount}}</span>                      
+                                                                        </div>
+            
+                                                                    </div>
+            
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+                                                                        <label for="Department">إجمالى الخصم (ج.م) </label>
+                                                                        <p>{{servSaleInv.formData.SellingTot}}</p>
+                                                                        </div>
+                                                                    </div>
+            
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+                                                                        <label > إجمالى خصم الأصناف (ج.م)</label>
+                                                                        <p>{{servSaleInv.formData.SaleTax}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+                                                                        <label >ضريبة القيمة المضافة (ج.م)</label>
+                                                                        <p>{{servSaleInv.formData}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                               
+                                                               <tfoot>
+                                                                   
+                                                                    <div class="row">
+                                                                    
+                                                                        <div class="col-md-11">
+                                                                            <label for="Department">إجمالى المبيعات (ج.م)</label>
+                                                                            <span>{{ItemsCount}}</span>
+                                                                        </div>
+                                                                    
+                                                                    </div>
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-md-11">
+                                                                            <label for="Department">إجمالى الخصم (ج.م) </label>
+                                                                            <p>{{servSaleInv.formData.SellingTot}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-md-11">
+                                                                            <label> إجمالى خصم الأصناف (ج.م)</label>
+                                                                            <p>{{servSaleInv.formData.SaleTax}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-md-11">
+                                                                            <label>ضريبة القيمة المضافة (ج.م)</label>
+                                                                            <p>{{servSaleInv.formData}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                  
+                                                               </tfoot>
+                                                             
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                             
+
+                                             <div class="col-md-6"></div>
+                                            <div class="col-md-1"></div> 
+                                                <div class="col-md-4 mt-3" style="width: 20.33333%; float: left; background-color: #eeecec33">
+
+                                                    <div class="row">
+                                                    
+                                                        <div class="col-md-11">
+                                                            <label for="Department">إجمالى المبيعات (ج.م)</label>
+                                                            <span>{{ItemsCount}}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-11">
+                                                            <label for="Department">إجمالى الخصم (ج.م) </label>
+                                                            <p>{{servSaleInv.formData.SellingTot}}</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-11">
+                                                            <label> إجمالى خصم الأصناف (ج.م)</label>
+                                                            <p>{{servSaleInv.formData.SaleTax}}</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-11">
+                                                            <label>ضريبة القيمة المضافة (ج.م)</label>
+                                                            <p>{{servSaleInv.formData}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                            </div>
+                                        </div>
+                                    </div>                                                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section> -->

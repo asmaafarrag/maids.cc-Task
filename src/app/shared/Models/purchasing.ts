@@ -37,7 +37,6 @@ export class PurchasingDet {
     ItemName: string;
     Qty: number;
     Price: number;
-    DollarPriceTot:number;
     DISC: number;
     UnitID: number;
     UnitName: string;

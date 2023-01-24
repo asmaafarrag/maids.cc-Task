@@ -1,0 +1,229 @@
+
+  <h5>أصناف أخرى </h5>
+  <hr>
+
+    <form #form="ngForm" autocomplete="off" dir="rtl" (submit)="onSubmit(form)" class="example-form" >
+      <input type="hidden" name="otherItem_Name" #otherItem_Name="ngModel" [(ngModel)]="this.formData.otherItem_Name">
+
+      <input type="hidden" name="otherItem_Total_Price" #otherItem_Total_Price="ngModel" [(ngModel)]="this.formData.otherItem_Total_Price">
+
+      <input type="hidden" name="otherItem_Total_Tax" #otherItem_Total_Tax="ngModel" [(ngModel)]="this.formData.otherItem_Total_Tax">
+
+      <input type="hidden" name="otherItem_SubTotal" #otherItem_SubTotal="ngModel" [(ngModel)]="this.formData.otherItem_SubTotal">
+
+      <!-- <input type="hidden" name="UnitName" #UnitName="ngModel" [(ngModel)]="this.formData.UnitName" > -->
+      <!-- <input type="hidden" name="ItemNO" #ItemNO="ngModel" [(ngModel)]="this.formData.ItemNO" >
+      <input type="hidden" name="CompanyName" #CompanyName="ngModel" [(ngModel)]="this.formData.CompanyName" >
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" style="text-align: right">
+          <input [(ngModel)]="selectedItem" matInput placeholder="الصنف" aria-label="الصنف" [matAutocomplete]="auto"
+            [formControl]="stateCtrl" dir="rtl" >
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="UpdateQty()" >
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state"  >
+              <span>{{state.otherItem_Name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+        </div>
+      </div>-->
+
+
+
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <label>  الصنف </label>
+          <fieldset class="form-group position-relative has-icon-left">
+              <select  class="form-control"required name="otherItem_Name" #otherItem_Name="ngModel" [(ngModel)]="this.formData.otherItem_Name"
+              [class.is-invalid]="!isValid && (this.formData.otherItem_Name == '' || this.formData.otherItem_Name == null)"  (ngModelChange)="setSelectedBranch($event)">
+              <option *ngFor="let item of itemslist" [ngValue]="item.item_Name">{{item.item_Name}}</option>
+
+              </select>
+              <div class="form-control-position">
+              <i class="icon-user4"></i>
+              </div>
+
+          </fieldset>
+        </div>
+      </div> -->
+
+
+
+      <div class="row">
+
+        
+        <div class="form-group col-md-12">
+          <label> الصنف</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="otherItem_Name" #otherItem_Name="ngModel" [(ngModel)]="this.formData.otherItem_Name" class="form-control"
+              placeholder="الصنف" required data-toggle="tooltip" data-placement="top" title 
+              data-original-title="الصنف" required [class.is-invalid]="!isValid && this.formData.otherItem_Name == null"  >
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+       <div class="form-row">
+
+
+
+        <div class="form-group col-md-4">
+          <label>سعر الصنف</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="otherItem_Price" #otherItem_Price="ngModel" [(ngModel)]="this.formData.otherItem_Price" class="form-control"
+              placeholder="السعر" required data-toggle="tooltip" data-placement="top" title (keyup)="UpdateTotal()"
+              data-original-title="السعر" required [class.is-invalid]="!isValid && this.formData.otherItem_Price == null"  >
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>الكمية</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="otherItem_QTY" #otherItem_QTY="ngModel" id="form1" [(ngModel)]="this.formData.otherItem_QTY" class="form-control" placeholder="الكمية"
+              required   [class.is-invalid]="!isValid && (this.formData.otherItem_QTY == 0 || this.formData.otherItem_QTY == null)" (keyup)="UpdateTotal()" >
+          </div>
+
+        </div>
+
+
+        <!-- <div class="form-group col-md-3">
+          <label>سعر الوحدة</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="PRICE" #PRICE="ngModel" [(ngModel)]="this.formData.PRICE" class="form-control"
+              placeholder="السعر" required data-toggle="tooltip" data-placement="top" title
+              data-original-title="السعر" required (keyup)="UpdateTotal()" [class.is-invalid]="!isValid && this.formData.PRICE == null"  >
+          </div>
+        </div> -->
+        <div class="form-group col-md-4">
+          <label>الاجمالى</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input readonly name="otherItem_Total_Price" #otherItem_Total_Price="ngModel" [(ngModel)]="this.formData.otherItem_Total_Price" class="form-control" placeholder="الاجمالى"
+            required data-toggle="tooltip" data-placement="top" title
+              data-original-title="الاجمالى" >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+
+
+        <div class="form-group col-md-6">
+          <label>ضريبة %15 </label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input readonly name="otherItem_Total_Tax" #otherItem_Total_Tax="ngModel" [(ngModel)]="this.formData.otherItem_Total_Tax" class="form-control"
+              placeholder="ضريبة %15" required data-toggle="tooltip" data-placement="top" title
+              required  [class.is-invalid]="!isValid && this.formData.otherItem_Total_Tax == null" (keyup)="UpdateTotal2()" >
+          </div>
+
+        </div>
+        <div class="form-group col-md-6">
+          <label>الاجمالى</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input readonly name="otherItem_SubTotal" #otherItem_SubTotal="ngModel" [(ngModel)]="this.formData.otherItem_SubTotal" class="form-control" placeholder="الاجمالى"
+            required data-toggle="tooltip" data-placement="top" title
+              data-original-title="الاجمالى" >
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="form-row">
+        <div class="form-group col-md-12">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" style="text-align: right">
+          <input [(ngModel)]="selectedItem" matInput placeholder="العرض" aria-label="العرض" [matAutocomplete]="auto"
+            [formControl]="stateCtrl" dir="rtl" >
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="UpdateQty()" >
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state"  >
+              <span>{{state.ItemName}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" style="text-align: right">
+          <input [(ngModel)]="selectedItem" matInput placeholder="الفتح" aria-label="الفتح" [matAutocomplete]="auto"
+            [formControl]="stateCtrl" dir="rtl" >
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="UpdateQty()" >
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state"  >
+              <span>{{state.ItemName}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+        </div>
+      </div> -->
+     <!--  <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>الكمية المتاحة</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="AvailableQty" #AvailableQty="ngModel" [(ngModel)]="this.formData.AvailableQty" class="form-control" placeholder="الكمية المتاحة"
+            readonly [class.is-invalid]="!isValid && this.formData.Qty > this.formData.AvailableQty" >
+
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label>العدد</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"></div>
+            </div>
+            <input name="Qty" #Qty="ngModel" id="form1" [(ngModel)]="this.formData.Qty" class="form-control" placeholder="الكمية"
+              required (keyup)="UpdateTotal()"  [class.is-invalid]="!isValid && (this.formData.Qty == 0 || this.formData.Qty == null)" >
+          </div>
+
+        </div>
+
+      </div>-->
+
+
+
+
+
+        <div class="row">
+          <div class="form-group col-md-12" >
+            <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i>حفظ</button>
+            <button type="button" class="btn btn-dark ml-1"  (click)="SaveAndAdd(form)" ><i class="fa fa-database" ></i>حفظ واضافة</button>
+            <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i>الغاء</button>
+          </div>
+        </div>
+
+
+    </form>
+

@@ -1,4 +1,4 @@
-<section id="card-actions">
+<!-- <section id="card-actions">
   <div class="row">
     <div class="col-xs-12">
       <div class="card">
@@ -19,7 +19,7 @@
             <div class="row">
               <div class="col-xl-12 col-lg-12 mb-2">
                 <form (submit)="Saveform()">
-                  
+
                   <div class="form-group">
                     <label for="Period">الفترة</label>
                     <select id="Period" name="Period" class="form-control" [(ngModel)]="selectedPeriod" required
@@ -30,8 +30,8 @@
                       <option Value="4">الربع الرابع</option>
                     </select>
                   </div>
-               
-                
+
+
 
                   <div class="container-fluid text-center">
                     <button type="submit" class="btn btn-info btn-lg btn-block">عرض التقرير</button>
@@ -65,23 +65,23 @@
         <div class="card-body collapse in">
           <div class="card-block">
             <div class="row">
-              <div class="col-xl-12 col-lg-12 mb-2">                
+              <div class="col-xl-12 col-lg-12 mb-2">
                 <div class="table-responsive text-nowrap">
-                  <table class="table table-sm table-hover table-bordered">
+                  <table class="table table-sm table-bordered">
                     <thead>
-                      <tr>                                    
+                      <tr>
                         <th>الحساب</th>
                         <th>شهر {{ AccIncQ.MFirstName }}</th>
                         <th>شهر {{ AccIncQ.MSecondName }}</th>
-                        <th>شهر {{ AccIncQ.MThirdName }}</th>                       
+                        <th>شهر {{ AccIncQ.MThirdName }}</th>
                       </tr>
                     </thead>
                     <tbody *ngIf="AccIncQ">
-                      <tr *ngFor="let AccInc of AccIncQ.AccIncItems" [ngClass]="(AccInc.IsTot=='1')?'success':''" >                       
+                      <tr *ngFor="let AccInc of AccIncQ.AccIncItems" [ngClass]="(AccInc.IsTot=='1')?'success':''" >
                         <td [ngClass]="(AccInc.IsTitle=='1')?'info':''" ><span [ngClass]="(AccInc.IsBold=='1')?'font-weight-bold':''">{{ AccInc.AccName }}</span></td>
                         <td>{{ AccInc.MFirst }}</td>
                         <td>{{ AccInc.MSecond }}</td>
-                        <td>{{ AccInc.MThird }}</td>                       
+                        <td>{{ AccInc.MThird }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -96,4 +96,4 @@
     </div>
   </div>
 
-</section>
+</section> -->

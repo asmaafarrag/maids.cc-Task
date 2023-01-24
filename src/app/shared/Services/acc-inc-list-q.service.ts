@@ -53,13 +53,4 @@ export class AccIncListQService {
     });
     return this.http.get(environment.ApiUrl + '/api/Accounts', { headers: reqHeader }).pipe(map(data => <Accounts[]>data));
   }
-
-  getAccount(User_ID:string): Observable<Accounts[]> {
-    //const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json', 'Authorization':
-        'Bearer ' + localStorage.getItem('userToken')
-    });
-    return this.http.get(environment.ApiUrl + '/api/Accounts/GetByUser/GetAllAccountsExceptOfOthers?User_Id=' + User_ID, { headers: reqHeader }).pipe(map(data => <Accounts[]>data));
-  }
 }

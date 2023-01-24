@@ -1,0 +1,12 @@
+body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation > li > a > i:before {
+    font-size: 1rem !important;
+
+}
+
+
+.menu-item {
+
+    font-family:fantasy;
+    font-size: 1.1rem;
+    
+}

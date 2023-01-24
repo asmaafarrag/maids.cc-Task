@@ -1,25 +1,55 @@
+import { InvoiceExcelComponent } from './invoice-excel/invoice-excel.component';
+import { PriceListOtherItemComponent } from './Sales/price-list-OtherItem/price-list-OtherItem.component';
+import { PriceListAddOnItemComponent } from './Sales/price-list-AddOnItem/price-list-addonitem.component';
+import { GetPriceListAddOnsViewModel } from './shared/Models/price-lists';
+import { PriceListViewComponent } from './Sales/price-list-view/price-list-view.component';
+import { PriceListItemComponent } from './Sales/price-list-item/price-list-item.component';
+import { PriceListComponent } from './Sales/price-list/price-list.component';
+import { ChangeItemPriceComponent } from './Sales/change-item-price/change-item-price.component';
+import { WaitSubComponent } from './EI-Documents/wait-sub/wait-sub.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
-import { DatePipe } from '@angular/common'
-
+import { DatePipe } from '@angular/common';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
-
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown'
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTreeModule} from '@angular/material/tree';
+import {OverlayModule} from '@angular/cdk/overlay';
+// import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+// import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
-
- 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AuthGuard } from './auth/auth.guard';
@@ -48,84 +78,85 @@ import { HChartLineComponent } from './home/h-chart-line/h-chart-line.component'
 import { NavBarHeaderComponent } from './nav-bar-header/nav-bar-header.component';
 import { RepIncomeStatmentComponent } from './rep-income-statment/rep-income-statment.component';
 import { RepAccStatementComponent } from './rep-acc-statement/rep-acc-statement.component';
-import { SalesRequestOrderComponent } from './sales-request-order/sales-request-order.component';
-import { ClientsComponent } from './CRM/clients/clients.component';
-import { ClientComponent } from './CRM/client/client.component';
-import { VacOrderComponent } from './HR/vac-order/vac-order.component';
-import { VacOrdersComponent } from './HR/vac-orders/vac-orders.component';
-import { VacOrderApproveComponent } from './HR/vac-order-approve/vac-order-approve.component';
-import { RepEmpVacComponent } from './HR/rep-emp-vac/rep-emp-vac.component';
-import { ProjectsComponent } from './CRM/projects/projects.component';
-import { ProjectComponent } from './CRM/project/project.component';
-import { ClientActionComponent } from './CRM/client-action/client-action.component';
-import { ClientActionsComponent } from './CRM/client-actions/client-actions.component';
-import { EmpPermitComponent } from './HR/emp-permit/emp-permit.component';
-import { EmpPermitsComponent } from './HR/emp-permits/emp-permits.component';
-import { HousesComponent } from './RealState/houses/houses.component';
-import { ReserveUnitsComponent } from './RealState/reserve-units/reserve-units.component';
-import { SaleInvsComponent } from './Sales/sale-invs/sale-invs.component';
-import { SaleInvItemsComponent } from './Sales/sale-inv-items/sale-inv-items.component';
-import { SalesSaleInv } from './shared/Models/sales-sale-inv';
 import { ItemsComponent } from './Sales/items/items.component';
-import { InvsInComponent } from './Sales/invs-in/invs-in.component';
-import { SaleInvViewComponent } from './Sales/sale-inv-view/sale-inv-view.component';
-import { InvsOutComponent } from './Sales/invs-out/invs-out.component';
-import { InvsInViewComponent } from './Sales/invs-in-view/invs-in-view.component';
-import { InvsOutViewComponent } from './Sales/invs-out-view/invs-out-view.component';
-import { TransBetStoresComponent } from './Sales/trans-bet-stores/trans-bet-stores.component';
-import { TransBetStoresItemsComponent } from './Sales/trans-bet-stores-items/trans-bet-stores-items.component';
-import { TransBetStoresViewComponent } from './Sales/trans-bet-stores-view/trans-bet-stores-view.component';
-import { AddsComponent } from './Sales/adds/adds.component';
-
-import { AddsItemsComponent } from './Sales/adds-items/adds-items.component';
-import { AddsViewComponent } from './Sales/adds-view/adds-view.component';
-import { AddRetsComponent } from './Sales/add-rets/add-rets.component';
-import { AddRetsItemsComponent } from './Sales/add-rets-items/add-rets-items.component';
-import { AddRetsViewComponent } from './Sales/add-rets-view/add-rets-view.component';
-import { PurchasingsComponent } from './Purchase/purchasings/purchasings.component';
-import { PurchasingsItemsComponent } from './Purchase/purchasings-items/purchasings-items.component';
-import { PurchasingsViewComponent } from './Purchase/purchasings-view/purchasings-view.component';
 import { CustomersComponent } from './Sales/customers/customers.component';
 import { CustomersViewComponent } from './Sales/customers-view/customers-view.component';
-import { SuppliersComponent } from './Purchase/suppliers/suppliers.component';
-import { SuppliersViewComponent } from './Purchase/suppliers-view/suppliers-view.component';
 import { RepItemCardViewComponent } from './rep-item-card-view/rep-item-card-view.component';
 import { ItemsViewComponent } from './Sales/items-view/items-view.component';
-import { SellingRetsComponent } from './Sales/selling-rets/selling-rets.component';
-import { SellingRetsItemsComponent } from './Sales/selling-rets-items/selling-rets-items.component';
-import { SellingRetsViewComponent } from './Sales/selling-rets-view/selling-rets-view.component';
-import { PurchasingForSellingComponent } from './Purchase/purchasing-for-selling/purchasing-for-selling.component';
-import { PurchasingForSellingItemsComponent } from './Purchase/purchasing-for-selling-items/purchasing-for-selling-items.component';
-import { CustDiscountsComponent } from './Sales/cust-discounts/cust-discounts.component';
-import { CustDiscountsViewComponent } from './Sales/cust-discounts-view/cust-discounts-view.component';
-import { SuppDiscountsComponent } from './Purchase/supp-discounts/supp-discounts.component';
-import { SuppDiscountsViewComponent } from './Purchase/supp-discounts-view/supp-discounts-view.component';
-import { RepInventoryComponent } from './rep-inventory/rep-inventory.component';
-import { RepInventoryItemsComponent } from './rep-inventory-items/rep-inventory-items.component';
-import { SalesAnalysisReportComponent } from './sales-analysis-report/sales-analysis-report.component';
-import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
-import { LabelModule } from "@progress/kendo-angular-label";
-import { InputsModule } from "@progress/kendo-angular-inputs";
-import { PdfComponent } from './pdf/pdf.component';
-import { TestComponent } from './sales/test/test.component';
-import { TestItemsComponent } from './sales/test-items/test-items.component';
-import { ChangeItemPriceComponent } from './sales/change-item-price/change-item-price.component';
-import { ImportClientsComponent } from './CRM/import-clients/import-clients.component';
-import { AgGridModule } from 'ag-grid-angular';
-import { MatTableModule } from '@angular/material/table';
-import { ExampleComponent } from './crm/example/example.component';
-import { ChangeClientsComponent } from './CRM/change-clients/change-clients.component';
-import { PriceListComponent } from './sales/price-list/price-list.component';
-import { PriceListViewComponent } from './sales/price-list-view/price-list-view.component';
-import { PriceListItemComponent } from './sales/price-list-item/price-list-item.component';
-import { RepPurchAnalysisComponent } from './rep-purch-analysis/rep-purch-analysis.component';
 
-// import Chart from 'chart.js';
+import { ItemViewComponent } from './EI-Codes/item-view/item-view.component';
+import { ItemComponent } from './EI-Codes/item/item.component';
+import { CustomerViewComponent } from './EI-Codes/customer-view/customer-view.component';
+import { CustomerComponent } from './EI-Codes/customer/customer.component';
+import { DebitNoteViewComponent } from './EI-Documents/debit-note-view/debit-note-view.component';
+import { DebitNoteComponent } from './EI-Documents/debit-note/debit-note.component';
+import { DebitComponent } from './EI-Documents/debit/debit.component';
+// code-mirror
+// import 'codemirror/lib/codemirror';
+// import 'codemirror/addon/hint/show-hint';
+// import 'codemirror/addon/hint/sql-hint';
+// import 'codemirror/mode/sql/sql';
+// import 'codemirror/mode/vb/vb';
+
+// import * as CodeMirror from 'codemirror';
+// const codemirror = 'CodeMirror';
+// window[codemirror] = CodeMirror;
+
+import {MatStepperModule} from '@angular/material/stepper'
+
+// import { GridAllModule } from '@syncfusion/ej2-angular-grids';
+// import { DialogAllModule } from '@syncfusion/ej2-angular-popups';
+// import { TabModule } from '@syncfusion/ej2-angular-navigations';
+// import { CalendarAllModule } from '@syncfusion/ej2-angular-calendars';
+// import { NumericTextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
+// import { ComboBoxAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatExpansionModule} from '@angular/material/expansion';
+///////////////////// QR CODE //////////////////
+// import { QRCodeModule } from 'angularx-qrcode';
+import { EnterprisesComponent } from './EI-Codes/enterprises/enterprises.component';
+import { EnterprisesViewComponent } from './EI-Codes/enterprises-view/enterprises-view.component';
+import { AcceptedInvComponent } from './Ei-Documents/accepted-inv/accepted-inv.component';
+import { RejectedInvComponent } from './Ei-Documents/rejected-inv/rejected-inv.component';
+
+// import { PdfViewerModule, LinkAnnotationService, BookmarkViewService, MagnificationService, ThumbnailViewService,
+  // ToolbarService, NavigationService, TextSearchService, TextSelectionService, PrintService } from '@syncfusion/ej2-angular-pdfviewer';
+import { AllInvoiceComponent } from './EI-Documents/all-invoice/all-invoice.component';
+import { NotificationComponent } from './EI-Documents/notification/notification.component';
+// import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
+import { UnsubmitteSellingsRetComponent } from './EI-Documents/unsubmitte-sellings-ret/unsubmitte-sellings-ret.component';
+import { PopuploginComponent } from './EI-Documents/popuplogin/popuplogin.component';
+import { TestComponent } from './test/test.component';
+import { DocumentByTypeComponent } from './EI-Documents/document-by-type/document-by-type.component';
+import { DocumentDetailsComponent } from './EI-Documents/document-details/document-details.component';
+import { DialogComponent } from './EI-Documents/dialog/dialog.component';
+import { StatusForSellingsComponent } from './EI-Documents/status-for-sellings/status-for-sellings.component';
+import { ItemLineComponent } from './Sales/item-line/item-line.component';
+import { ImportItemsComponent } from './sales/import-items/import-items.component';
+import { I18nLangComponent } from './i18n-lang/i18n-lang.component';
+// import { TranslatorModule } from '@ferhado/translator';
+import { ImportCustomerComponent } from './sales/import-customer/import-customer.component';
+
+import { PdfmakenewversionComponent } from './pdfmakenewversion/pdfmakenewversion.component';
+// import {AngularPivotTableModule} from 'angular-pivot-table';
+import { ContractsComponent } from './Sales/contracts/contracts.component';
+import { ContractsViewComponent } from './Sales/contracts-view/contracts-view.component';
+import { UserComponent } from './Sales/user/user.component';
+import { UserViewComponent } from './Sales/user-view/user-view.component';
+import { UserReportsComponent } from './Sales/user-reports/user-reports.component';
+import { PriceListReportsComponent } from './Sales/price-list-reports/price-list-reports.component';
+// import { PdfviewComponent } from './sales/pdfview/pdfview.component';
+// import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+// import { ContractPdfComponent } from './sales/contract-pdf/contract-pdf.component';
+// import { ItemInputComponent } from './sales/item-input/item-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepStockComponent,     
+    RepStockComponent,
     SearchPipe,
     HomeComponent,
     NavBarComponent,
@@ -138,71 +169,54 @@ import { RepPurchAnalysisComponent } from './rep-purch-analysis/rep-purch-analys
     NavBarHeaderComponent,
     RepIncomeStatmentComponent,
     RepAccStatementComponent,
-    SalesRequestOrderComponent,
-    ClientsComponent,
-    ClientComponent,
-    VacOrderComponent,
-    VacOrdersComponent,
-    VacOrderApproveComponent,
-    RepEmpVacComponent,
-    ProjectsComponent,
-    ProjectComponent,
-    ClientActionComponent,
-    ClientActionsComponent,
-    EmpPermitComponent,
-    EmpPermitsComponent,
-    HousesComponent,
-    ReserveUnitsComponent,
-    SaleInvsComponent,
-    SaleInvItemsComponent,
     ItemsComponent,
-    InvsInComponent,
-    SaleInvViewComponent,
-    InvsOutComponent,
-    InvsInViewComponent,
-    InvsOutViewComponent,
-    TransBetStoresComponent,
-    TransBetStoresItemsComponent,
-    TransBetStoresViewComponent,
-    AddsComponent,
-    AddsItemsComponent,
-    AddsViewComponent,
-    AddRetsComponent,
-    AddRetsItemsComponent,
-    AddRetsViewComponent,
-    PurchasingsComponent,
-    PurchasingsItemsComponent,
-    PurchasingsViewComponent,
     CustomersComponent,
     CustomersViewComponent,
-    SuppliersComponent,
-    SuppliersViewComponent,
     RepItemCardViewComponent,
     ItemsViewComponent,
-    SellingRetsComponent,
-    SellingRetsItemsComponent,
-    SellingRetsViewComponent,
-    PurchasingForSellingComponent,
-    PurchasingForSellingItemsComponent,
-    CustDiscountsComponent,
-    CustDiscountsViewComponent,
-    SuppDiscountsComponent,
-    SuppDiscountsViewComponent,
-    RepInventoryComponent,
-    RepInventoryItemsComponent,
-    SalesAnalysisReportComponent,
-    PdfComponent,
+    ItemViewComponent,
+    ItemComponent,
+    CustomerViewComponent,
+    CustomerComponent,
+    DebitNoteViewComponent,
+    DebitNoteComponent,
+    DebitComponent,
+    EnterprisesComponent,
+    EnterprisesViewComponent,
+    AcceptedInvComponent,
+    RejectedInvComponent,
+    AllInvoiceComponent,
+    NotificationComponent,
+    UnsubmitteSellingsRetComponent,
+    PopuploginComponent,
     TestComponent,
-    TestItemsComponent,
+    DocumentByTypeComponent,
+    DocumentDetailsComponent,
+    DialogComponent,
+    StatusForSellingsComponent,
+    ItemLineComponent,
+    ImportItemsComponent,
+    I18nLangComponent,
+    ImportCustomerComponent,
+    WaitSubComponent,
+    PdfmakenewversionComponent,
     ChangeItemPriceComponent,
-    ImportClientsComponent,
-    ExampleComponent,
-    ChangeClientsComponent,
     PriceListComponent,
-    PriceListViewComponent,
     PriceListItemComponent,
-    RepPurchAnalysisComponent,
-  
+    PriceListViewComponent,
+    ContractsComponent,
+    ContractsViewComponent,
+    // PdfviewComponent,
+    PriceListAddOnItemComponent,
+    PriceListOtherItemComponent,
+    // ContractPdfComponent,
+    // ItemInputComponent,
+    InvoiceExcelComponent,
+    UserComponent,
+    UserViewComponent,
+    UserReportsComponent,
+    PriceListReportsComponent
+
   ],
   imports: [
     BrowserModule, NgxPaginationModule,  NgPipesModule,
@@ -211,26 +225,100 @@ import { RepPurchAnalysisComponent } from './rep-purch-analysis/rep-purch-analys
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatButtonModule, MatCheckboxModule,MatDatepickerModule,MatNativeDateModule,MatTableModule, MatFormFieldModule,MatAutocompleteModule ,MatInputModule,MatPaginatorModule,MatDialogModule,
+    MatButtonModule, MatCheckboxModule,MatDatepickerModule,MatNativeDateModule, MatFormFieldModule,MatAutocompleteModule,MatInputModule,MatPaginatorModule,MatDialogModule,
     Ng2SearchPipeModule ,
-    ToastrModule.forRoot() , // ToastrModule added
-    DropDownsModule,
-    InputsModule,
-    LabelModule,
-    AgGridModule.withComponents([]),
-    // Chart,
-    
+    ToastrModule.forRoot(), // ToastrModule added
+    // QRCodeModule,
+    // PdfViewerModule,
+    MatStepperModule,
+    // GridAllModule,
+    // DialogAllModule,
+    // CalendarAllModule,
+    // ComboBoxAllModule,
+    // TabModule,
+    // NumericTextBoxAllModule,
+    MatTableModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatSelectModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    // use this if you want to use native javascript dates and INTL API if available
+    // MatNativeDatetimeModule,
+
+    // MatDatetimepickerModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    OverlayModule,
+    // AngularPivotTableModule,
+    // PdfJsViewerModule,
+
+    // TranslateModule.forRoot({
+    //   defaultLanguage:'ar',
+    //   loader:{
+    //     provide: TranslateLoader,
+    //     useFactory:createTran,
+    //     deps:[HttpClient]
+    //   }
+    // }),
+
+    // TranslatorModule.forRoot({
+    //   allowedLocales: ["ar", "en"],
+    //   defaultLocale: "ar"
+    // }),
+
 
   ],
-  entryComponents:[SaleInvItemsComponent],
-  providers: [MatDatepickerModule,MatPaginatorModule,ServStockService,UserService,DatePipe, AuthGuard
-    ,
+  // entryComponents:[SaleInvItemsComponent],
+  providers: [MatDatepickerModule,MatPaginatorModule,ServStockService,UserService,DatePipe, AuthGuard ,
+
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+
+// export function createTran(http:HttpClient){
+//   return new TranslateHttpLoader(http , './assets/i18n/', '.json')
+// }

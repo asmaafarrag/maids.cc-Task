@@ -1,0 +1,12 @@
+* {
+    color:green !important;
+    text-align: right;
+    display: flex;
+    /* flex-direction: row-reverse; */
+
+}
+   
+/*    
+.base-align { 
+    text-align: right;
+} */

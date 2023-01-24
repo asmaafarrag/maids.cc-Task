@@ -26,7 +26,16 @@ export class SellingRetService {
     });
     return this.http.get(environment.ApiUrl + '/api/SellingRets', { headers: reqHeader, params: param }).pipe(map(data => data));
   }
- 
+
+
+  getAllSellingRet(BranchId:number) :Observable<SellingRet[]> {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization':
+        'Bearer ' + localStorage.getItem('userToken')
+    });
+    return this.http.get(environment.ApiUrl + '/api/UnSubmitedSellingRet?BranchId='+BranchId, { headers: reqHeader }).pipe(map(data => <SellingRet[]>data));
+  }
+
 
 
   getSellingRetsByUser(UserId: string,param): any {
@@ -35,7 +44,18 @@ export class SellingRetService {
       'Content-Type': 'application/json', 'Authorization':
         'Bearer ' + localStorage.getItem('userToken')
     });
-    return this.http.get(environment.ApiUrl + '/api/SellingRets/GetByUser/'+UserId, { headers: reqHeader, params: param }).pipe(map(data => data));
+    return this.http.get(environment.ApiUrl + '/api/SellingRets/GetByUser/'+ UserId, { headers: reqHeader, params: param }).pipe(map(data => data));
+  }
+
+  PostSellingRet(sellingList :SellingRet[],EInvMode :string , ActivityTypeCode:string) {
+    var body = {
+      salInvModelList: sellingList,
+      ActivityTypeCode:ActivityTypeCode,
+      // generatedAccessToken: generatedAccessToken,
+      EInvMode:EInvMode
+    };
+    console.log(body);
+    return this.http.post(environment.ApiUrl + '/api/v1/SelingRetSubmissions?EInvMode=' + EInvMode + '&ActivityTypeCode='+ ActivityTypeCode, body.salInvModelList);
   }
 
   postSellingRet() {
