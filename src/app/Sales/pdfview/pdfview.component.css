@@ -1,0 +1,32 @@
+pdf-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(5px 5px 5px #222222);
+}
+
+textarea {
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+.all{
+  margin: 0 90px;
+  padding-right: -25px;
+  
+}
+
+
+.all{
+  background-image: url("../../../assets/app-assets/images/paper.jpeg");
+  background-repeat: no-repeat;
+  background-repeat: repeat-y;
+  background-size: contain;
+  /* background-position:center; */
+  /* background-size: cover; */
+
+}

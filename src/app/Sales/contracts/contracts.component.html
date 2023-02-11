@@ -87,9 +87,11 @@
                       <div class="col-md-4 ">
                         <label> العميل </label>
                         <fieldset class="form-group position-relative has-icon-left">
-                            <select name="customer_Name" #customer_Name="ngModel" [(ngModel)]="contractServ.formData.customer_Name"
-                            class="form-control" required [class.is-invalid]="!isValid && (contractServ.formData.customer_Name == null || contractServ.formData.customer_Name == '')"  >
-                             <option *ngFor="let customer of CustomerList" [ngValue]="customer.customer_Name">{{customer.customer_Name}}</option>
+                            <select name="customer_ID" #customer_ID="ngModel" [(ngModel)]="contractServ.formData.customer_ID"
+                            class="form-control" required [class.is-invalid]="!isValid && (contractServ.formData.customer_ID == null || contractServ.formData.customer_ID == 0)"
+
+                            >
+                             <option *ngFor="let customer of CustomerList" [ngValue]="customer.customer_ID">{{customer.customer_Name}}</option>
                             </select>
                             <div class="form-control-position">
                              <i class="icon-user4"></i>
@@ -162,6 +164,19 @@
 
                         </fieldset>
                       </div> -->
+
+                      <div class="col-md-2">
+                        <label>  قيمة الخصم </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input  name="contract_DiscountValue" #contract_DiscountValue="ngModel" [(ngModel)]="contractServ.formData.contract_DiscountValue"  class="form-control" placeholder="  قيمة الخصم"
+                            data-toggle="tooltip" data-placement="top" title data-original-title=" قيمة الخصم " required
+                            >
+                            <div class="form-control-position">
+                              <i class="fa fa-keyboard-o"></i>
+                            </div>
+                        </fieldset>
+                      </div>
+
 
                       <div class="col-md-4">
                         <label>تاريخ العقد  </label>

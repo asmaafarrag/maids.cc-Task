@@ -14,7 +14,7 @@
 
                     <div class="row">
 
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label>تاريخ العرض </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="priceList_Date" #priceList_Date="ngModel" [ngModel]="PriceListsServ.formData.priceList_Date | date:'yyyy-MM-dd'"
@@ -52,13 +52,19 @@
                        <div class="col-md-4">
                         <label> مقدم إلى (اسم الشركة) </label>
                         <fieldset class="form-group position-relative has-icon-left">
-                            <select name="priceList_Customer" #priceList_Customer="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_Customer" (ngModelChange)="setSelectedCustomer($event)"
-                            class="form-control" required [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_Customer == null || PriceListsServ.formData.priceList_Customer == 0)"  >
-                             <option *ngFor="let customer of customerslist" [ngValue]="customer.customer_Name">{{customer.customer_Name}}</option>
+                            <select name="customer_ID" #customer_ID="ngModel" [(ngModel)]="PriceListsServ.formData.customer_ID" (ngModelChange)="setSelectedCustomer($event)"
+                            class="form-control" required [class.is-invalid]="!isValid && (PriceListsServ.formData.customer_ID == null || PriceListsServ.formData.customer_ID == 0)"  >
+                             <option *ngFor="let customer of customerslist" [ngValue]="customer.customer_ID">{{customer.customer_Name}}</option>
                             </select>
                             <div class="form-control-position">
                              <i class="icon-user4"></i>
                             </div>
+                        </fieldset>
+                      </div>
+
+                      <div class="col-md-1" style="margin-top: 24px;"  >
+                        <fieldset class="form-group position-relative has-icon-left">
+                            <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItemss()"><i class="fa fa-plus"></i></a>
                         </fieldset>
                       </div>
 
@@ -99,7 +105,7 @@
 
                     <div class="row">
 
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label>صلاحية العرض  </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="priceList_Validity" #priceList_Validity="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_Validity" class="form-control"
@@ -112,7 +118,7 @@
                       </div>
 
 
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label> فترة التوريد والتركيب (باليوم)  </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="supplying_Duration" #supplying_Duration="ngModel" [(ngModel)]="PriceListsServ.formData.supplying_Duration" class="form-control"
@@ -124,7 +130,7 @@
                         </fieldset>
                       </div>
 
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label>   معامل التحويل  </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="exchangeRate" #exchangeRate="ngModel" [(ngModel)]="PriceListsServ.formData.exchangeRate" class="form-control"
@@ -136,6 +142,20 @@
 
                         </fieldset>
                       </div>
+
+                      <div class="col-md-3">
+                        <label> نسبة الخصم </label>
+                        <fieldset class="form-group position-relative has-icon-left">
+                          <input name="priceList_DiscountRate" #priceList_DiscountRate="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_DiscountRate" class="form-control"
+                           placeholder=" نسبة الخصم " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_DiscountRate == null || PriceListsServ.formData.priceList_DiscountRate == 0)"
+                           (keyup)="UpdateTotal() ">
+                          <div class="form-control-position">
+                            <i class="fa fa-building"></i>
+                          </div>
+
+                        </fieldset>
+                      </div>
+
 
 
                     </div>
@@ -154,13 +174,13 @@
                                     <th>#</th>
                                     <th>كود الصنف</th>
                                     <th> الصنف</th>
-                                    <th>السعر باليورو</th>
-                                    <th>السعر بالريال</th>
+                                    <th>السعر باليورو قبل الخصم</th>
+                                    <th>السعر بالريال بعد الخصم</th>
                                     <th>المساحة</th>
-                                    <th>سعر المتر بالريال</th>
+                                    <th>سعر المتر بالريال بعد الخصم</th>
                                     <!-- <th>إجمالي</th> -->
                                     <th>ض ق م %15  </th>
-                                    <th> الإجمالي بعد الضريبة</th>
+                                    <th> الإجمالي بعد الضريبة والخصم</th>
                                     <th>
                                       <a class="btn btn-sm btn-danger text-white" (click)="AddOrEditSalInvItems(null,PriceListsServ.formData.priceList_ID)"><i class="fa fa-plus"></i>إضافة </a>
                                     </th>

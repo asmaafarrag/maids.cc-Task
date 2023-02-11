@@ -1,13 +1,24 @@
 <section id="card-actions">
   <div class="row">
     <div class="col-xs-12">
-      <div class="card">
+      <div class="card" style="border: none">
         <div class="card-body collapse in">
           <div class="card-block">
             <div class="row">
               <div class="col-xl-12 col-lg-12 mb-2">
                 <div class="col-md-12" style="text-align: center;"><h4><span class="label label-default"> العملاء  </span></h4>
+                  <a [mat-dialog-close] style="float: left;
+                  margin: -32px 0px;
+                  font-size: 18px;
+                  color: #000;"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
+
+                <!-- <div class="row"><h5 style="display:inline-block;text-align: center " > العملاء</h5> <a [mat-dialog-close] style="float: left;
+                  margin: 0 30px;
+                  font-size: 18px;
+                  color: #000;"><i class="fa fa-times" aria-hidden="true"></i></a></div> -->
+
+
                 <form #form="ngForm" dir="rtl" autocomplete="off" *ngIf="CustService.formData" (submit)="onSubmit(form)" novalidate>
                   <!-- <input type="hidden" name="CustomerID" #CustomerID="ngModel" [(ngModel)]="this.formData.CustomerID"> -->
 

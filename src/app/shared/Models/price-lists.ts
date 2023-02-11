@@ -1,6 +1,7 @@
 export class PriceLists {
 
   priceList_ID:number;
+  customer_ID:number;
   priceList_Customer:string;
   priceList_Representative:string;
   priceList_Validity:string;
@@ -21,6 +22,7 @@ export class PriceLists {
   entryUser  :string;
   entrydate  :string;
   has_Contract:boolean;
+  priceList_DiscountRate:number;
   priceListAddOns:GetPriceListAddOnsViewModel[];
   priceListItems:GetPriceListItemsViewModel[];
   priceListOtherItems:GetPriceListOtherItemsViewModel[];

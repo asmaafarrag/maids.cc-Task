@@ -3,8 +3,8 @@ import { UserReportsComponent } from './Sales/user-reports/user-reports.componen
 import { UserViewComponent } from './Sales/user-view/user-view.component';
 import { UserComponent } from './Sales/user/user.component';
 import { InvoiceExcelComponent } from './invoice-excel/invoice-excel.component';
-// import { ContractPdfComponent } from './Sales/contract-pdf/contract-pdf.component';
-// import { PdfviewComponent } from './Sales/pdfview/pdfview.component';
+import { ContractPdfComponent } from './Sales/contract-pdf/contract-pdf.component';
+import { PdfviewComponent } from './Sales/pdfview/pdfview.component';
 import { ContractsViewComponent } from './Sales/contracts-view/contracts-view.component';
 import { ContractsComponent } from './Sales/contracts/contracts.component';
 import { ItemLineComponent } from './Sales/item-line/item-line.component';
@@ -264,8 +264,8 @@ const routes: Routes = [
     ]
   },
 
-  // { path: 'pdf', component: PdfviewComponent, canActivate: [AuthGuard] },
-  // { path: 'cpdf', component: ContractPdfComponent, canActivate: [AuthGuard] },
+  { path: 'pdf', component: PdfviewComponent, canActivate: [AuthGuard] },
+  { path: 'cpdf', component: ContractPdfComponent, canActivate: [AuthGuard] },
 
   // { path: 'PIExcel', component: InvoiceExcelComponent, canActivate: [AuthGuard] },
 

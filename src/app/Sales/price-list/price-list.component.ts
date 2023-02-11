@@ -1,9 +1,10 @@
+import { CustomerComponent } from './../../EI-Codes/customer/customer.component';
 import { PriceListOtherItemComponent } from './../price-list-OtherItem/price-list-OtherItem.component';
 import { HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { PriceListAddOnItemComponent } from './../price-list-AddOnItem/price-list-addonitem.component';
 import { ServStockService } from 'src/app/shared/Services/serv-stock.service';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef ,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { VacOrdersService } from 'src/app/shared/Services/vac-orders.service';
 import { NgForm,FormControl, FormGroup, Validators } from '@angular/forms';
 //import {MatButtonModule, MatCheckboxModule,MatDatepickerModule,MatFormFieldModule,MatFormField} from '@angular/material';
@@ -90,12 +91,18 @@ export class PriceListComponent implements OnInit {
   }
 
 
+  GetCustomers(){
+    this.servStockService.getCustomers().subscribe(res => this.customerslist = res);
+  }
+
+
 
   resetform(form?: NgForm) {
     if (form != null)
       form.form.reset();
     this.PriceListsServ.formData = {
       priceList_ID:-1,
+      customer_ID:null,
       priceList_Customer :'',
       priceList_Representative :'',
         priceList_Date: this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
@@ -119,6 +126,7 @@ export class PriceListComponent implements OnInit {
         priceListAddOns:[],
         entryUser :'',
         entrydate :this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
+        priceList_DiscountRate :0,
     }
     this.PriceListsServ.formData.priceListItems = [];
     this.PriceListsServ.formData.priceListOtherItems = [];
@@ -336,9 +344,17 @@ export class PriceListComponent implements OnInit {
     window.open(this.url + id , '_blank');
   }
 
-  setSelectedCustomer(str) {
-    console.log(str)
-    this.selectedCustomer = str;
+  // setSelectedCustomer(str) {
+  //   console.log(str)
+  //   this.selectedCustomer = str;
+  // }
+
+  setSelectedCustomer(cust) {
+    console.log(cust ,"cust")
+    this.selectedCustomer = this.customerslist.find(x => x.customer_ID == cust);
+    this.PriceListsServ.formData.priceList_Customer =  this.selectedCustomer.customer_Name;
+    console.log( this.selectedCustomer ," this.selectedCustomer")
+
   }
 
   onSubmit(form: NgForm) {
@@ -534,6 +550,19 @@ export class PriceListComponent implements OnInit {
 
 
 
+  AddOrEditSalInvItemss() {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "100%";
+    // var StoreId = this.servSellingRet.formData.StoreId;
+    // dialogConfig.data = { orderItemIndex };
+    this.dialog.open(CustomerComponent, dialogConfig).afterClosed().subscribe(res => {  this.GetCustomers();
+
+    });
+
+}
 
 
 }

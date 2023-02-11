@@ -277,6 +277,7 @@ export class ContractsComponent implements OnInit {
       ContractJobOrders:[],
       ContractPayments: [],
       entryUser :'',
+      contract_DiscountValue:0,
       entrydate :this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
 
     }
@@ -293,6 +294,7 @@ export class ContractsComponent implements OnInit {
     this.PriceListsServ.formData = {
 
       priceList_ID:-1,
+      customer_ID:null,
       priceList_Customer :'',
       priceList_Representative :'',
         priceList_Date: this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
@@ -315,6 +317,7 @@ export class ContractsComponent implements OnInit {
         priceListOtherItems:[],
         priceListAddOns:[],
         entryUser :'',
+        priceList_DiscountRate:0,
         entrydate :this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
 
     }

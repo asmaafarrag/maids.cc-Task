@@ -12,6 +12,7 @@ export class Contracts {
   ContractPayments: GetContractPaymentsViewModel[];
   entryUser  :string;
   entrydate  :string;
+  contract_DiscountValue:number;
 }
 
 

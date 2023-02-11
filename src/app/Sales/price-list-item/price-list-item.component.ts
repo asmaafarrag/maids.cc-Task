@@ -313,20 +313,21 @@ export class PriceListItemComponent implements OnInit {
     if ( this.formData.item_Price_Value_Curr === undefined || this.formData.item_Price_Value_Curr == null || this.formData.item_Price_Value_Curr.toString().length <= 0 )
       this.formData.item_Price_Value_Curr = 0;
 
-    this.formData.item_Price_Value = parseFloat((this.formData.item_Price_Value_Curr * this.servSalInv.formData.exchangeRate).toFixed(2));
+    this.formData.item_Price_Value = parseFloat(( (this.formData.item_Price_Value_Curr * this.servSalInv.formData.exchangeRate ) - ( (this.formData.item_Price_Value_Curr * this.servSalInv.formData.exchangeRate ) * this.servSalInv.formData.priceList_DiscountRate / 100 )).toFixed(2));
 
-    this.formData.item_Total_Price = parseFloat((this.formData.item_Price_Value).toFixed(2));
+
+    this.formData.item_Total_Price = parseFloat((this.formData.item_Price_Value  ).toFixed(2));
 
     // this.meterP =  (this.formData.item_Total_Area / this.formData.item_Price_Value);
     // console.log( this.meterP)
-    this.formData.item_Total_Tax = parseFloat(( this.formData.item_Price_Value * 0.15 ).toFixed(2))
+    this.formData.item_Total_Tax = parseFloat(( this.formData.item_Total_Price * 0.15 ).toFixed(2))
 
     // let t = parseFloat(( this.formData.item_Price_Value * this.formData.item_Total_Tax ).toFixed(2))
 
-    this.formData.item_SubTotal =  parseFloat((this.formData.item_Price_Value  + this.formData.item_Total_Tax ).toFixed(2));
+    this.formData.item_SubTotal =  parseFloat((this.formData.item_Total_Price  + this.formData.item_Total_Tax ).toFixed(2));
 
 
-    this.formData.item_Price_Value_PerMeter = parseFloat((  this.formData.item_Price_Value  / this.formData.item_Total_Area).toFixed(2));
+    this.formData.item_Price_Value_PerMeter = parseFloat((  this.formData.item_Total_Price  / this.formData.item_Total_Area).toFixed(2));
 
     console.log( this.formData.item_Price_Value_PerMeter ," this.formData.item_Price_Value_PerMeter")
 
