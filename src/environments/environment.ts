@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-    ApiUrl:'http://pergola-api.minicodeco.com',
+    ApiUrl:'https://pergola-api.minicodeco.com',
     // ApiUrl:'http://104.196.134.107/AfitAPI',
 
   //  ApiUrl : 'http://localhost:22376',

@@ -455,7 +455,7 @@ export class PriceListComponent implements OnInit {
   }
 
    onDeleteSalInvADDOItems(SerNo: number, i: number) {
-    this.PriceListsServ.formData.priceListOtherItems.splice(i, 1);
+    this.PriceListsServ.formData.priceListAddOns.splice(i, 1);
     this.calcGrandTotal();
     // this.calcItemsQty();
   }
