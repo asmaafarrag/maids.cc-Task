@@ -65,7 +65,7 @@ export class ItemsViewComponent implements OnInit {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
 
       this.ItemServ.getItemsList(params).subscribe(res => {
-       
+        console.log(res.data)
         this.ItemsList = res.data;
         this.count = res.recordsTotal;
       },
@@ -169,11 +169,11 @@ export class ItemsViewComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-     params['SearchString'] = searchTitle;
+     params['Key'] = searchTitle;
     }
 
     if (page) {
-      params['PageNumber'] = page;
+      params['PageNumber'] = page-1;
     }
 
     if (pageSize) {

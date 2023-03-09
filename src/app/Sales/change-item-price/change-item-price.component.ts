@@ -31,8 +31,8 @@ export class ChangeItemPriceComponent implements OnInit {
   currentIndex = -1;
   page: number = 0;
   count: number = 0;
-  pageSize: number = 100000;
-  pageSizes = [10, 20, 30,40,50];
+  pageSize: number = 10;
+  pageSizes = [10, 20, 30,40,50,80,100];
   title: string = '';
   // UserID: string;
   // UserType: string;
@@ -362,11 +362,11 @@ export class ChangeItemPriceComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-      params['SearchString'] = searchTitle;
+      params['Key'] = searchTitle;
     }
 
     if (page) {
-      params['PageNumber'] = page;
+      params['PageNumber'] = page-1;
     }
 
     if (pageSize) {
@@ -377,15 +377,15 @@ export class ChangeItemPriceComponent implements OnInit {
   }
 
 
-  // handlePageChange(event) {
-  //   this.page = event;
-  //   localStorage.setItem( "itemspage", event)
-  //   this.getItems();
-  // }
+  handlePageChange(event) {
+    this.page = event;
+    // localStorage.setItem( "itemspage", event)
+    this.getItems();
+  }
 
-  // handlePageSizeChange(event) {
-  //   this.pageSize = event.target.value;
-  //   this.page = 1;
-  //   this.getItems();
-  // }
+  handlePageSizeChange(event) {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.getItems();
+  }
 }

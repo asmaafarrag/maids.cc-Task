@@ -20,7 +20,7 @@
                                 <div class="form-group">
 
                                     <div class="input-group">
-                                        <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="gePriceLists()" class="form-control" />
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث" (change)="gePriceLists()" class="form-control" />
                                         <span class="input-group-addon"><a >
                                             <i class="fa fa-search"></i>
                                         </a></span>
@@ -83,6 +83,14 @@
                                               (click)="printPdf(itm.priceList_ID)"><i
                                                   class="fa fa-print fa-lg"></i>
                                               </a>
+
+
+                                              <!-- <span class="d-inline-block m-0 p-0" tabindex="0" data-toggle="tooltip" title=" print">
+                                                <a class="btn btn-link text-info" style="pointer-events: none;"
+                                                  (click)="printPdf(itm.priceList_ID)"><i class="btn btn-link" class="fa fa-print fa-lg " ></i></a>
+                                              </span> -->
+
+
 
                                               <a class="btn text-danger" *ngIf="UserType=='admin'"
                                               (click)="onOrderDelete(i,itm.priceList_ID)"><i

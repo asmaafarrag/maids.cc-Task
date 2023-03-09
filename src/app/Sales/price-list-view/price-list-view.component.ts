@@ -21,8 +21,8 @@ export class PriceListViewComponent implements OnInit {
   currentIndex = -1;
   page: number = 0;
   count: number = 0;
-  pageSize: number = 50;
-  pageSizes = [20, 30, 40 , 50 , 60];
+  pageSize: number = 10;
+  pageSizes = [10,20, 30, 40 , 50 , 60];
   title: string = '';
   UserID: string;
   UserType: string;
@@ -97,11 +97,11 @@ export class PriceListViewComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-     params['SearchString'] = searchTitle;
+     params['Key'] = searchTitle;
     }
 
     if (page) {
-      params['PageNumber'] = page;
+      params['PageNumber'] = page-1;
     }
 
     if (pageSize) {

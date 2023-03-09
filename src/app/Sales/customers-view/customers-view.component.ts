@@ -28,7 +28,7 @@ export class CustomersViewComponent implements OnInit {
   page: number = 0;
   count: number = 0;
   pageSize: number = 5;
-  pageSizes = [5, 10, 20];
+  pageSizes = [5, 10, 20, 50 , 60 ,80 ,100];
   title: string = '';
 
   UserID: string;
@@ -105,11 +105,11 @@ export class CustomersViewComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-     params['SearchString'] = searchTitle;
+     params['Key'] = searchTitle;
     }
 
     if (page) {
-      params['PageNumber'] = page ;
+      params['PageNumber'] = page-1 ;
     }
 
     if (pageSize) {

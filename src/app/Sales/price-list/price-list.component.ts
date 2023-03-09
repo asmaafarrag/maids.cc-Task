@@ -37,7 +37,8 @@ export class PriceListComponent implements OnInit {
   isEnabled: boolean = true;
   itemslist: Item[];
   isValid: boolean = true;
-
+  ExchangeValue:boolean=false;
+  DiscValue:boolean=false;
 
   selectedItem: Item;
   customerslist:Customer[];
@@ -324,18 +325,25 @@ export class PriceListComponent implements OnInit {
       this.toastr.error( ' الرجاء إدخال قيمة معامل التحويل ');
       this.isValid = false;
     }
+    else{
+      this.ExchangeValue = true;
+      return this.isValid;
+    }
 
+    if (this.PriceListsServ.formData.priceList_DiscountRate == null  ){
+      this.toastr.error( ' الرجاء إدخال قيمة الخصم  ');
+      this.isValid = false;
+    }
+    else{
+      // this.DiscValue = true;
+      return this.isValid;
+    }
 
   //   else if (this.PriceListsServ.formData.custnam == null || this.PriceListsServ.formData.custnam == '')
   //   this.isValid = false;
 
   //  else if (this.PriceListsServ.formData.CustomerId == null || this.PriceListsServ.formData.CustomerId == '')
   //   this.isValid = false;
-
-
-
-
-    return this.isValid;
   }
 
 
@@ -487,6 +495,8 @@ export class PriceListComponent implements OnInit {
     this.PriceListsServ.formData.priceList_Total =  +this.priceListOtherItemsTotal +  +this.priceListAddOnsTotal +  +this.priceListItemsTotal;
     this.PriceListsServ.formData.priceList_Total  = parseFloat(( this.PriceListsServ.formData.priceList_Total ).toFixed(2));
     console.log( this.PriceListsServ.formData.priceList_Total ," this.PriceListsServ.formData.priceList_Total")
+
+    this.calcDiscRatio()
   }
 
 

@@ -284,6 +284,8 @@ export class ItemsComponent implements OnInit {
         this.servItem.postItems().subscribe(
           res => {
             this.showSuccess();
+            this.router.navigate(['/ItemsView']);
+
             // this.resetForm();
             this.isEnabled = true;
           },
@@ -296,6 +298,8 @@ export class ItemsComponent implements OnInit {
         this.servItem.putItem().subscribe(
           res => {
             this.showSuccess();
+            this.router.navigate(['/ItemsView']);
+
             // this.resetForm();
             this.isEnabled = true;
           },

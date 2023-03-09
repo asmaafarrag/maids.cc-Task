@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 import { AccountUser } from '../Models/account-user';
 import { BranchUser } from '../Models/branch-user';
 
-
 @Injectable({
   providedIn: 'root'
 })

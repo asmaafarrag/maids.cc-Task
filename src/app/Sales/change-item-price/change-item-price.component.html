@@ -20,7 +20,7 @@
                                 <div class="form-group">
 
                                     <div class="input-group">
-                                        <input type="search" [(ngModel)]="term" placeholder="بحث" (change)="getItems()" class="form-control" />
+                                        <input type="search" [(ngModel)]="title" placeholder="بحث" (change)="getItems()" class="form-control" />
                                         <span class="input-group-addon"><a >
                                             <i class="fa fa-search"></i>
                                         </a></span>
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="col-md-3">
+                            <div class="col-md-3">
                                 ...
 
                                 عدد السجلات فى الصفحة:
@@ -109,12 +109,12 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
                                     (pageChange)="handlePageChange($event)"></pagination-controls>
-                            </div> -->
-                            <div class="col-md-2">
-                                Result:
+                            </div>
+                            <div class="col-md-3 ">
+                                Result: {{count}}
                              </div>
                         </div>
 

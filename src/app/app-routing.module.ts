@@ -1,3 +1,4 @@
+import { PriceListItemComponent } from './Sales/price-list-item/price-list-item.component';
 import { PriceListReportsComponent } from './Sales/price-list-reports/price-list-reports.component';
 import { UserReportsComponent } from './Sales/user-reports/user-reports.component';
 import { UserViewComponent } from './Sales/user-view/user-view.component';
@@ -254,6 +255,9 @@ const routes: Routes = [
     { path: 'edit/:id', component: PriceListComponent }
   ]
 },
+
+{ path: 'PriceListItem', component: PriceListItemComponent, canActivate: [AuthGuard] },
+
 
 { path: 'contractsView', component: ContractsViewComponent, canActivate: [AuthGuard] },
   {

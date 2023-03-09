@@ -22,7 +22,7 @@ export class ContractsViewComponent implements OnInit {
     page: number = 0;
     count: number = 0;
     pageSize: number = 5;
-    pageSizes = [5, 10, 20];
+    pageSizes = [5, 10, 20,50];
     title: string = '';
     clicked:boolean=false;
 
@@ -102,11 +102,11 @@ export class ContractsViewComponent implements OnInit {
       let params = {};
 
       if (searchTitle) {
-       params['SearchString'] = searchTitle;
+       params['Key'] = searchTitle;
       }
 
       if (page) {
-        params['PageNumber'] = page;
+        params['PageNumber'] = page-1;
       }
 
       if (pageSize) {

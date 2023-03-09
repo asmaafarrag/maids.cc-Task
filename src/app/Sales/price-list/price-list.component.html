@@ -12,6 +12,12 @@
                     <input type="hidden" name="priceList_ID" #priceList_ID="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_ID">
 
 
+
+                    <!-- {{message}}
+                    <button type="button" (click)="newMessage()">New Message</button>
+ -->
+
+
                     <div class="row">
 
                       <div class="col-md-3">
@@ -93,7 +99,7 @@
                           <input name="priceList_Representative" #priceList_Representative="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_Representative" class="form-control"
                            placeholder="عناية (اسم المسؤول) " required [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_Representative == null || PriceListsServ.formData.priceList_Representative == '')">
                           <div class="form-control-position">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-user-o"></i>
                           </div>
 
                         </fieldset>
@@ -111,7 +117,7 @@
                           <input name="priceList_Validity" #priceList_Validity="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_Validity" class="form-control"
                            placeholder="صلاحية العرض  " required  [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_Validity == null || PriceListsServ.formData.priceList_Validity == 0)">
                           <div class="form-control-position">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-calendar-check-o"></i>
                           </div>
 
                         </fieldset>
@@ -124,7 +130,7 @@
                           <input name="supplying_Duration" #supplying_Duration="ngModel" [(ngModel)]="PriceListsServ.formData.supplying_Duration" class="form-control"
                            placeholder=" فترة التوريد والتركيب (باليوم)   " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.supplying_Duration == null || PriceListsServ.formData.supplying_Duration == 0)">
                           <div class="form-control-position">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-wrench"></i>
                           </div>
 
                         </fieldset>
@@ -134,12 +140,12 @@
                         <label>   معامل التحويل  </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="exchangeRate" #exchangeRate="ngModel" [(ngModel)]="PriceListsServ.formData.exchangeRate" class="form-control"
-                           placeholder=" معامل التحويل  " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.exchangeRate == null || PriceListsServ.formData.exchangeRate == 0)"
-                           (keyup)="UpdateTotal() ">
+                           placeholder=" معامل التحويل  " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.exchangeRate == null)"
+                            [readonly]="ExchangeValue == true">
                           <div class="form-control-position">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-euro "></i>
                           </div>
-
+<!-- {{ExchangeValue}} -->
                         </fieldset>
                       </div>
 
@@ -147,10 +153,10 @@
                         <label> نسبة الخصم </label>
                         <fieldset class="form-group position-relative has-icon-left">
                           <input name="priceList_DiscountRate" #priceList_DiscountRate="ngModel" [(ngModel)]="PriceListsServ.formData.priceList_DiscountRate" class="form-control"
-                           placeholder=" نسبة الخصم " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_DiscountRate == null || PriceListsServ.formData.priceList_DiscountRate == 0)"
-                           (keyup)="UpdateTotal() ">
+                           placeholder=" نسبة الخصم " required type="number" [class.is-invalid]="!isValid && (PriceListsServ.formData.priceList_DiscountRate == null )"
+                           >
                           <div class="form-control-position">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-percent"></i>
                           </div>
 
                         </fieldset>

@@ -20,8 +20,8 @@ export class UserViewComponent implements OnInit {
   currentIndex = -1;
   page: number = 0;
   count: number = 0;
-  pageSize: number = 50;
-  pageSizes = [5, 10, 20];
+  pageSize: number = 5;
+  pageSizes = [5, 10, 20,50,80,100];
   title: string = '';
 
   UserID: string;
@@ -81,11 +81,11 @@ export class UserViewComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-     params['SearchString'] = searchTitle;
+     params['Key'] = searchTitle;
     }
 
     if (page) {
-      params['PageNumber'] = page;
+      params['PageNumber'] = page-1;
     }
 
     if (pageSize) {
